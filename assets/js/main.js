@@ -97,6 +97,27 @@ modalCloses.forEach((modalClose) => {
 
 /*==================== PORTFOLIO SWIPER  ====================*/
 
+let swiper = new Swiper(".portfolio__container", {
+    cssMode: true,
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable:true,
+    },
+});
+
+/*==================== CONTACT ME BUTTON ====================*/
+
+var submitMessage = document.getElementById("submitButton"),
+    ContactForm = document.getElementById("ContactForm");
+
+submitMessage.addEventListener('click',()=>{
+    ContactForm.submit()
+})
 
 /*==================== TESTIMONIAL ====================*/
 
