@@ -543,6 +543,16 @@ img{
     width: 40%;
 }
 
+.skills_python{
+    width: 60%;
+}
+.skills_C{
+    width: 60%;
+}
+.skills_C_sharp{
+    width: 30%;
+}
+
 .skills__close .skills__list{
     height: 0;
     overflow: hidden;
@@ -821,6 +831,11 @@ img{
 }
 
 .project__img{
+    width: 232px;
+    justify-self: center;
+}
+
+#animContainer{
     width: 232px;
     justify-self: center;
 }
@@ -1178,7 +1193,7 @@ img{
     }
 
     .about__buttons{
-        justify-content: initial;
+        justify-content: center;
     }
 
     .qualification__tabs{
@@ -1220,6 +1235,10 @@ img{
 
     .project__data{
         padding-top: .8rem;
+    }
+
+    #animContainer{
+        margin-bottom: 1.5rem;
     }
 
     .footer__container{

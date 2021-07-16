@@ -223,19 +223,29 @@ if (window.matchMedia) {
   }
 }
 
-function DynamicThemeChange(){
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      ActivateDarkTheme()
-    } else {
-      ActivateLightTheme()
-    }
-}
-
 if (window.matchMedia) {
   var colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
   colorSchemeQuery.addEventListener(
-    "change",
-    setColorScheme(DynamicThemeChange())
-  );
+    "change",()=>{
+        ActivateDarkTheme()
+    })
+  ;
 }
 
+if (window.matchMedia) {
+  var colorSchemeQuery = window.matchMedia("(prefers-color-scheme: light)");
+  colorSchemeQuery.addEventListener(
+    "change",()=>{
+        ActivateLightTheme()
+    })
+  ;
+}
+
+/*==================== Project Lootie ====================*/ 
+var animation = bodymovin.loadAnimation({
+  container: document.getElementById("animContainer"),
+  renderer: "svg",
+  loop: true,
+  autoplay: true,
+  path: "https://assets5.lottiefiles.com/packages/lf20_26ewjioz.json", // lottie file path
+});
