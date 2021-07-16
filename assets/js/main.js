@@ -223,14 +223,13 @@ if (window.matchMedia) {
   }
 }
 
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", (e) => {
-    ActivateDarkTheme();
-  });
+function DynamicThemeChange(){
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      ActivateDarkTheme()
+    } else {
+      ActivateLightTheme()
+    }
+}
 
-window
-  .matchMedia("(prefers-color-scheme: light)")
-  .addEventListener("change", (e) => {
-    ActivateLightTheme();
-  });
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",DynamicThemeChange());
+
