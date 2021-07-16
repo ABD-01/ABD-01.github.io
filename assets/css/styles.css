@@ -1249,6 +1249,11 @@ img{
 
 @media screen and (min-width: 1024px){
 
+    .project{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .header,
     .main,
     .footer__container{
@@ -1294,4 +1299,10 @@ img{
     .contact__inputs{
         grid-template-columns: repeat(2,1fr);
     }
+
+    #project-all{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
 }
