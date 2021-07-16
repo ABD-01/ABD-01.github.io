@@ -213,4 +213,7 @@ if (
 ) {
     document.body.classList.toggle(darkTheme);
     themeButton.classList.toggle(iconTheme);
+
+    localStorage.setItem("selected-theme", getCurrentTheme());
+    localStorage.setItem("selected-icon", getCurrentIcon());
 }
