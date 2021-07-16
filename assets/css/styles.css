@@ -1300,7 +1300,7 @@ img{
         grid-template-columns: repeat(2,1fr);
     }
 
-    #project-all{
+    .project-all{
         margin-left: 20%;
         margin-right: 20%;
     }
