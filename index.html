@@ -19,13 +19,13 @@
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
-            <nav class="nav container">
+            <nav class="nav container" id="nav">
                 <a href="#" class="nav__logo">Chrisley</a>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list grid">
                         <li class="nav__item">
-                            <a href="#home" class="nav__link">
+                            <a href="#home" class="nav__link active-link">
                                 <i class="uil uil-estate nav__icon"></i> Home
                             </a>
                         </li>
@@ -59,6 +59,9 @@
                 </div>
                 
                 <div class="nav_btns">
+                    <!-- Theme change button -->
+                    <i class="uil uil-moon change-theme" id="theme-button"></i>
+
                     <div class="nav__toggle" id="nav-toggle">
                         <i class="uil uil-apps"></i>
                     </div>
@@ -70,7 +73,7 @@
         <main class="main">
             <!--==================== HOME ====================-->
             <section class="home section" id="home">
-                <div class="home__container grid">
+                <div class="home__container grid container">
                     <div class="home__content grid">
                         <div class="home__social">
                             <!-- Links to social media -->
@@ -154,12 +157,12 @@
             </section>
 
             <!--==================== SKILLS ====================-->
-            <section class="skills section" id="skills">
+            <section class="skills section container" id="skills">
                 <h2 class="section__title">Skills</h2>
                 <span class="section__subtitle">My technical level</span>
 
                 <div class="skills__container grid">
-                    <div>
+                    
                         <!-- Skills 1 -->
                         <div class="skills__content skills__open">
                             <div class="skills__header">
@@ -217,8 +220,8 @@
                                 </div> -->
                             </div>
                         </div>
-                        <!-- Skills 2
-                        <div class="skills__content">
+                        <!-- Skills 2 -->
+                        <!-- <div class="skills__content">
                             <div class="skills__header">
                                 <i class="uil uil-server skills__icon"></i>
 
@@ -353,7 +356,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
             </section>
@@ -570,24 +573,22 @@
             </section>
 
             <!--==================== PROJECT IN MIND ====================-->
+            
             <section class="project section">
-                <section class="project section">
-                    <div class="project_bg">
-                        <div class="project__container container grid">
-                            <div class="project__data">
-                                <h2 class="project__title">If you have a project in mind</h2>
-                                <p class="project__description">Contact me now to make it true together!</p>
-                                <a href="#contact" class="button button--flex button--white">
-                                    Contact me now
-                                    <i class="uil uil-message project__icon button__icon"></i>
-                                </a>
-                            </div>
-
-                            <img src="assets/img/project.png" alt="project">
+                <div class="project_bg">
+                    <div class="project__container container grid" id="project-spectacular">
+                        <div class="project__data">
+                            <h2 class="project__title">If you have a project in mind</h2>
+                            <p class="project__description">Contact me now to make it true together!</p>
+                            <a href="#contact" class="button button--flex button--white">
+                                Contact me now
+                                <i class="uil uil-message project__icon button__icon"></i>
+                            </a>
                         </div>
-                    </div>
-                </section>
 
+                        <img src="assets/img/project.png" alt="project">
+                    </div>
+                </div>
             </section>
 
             <!--==================== TESTIMONIAL ====================-->
@@ -662,12 +663,43 @@
 
         <!--==================== FOOTER ====================-->
         <footer class="footer">
+            <div class="footer__bg">
+                <div class="footer__container container grid">
+                    <div>
+                        <h1 class="footer__title">Christian Leyva</h1>
+                        <span class="footer__subtitle">Computer Engineering student</span>
+                    </div>
+                
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#services" class="footer__link">Services</a>
+                        </li>
+                        <li>
+                            <a href="#portfolio" class="footer__link">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
 
-            
+                    <div class="footer__socials">
+                        <a href="https://www.instagram.com/chrisley304" target="_blank" class="footer__social">
+                            <i class="uil uil-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/Chrisley304" target="_blank" class="footer__social">
+                            <i class="uil uil-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="footer__copy">Designed by <a href="https://www.youtube.com/channel/UCgkDs77BoEhMIgRUB4MKrtQ" target="_blank" class="copy__link">Bedimcode</a> and built by <a class="copy__link" href="#home">Christian Leyva</a>.</p>
+            </div>
         </footer>
         
         <!--==================== SCROLL TOP ====================-->
-        
+        <a href="#home" class="scrollup" id="scroll-up">
+            <i class="uil uil-arrow-up scrollup__icon"></i>
+        </a>
 
         <!--==================== SWIPER JS ====================-->
         <script src="assets/js/swiper-bundle.min.js"></script>
