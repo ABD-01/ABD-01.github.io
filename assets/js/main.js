@@ -207,13 +207,26 @@ themeButton.addEventListener("click", () => {
 
 // Detect the device mode
 
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (event) => {
+    if (event.matches) {
+      document.body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+
+      localStorage.setItem("selected-theme", getCurrentTheme());
+      localStorage.setItem("selected-icon", getCurrentIcon());
+    } else {
+      //light mode
+    }
+  });
+
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener(function (e) {
     document.body.classList.toggle(darkTheme);
     themeButton.classList.toggle(iconTheme);
 
     localStorage.setItem("selected-theme", getCurrentTheme());
     localStorage.setItem("selected-icon", getCurrentIcon());
-}
+  });
