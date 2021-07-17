@@ -249,3 +249,12 @@ var animation = bodymovin.loadAnimation({
   autoplay: true,
   path: "https://assets5.lottiefiles.com/packages/lf20_26ewjioz.json", // lottie file path
 });
+
+/*==================== Success Netlify MODAL ====================*/
+
+const modalView = document.getElementById("success-modal"),
+  closeButton = document.getElementById("success__modal-button");
+
+closeButton.addEventListener('click',()=>{
+    modalView.classList.add('hide-modal')
+})

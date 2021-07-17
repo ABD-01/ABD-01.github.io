@@ -1330,3 +1330,54 @@ img{
     }
 
 }
+
+
+/* Success modal */
+
+.success__modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    z-index: var(--z-modal);
+    opacity: 1;
+    visibility: visible;
+    transition: .3s;
+}
+
+.hide-modal{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.success__modal-content{
+    position: relative;
+    background-color: var(--container-color);
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.success__modal-success{
+    row-gap: 1rem;
+}
+
+#success__modal-button{
+    margin-left: 83%;
+}
+
+.success__modal-title{
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-1-5);
+}
+
+.success__modal-face{
+    font-size: 1.5rem;
+    color: var(--text-color);   
+}
