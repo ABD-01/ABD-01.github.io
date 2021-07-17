@@ -756,6 +756,11 @@ img{
     justify-self: center;
 }
 
+.portfolio_img_phone{
+    width: auto;
+    height: 400px;
+}
+
 .portfolio__title{
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-0-5);
@@ -1221,8 +1226,8 @@ img{
         width: 450px;
     }
 
-    .portfolio__img{
-        width: 320px;
+    .portfolio_img_phone{
+        height: 500px;
     }
 
     .portfolio__content{
