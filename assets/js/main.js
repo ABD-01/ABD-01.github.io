@@ -227,7 +227,11 @@ if (window.matchMedia) {
   var colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
   colorSchemeQuery.addEventListener(
     "change",()=>{
-        ActivateDarkTheme()
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          ActivateDarkTheme();
+        } else {
+          ActivateLightTheme();
+        }
     })
   ;
 }
@@ -236,7 +240,11 @@ if (window.matchMedia) {
   var colorSchemeQuery = window.matchMedia("(prefers-color-scheme: light)");
   colorSchemeQuery.addEventListener(
     "change",()=>{
-        ActivateLightTheme()
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          ActivateDarkTheme();
+        } else {
+          ActivateLightTheme();
+        }
     })
   ;
 }
