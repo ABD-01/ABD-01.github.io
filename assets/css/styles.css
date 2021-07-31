@@ -511,47 +511,17 @@ img{
 
 /* The percentage of every skill */
 
-.skills_html{
-    width: 60%;
-}
-
-.skills_css{
-    width: 50%;
-}
-
-.skills_js{
-    width: 25%;
-}
-
-.skills_java{
+/*.skills_c{
     width: 70%;
 }
 
-.skills_firebase{
-    width: 20%;
+.skills_py{
+    width: 90%;
 }
 
-.skills_kotlin{
-    width: 10%;
-}
-
-.skills_photoshop{
+.skills_java{
     width: 50%;
-}
-
-.skills_figma{
-    width: 40%;
-}
-
-.skills_python{
-    width: 60%;
-}
-.skills_C{
-    width: 60%;
-}
-.skills_C_sharp{
-    width: 30%;
-}
+}*/
 
 .skills__close .skills__list{
     height: 0;
