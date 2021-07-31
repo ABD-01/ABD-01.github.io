@@ -115,8 +115,39 @@ let swiper = new Swiper(".portfolio__container", {
 var submitMessage = document.getElementById("submitButton"),
     ContactForm = document.getElementById("ContactForm");
 
+const modalSuccess = document.getElementById('success-modal')
+
+function submit(){
+    var url = "https://discord.com/api/webhooks/870941914306871316/dRByVkwPocvPfMc34KTFhbfhNDjvD96FJqnNbjje9X_3B7_bKAnpko4YOC2SzHUm8IDW";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4) {
+          console.log(xhr.status);
+          console.log(xhr.responseText);
+       }};
+
+    var data = {
+      "content": "ABD, you have a new message!",
+      "embeds": [
+        {
+          "title": ContactForm.name.value,
+          "description": "**Email**:" + ContactForm.email.value + "\n**Messagae**:" + ContactForm.message.value,
+          "color": 22963
+        }
+      ]
+    };
+    xhr.send(JSON.stringify(data));
+}
+
 submitMessage.addEventListener('click',()=>{
-    ContactForm.submit()
+    submit();
+    modalSuccess.classList.remove('hide-modal')
 })
 
 /*==================== TESTIMONIAL ====================*/
