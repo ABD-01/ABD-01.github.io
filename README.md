@@ -1,5 +1,5 @@
 # Responsive Portfolio Website
 
-This website is based on the [Bedimcode design](https://youtu.be/27JtRAI3QO8), so special thanks to him/her 🥰
+This website is based on the [Bedimcode design](https://youtu.be/27JtRAI3QO8) and built by [Christian Leyva](https://portfolio.chrisley.codes/) so special thanks to them. 🥰
 
-Hte website uses HTML, CSS and JS without any framwork.
+The website uses HTML, CSS and JS without any framwork.
