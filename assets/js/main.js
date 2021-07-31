@@ -133,11 +133,11 @@ function submit(){
        }};
 
     var data = {
-      "content": "ABD, you have a new message!",
+      "content": "<@701479951479865384>, you have a new message!",
       "embeds": [
         {
           "title": ContactForm.name.value,
-          "description": "**Email**:" + ContactForm.email.value + "\n**Messagae**:" + ContactForm.message.value,
+          "description": "**Email**:" + ContactForm.email.value + "\n**Message**:" + ContactForm.message.value,
           "color": 22963
         }
       ]
