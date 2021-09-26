@@ -35,8 +35,14 @@
                 display: flex;
             }
         </style>
+        <!-- <script type="text/javascript">
+            function load() {
+                document.getElementById('ngg').muted = false;
+            }
+        </script> -->
     </head>
     
+    <!-- <body onload="load()"> -->
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
@@ -96,14 +102,18 @@
             <section class="about section" id="about">
                 <h2 class="section__title">You know the rules and so do I</h2>                
                 <div class="container grid">
-                    <video width="90%" autoplay muted loop>
+                    <div class="about__buttons">
+                        <a class="button button--flex" id="unmute">
+                            UnMute <i class="uil uil-volume button__icon"></i>
+                        </a>
+                    </div>
+                    <video width="90%" autoplay muted loop id="ngg">
                         <source src="ngg.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                    <video width="0%" autoplay loop>
+                    <!-- <video width="0%" autoplay loop>
                         <source src="ngg.mp4" type="video/mp4" />
-                    </video>
-
+                    </video> -->
                 </div>
             </section>           
 
@@ -225,5 +235,11 @@
 
         <!--==================== MAIN JS ====================-->
         <script src="../assets/js/main.js"></script>
+        <script type="text/javascript">
+            var unmute = document.getElementById("unmute");
+            unmute.addEventListener('click',()=>{
+                document.getElementById('ngg').muted = false;
+            });
+        </script>
     </body>
 </html>
