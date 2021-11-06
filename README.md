@@ -1,5 +1,12 @@
-# Responsive Portfolio Website
+# ParticleGround-Portfolio
 
-This website is based on the [Bedimcode design](https://youtu.be/27JtRAI3QO8) and built by [Christian Leyva](https://portfolio.chrisley.codes/) so special thanks to them. 🥰
+Credits to : https://github.com/itsron143/ParticleGround-Portfolio
+   
+# Particle Feature
 
-The website uses HTML, CSS and JS without any framwork.
+The particle feature was obtained with the help of this [particleground](https://github.com/jnicol/particleground). The changes in the particles such as speed, drift, colour, direction, density, etc. can be modified in `demo.js`. Refer to the above link for more details.
+
+
+# References and Inspiration
+
+This template is a minimal form of the [Particle Jekyll Template](https://github.com/nrandecker/particle).
