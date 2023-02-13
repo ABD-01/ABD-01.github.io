@@ -52,17 +52,17 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list grid">
                         <li class="nav__item">
-                            <a href="../index_old.html#home" class="nav__link active-link">
+                            <a href="../index_old.html" class="nav__link active-link">
                                 <i class="uil uil-estate nav__icon"></i> Home
                             </a>
                         </li>
                         <li class="nav__item">
-                            <a href="../index_old.html#about" class="nav__link">
+                            <a href="../index_old.html" class="nav__link">
                                 <i class="uil uil-user-circle nav__icon"></i> About me
                             </a>
                         </li>
                         <li class="nav__item">
-                            <a href="../index_old.html#skills" class="nav__link">
+                            <a href="../index_old.html" class="nav__link">
                                 <i class="uil uil-star nav__icon"></i> Skills
                             </a>
                         </li>
@@ -72,7 +72,7 @@
                             </a>
                         </li> -->
                         <li class="nav__item">
-                            <a href="../index_old.html#projects" class="nav__link">
+                            <a href="../index_old.html" class="nav__link">
                                 <i class="uil uil-archive nav__icon"></i> Projects
                             </a>
                         </li>
@@ -100,14 +100,17 @@
         <main class="main">
             <!--==================== ABOUT ====================-->
             <section class="about section" id="about">
-                <h2 class="section__title">You know the rules and so do I</h2>                
+                <h2 class="section__title">Never gonna give you up, never gonna let you down.</h2>                
                 <div class="container grid">
                     <div class="about__buttons">
                         <a class="button button--flex" id="unmute">
                             UnMute <i class="uil uil-volume button__icon"></i>
                         </a>
                     </div>
-                    <video width="90%" autoplay muted loop id="ngg">
+                    <h3  id="message" class="about__description" style="padding-bottom: 0%; margin-bottom: 0%; text-align: center; display: none;">
+                        If you are the Hiring Manager, or the Recuiter or my Dear Professor! <br> Please Don't Reject my application for this. 🙏
+                    </h3>
+                    <video width="80%" autoplay muted loop id="ngg">
                         <source src="ngg.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -137,7 +140,7 @@
 
                             <div>
                                 <h3 class="contact__title">Email</h3>
-                                <span class="contact__subtitle">myac931@gmail.com</span>
+                                <span class="contact__subtitle">abd@students.vnit.ac.in</span>
                             </div>
                         </div>
                         <div class="contact__information">
@@ -145,7 +148,7 @@
 
                             <div>
                                 <h3 class="contact__title">Location</h3>
-                                <span class="contact__subtitle">Pune, Maharashtra India</span>
+                                <span class="contact__subtitle">Visvesvaraya National Institute of Technology</span>
                             </div>
                         </div>
                     </div>
@@ -239,7 +242,11 @@
             var unmute = document.getElementById("unmute");
             unmute.addEventListener('click',()=>{
                 document.getElementById('ngg').muted = false;
+                unmute.style.display = 'none';
             });
+            setTimeout(function() {
+                document.getElementById("message").style.display = "block";
+            }, 2000);
         </script>
     </body>
 </html>
