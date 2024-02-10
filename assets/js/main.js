@@ -118,7 +118,7 @@ var submitMessage = document.getElementById("submitButton"),
 const modalSuccess = document.getElementById('success-modal')
 
 function submit(){
-    var url = "https://discord.com/api/webhooks/870941914306871316/dRByVkwPocvPfMc34KTFhbfhNDjvD96FJqnNbjje9X_3B7_bKAnpko4YOC2SzHUm8IDW";
+    var url = "https://discord.com/api/webhooks/1205925744660971580/y5by-FiA8G058BiGApiSjZb1enCXGMnkTmIq_dAaGXxg6LXFAz6FV2qNbtcWahk4DApA";
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url);
