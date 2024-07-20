@@ -54,6 +54,9 @@
     --z-tooltip: 10;
     --z-fixed: 100;
     --z-modal: 1000;
+
+    /* ========== Danger ========== */
+    --color-danger: #D32F2F;
 }
 
 /* Font size for large devices */
@@ -82,6 +85,8 @@ body.dark-theme{
     --container-color: hsl(var(--hue-color),29%,16%);
     --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
     --scroll-thumb-color: hsl(var(--hue-color), 60%, 36%);
+
+    --color-danger: #DC3545;
 }
 
 /*========== Button Dark/Light ==========*/
