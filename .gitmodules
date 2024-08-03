@@ -1,3 +1,4 @@
 [submodule "exts/ablog"]
 	path = exts/ablog
-	url = https://github.com/sunpy/ablog.git
+	url = git@github.com:Muhammed-Abdullah-Shaikh/ablog.git
+	branch = ablog_with_furo
