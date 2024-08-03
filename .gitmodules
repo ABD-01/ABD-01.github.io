@@ -1,0 +1,3 @@
+[submodule "exts/ablog"]
+	path = exts/ablog
+	url = https://github.com/sunpy/ablog.git

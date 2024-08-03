@@ -1,0 +1,37 @@
+{% extends "!page.html" %}
+
+{% block body -%}
+
+{% if furo_hide_toc %}
+<style>
+    @media(max-width:52em) {
+        .content {
+            overflow-x: auto;
+            width: 100%
+        }
+    }
+
+    @media(min-width:82em) {
+        .content {
+            width: 58em;
+        }
+    }
+
+    @media (min-width: 100em) {
+        .content {
+            width: 64em;
+        }
+    }
+
+    @media (min-width: 110em) {
+        .content {
+            width: 70em;
+        }
+    }
+</style>
+{% endif %}
+
+
+{{ super() }}
+
+{%- endblock %}
