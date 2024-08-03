@@ -1,0 +1,45 @@
+.ablog__prev-next {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0; /* Adjust as needed */
+}
+
+.ablog__prev, .ablog__next {
+    flex: 0 0 auto; /* Don't grow or shrink, stay at auto width */
+    width: 50%;
+}
+
+.ablog__prev a, .ablog__next a {
+    display: flex;
+    align-items: center;
+}
+
+.ablog__prev a {
+    justify-content: flex-start;
+}
+
+.ablog__next a {
+    justify-content: flex-end;
+}
+
+.ablog__prev i, .ablog__next i {
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.ablog__prev span, .ablog__next span {
+    margin: 0 10px; /* Space between icon and text */
+}
+
+/* Optional: Hide empty spans if there's no previous/next post */
+.ablog__prev:empty, .ablog__next:empty {
+    display: none;
+}
+
+.ablog__prev span, .ablog__next span {
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
