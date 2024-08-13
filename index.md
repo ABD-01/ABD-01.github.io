@@ -13,7 +13,7 @@ hidden:
 ---
 
 Home <self>
-Bio <about>
+About <about>
 Archive <archive>
 Projects <projects>
 Notes <notes>
