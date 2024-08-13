@@ -1,3 +1,9 @@
+---
+myst:
+    html_meta:
+        "property=og:title": "Late Binding of Python Closures"
+        "language": "en"
+---
 ```{post} July 22, 2024
 ---
 author: Muhammed Abdullah

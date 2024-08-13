@@ -14,7 +14,7 @@ import sys
 # -- General ABlog Options ----------------------------------------------------
 
 # A path relative to the configuration directory for blog archive pages.
-# blog_path = 'blog'
+blog_path = 'posts'
 
 # The "title" for the blog, used in active pages.  Default is ``'Blog'``.
 blog_title = "ABD Blog"
@@ -24,7 +24,7 @@ blog_title = "ABD Blog"
 blog_baseurl = "https://abd-01.github.io/"
 
 
-blog_post_pattern = ["posts/*.rst", "posts/*.md"]
+blog_post_pattern = []
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
