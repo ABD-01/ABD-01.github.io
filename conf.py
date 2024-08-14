@@ -159,10 +159,10 @@ post_show_prev_next = True
 
 # Link to `Font Awesome`_ at `Bootstrap CDN`_ and use icons in sidebars
 # and post footers.  Default: ``None``
-# fontawesome_link_cdn = None
+fontawesome_link_cdn = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 # Sphinx_ theme already links to `Font Awesome`_.  Default: ``False``
-fontawesome_included = True
+# fontawesome_included = True
 
 # Alternatively, you can provide the path to `Font Awesome`_ :file:`.css`
 # with the configuration option: fontawesome_css_file

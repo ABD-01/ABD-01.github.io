@@ -8,7 +8,6 @@ myst:
 ---
 author: Muhammed Abdullah
 title: Hello World
-category: Uncategorized
 language: English
 exclude:
 ---
@@ -80,3 +79,44 @@ The Cauchy–Schwarz inequality:
 $$
 \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
 $$
+
+### Nice List
+
+<ul class="fa-ul">
+  <li data-marker="-">Fruits
+    <ul class="fa-ul">
+      <li data-marker="+">Citrus Fruits
+        <ul>
+          <li data-marker="*">Oranges</li>
+          <li data-marker="*">Lemons</li>
+          <li data-marker="*">Limes</li>
+        </ul>
+      </li>
+      <li data-marker="-">Berries
+        <ul  class="fa-ul">
+          <li data-marker="*">Strawberries</li>
+          <li data-marker="*">Blueberries</li>
+          <li data-marker="*">Raspberries</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li data-marker="+">Vegetables
+    <ul class="fa-ul">
+      <li data-marker="-">Leafy Greens
+        <ul>
+          <li data-marker="*">Lettuce</li>
+          <li data-marker="*">Spinach</li>
+          <li data-marker="*">Kale</li>
+        </ul>
+      </li>
+      <li data-marker="+">Root Vegetables
+        <ul class="fa-ul">
+          <li data-marker="*">Carrots</li>
+          <li data-marker="*">Beets</li>
+          <li data-marker="*">Potatoes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
