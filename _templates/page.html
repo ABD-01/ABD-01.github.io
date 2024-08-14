@@ -35,3 +35,46 @@
 {{ super() }}
 
 {%- endblock %}
+
+{% block comments %}
+
+<h2>Comments</h2>
+<script src="https://giscus.app/client.js"
+  data-repo="Muhammed-Abdullah-Shaikh/Muhammed-Abdullah-Shaikh"
+  data-repo-id="R_kgDOJvRY5Q"
+  data-category="General"
+  data-category-id="DIC_kwDOJvRY5c4ChDUR"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<script>
+    function changeGiscusTheme() {
+        var theme = document.body.dataset.theme === "light" ? "light" : "dark_dimmed";
+        var frame = document.querySelector(".giscus-frame");
+        console.log("Changing theme to " + theme);
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+      );
+    }
+    function setupGiscusTheme() {
+      // Attach event handlers for toggling themes
+      const buttons = document.getElementsByClassName("theme-toggle");
+      Array.from(buttons).forEach((btn) => {
+        btn.addEventListener("click", () => { setTimeout(changeGiscusTheme, 500); });
+    });
+  }
+  
+  setupGiscusTheme();
+  setTimeout(changeGiscusTheme, 10000);
+</script>
+
+{%- endblock %}
