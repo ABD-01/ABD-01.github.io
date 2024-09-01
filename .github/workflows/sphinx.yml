@@ -1,0 +1,41 @@
+name: Docs
+on:
+  push:
+    branches: [sphinx]
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ABLOG_TOKEN }}
+          submodules: true
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependecies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install exts/ablog
+          pip install ghp-import
+
+      - name: Build docs
+        run: 
+          sphinx-build . _build -v -b dirhtml
+
+      - name: Run ghp-import
+        run: |
+          git config user.name ABD-01
+          git config user.email 63636498+ABD-01@users.noreply.github.com
+          ghp-import -n -p -f -o _build
