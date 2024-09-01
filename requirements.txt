@@ -1,0 +1,4 @@
+Sphinx==7.1.0
+myst-parser==2.0.0
+furo50
+sphinx_design==0.6.0
