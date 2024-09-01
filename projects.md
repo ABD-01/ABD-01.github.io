@@ -65,9 +65,9 @@ The CVP Proto Server is a Flask-based application designed for handling MQTT com
 :columns: 3
 :class: one
 <div class="two sd-row" id='hello'>
-<video  width=100% height=100% muted autoplay loop><source src="images/ivpreds.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+<video  width=100% height=100% muted autoplay loop><source src="/images/ivpreds.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 </div>
-<img src='images/triplet_net.png' onmouseout="hello_stop()" onmouseover="hello_start()">
+<img src='/images/triplet_net.png' onmouseout="hello_stop()" onmouseover="hello_start()">
 ````
 
 ````{grid-item}
@@ -101,7 +101,7 @@ This project implemented Triplet Network and FaceNet algorithms from scratch wit
 :columns: 3
 :class: sd-align-major-center
 
-```{image} images/Arch.png
+```{image} /images/Arch.png
 
 ```
 
@@ -127,10 +127,10 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
     <div class="two" id='face_image'><video  width=100% height=100% muted autoplay loop>
-    <source src="images/ivpreds.mp4" type="video/mp4">
+    <source src="/images/ivpreds.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video></div>
-    <img src='images/triplet_net.png'>
+    <img src='/images/triplet_net.png'>
     </div>
 <script type="text/javascript">
     function face_start() {
@@ -172,10 +172,10 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
     <div class="two" id='nlt_image'><video  width=100% height=100% muted autoplay loop>
-    <source src="images/Racoon.m4v" type="video/mp4">
+    <source src="/images/Racoon.m4v" type="video/mp4">
     Your browser does not support the video tag.
     </video></div>
-    <img src='images/racoon2.png'>
+    <img src='/images/racoon2.png'>
     </div>
     <script type="text/javascript">
     function nlt_start() {
@@ -210,10 +210,10 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
     <div class="two" id='tb_image'><video  width=100% height=100% muted autoplay loop>
-    <source src="images/turtlebot.m4v" type="video/mp4">
+    <source src="/images/turtlebot.m4v" type="video/mp4">
     Your browser does not support the video tag.
     </video></div>
-    <img src='images/turtlebot.jpg'>
+    <img src='/images/turtlebot.jpg'>
     </div>
     <script type="text/javascript">
     function tb_start() {
