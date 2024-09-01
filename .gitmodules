@@ -1,4 +1,4 @@
 [submodule "exts/ablog"]
 	path = exts/ablog
-	url = git@github.com:Muhammed-Abdullah-Shaikh/ablog.git
+	url = git@github.com:ABD-01/ablog.git
 	branch = ablog_with_furo
