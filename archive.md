@@ -8,9 +8,9 @@ hide-toc: true
 Welcome to the archives!
 
 ## View posts grouped by
-* #### [Category](posts/category.html){.external}
-* #### [Year](posts/archive.html){.external}
-* #### [Tag](posts/tag.html){.external}
+* #### [Category](/posts/category){.external}
+* #### [Year](/posts/archive){.external}
+* #### [Tag](/posts/tag){.external}
 
 ## All Posts
 

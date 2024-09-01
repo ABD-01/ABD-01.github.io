@@ -17,9 +17,11 @@ About <about>
 Archive <archive>
 Projects <projects>
 Notes <notes>
+Misc <misc>
+Resume <resume>
 ```
 
-Hey there! 
+Hey there! <img src="/assets/img/Hi.gif" style="height: 1.5em;"> 
 
 I'm thrilled you dropped by. This is my personal space where I keep a lot of things such as notes, interesting tidbits, and random discoveries I gather along the way. Think of it as a friendly journal where I jot down things I find interesting and helpful or maybe because I do not want to forget them.
 
@@ -32,10 +34,10 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 
 <ul>
    <li data-marker="*">
-      <strong>June 2023</strong>: Joined <a href="https://accoladeelectronics.com/">Accolade Electronics Pvt. Ltd</a> as an Embedded Software Engineer to work on Automotive electronics.
+      <strong>June 2023</strong>: Joined <a href="https://accoladeelectronics.com/">Accolade Electronics Pvt. Ltd</a> as an Embedded Software Engineer, working on automotive electronics. and Software Defined Vehicles (SDVs).
    </li>
    <li data-marker="*">
-      <strong>May 2023</strong>: Graduated with a B.Tech in Electrical and Electronics Engineering from <a href="https://vnit.ac.in/">Visvesvaraya National Institute of Technology</a> 
+      <strong>May 2023</strong>: Graduated with a B.Tech in Electrical and Electronics Engineering from <a href="https://vnit.ac.in/">Visvesvaraya National Institute of Technology (VNIT)</a> 
    </li>
    <li data-marker="*">
       <strong>June 2022</strong>: Joined <a href="https://www.iitg.ac.in/dsai/">IIT Guwahati</a> under <a href="https://krmopuri.github.io/">Prof. Konda Reddy</a> as a Research Intern.
@@ -44,10 +46,10 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
       <strong>Oct 2021</strong>: Our paper <a href="https://ivlabs.github.io/os-nsmt/">Open-Set Multi-Source Multi-Target Domain Adaptation</a> got accepted at <a href="https://preregister.science/">Pre-registration Workshop, NeurIPS'21</a>.
    </li>
    <li data-marker="*">
-      <strong>September 2021</strong>: <a href="https://github.com/pytorch/vision/pull/4255">Contributed</a> a dataset class for <a href="https://paperswithcode.com/dataset/lfw">Labeled Faces in the Wild (LFW)</a> to <a href="https://github.com/pytorch/vision">Torchvision</a>.
+      <strong>September 2021</strong>: <a href="https://github.com/pytorch/vision/pull/4255">Contributed</a> a dataset class for <a href="https://paperswithcode.com/dataset/lfw">Labeled Faces in the Wild (LFW)</a> to <a href="https://github.com/pytorch/vision">Torchvision</a>, a popular computer vision library.
    </li>
    <li data-marker="*">
-      <strong>May 2020</strong>: Joined <a href="https://ivlabs.in/">IvLabs, the AI and Robotics Lab</a> led by <a href="https://mec.vnit.ac.in/people/sschiddarwar/">Prof. Shital Chiddarwar</a> as an undergraduate student researcher.
+      <strong>May 2020</strong>: Joined <a href="https://ivlabs.in/">IvLabs, the AI and Robotics Lab</a> led by <a href="https://mec.vnit.ac.in/people/sschiddarwar/">Prof. Shital Chiddarwar</a> as an undergraduate student researcher, working on computer vision, IoT and robotics.
    </li>
 </ul>
 

@@ -307,6 +307,10 @@ html_theme = 'furo'
 # documentation.
 html_theme_options = {
     "top_of_page_buttons": [],
+    "announcement": (
+        "This website is in development phase. You can view the last stable build"
+        " <a href='/index_barron.html' target='_blank'>here</a>."
+    )
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -336,9 +340,11 @@ html_css_files = [
     'css/custom.css',
     'css/prev-next.css',
     'css/hiddenH1.css',
+    'css/announcement.css',
 ]
 html_js_files = [
     'js/custom.js',
+    'js/announcement.js',
 ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
