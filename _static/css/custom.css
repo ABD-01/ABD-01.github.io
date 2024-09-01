@@ -87,3 +87,7 @@
 .sidebar-drawer {
     animation: 1s ease-out 0s 1 slideInLeft;
 }
+
+.left-details {
+    display: none;
+}
