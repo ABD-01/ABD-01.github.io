@@ -101,7 +101,8 @@ This project implemented Triplet Network and FaceNet algorithms from scratch wit
 :columns: 3
 :class: sd-align-major-center
 
-```{image} /images/Arch.png
+```{image} https://abd-01.github.io/images/Arch.png
+:alt: Architecture
 
 ```
 
