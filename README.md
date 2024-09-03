@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is branch for my new website. It is built using [Sphinx](https://www.sphinx-doc.org/) and [MyST - Markedly Structured Text](https://myst-parser.readthedocs.io/en/latest/index.html). The theme you are seeing is a custom blend of [CS50](https://cs50.harvard.edu/college/) and [Furo](https://pradyunsg.me/furo/). 
+This is branch for my new website. It is built using [Sphinx](https://www.sphinx-doc.org/) and [MyST - Markedly Structured Text](https://myst-parser.readthedocs.io/en/latest/index.html). The theme you are seeing is [Furo50](https://abd-01.github.io/furo50/), a custom blend of [CS50](https://cs50.harvard.edu/college/) and [Furo](https://pradyunsg.me/furo/). 
 
 I'm also using [Ablog](https://ablog.readthedocs.io/en/stable/index.html) with some tweak (because it [does not work with furo](https://github.com/sunpy/ablog/issues/108)) for my blog posts. 
 
