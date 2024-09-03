@@ -1,3 +1,7 @@
+---
+hide-toc: true
+---
+
 # Projects
 
 Explore my projects below.
