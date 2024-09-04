@@ -153,7 +153,7 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 </script>
 </td>
 <td style="padding:20px;width:75%;vertical-align:middle">
-    <a href="https://openreview.net/forum?id=AmPeAFzU3a4">
+    <a href="https://bit.ly/unlockface">
     <h3>Face Unlock</h3>
     </a>
     <strong style="text-decoration: underline;">Muhammed Abdullah</strong>,
