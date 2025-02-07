@@ -51,8 +51,7 @@ int main() {
 
 ````{tab-item} Python
 
-```{code-block}
-:language: python
+```{code-block} python
 
 print("Hello World")
 

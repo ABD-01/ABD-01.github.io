@@ -12,7 +12,10 @@
     </div>
     {%- endif %}
     {% if not theme_sidebar_hide_name %}
-    <span class="sidebar-brand-text">{{ docstitle if docstitle else project }}</span>
+    <span class="sidebar-brand-text">
+        <img src="/assets/img/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        {{ docstitle if docstitle else project }}
+    </span>
     {%- endif %}
     {% endblock brand_content %}
 </a>
