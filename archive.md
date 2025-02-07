@@ -18,5 +18,6 @@ Welcome to the archives!
 .. postlist::
    :format: {title}
    :excerpts:
+   :author: Muhammed Abdullah
 ```
 

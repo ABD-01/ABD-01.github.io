@@ -57,7 +57,7 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 ## Latest Posts
 
 ```{eval-rst}
-.. postlist:: 3
+.. postlist:: 5
    :date: %A, %B %d, %Y
    :format: {title}
    :excerpts:

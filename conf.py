@@ -232,7 +232,7 @@ project = "ABD"
 copyright = "2024, Muhammed Abdullah"
 author = "Muhammed Abdullah"
 
-html_permalinks_icon = ''
+html_permalinks_icon = '#'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -267,6 +267,7 @@ exclude_patterns = [
     "README.md",
     "LICENSE.md",
     '_build', 'Thumbs.db', '.DS_Store',
+    'venv',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
@@ -365,7 +366,7 @@ html_extra_path = ['old']
 # template names.
 # html_additional_pages = {}
 
-templates_path = ["_templates", "exts/ablog/src/ablog/templates"]
+templates_path = ["_templates"]
 
 # If false, no module index is generated.
 # html_domain_indices = True
