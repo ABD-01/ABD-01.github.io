@@ -95,3 +95,7 @@
     display: none;
 }
 */
+
+blockquote .attribution {
+    font-weight: inherit;
+}

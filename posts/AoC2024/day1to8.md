@@ -116,7 +116,7 @@ for ranges, use `-std=c++20` during compilation
 		Same as `std::sort(vec2.begin(), vec2.end());`
 
 ### Initializer List
-// TODO
+\# TODO
 
 ### `explicit` specifier
 When a constructor is marked as [`explicit`]([explicit specifier - cppreference.com](https://en.cppreference.com/w/cpp/language/explicit)), the compiler will **not** use that constructor for  **[implicit type conversions](https://en.cppreference.com/w/cpp/language/implicit_conversion)** or **[copy-initialization](https://en.cppreference.com/w/cpp/language/copy_initialization)**, meaning it will not automatically convert or create an object from a single argument when the compiler thinks it's needed (for example, in assignments or function calls).
@@ -937,8 +937,8 @@ std::ostream& operator<<(std::ostream& os, const Point& p)
 </details>
 
 ### `const` Correctness
+{attribution="Modern C, Jens Gustedt (Page 18)"}
 > **We bind type modifiers and qualifiers to the left**
-> - Modern C, Jens Gustedt (Page 18)
 
 1. **`const X* p`**
     ```cpp
@@ -1478,10 +1478,10 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
 
 ### Constexpr
 Enable compile-time evaluation of simple functions, improving performance.
-// TODO: write in detail
+\# TODO: write in detail
 
 ### this pointer
-// TODO
+\# TODO
 
 ### Unique Number for each element in 2D grid
 for $arr[i][j]$ $\rightarrow$ $i\times Cols + j$, where $Cols$ is number of columns.
@@ -1490,11 +1490,11 @@ for $arr[i][j]$ $\rightarrow$ $i\times Cols + j$, where $Cols$ is number of colu
 
 
 <!-- Links -->
-[day1]: https://github.com/ABD-01/AoC2024/blob/master/Day1_Historian_Hysteria/main.cpp
-[day2]: https://github.com/ABD-01/AoC2024/blob/master/Day2_Red-Nosed_Reports/main.cpp
-[day3]: https://github.com/ABD-01/AoC2024/blob/master/Day3_Mull_It_Over/main.cpp
-[day4]: https://github.com/ABD-01/AoC2024/blob/master/Day4_Ceres_Search/main.cpp
-[day5]: https://github.com/ABD-01/AoC2024/blob/master/Day5_Print_Queue/main.cpp
-[day6]: https://github.com/ABD-01/AoC2024/blob/master/Day6_Guard_Gallivant/main.cpp
-[day7]: https://github.com/ABD-01/AoC2024/blob/master/Day7_Bridge_Repair/main.cpp
-[day8]: https://github.com/ABD-01/AoC2024/blob/master/Day8_Resonant_Collinearity/main.cpp
+[day1]: https://github.com/ABD-01/AoC2024/blob/master/Day01_Historian_Hysteria/main.cpp
+[day2]: https://github.com/ABD-01/AoC2024/blob/master/Day02_Red-Nosed_Reports/main.cpp
+[day3]: https://github.com/ABD-01/AoC2024/blob/master/Day03_Mull_It_Over/main.cpp
+[day4]: https://github.com/ABD-01/AoC2024/blob/master/Day04_Ceres_Search/main.cpp
+[day5]: https://github.com/ABD-01/AoC2024/blob/master/Day05_Print_Queue/main.cpp
+[day6]: https://github.com/ABD-01/AoC2024/blob/master/Day06_Guard_Gallivant/main.cpp
+[day7]: https://github.com/ABD-01/AoC2024/blob/master/Day07_Bridge_Repair/main.cpp
+[day8]: https://github.com/ABD-01/AoC2024/blob/master/Day08_Resonant_Collinearity/main.cpp

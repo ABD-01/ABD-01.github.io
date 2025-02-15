@@ -1,11 +1,11 @@
 ---
-tocdepth: 3
+tocdepth: 4
 myst:
     number_code_blocks: ["cpp"]
     html_meta:
         "property=og:title": "Learning CPP via Advent of Code 2024"
         "language": "en"
-        "keywords": "Advent of Code, C++, CPP, Puzzles"
+        "keywords": "Advent of Code, C++, CPP, Puzzles, regex, unordered set, references and pointers"
 ---
 ```{post} January 4, 2025
 ---
@@ -13,7 +13,7 @@ author: Muhammed Abdullah
 category: programming
 language: English
 title: Learning CPP via Advent of Code 2024 [Days 1 to 8]
-tags: AoC, CPP
+tags: AoC, C++
 exclude:
 ---
 This is my progress log for Advent of Code 2024, where I'm tackling the challenges using C++ to get good at the language. Contains work of Day 1 to Day 8.
@@ -30,6 +30,11 @@ This is my attempt to document my learning journey through Advent of Code 2024. 
 
 Full solutions are available on GitHub: [ABD-01/AoC2024][github].
 
+```{update} 15 Jan, 2025
+
+Added [next part][day9] for Day 9.
+```
+
 ```{include} AoC2024/day1to8.md
 :heading-offset: 1
 ```
@@ -40,3 +45,4 @@ This marks the first part of my Advent of Code 2024 journey. More updates soon. 
 [AOC2024]: https://adventofcode.com/2024/
 [github]: https://github.com/ABD-01/AoC2024
 [day1to8]: https://abd-01.github.io/posts/2025-01-04-Advent-of-Code-2024-Day-1-to-8/
+[day9]: 2025-01-15-Advent-of-Code-2024-Day-9
