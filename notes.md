@@ -15,3 +15,7 @@ It's a mix of work-related notes, personal observations, and useful tips I've pi
 ## Research Paper Notes
 
 * [Notes on "FaceNet: A Unified Embedding for Face Recognition and Clustering"](notes/2021-07-24-facenet.md)
+
+## Report/Assignment 
+* [ROS 2](reports/ros2.md)
+* [Line Follower - PID](reports/ra.md)
