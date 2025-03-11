@@ -12,7 +12,7 @@ language: English
 exclude:
 ---
 
-The post excerpt goes here. And I don't know what to write here.
+Hi!! I have made a website and if you are seeing this, it is live
 
 ```
 
