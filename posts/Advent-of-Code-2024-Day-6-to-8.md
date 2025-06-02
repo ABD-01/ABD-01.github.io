@@ -11,7 +11,6 @@ myst:
 ---
 author: Muhammed Abdullah
 category: Advent of Code
-language: English
 title: Advent of Code 2024 [Days 6 to 8]
 tags: AoC, C++
 exclude:

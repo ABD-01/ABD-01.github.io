@@ -6,7 +6,7 @@ myst:
 ---
 ```{post} Aug 12, 2024
 ---
-author: Muhammed Abdullah
+author: me
 title: Hello World
 language: English
 exclude:
@@ -19,7 +19,7 @@ Hi!! I have made a website and if you are seeing this, it is live
 {.hiddenh1}
 # Hello World
 
-### Hello World! 🎉
+## Hello World! 🎉
 
 This is my new website. It is built using [Sphinx](https://www.sphinx-doc.org/) and [MyST - Markedly Structured Text](https://myst-parser.readthedocs.io/en/latest/index.html). The theme you are seeing is a custom blend of [CS50](https://cs50.harvard.edu/college/) and [Furo](https://pradyunsg.me/furo/). 
 

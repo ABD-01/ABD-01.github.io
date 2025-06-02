@@ -9,10 +9,10 @@ myst:
 ---
 ```{post} February 15, 2025
 ---
-author: Muhammed Abdullah
+author: me
 category: Advent of Code
-language: English
 title: Learning CPP via Advent of Code 2024 [Day 9]
+language: English
 tags: AoC, C++, Python
 exclude:
 ---

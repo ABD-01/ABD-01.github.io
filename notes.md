@@ -6,6 +6,7 @@ It's a mix of work-related notes, personal observations, and useful tips I've pi
 ## General Notes
 
 * [Shell Tools](notes/2023-04-04-shell-tools.md)
+* [Exploring ADB Shell Commands](notes/2025-06-02-adb.md)
 
 ## Lecture Notes
 
@@ -18,4 +19,11 @@ It's a mix of work-related notes, personal observations, and useful tips I've pi
 
 ## Report/Assignment 
 * [ROS 2](reports/ros2.md)
-* [Line Follower - PID](reports/ra.md)
+* [Robotics Academy - Visual Line Follower - F1 Car](reports/ra.md)
+* [Robotics Engineer Assignment](https://abd-01.github.io/reports/flytbase/)
+    - PID Controller for goal navigation
+    - Acceleration and deceleration profiles
+    - Grid tracing
+    - Circle Fitting
+    - Turtle Chase (Slow and Fast)
+    - Turtle Chase with Noisy Inputs

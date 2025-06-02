@@ -11,7 +11,6 @@ myst:
 ---
 author: Muhammed Abdullah
 category: Advent of Code
-language: English
 title: Learning CPP via Advent of Code 2024 [Days 1 to 5]
 tags: AoC, C++
 exclude:

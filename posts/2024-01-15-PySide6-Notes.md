@@ -4,7 +4,7 @@ title: "Threads in PySide6, Python packaging and Executables"
 date: 15 January, 2024
 category: programming
 tags: GUI, Python, PySide6
-author: Muhammed Abdullah
+author: me
 myst:
     html_meta:
         "property=og:title": "Threads in PySide6, Python packaging and Executables"

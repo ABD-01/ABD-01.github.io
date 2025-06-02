@@ -18,7 +18,7 @@ This exercise requires a PID controller to drive an F1 car in race circuit. This
 
 #### Computer Vision
 
-This part focuses on using OpenCv library to detect the red line in the circuit so that the controller can take actions nased on it.
+This part focuses on using OpenCV library to detect the red line in the circuit so that the controller can take actions nased on it.
 
 I have used filtering in HSV space based on the if pixel value is between the given threshold. I have used two HSV thresholds for red colour to create a mask in the region of interest
 

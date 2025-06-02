@@ -362,7 +362,9 @@ var submitMessage = document.getElementById("submitButton"),
     ContactForm = document.getElementById("ContactForm");
 
 function submit(){
-    var url = "https://discord.com/api/webhooks/1205925744660971580/y5by-FiA8G058BiGApiSjZb1enCXGMnkTmIq_dAaGXxg6LXFAz6FV2qNbtcWahk4DApA";
+    const whToken = 'gUw-eXEBZPt2Ry0KL-Rkc3dBQ3EKtufATnYVETkjQZjcbVvOCj8Wnj6ZRTmBvWtnNbl6';
+    const whId = "1330785376058474547";
+    var url = `https://discord.com/api/webhooks/${whId}/${whToken}`;
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url);
