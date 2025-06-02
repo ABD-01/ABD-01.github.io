@@ -30,6 +30,12 @@ jobs:
           pip install exts/ablog
           pip install ghp-import
 
+      - name: Fetch READMEs from external repos
+        run: |
+          curl -sSL https://raw.githubusercontent.com/ABD-01/quantum-harmony/master/README.md -o quantum-harmony.md
+          curl -sSL https://raw.githubusercontent.com/ABD-01/log-analysis/master/README.md -o log-analysis.md
+          curl -sSL https://raw.githubusercontent.com/ABD-01/py2048/master/README.md -o py2048.md
+
       - name: Build docs
         run: 
           sphinx-build . _build -v -b dirhtml
