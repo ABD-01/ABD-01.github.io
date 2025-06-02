@@ -10,6 +10,8 @@
 
 import os.path as osp
 import sys
+import os
+import shutil
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -352,7 +354,10 @@ html_js_files = [
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
-html_extra_path = ['old']
+html_extra_path = [
+    'old',
+    'reports/juggler.js'
+]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -417,3 +422,46 @@ templates_path = ["_templates"]
 #         'parallel_read_safe': True,
 #         'parallel_write_safe': True,
 #     }
+
+_moves = []
+
+def move(src, dest):
+    _moves.append((src, dest))
+
+def _apply_moves(app, exception):
+    if app.builder.name != "dirhtml" or exception:
+        return
+    for src, dest in _moves:
+        full_src = os.path.join(app.srcdir, src)
+        full_dest = os.path.join(app.outdir, dest)
+        os.makedirs(os.path.dirname(full_dest), exist_ok=True)
+        shutil.copy(full_src, full_dest)
+
+move('reports/flytbase_p/index.html', 'reports/flytbase/index.html')
+move('reports/flytbase_p/juggler.min.js', 'reports/flytbase/juggler.js')
+move('reports/flytbase_p/turtle_chase.py', 'reports/flytbase/turtle_chase.py')
+
+asset_files = [
+    "Acc-Dec-profile.png",
+    "Circle_Fitting_1.jpg",
+    "Circle_Fitting_2.jpg",
+    "Control_for_Unicycle_Robot_1.jpg",
+    "Control_for_Unicycle_Robot_2.jpg",
+    "Grid.png",
+    "PID-goal-to-goal.gif",
+    "PID-goal_to_goal-x.png",
+    "PID-goal_to_goal-y.png",
+    "PID_tuning_accel-Part-1.png",
+    "PID_tuning_angle-Part-2.png",
+    "PID_tuning_angle-Part-3.png",
+    "PID_tuning_angle-Part-4.png",
+    "PID_tuning_angle-Part1.png",
+    "PID_tuning_distance.png",
+    "grid-turtle.png"
+]
+
+for f in asset_files:
+    move(f"reports/assets/{f}", "_images")
+
+def setup(app):
+    app.connect("build-finished", _apply_moves)
