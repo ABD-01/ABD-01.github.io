@@ -1,40 +1,55 @@
 {% extends "!page.html" %}
 
+{%- block extrahead -%}
+
+  {{ super() }}
+
+  {% if pagename == "index" %}
+    <style>
+      .sidebar-drawer { animation: 1s ease-out 0s 1 slideInLeft; }
+    </style>
+  {% endif %}
+
+  {% if furo_hide_toc %}
+  <style>
+      @media(max-width:52em) {
+          .content {
+              overflow-x: auto;
+              width: 100%
+          }
+      }
+
+      @media(min-width:82em) {
+          .content {
+              width: 58em;
+          }
+      }
+
+      @media (min-width: 100em) {
+          .content {
+              width: 64em;
+          }
+      }
+
+      @media (min-width: 110em) {
+          .content {
+              width: 70em;
+          }
+      }
+  </style>
+  {% endif %}
+
+{% endblock %}
+
+{#
 {% block body -%}
 
-{% if furo_hide_toc %}
-<style>
-    @media(max-width:52em) {
-        .content {
-            overflow-x: auto;
-            width: 100%
-        }
-    }
-
-    @media(min-width:82em) {
-        .content {
-            width: 58em;
-        }
-    }
-
-    @media (min-width: 100em) {
-        .content {
-            width: 64em;
-        }
-    }
-
-    @media (min-width: 110em) {
-        .content {
-            width: 70em;
-        }
-    }
-</style>
-{% endif %}
-
+<!-- Styles moved to extrahead block. no need to modify the body block -->
 
 {{ super() }}
 
 {%- endblock %}
+#}
 
 {% block comments %}
 

@@ -356,7 +356,6 @@ html_js_files = [
 # directly to the root of the documentation.
 html_extra_path = [
     'old',
-    'reports/juggler.js'
 ]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
