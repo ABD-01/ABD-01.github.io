@@ -5,6 +5,7 @@ It's a mix of work-related notes, personal observations, and useful tips I've pi
 
 ## General Notes
 
+* [QEMU Essentials](posts/2025-07-15-QEMU.md)
 * [Shell Tools](notes/2023-04-04-shell-tools.md)
 * [Exploring ADB Shell Commands](notes/2025-06-02-adb.md)
 
