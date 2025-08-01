@@ -21,8 +21,9 @@ myst:
 ## Lambda Expressions
 ### Lambdas Reduce Boilerplate
 
-{caption="Lambdas Reduce Boilerplate"}
-```cpp linenos title:"Lambdas Reduce Boilerplate"
+```{code-block} cpp
+:caption: Lambdas Reduce Boilerplate
+
 class Plus {
     int value;
 public:
@@ -56,13 +57,16 @@ void f(int, const int (&)[2] = {}) {}   // #1
 void f(const int&, const int (&)[1]) {} // #2
 // see entire code block at: https://en.cppreference.com/w/cpp/language/lambda
 ```
+
 ### Lambdas are function object.
 
 - have a "unique, unnamed non-union class type" -- closure type
 - Examples:
 
-```cpp linenos title:"Lambda is Function Object" collapse
-Example: 1
+```{code-block} cpp
+:caption: Lambda is Function Object
+
+// Example: 1
 auto add = [](int x, int y) -> int {
 	return x + y;
 }
@@ -78,7 +82,9 @@ auto add = lambda???();
 // example taken from Back to Basics: Lambdas - Nicolai Josuttis - CppCon 2021
 ```
 
-```cpp linenos title: "Lambda with Capture" collapse
+```{code-block} cpp
+:caption: Lambda with Capture
+
 // Example: 2
 while(...) {
 	int min, max;
@@ -109,7 +115,9 @@ while(...) {
 // example taken from Back to Basics: Lambdas - Nicolai Josuttis - CppCon 2021
 ```
 
-```cpp linenos title:"Genric Lambda" collapse
+```{code-block} cpp
+:caption: Generic Lambda
+
 // Example: 3
 auto plus = [] (auto x, auto y) {
 	return x + y;
@@ -140,7 +148,9 @@ auto plus = lambda???();
 ```
 ### Generic lambda (function object) is different from the templated (generic) function.
 
-```cpp linenos title:"Generic Function vs Generic Lambda" collapse
+```{code-block} cpp
+:caption: Generic Function vs Generic Lambda
+
 // Function object with generic `operator()` method
 auto printLmbd = [](auto& col1) {
 				for (const auto& elem: col1) {
@@ -179,7 +189,9 @@ auto price = [disc = getDiscount(cust)] (auto item) {
 
 - `mutable` makes them stateful (modification allowed)
 	
-```cpp linenos title:"Stateless Lambdas" collapse
+```{code-block} cpp
+:caption: Stateless Lambdas
+
 auto changed = [prev = 0] (auto val) {
 	bool changed = prev!=val;
 	prev = val;  // Error: prev is read-only copy
@@ -187,7 +199,9 @@ auto changed = [prev = 0] (auto val) {
 }
 ```
 
-```cpp linenos title:"Mutable Lambdas" collapse
+```{code-block} cpp
+:caption: Mutable Lambdas
+
 auto changed = [prev = 0] (auto val) mutable {
 	bool changed = prev!=val;
 	prev = val;  // OK due to mutable
@@ -209,7 +223,9 @@ std::copy_if(col1.begin(), col1.end(),
 ```
 ### Per-lambda Mutable State (Wrong Approach)
 
-```cpp linenos title:"Static in a Lambda"
+```{code-block} cpp
+:caption: Static in a Lambda
+
 auto counter = []() { static int i; return ++i; };
 // This closure behaves like following class type:
 class Counter {
@@ -226,7 +242,7 @@ public:
 There is **just one static variable `i`**, shared by **all** callers of `Counter::operator()()`!
 * Lambda capture behaviour `[=]` vs `[g=g]`
 
-```cpp linenos
+```cpp
 int g = 10;
 
 auto kitten = [=]() { return g + 1; };     // Implicit capture by value
@@ -244,7 +260,9 @@ int main() {
 
 ### Variadic Lambdas reduce boilerplate
 
-```cpp linenos title:"Variadic Lambdas"
+```{code-block} cpp
+:caption: Variadic Lambdas
+
 class Plus {
     int value;
 public:

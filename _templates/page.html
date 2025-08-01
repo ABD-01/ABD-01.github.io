@@ -44,6 +44,10 @@
     <link rel="stylesheet" href="{{ pathto('_static/css/qemu.css', 1) }}">
   {% endif %}
 
+  {% if 'arena' in pagename.lower() %}
+    <link rel="stylesheet" href="{{ pathto('_static/css/qemu.css', 1) }}">
+  {% endif %}
+
 {% endblock %}
 
 {#
