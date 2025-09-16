@@ -18,6 +18,45 @@ myst:
 
 **$\lambda$s in C++:** Nameless functions serving sweet syntactic sugar — just enough to give your codebase diabetes.
 
+## Introduction
+
+> A lambda is an unnamed function that is useful (in actual programming, not theory) for short snippets of code that are impossible to reuse and are not worth naming.
+
+See https://stackoverflow.com/a/7627330
+
+### Lambda Syntax
+
+```cpp
+[ captureClause ] ( parameterClause ) -> returnType
+{
+    statements;
+}
+```
+
+The parameter list can be empty if no parameters are required. `parameterClause` can also be omitted entirely unless a return type is specified.
+
+```cpp
+auto a = [](){return 3;};
+printf("%d\n", a());
+>> 3
+
+auto b = []{return 3;};  /** The parameter list omitted */
+printf("%d\n", b());
+>> 3
+
+auto c = []->int{return 3;};
+warning: lambda without a parameter clause is a C++23 extension [-Wc++23-extensions]
+    1 | auto c = []->int{return 3;};
+      |            ^
+      |            ()
+printf("%d\n", c());
+>> 3
+
+auto d = []()->int{return 3;};
+printf("%d\n", d());
+>> 3
+```
+
 ## Lambda Expressions
 ### Lambdas Reduce Boilerplate
 
