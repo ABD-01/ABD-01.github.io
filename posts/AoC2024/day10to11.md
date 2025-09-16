@@ -211,16 +211,14 @@ Source: [gcc/libstdc++-v3/include/bits/stl_algo.h](https://github.com/gcc-mirror
 Given a list of pebbles, each with a numerical value. After each blink, the number of pebbles and their values change according to specific rules. The goal is to find the total number of pebbles after a set number of blinks.
 
 The conditions are:
-$$
-f(n+1) = 
-    \left\{
-        \begin{array}{ll}
-            1 & \text{if } n = 0 \\
-            \text{HIGH}(n), \text{LOW}(n) & \text{if numDigits($n$) is even} \\
-            n \times 2024 & \text{else}
-        \end{array}
-    \right.
-$$
+$
+f(n+1) =
+\begin{cases}
+    1 & \text{if } n = 0 \\
+    (\text{HIGH}(n), \text{LOW}(n)) & \text{if } \operatorname{numDigits}(n) \text{ is even} \\
+    n \times 2024 & \text{otherwise}
+\end{cases}
+$
 
 where $\text{HIGH}(n)$ refers to the first half of digits., $\text{LOW}(n)$ refers to the second half of digits.
 - Example: If $n = 123456 ,\ \text{HIGH}(n) = 123, \  \text{LOW}(n) = 456$

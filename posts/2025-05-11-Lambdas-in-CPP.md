@@ -84,7 +84,7 @@ assert(plus(42) == 43);
 
 ### Lambdas Without Captures
 
-- ![Lambdas Without Captures.png](/_static/images/lambdas-without-captures.png)
+- ![Lambdas Without Captures.png](/_static/images/blog_media/lambdas-without-captures.png)
 - Lambdas have 2 types of parameters:
     1. Parameters for behaviour (The capture group)
     2. Parameters when they are called
