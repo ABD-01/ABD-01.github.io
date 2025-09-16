@@ -48,6 +48,10 @@
     <link rel="stylesheet" href="{{ pathto('_static/css/qemu.css', 1) }}">
   {% endif %}
 
+  {% if pagename.endswith("ARM-Cortex-M") %}
+    <link rel="stylesheet" href="{{ pathto('_static/css/qemu.css', 1) }}">
+  {% endif %}
+
 {% endblock %}
 
 {#
