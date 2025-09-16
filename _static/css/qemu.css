@@ -77,7 +77,7 @@ blockquote {
 }
 pre, .pre, .code-block-caption {
   background-color: var(--color-code-background);
-  border-color: var(--color-code-background);
+  border-color: var(--color-background-border);
   color: var(--color-code-foreground);
   font-weight: bold;
 }
@@ -89,6 +89,16 @@ pre, .pre, .code-block-caption {
 @media (prefers-color-scheme: dark) {
   body:not([data-theme="light"]) pre {
     background-color: var(--color-code-background);
+  }
+}
+
+/* Bug fix in arena post
+background of line bum is #0d1117 in dark mode
+fixing it
+*/
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) .highlight span.linenos {
+    background-color: inherit;
   }
 }
 
@@ -145,6 +155,7 @@ h6 { color: var(--nord_frost2); }
 @media (min-width: 82em) {
   .toc-drawer {
     width: auto;
+    max-width: 18em;
   }
 }
 
