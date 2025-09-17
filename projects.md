@@ -44,6 +44,32 @@ Want to see more? Head over to my [{fab}`github` GitHub profile](https://github.
 :columns: 3
 :class: sd-align-major-center
 
+```{image} _static/images/guru-meditation.jpg
+:class: only-dark
+```
+```{image} _static/images/guru-meditation-light.jpg
+:class: only-light
+```
+
+````
+
+````{grid-item}
+:columns: 9
+
+### [ESP32 Crash Diagnostics in QEMU](https://abd-01.github.io/esp32-guru-upload/coredump/)
+[project page](https://abd-01.github.io/esp32-guru-upload/) | [code](https://github.com/ABD-01/esp32-guru-upload)
+
+This project dives into ESP32 crash diagnostics workflow on QEMU. It integrates ESP-IDF firmware running under FreeRTOS with deliberate fault injection, coredump capture, and CRC validation. It is containerized for codespace for consistency across environments. Crash logs are uploaded and parsed and the Flask based server end.
+````
+`````
+
+`````{grid}
+:class-container: sd-shadow-lg
+
+````{grid-item}
+:columns: 3
+:class: sd-align-major-center
+
 ```{image} _static/images/cvp-removebg.png
 
 ```

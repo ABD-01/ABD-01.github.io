@@ -781,3 +781,9 @@ Example:
 :align: center
 :width: 600px
 ```
+
+```{raw} html
+<script>
+window.onload=()=>(e=document.querySelector('.announcement-content'))&&(e.textContent='This page is in Draft phase.');
+</script>
+```

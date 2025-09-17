@@ -99,3 +99,8 @@
 blockquote .attribution {
     font-weight: inherit;
 }
+
+/* sphinx dessign shadow color */
+body {
+    --sd-color-shadow: rgba(0, 0, 0, 0.4);
+}
