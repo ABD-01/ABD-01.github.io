@@ -456,7 +456,8 @@ asset_files = [
     "PID_tuning_angle-Part-4.png",
     "PID_tuning_angle-Part1.png",
     "PID_tuning_distance.png",
-    "grid-turtle.png"
+    "grid-turtle.png",
+    "Pid_Plotjuggler.mp4",
 ]
 
 for f in asset_files:

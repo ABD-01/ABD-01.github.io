@@ -1,48 +1,37 @@
-         
+<section class="tex2jax_ignore mathjax_ignore" id="autonomous-turtle-chase">
+<h1>Autonomous Turtle Chase<a class="headerlink" href="#autonomous-turtle-chase" title="Permalink to this heading">#</a></h1>
+<p>This project demonstrates the development of an autonomous interception agent in the ROS Turtlesim environment
+It showcases my implementation of a finely-tuned PID controller for precise goal-to-goal navigation, realistic acceleration and deceleration profiles, trajectory prediction and circle-fitting algorithms to intercept a moving target.</p>
+<p>The central challenge is to program a “Police Turtle” to chase and capture a “Robber Turtle,” but with a critical twist: the agent has limited, delayed information. It only receives the target’s position once every fixed time interval (five seconds), making real-time tracking impossible. To succeed, the agent cannot simply react; it must predict. This project details the creation of a robust solution from the ground up, starting with a precisely tuned PID controller for high-performance motion, adding realistic acceleration and deceleration dynamics for control, and culminating in an intelligent prediction system that autonomously deduces the target’s circular trajectory and speed from sparse data to calculate the perfect intercept course.
+The challenge escalates with the PT moving faster, slower, or using noisy data, testing the system’s robustness.</p>
+<!--
 
-          <section class="tex2jax_ignore mathjax_ignore" id="assignment-robotics-engineer">
-<h1>Assignment - Robotics Engineer<a class="headerlink" href="#assignment-robotics-engineer" title="Permalink to this heading">#</a></h1>
-<p>This report details my work for the Robotics Engineer assignment at <a class="reference external" href="https://www.flytbase.com/">FlytBase</a>.</p>
-<p>I implemented a PID controller for goal navigation, incorporated acceleration and deceleration profiles, and enabled grid tracing.</p>
-<p>Additionally, I developed circular motion control and a turtle chase with circle fitting for trajectory prediction in the ROS Turtlesim environment.</p>
-<section id="modifying-the-turtlesim-window-size">
-<h2>Modifying the turtlesim window size<a class="headerlink" href="#modifying-the-turtlesim-window-size" title="Permalink to this heading">#</a></h2>
-<p>Default: <code class="docutils literal notranslate"><span class="pre">500x500</span></code> which corresponds to <code class="docutils literal notranslate"><span class="pre">11x11</span></code> unit space. <br />
-Required: <code class="docutils literal notranslate"><span class="pre">30x15</span></code> unit space <br />
-Solution: <br />
-Pixels per unit: ~45 (500 / 11 ≈ 45.45). <br />
-Breadth: 30 * 45.45  ≈ 1364 pixels <br />
-Height: 15 * 45.45 ≈ 682 pixels</p>
-<p>Turtle’s farthest possible co-ordinates:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.288888931274414</span>
-<span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.133333206176758</span>
-</pre></div>
-</div>
-<p>The height was later updated to <code class="docutils literal notranslate"><span class="pre">912</span></code> for goals 4,5 and 6 due to large radii.</p>
-</section>
-<section id="clamping-linear-and-angular-velocities">
-<h2>Clamping Linear and Angular Velocities<a class="headerlink" href="#clamping-linear-and-angular-velocities" title="Permalink to this heading">#</a></h2>
-<p>max_linear = 15 <br />
-max_angular = 6</p>
-<p>This is from trial and error. Initially I choose the maximum values to be 10 and 7 for linear and angular velocities, respectively.</p>
-</section>
-<section id="spawning-turtle-at-random-location">
-<h2>Spawning Turtle at Random Location<a class="headerlink" href="#spawning-turtle-at-random-location" title="Permalink to this heading">#</a></h2>
-<p>This can be done using the <a class="reference external" href="https://docs.ros.org/en/noetic/api/turtlesim/html/srv/Spawn.html"><code class="docutils literal notranslate"><span class="pre">spawn</span></code></a> service.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spawn_turtle</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">&#39;/spawn&#39;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">spawn</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/spawn&#39;</span><span class="p">,</span> <span class="n">Spawn</span><span class="p">)</span>
-        <span class="n">spawn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Service execution failed: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+## Modifying the turtlesim window size
 
-<span class="n">spawn_turtle</span><span class="p">(</span><span class="n">t_name</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-<section id="pid-controller-goal-1">
-<h2>PID Controller (Goal 1)<a class="headerlink" href="#pid-controller-goal-1" title="Permalink to this heading">#</a></h2>
+Default: `500x500` which corresponds to `11x11` unit space. \
+Required: `30x15` unit space \
+Solution: \
+Pixels per unit: ~45 (500 / 11 ≈ 45.45). \
+Breadth: 30 \* 45.45  ≈ 1364 pixels \
+Height: 15 \* 45.45 ≈ 682 pixels
+
+Turtle's farthest possible co-ordinates:
+```yaml
+x: 30.288888931274414
+y: 15.133333206176758
+```
+The height was later updated to `912` for goals 4,5 and 6 due to large radii.
+
+## Clamping Linear and Angular Velocities
+
+max_linear = 15 \
+max_angular = 6
+
+This is from trial and error. Initially I choose the maximum values to be 10 and 7 for linear and angular velocities, respectively.
+
+-->
+<section id="pid-controller">
+<h2>PID Controller<a class="headerlink" href="#pid-controller" title="Permalink to this heading">#</a></h2>
 <div class="seealso admonition">
 <p class="admonition-title">Wikipedia</p>
 <p>A proportional–integral–derivative controller is a feedback-based control loop mechanism commonly used to manage machines and processes that require continuous control and automatic adjustment.</p>
@@ -55,7 +44,7 @@ max_angular = 6</p>
 <li><p>Integral (Ki): Corrects accumulated error over time (for steady-state errors).</p></li>
 <li><p>Derivative (Kd): Reduces overshoot by reacting to the rate of error change.</p></li>
 </ul>
-<p>I need two PID controllers: one for distance (linear velocity) and one for angle (angular velocity).</p>
+<p>Need two PID controllers: one for distance (linear velocity) and one for angle (angular velocity).</p>
 <p>The continuous-time PID controller equation is:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -105,7 +94,7 @@ u(k) = K_p \cdot e(k) + K_i \cdot \sum (e(k) \cdot \Delta t) + K_d \cdot \frac{e
 </div>
 <section id="tuning-the-pid">
 <h3>Tuning the PID<a class="headerlink" href="#tuning-the-pid" title="Permalink to this heading">#</a></h3>
-<p>The goal is to get the turtle to target as fast as possible. So the turtle better be facing in the target’s direction as soon as possible.</p>
+<p>We want to get the turtle to target as fast as possible. So the turtle better be facing in the target’s direction as soon as possible.</p>
 <p>For this I tuned the controller for angular velocities first.</p>
 <p>Started with <span class="math notranslate nohighlight">\(K_p = 1\)</span>, <span class="math notranslate nohighlight">\(K_i = 0\)</span> and <span class="math notranslate nohighlight">\(K_d = 0\)</span>, and then slowly increased <span class="math notranslate nohighlight">\(K_p\)</span> all the way upto <span class="math notranslate nohighlight">\(10\)</span>. The <span class="math notranslate nohighlight">\(K_i\)</span> and <span class="math notranslate nohighlight">\(K_d\)</span> are incresed accordingly depending upon the steady state error and oscillations.</p>
 <p>The system goes haywire at around <span class="math notranslate nohighlight">\(K_p = 8\)</span> and above. See the images below.</p>
@@ -208,8 +197,8 @@ Goal to Goal (Performance with different PID Gains)</label><div class="sd-tab-co
 <iframe src="https://drive.google.com/file/d/1XoHNd3Q0iLf-YlBlE1klM0HjqHu8jAOt/preview" width="640" height="480" allow="autoplay"></iframe>
 </div></div>
 </div>
-<p>The blue turtle (turtle3) does appear to win the race each time, however is significantly unstable. The green turtle (turtle2) shows a fast, wide-angle turn, which aligns with its higher speed and aggressive PID settings, while the white turtle (turtle1) has a smoother, more controlled path. The rest two are just slow.</p>
-<p>The white turtle (turtle1) is our protagonist meeting Goal 1: fast as possible without overshooting.</p>
+<p>The blue trailed turtle (turtle3) does appear to win the race each time, however is significantly unstable. The green trailed turtle (turtle2) shows a fast, wide-angle turn, which aligns with its higher speed and aggressive PID settings, while the white trailed turtle (turtle1) has a smoother, more controlled path. The rest two are just slow.</p>
+<p>The white trailed turtle (turtle1) moves as fast as possible without overshooting, and will be used as a base for further tuning.</p>
 </section>
 <section id="usage">
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
@@ -222,8 +211,8 @@ $<span class="w"> </span>rosrun<span class="w"> </span>flytbase_assignment<span 
 <p>To see multiple turtles with different PID gains, call <a class="reference external" href="https://github.com/ABD-01/fluffy-fiesta/blob/master/scripts/turtle_goal_to_goal.py"><code class="docutils literal notranslate"><span class="pre">main_debug()</span></code></a> instead of <code class="docutils literal notranslate"><span class="pre">main()</span></code> function inside the script.</p>
 </section>
 </section>
-<section id="decelerating-turtle-goal-2">
-<h2>Decelerating Turtle (Goal 2)<a class="headerlink" href="#decelerating-turtle-goal-2" title="Permalink to this heading">#</a></h2>
+<section id="decelerating-turtle">
+<h2>Decelerating Turtle<a class="headerlink" href="#decelerating-turtle" title="Permalink to this heading">#</a></h2>
 <p>The goal is to include realistic deceleration profile for the turtle. Also, move the turtle in a grid.</p>
 <p>I have modified <code class="docutils literal notranslate"><span class="pre">PIDTurtleController</span></code> in <a class="reference external" href="https://github.com/ABD-01/fluffy-fiesta/blob/master/scripts/turtle_deceleration.py"><code class="docutils literal notranslate"><span class="pre">turtle_deceleration.py</span></code></a> to impose limitations on maximum acceleration and deceleration.</p>
 <section id="implementation-of-deceleration-profiles">
@@ -424,7 +413,7 @@ PlotJuggler</label><div class="sd-tab-content docutils">
 <h2>Circular Motion of the Turtle (Goal 3)<a class="headerlink" href="#circular-motion-of-the-turtle-goal-3" title="Permalink to this heading">#</a></h2>
 <p>To move in a circle, the turtle needs a constant linear velocity (<span class="math notranslate nohighlight">\(v\)</span>) and a constant angular velocity (<span class="math notranslate nohighlight">\(\omega\)</span>). The radius (<span class="math notranslate nohighlight">\(r\)</span>) of the circle is determined by <span class="math notranslate nohighlight">\(r = v/\omega\)</span></p>
 <p>The code for this goal includes the following logic:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 86</span><span class="k">def</span> <span class="nf">move_in_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 86</span><span class="k">def</span><span class="w"> </span><span class="nf">move_in_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="linenos"> 87</span>    <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
 <span class="linenos"> 88</span>        <span class="bp">self</span><span class="o">.</span><span class="n">angular_vel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_vel</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
 <span class="linenos"> 89</span>        <span class="bp">self</span><span class="o">.</span><span class="n">pub_vel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear_vel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">angular_vel</span><span class="p">)</span>
@@ -467,6 +456,21 @@ $<span class="w"> </span>rosrun<span class="w"> </span>flytbase_assignment<span 
 </pre></div>
 </div>
 </section>
+<section id="spawning-turtle-at-random-location">
+<h2>Spawning Turtle at Random Location<a class="headerlink" href="#spawning-turtle-at-random-location" title="Permalink to this heading">#</a></h2>
+<p>This can be done using the <a class="reference external" href="https://docs.ros.org/en/noetic/api/turtlesim/html/srv/Spawn.html"><code class="docutils literal notranslate"><span class="pre">spawn</span></code></a> service.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">spawn_turtle</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">&#39;/spawn&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">spawn</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;/spawn&#39;</span><span class="p">,</span> <span class="n">Spawn</span><span class="p">)</span>
+        <span class="n">spawn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Service execution failed: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="n">spawn_turtle</span><span class="p">(</span><span class="n">t_name</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
 <section id="the-turtle-chase-goals-4-5-6">
 <h2>The Turtle Chase (Goals 4,5,6)<a class="headerlink" href="#the-turtle-chase-goals-4-5-6" title="Permalink to this heading">#</a></h2>
 <p>Since Police Turtle (PT) do not have real time information of the Robber Turtle’s (RT) pose, I am predicting where the RT will be in next <span class="math notranslate nohighlight">\(t\)</span> seconds (<span class="math notranslate nohighlight">\(t=5\)</span> default) and feed that a target position to the PT.</p>
@@ -484,7 +488,7 @@ To predict the next pose of a turtle at a future time <span class="math notransl
 <img alt="" src="../../_images/Control_for_Unicycle_Robot_2.jpg" /></p>
 </details>
 <p>The corresponding code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">176</span><span class="k">def</span> <span class="nf">predict_rt_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">dtime</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">176</span><span class="k">def</span><span class="w"> </span><span class="nf">predict_rt_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">dtime</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
 <span class="linenos">177</span>    <span class="k">if</span> <span class="n">pose</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 <span class="linenos">178</span>        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 <span class="linenos">179</span>    <span class="n">v</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">linear_velocity</span>
@@ -516,12 +520,12 @@ To predict the next pose of a turtle at a future time <span class="math notransl
 </ul>
 <!-- Insert my notes -->
 <details>
-<summary>Circle Fitting Notes</summary>
+<summary style="cursor: pointer;">Circle Fitting Notes</summary>
 <p><img alt="" src="../../_images/Circle_Fitting_1.jpg" />
 <img alt="" src="../../_images/Circle_Fitting_2.jpg" /></p>
 </details>
 <p>Implementation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">148</span><span class="k">def</span> <span class="nf">fit_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">148</span><span class="k">def</span><span class="w"> </span><span class="nf">fit_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="linenos">149</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="linenos">150</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="linenos">151</span>    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -647,17 +651,10 @@ The logic:</p>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
-<p>This assignment has been a rewarding journey into robotics, motion control, and state estimation, providing me a chance to refresh my skills in ROS, PID control, and trajectory prediction in the TurtleSim environment.</p>
-<p>I am grateful to the FlytBase team for this.</p>
-<p>All video demonstrations are uploaded to Google Drive and can be accessed here: <a class="reference external" href="https://drive.google.com/drive/folders/1ydLdfyyXk5Fcxr_5_wix2LNsLm-eY18f?usp=drive_link">Videos</a>. ROSbag files for visualization with PlotJuggler are also available for further analysis: <a class="reference external" href="https://drive.google.com/drive/folders/1iBVvZHUEcOhlKGnKNgUc6l_yehRgtIUG?usp=sharing">ROSbag Files</a>.</p>
-<p>You can also veiw the <a class="reference external" href="https://github.com/ABD-01/fluffy-fiesta/blob/master/CHANGELOG.md">CHANGELOG</a> to see the progress of the project.
-The code is available on GitHub: <a class="reference external" href="https://github.com/ABD-01/fluffy-fiesta">Code</a>.</p>
-<section id="challenges-and-reflections">
-<h3>Challenges and Reflections<a class="headerlink" href="#challenges-and-reflections" title="Permalink to this heading">#</a></h3>
-<p>Prior to this, I had not used PlotJuggler for visualization, but now I guess I am never going back to rqt.</p>
-<p>Additionally, time constraints limited my ability to fully complete the noisy chase implementation (Goal 6). With more time, I am confident I could have integrated the circle projection method to achieve better results.</p>
-<p>Thank you for reviewing my work and considering my submission for the Robotics Engineer role at FlytBase.</p>
-</section>
+<p>This project was a deep dive into the practical application of motion control and state estimation in robotics. Implementing and tuning PID controllers for various behaviors, from simple goal navigation to complex circular trajectories, provided valuable hands-on experience. A key challenge and learning opportunity was developing the trajectory prediction logic for the turtle chase, especially when the ‘police’ turtle was slower than its target. This required implementing a circle-fitting algorithm to deduce the target’s path and calculate an optimal intercept point.</p>
+<p>While the core functionalities were successfully implemented, future work could involve enhancing the noisy chase scenario with a more robust estimation filter, such as a Kalman Filter, to handle sensor inaccuracies more effectively.</p>
+<p>All the code for this project is open-source and available on my <a class="reference external" href="https://github.com/ABD-01/fluffy-fiesta">GitHub</a>. You can also find <a class="reference external" href="https://drive.google.com/drive/folders/1ydLdfyyXk5Fcxr_5_wix2LNsLm-eY18f?usp=drive_link">video demonstrations</a> of the different functionalities here.</p>
+<p>This project has been a rewarding journey into robotics, motion control, and state estimation, providing me a chance to refresh my skills in ROS, PID control, and trajectory prediction in the TurtleSim environment.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
@@ -776,5 +773,3 @@ submitMessage.addEventListener('click',()=>{
 <!-- Links -->
 </section>
 </section>
-
-       
