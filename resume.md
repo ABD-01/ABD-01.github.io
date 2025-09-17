@@ -1,18 +1,51 @@
+---
+hide-toc: true
+---
+
 # Resume
 
-```{admonition} One Page Resume
+```{admonition} Resume
 :class: tip
 
-You can view my single page resume [**here**](https://drive.google.com/file/d/1jKRISVTzQuRYLysdxEuylvjDU9vF9CBx/view)
+<iframe src="https://drive.google.com/file/d/1jKRISVTzQuRYLysdxEuylvjDU9vF9CBx/preview" width="640" height="1280" allow="autoplay"></iframe>
 
 ```
 
 ```{image} _static/images/under-construction.png
 :alt: under-construction.png
 :align: center
-:width: 40%
+:width: 20%
 ```
 
+## Education
+
+`````{grid}
+````{grid-item}
+:columns: 3
+:class: sd-align-major-center
+
+```{image} _static/images/vnit-logo.png
+:alt: vnit logo
+:align: center
+:width: 100%
+```
+
+````
+
+````{grid-item}
+:columns: 9
+
+University: **Visvesvaraya National Institute of Technology**  
+Degree: *Bachelor of Technology*  
+Field of Study: **Electrical and Electronics Engineering**  
+  
+Coursework: Optimization techniques, Control System, Data Structures, Integral Transforms and Partial DEs,
+Computer Methods in Power System, Introduction to Entrepreneurship, Electronic Devices and Circuits,
+[Convolutional Neural Networks](https://coursera.org/verify/YHTUHBWA7L7S), [Python Specialization](https://coursera.org/verify/specialization/6VWNENLTVNTF), [ROS2 for Beginners](https://www.udemy.com/course/ros2-how-to/), [MIT 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/),
+[CS50x Introduction to Computer Science](https://certificates.cs50.io/3a1e1887-2383-40f3-b442-dd914bfe7f12.pdf)
+
+````
+`````
 
 ## Skills
 
@@ -44,23 +77,24 @@ I have a degree in Electrical Engineering. Do you think one can escape the sleep
 
 `````
 
-### Python Libraries
-
-\# TODO
-
 ### Tools/Softwares
 
 \# TODO
 
-### Network Protocols
+### Python Libraries
+
+\# TODO
+
+### Networking
 
 ```{hlist}
 :columns: 4
 
-* TCP
-* IP
+* TCP/IP
 * UART
 * CAN
-* UDS 
+* UDS
+* Procol Buffers 
+* DoIP
 * Ethernet IEEE 802.3
 ```
