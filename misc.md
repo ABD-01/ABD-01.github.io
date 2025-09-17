@@ -68,33 +68,35 @@ var submitMessage = document.getElementById("submitButton"),
     ContactForm = document.getElementById("ContactForm");
 
 function submit(){
-    const whToken = 'gUw-eXEBZPt2Ry0KL-Rkc3dBQ3EKtufATnYVETkjQZjcbVvOCj8Wnj6ZRTmBvWtnNbl6';
-    const whId = "1330785376058474547";
-    var url = `https://discord.com/api/webhooks/${whId}/${whToken}`;
+  const whToken = lfcbu47('UzJabm1KSlBoNjl4TXQ4eE5ZbkNpdi1MVlBwZHdSWnpFYWVrc1J5Zmg2ZzRUUEpRYnZvXzR0NWxRYWthMk1IWHdYMl8=');
+  const whId = lfcbu47('MTQxNzgyMTMxNTgwODc1OTgzOA==');
+  const d = lfcbu47("ZGlzY29yZC5jb20vYXBpL3dlYmhvb2tz");
+  var url = `https://${d}/${whId}/${whToken}`;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url);
 
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Content-Type", "application/json");
 
-    xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4) {
-          console.log(xhr.status);
-          console.log(xhr.responseText);
-       }};
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+      alert(xhr.status === 200 || xhr.status === 204 ? 'Message Sent' : 'Failed to send message');
+    }};
 
-    var data = {
-      "content": "<@701479951479865384>, you have a new message from the website (misc page)!",
-      "embeds": [
-        {
-          "title": ContactForm.name.value,
-          "description": "**Email**:" + ContactForm.email.value + "\n**Message**:" + ContactForm.message.value,
-          "color": 22963
-        }
-      ]
-    };
-    xhr.send(JSON.stringify(data));
+  var data = {
+  "content": "<@701479951479865384>, you have a new message from the website!",
+  "embeds": [
+    {
+      "title": ContactForm.name.value,
+      "description": "**Email**:" + ContactForm.email.value + "\n**Message**:" + ContactForm.message.value,
+      "color": 22963
+    }
+  ]
+  };
+  xhr.send(JSON.stringify(data));
 }
 
 submitMessage.addEventListener('click',()=>{

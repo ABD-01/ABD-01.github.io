@@ -13,3 +13,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+const lfcbu47 = window.atob;
