@@ -463,5 +463,8 @@ asset_files = [
 for f in asset_files:
     move(f"reports/assets/{f}", "_images")
 
+move("SDL2-Flappy-Ball/hello-gui-sdl.js", "SDL2-Flappy-Ball/hello-gui-sdl.js")
+move("SDL2-Flappy-Ball/hello-gui-sdl.wasm", "SDL2-Flappy-Ball/hello-gui-sdl.wasm")
+
 def setup(app):
     app.connect("build-finished", _apply_moves)

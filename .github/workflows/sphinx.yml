@@ -36,6 +36,11 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/ABD-01/log-analysis/master/README.md -o log-analysis.md
           curl -sSL https://raw.githubusercontent.com/ABD-01/py2048/master/README.md -o py2048.md
           curl -sSL https://raw.githubusercontent.com/ABD-01/esp32-guru-upload/master/README.md -o esp32-coredump-upload.md
+          mkdir -p SDL2-Flappy-Ball
+          curl -sSL https://raw.githubusercontent.com/ABD-01/SDL2-Flappy-Ball/refs/heads/emscripten/docs/index.md -o SDL2-Flappy-Ball/index.md
+          curl -sSL https://raw.githubusercontent.com/ABD-01/SDL2-Flappy-Ball/refs/heads/emscripten/build/hello-gui-sdl.js -o SDL2-Flappy-Ball/hello-gui-sdl.js
+          curl -sSL https://github.com/ABD-01/SDL2-Flappy-Ball/raw/refs/heads/emscripten/build/hello-gui-sdl.wasm -o SDL2-Flappy-Ball/hello-gui-sdl.wasm
+          curl -sSL https://raw.githubusercontent.com/ABD-01/SDL2-Flappy-Ball/refs/heads/master/README.md -o SDL2-Flappy-Ball/README.md
 
       - name: Build docs
         run: 
