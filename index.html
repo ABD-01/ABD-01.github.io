@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/cyan-arm-removebg.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://discord.com; img-src 'self' data: https:; frame-src 'self';">
+  <title>Muhammed Abdullah | Embedded Systems Engineer</title>
+  <meta name="description"
+    content="Embedded Systems Engineer & Robotics Enthusiast. Crafting real-time systems and intelligent software for autonomous mobility.">
+  <!-- Google Fonts (Local) -->
+</head>
+
+<body class="circuit-bg selection:bg-cyber-cyan/30 selection:text-cyber-cyan">
+
+  <div id="app" class="relative z-10">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-4 flex justify-between items-center border-b border-cyber-cyan/10 bg-cyber-black/80 backdrop-blur-md">
+      <a href="#" class="flex items-center space-x-2 text-cyber-cyan font-bold tracking-tighter text-lg group">
+        <img src="/cyan-arm-removebg.png" alt="Logo"
+          class="w-8 h-8 object-contain transition-all duration-300 group-hover:scale-110" />
+        <span><span class="opacity-50">&lt;</span> ABD_01 <span class="opacity-50">/&gt;</span></span>
+      </a>
+      <div class="hidden md:flex space-x-10 uppercase text-[10px] font-mono tracking-widest">
+        <a href="#about" class="hover:text-cyber-cyan transition-colors">_about</a>
+        <a href="#experience" class="hover:text-cyber-cyan transition-colors">_history</a>
+        <a href="#blog" class="hover:text-cyber-amber transition-colors">_logs</a>
+        <a href="#projects" class="hover:text-cyber-cyan transition-colors">_projects</a>
+        <a href="#skills" class="hover:text-cyber-cyan transition-colors">_specs</a>
+        <a href="#contact" class="hover:text-cyber-cyan transition-colors">_uplink</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-cyber-cyan">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="fixed inset-0 bg-cyber-black z-40 hidden flex-col items-center justify-center space-y-8 font-mono uppercase tracking-widest">
+      <a href="#about" class="text-xl">_about</a>
+      <a href="#experience" class="text-xl">_history</a>
+      <a href="#blog" class="text-xl">_logs</a>
+      <a href="#projects" class="text-xl">_projects</a>
+      <a href="#skills" class="text-xl">_specs</a>
+      <a href="#contact" class="text-xl">_uplink</a>
+    </div>
+
+    <!-- Hero -->
+    <header class="min-h-screen flex flex-col justify-center px-6 md:px-24">
+      <div class="max-w-4xl">
+        <div class="mb-4 flex items-center justify-between text-cyber-cyan/60 font-mono text-xs max-w-xl">
+          <div class="flex items-center space-x-2">
+            <span class="w-8 h-[1px] bg-cyber-cyan/30"></span>
+            <span>SYSTEM_BOOT // V5.0 // INITIALIZED</span>
+          </div>
+          <a href="https://abd-01.github.io/"
+            class="text-[10px] text-white/50 hover:text-cyber-cyan transition-colors underline decoration-dotted">v4.69_LEGACY</a>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tighter leading-none uppercase">
+          <span class="text-5xl md:text-7xl">M</span>UHAMMED<br />
+          <span class="glitch-text text-cyber-cyan"><span class="text-5xl md:text-7xl">A</span>BDULLAH</span>
+        </h1>
+        <p class="text-base md:text-lg font-mono mb-4 min-h-[1.5em]">
+          <span id="typing-role"></span>
+        </p>
+        <p class="text-sm md:text-base text-white/60 max-w-xl mb-12 leading-relaxed">
+          Crafting <span class="text-cyber-amber">real-time systems</span> and <span
+            class="text-cyber-green">intelligent software</span> for <span class="text-white/80">autonomous
+            mobility</span>.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#experience"
+            class="px-6 py-3 bg-cyber-cyan text-cyber-black font-bold uppercase tracking-widest text-[10px] hover:scale-105 transition-all">Career
+            History</a>
+          <a href="#blog"
+            class="px-6 py-3 border border-cyber-amber/30 text-cyber-amber font-bold uppercase tracking-widest text-[10px] hover:bg-cyber-amber/5 transition-all">Latest
+            Logs</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section (System Status) -->
+    <section id="about" class="py-24 px-6 md:px-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-end space-x-4 mb-2">
+          <h2 class="text-3xl font-bold uppercase tracking-tight">System Status</h2>
+          <div class="flex-grow h-[1px] bg-white/10 mb-2"></div>
+          <span class="font-mono text-[10px] opacity-30 hidden md:block">SECTOR: 0x00</span>
+        </div>
+        <p class="font-mono text-cyber-cyan/60 italic text-xs mb-10">// About the operator</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Terminal Bio -->
+          <div class="lg:col-span-2 bg-industrial-gray/50 border border-white/10 p-6 relative">
+            <!-- Terminal Header -->
+            <div class="flex items-center space-x-2 mb-6">
+              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+              <span class="ml-4 font-mono text-xs text-white/40">abd@embedded:~$ cat about.txt</span>
+            </div>
+            <div id="about-content" class="font-mono text-sm leading-relaxed space-y-4 text-white/70">
+              <!-- Content injected by JS -->
+            </div>
+          </div>
+
+          <!-- Status Panel -->
+          <div class="space-y-4">
+            <!-- Availability -->
+            <div class="bg-industrial-gray/50 border border-white/10 p-5">
+              <div class="flex items-center space-x-3">
+                <span class="relative flex h-3 w-3">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <p class="text-sm font-bold">Available for collaboration</p>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="bg-industrial-gray/50 border border-white/10 p-5">
+              <div class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-cyber-cyan" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <p class="text-sm">India, IN</p>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="bg-industrial-gray/50 border border-white/10 p-5">
+              <h3 class="font-mono text-xs uppercase tracking-widest text-cyber-cyan mb-4">Quick Links</h3>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://github.com/ABD-01" target="_blank"
+                  class="inline-flex items-center space-x-2 px-3 py-1.5 text-xs bg-white/5 border border-white/10 hover:border-cyber-cyan/50 hover:text-cyber-cyan transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/muhammed-abdullah-shaikh" target="_blank"
+                  class="inline-flex items-center space-x-2 px-3 py-1.5 text-xs bg-white/5 border border-white/10 hover:border-cyber-cyan/50 hover:text-cyber-cyan transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://drive.google.com/file/d/17UeSvKcCNiLU3ivfAkLch4vk3og2HciK/view?usp=drive_link"
+                  target="_blank"
+                  class="inline-flex items-center space-x-2 px-3 py-1.5 text-xs bg-white/5 border border-white/10 hover:border-cyber-cyan/50 hover:text-cyber-cyan transition-colors shadow-[0_0_10px_rgba(0,255,240,0.3)] group-hover:shadow-[0_0_15px_rgba(0,255,240,0.6)]">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+                    <path d="M9 13h6v2H9zm0 4h6v2H9zm0-8h2v2H9z" />
+                  </svg>
+                  <span>Resume</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career History -->
+    <section id="experience" class="py-24 px-6 md:px-24 bg-white/[0.01]">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex items-end space-x-4 mb-12">
+          <h2 class="text-3xl font-bold uppercase tracking-tight">Timeline</h2>
+          <div class="flex-grow h-[1px] bg-white/10 mb-2"></div>
+          <span class="font-mono text-[10px] opacity-30">0xHISTORY</span>
+        </div>
+        <div id="experience-timeline" class="space-y-4">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Transmission Logs -->
+    <section id="blog" class="py-24 px-6 md:px-24">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="flex items-end space-x-4 mb-2">
+          <h2 class="text-3xl font-bold uppercase tracking-tight">Transmission Logs</h2>
+          <div class="flex-grow h-[1px] bg-cyber-amber/20 mb-2"></div>
+          <span class="font-mono text-[10px] text-cyber-amber opacity-30">0xLOGS</span>
+        </div>
+        <p class="font-mono text-cyber-amber/50 italic text-xs mb-10 text-left">// Blog posts &amp; technical notes</p>
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <!-- Injected by JS -->
+        </div>
+        <div class="mt-12">
+          <a href="https://abd-01.github.io/archive/"
+            class="inline-block px-8 py-3 border border-cyber-amber/30 text-cyber-amber font-mono text-[10px] uppercase tracking-widest hover:bg-cyber-amber/5 transition-colors">
+            View All Posts
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6 md:px-24 bg-white/[0.01]">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-end space-x-4 mb-10">
+          <h2 class="text-3xl font-bold uppercase tracking-tight">Projects</h2>
+          <div class="flex-grow h-[1px] bg-cyber-cyan/30 mb-2"></div>
+          <span class="font-mono text-[10px] opacity-30">0xENGINEERING_MODULES</span>
+        </div>
+        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini-Projects (Amber Section) -->
+    <section id="mini-projects" class="py-24 px-6 md:px-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-end space-x-4 mb-16">
+          <h2 class="text-3xl font-bold uppercase tracking-tight text-cyber-amber">Sub-Systems</h2>
+          <div class="flex-grow h-[1px] bg-cyber-amber/20 mb-2"></div>
+          <span class="font-mono text-[10px] text-cyber-amber opacity-30">0xMINI_PROJECTS</span>
+        </div>
+        <div id="mini-project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- System Specs -->
+    <section id="skills" class="py-24 px-6 md:px-24 bg-white/[0.01]">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-end space-x-4 mb-4">
+          <h2 class="text-3xl font-bold uppercase tracking-tight">System Specifications</h2>
+          <div class="flex-grow h-[1px] bg-white/10 mb-2"></div>
+          <span class="font-mono text-[10px] opacity-30">0xSPECS</span>
+        </div>
+        <p class="font-mono text-cyber-cyan/60 italic text-xs mb-8">// Technical capabilities</p>
+        <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6 md:px-24">
+      <div class="max-w-3xl mx-auto">
+        <div class="border border-white/10 p-8 bg-industrial-gray/30 backdrop-blur-sm relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-10 font-mono text-[8px] p-2 opacity-20 text-right">ENCRYPTED_LINK
+          </div>
+          <h2 class="text-2xl font-bold mb-8 uppercase tracking-widest text-cyber-cyan">Let's Interface</h2>
+          <form id="ContactForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="text" name="name" placeholder="IDENT_NAME"
+                class="w-full bg-cyber-black/50 border border-white/10 p-3 font-mono text-xs focus:border-cyber-cyan outline-none"
+                required>
+              <input type="email" name="email" placeholder="IDENT_EMAIL"
+                class="w-full bg-cyber-black/50 border border-white/10 p-3 font-mono text-xs focus:border-cyber-cyan outline-none"
+                required>
+            </div>
+            <textarea name="message" rows="5" placeholder="MESSAGE_DATA"
+              class="w-full bg-cyber-black/50 border border-white/10 p-3 font-mono text-xs focus:border-cyber-cyan outline-none resize-none"
+              required></textarea>
+            <button type="submit" id="submitButton"
+              class="w-full py-4 bg-cyber-cyan text-cyber-black font-bold uppercase tracking-[0.3em] text-xs hover:bg-white transition-all">Burst
+              Transmission</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-12 px-6 md:px-24 border-t border-white/5 opacity-40 font-mono text-[10px] flex justify-between items-center">
+      <span>ABD_01 // PUNE, IN // 2025</span>
+      <div class="flex space-x-6">
+        <a href="https://github.com/ABD-01" target="_blank" class="hover:text-cyber-cyan">GITHUB</a>
+        <a href="https://linkedin.com/in/muhammed-abdullah-shaikh" target="_blank"
+          class="hover:text-cyber-cyan">LINKEDIN</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,335 @@
+@import "tailwindcss";
+
+/* ============================================
+   THEME CONFIGURATION (Tailwind v4)
+   ============================================ */
+@theme {
+  --color-cyber-black: #0A0A0A;
+  --color-cyber-cyan: #00FFF0;
+  --color-cyber-amber: #FFB800;
+  --color-cyber-green: #00FF41;
+  --color-industrial-gray: #1A1A1A;
+
+  --font-tech: "JetBrains Mono", monospace;
+  --font-sans: "IBM Plex Sans", sans-serif;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cyber-black);
+    color: white;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-mono {
+    font-family: var(--font-tech);
+  }
+
+  ::selection {
+    background-color: rgba(0, 255, 240, 0.3);
+    color: #00FFF0;
+  }
+}
+
+/* ============================================
+   CIRCUIT BACKGROUND PATTERN
+   ============================================ */
+.circuit-bg {
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(0, 255, 240, 0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+.circuit-bg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(0, 255, 240, 0.02) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   GLITCH TEXT EFFECT
+   ============================================ */
+.glitch-text {
+  position: relative;
+  text-shadow:
+    0.05em 0 0 rgba(255, 0, 80, 0.9),
+    -0.03em -0.04em 0 rgba(0, 255, 100, 0.9),
+    0.03em 0.04em 0 rgba(0, 100, 255, 0.9);
+  animation: glitch 0.8s infinite;
+}
+
+@keyframes glitch {
+
+  0%,
+  80%,
+  100% {
+    text-shadow:
+      0.05em 0 0 rgba(255, 0, 80, 0.9),
+      -0.03em -0.04em 0 rgba(0, 255, 100, 0.9),
+      0.03em 0.04em 0 rgba(0, 100, 255, 0.9);
+    transform: translate(0);
+  }
+
+  82% {
+    text-shadow:
+      -0.06em -0.03em 0 rgba(255, 0, 80, 1),
+      0.04em 0.03em 0 rgba(0, 255, 100, 1),
+      -0.04em -0.04em 0 rgba(0, 100, 255, 1);
+    transform: translate(-2px, 1px);
+  }
+
+  85% {
+    text-shadow:
+      0.04em 0.05em 0 rgba(255, 0, 80, 0.9),
+      0.06em 0 0 rgba(0, 255, 100, 0.9),
+      0 -0.05em 0 rgba(0, 100, 255, 0.9);
+    transform: translate(2px, -1px);
+  }
+
+  88% {
+    text-shadow:
+      -0.04em 0 0 rgba(255, 0, 80, 1),
+      -0.05em -0.04em 0 rgba(0, 255, 100, 1),
+      -0.04em -0.05em 0 rgba(0, 100, 255, 1);
+    transform: translate(-1px, 2px);
+  }
+
+  91% {
+    text-shadow:
+      0.07em 0.02em 0 rgba(255, 0, 80, 1),
+      -0.06em -0.06em 0 rgba(0, 255, 100, 1),
+      0.06em 0.06em 0 rgba(0, 100, 255, 1);
+    transform: translate(1px, -2px);
+  }
+}
+
+/* ============================================
+   TYPING CURSOR ANIMATION
+   ============================================ */
+.typing-text::after {
+  content: "█";
+  animation: blink 1s step-end infinite;
+  color: #00FFF0;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   PULSE DOT ANIMATION
+   ============================================ */
+.pulse-dot {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+}
+
+/* ============================================
+   CRT SCANLINES OVERLAY
+   ============================================ */
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ============================================
+   TERMINAL WINDOW STYLE
+   ============================================ */
+.terminal-window {
+  position: relative;
+}
+
+.terminal-window::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 240, 0.3), transparent);
+}
+
+/* ============================================
+   SCROLLBAR CUSTOMIZATION
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cyber-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-industrial-gray);
+  border: 1px solid rgba(0, 255, 240, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 240, 0.2);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   SKILL CARD HOVER
+   ============================================ */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: currentColor;
+  transition: height 0.3s ease;
+}
+
+.skill-card:hover::before {
+  height: 100%;
+}
+
+/* ============================================
+   FADE IN ANIMATION
+   ============================================ */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .glitch-text {
+    text-shadow:
+      0.02em 0 0 rgba(255, 0, 80, 0.5),
+      -0.01em -0.02em 0 rgba(0, 255, 100, 0.5),
+      0.01em 0.02em 0 rgba(0, 100, 255, 0.5);
+  }
+
+  body::after {
+    background:
+      repeating-linear-gradient(0deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.02) 1px,
+        rgba(0, 0, 0, 0.02) 2px);
+  }
+}
+
+/* ============================================
+   NAVIGATION ACTIVE STATE
+   ============================================ */
+.nav-link.active {
+  color: #00FFF0;
+  border-bottom-color: #00FFF0;
+}
+
+/* ============================================
+   CODE/PRE STYLING
+   ============================================ */
+pre {
+  padding: 1.5rem;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "JetBrains Mono", monospace;
+}
