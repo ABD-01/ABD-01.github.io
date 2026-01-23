@@ -9,6 +9,7 @@
 ## You can suggest me of any ideas here:
 
 ````{grid} 1 1 1 2
+````{grid-item}
 ```{raw} html
 
 <style>
@@ -106,4 +107,5 @@ submitMessage.addEventListener('click',()=>{
 </script>
 
 ```
+````
 ````

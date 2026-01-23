@@ -284,10 +284,10 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 :columns: 3
 :class: sd-align-major-center
 
-```{image} _static/images/under-construction.png
-:alt: under-construction.png
+```{image} _static/images/flappy-ball.gif
+:alt: flappy-ball.gif
 :align: center
-:width: 50%
+:width: 90%
 ```
 
 ````
@@ -295,7 +295,10 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 ````{grid-item}
 :columns: 9
 
-\# TODO
+### Flappy Ball
+[project page](https://abd-01.github.io/SDL2-Flappy-Ball) | [code](https://github.com/ABD-01/SDL2-Flappy-Ball)
+
+SDL2 based game on Windows, Android and Web (Emscripten)
 
 ````
 `````
@@ -329,6 +332,7 @@ This work introduced a new setting for unsupervised domain adaptation and utiliz
 ## I would like you opinion on this project page:
 
 ````{grid} 1 1 1 2
+````{grid-item}
 ```{raw} html
 
 <style>
@@ -426,4 +430,5 @@ submitMessage.addEventListener('click',()=>{
 </script>
 
 ```
+````
 ````

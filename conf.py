@@ -270,6 +270,7 @@ exclude_patterns = [
     "LICENSE.md",
     '_build', 'Thumbs.db', '.DS_Store',
     'venv',
+    'portfolio-v5',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all

@@ -68,6 +68,7 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 ## Get in Touch:
 
 ````{grid} 1 1 1 2
+````{grid-item}
 ```{raw} html
 
 <style>
@@ -164,4 +165,5 @@ submitMessage.addEventListener('click',()=>{
 </script>
 
 ```
+````
 ````

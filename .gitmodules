@@ -2,3 +2,7 @@
 	path = exts/ablog
 	url = git@github.com:ABD-01/ablog_with_furo.git
 	branch = ablog_with_furo
+[submodule "portfolio-v5"]
+	path = portfolio-v5
+	url = git@github.com:ABD-01/ABD-01.github.io.git
+	branch = version5
