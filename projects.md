@@ -331,9 +331,9 @@ SDL2 based game on Windows, Android and Web (Emscripten)
 
 ## I would like you opinion on this project page:
 
-````{grid} 1 1 1 2
-````{grid-item}
-```{raw} html
+:::{grid} 1 1 1 2
+:::{grid-item}
+:::{raw} html
 
 <style>
    #ContactForm{
@@ -429,6 +429,6 @@ submitMessage.addEventListener('click',()=>{
 })
 </script>
 
-```
-````
-````
+:::
+:::
+:::

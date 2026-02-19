@@ -57,7 +57,7 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 ## Latest Posts
 
 ```{eval-rst}
-.. postlist:: 5
+.. postlist:: 6
    :date: %A, %B %d, %Y
    :format: {title}
    :author: me
@@ -67,9 +67,9 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 
 ## Get in Touch:
 
-````{grid} 1 1 1 2
-````{grid-item}
-```{raw} html
+:::::{grid} 1 1 1 2
+::::{grid-item}
+:::{raw} html
 
 <style>
    #ContactForm{
@@ -164,6 +164,6 @@ submitMessage.addEventListener('click',()=>{
 })
 </script>
 
-```
-````
-````
+:::
+::::
+:::::

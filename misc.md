@@ -8,9 +8,9 @@
 
 ## You can suggest me of any ideas here:
 
-````{grid} 1 1 1 2
-````{grid-item}
-```{raw} html
+:::{grid} 1 1 1 2
+:::{grid-item}
+:::{raw} html
 
 <style>
    #ContactForm{
@@ -106,6 +106,6 @@ submitMessage.addEventListener('click',()=>{
 })
 </script>
 
-```
-````
-````
+:::
+:::
+:::
