@@ -112,9 +112,6 @@ venv.bak/
 .AppleDouble
 .LSOverride
 
-# Icon must ends with two \r.
-Icon
-
 
 # Thumbnails
 ._*
@@ -145,9 +142,6 @@ Icon
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Icon must end with two \r
-Icon
 
 
 # Thumbnails

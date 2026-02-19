@@ -6,7 +6,7 @@
 :align: center
 ```
 
-Hi! <img src="/assets/img/Hi.gif" style="height: 1.5em;"> 
+Hi! <img src="/_static/images/Hi.gif" style="height: 1.5em;"> 
 
 My name is **Muhammed Abdullah**. I am an Embedded Software Engineer at [Accolade Electronics Pvt. Ltd.](https://accoladeelectronics.com) and I work on Software Defined Vehicles (SDVs), telematics systems, Qt Aplications, network module, etc. My role involves developing embedded software that's shaping the future of automotive technology. It's pretty cool how our cars have become yet another IoT device to think of.
 

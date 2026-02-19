@@ -21,7 +21,7 @@ Misc <misc>
 Resume <resume>
 ```
 
-Hey there! <img src="/assets/img/Hi.gif" style="height: 1.5em;"> 
+Hey there! <img src="/_static/images/Hi.gif" style="height: 1.5em;"> 
 
 I'm thrilled you dropped by. This is my personal space where I keep a lot of things such as notes, interesting tidbits, and random discoveries I gather along the way. Think of it as a friendly journal where I jot down things I find interesting and helpful or maybe because I do not want to forget them.
 
