@@ -270,12 +270,14 @@ To get a very rough upper bound assume, in the worst case each pebble split into
 If you've computed this bound more rigorously, let me know in the comments! 
 
 Since, I was skeptical about the memory used to store each stone and it's count. I used a different method, just caching the result for stones with values 0 to 9 for $numBlinks$.
+
 {lineno-start=42}
 ```cpp
 std::vector<std::vector<ull>> cache(10, std::vector<ull>(MAX_NUM_BLINKS, 0));
 // stores the resulting number of stones for values from 0 to 9
 // cache[v][b-1] represent number of pebbles after blinking b times starting with pebble of value v
 ```
+
 {lineno-start=121}
 ```cpp
 void fill_cache(int numBlinks)
@@ -296,6 +298,7 @@ So before I start solving, I already know that `cache[3][55]` is what would happ
 While pebbles may have values greater than 9, many will eventually be reduced to a single-digit value due to repeated splitting. Thus, caching results for numbers `0-9` is a memory-efficient approximation
 
 This caching enabled finding the number of stones for large values.
+
 {lineno-start=141}
 ```cpp
     if(value < 10)
@@ -312,8 +315,9 @@ This caching enabled finding the number of stones for large values.
     }
 ```
 
-Also, a bit about **`numDigits`**
+Also, a bit about **`numDigits`**  
 See file: [Day11_Plutonian_Pebbles/numDigits.cpp](https://github.com/ABD-01/AoC2024/blob/master/Day11_Plutonian_Pebbles/numDigits.cpp)
+
 {lineno-start=108}
 ```cpp
 int numDigits(unsigned long long i)

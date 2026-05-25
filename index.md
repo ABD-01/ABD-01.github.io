@@ -34,7 +34,10 @@ If you like to use RSS, you can follow me via the RSS link [here](posts/atom.xml
 
 <ul>
    <li data-marker="*">
-      <strong>June 2023</strong>: Joined <a href="https://accoladeelectronics.com/">Accolade Electronics Pvt. Ltd</a> as an Embedded Software Engineer, working on automotive electronics. and Software Defined Vehicles (SDVs).
+      <strong>March 2026</strong>: Started a new role as an Engineer at <a href="https://www.qualcomm.com/">Qualcomm Inc.</a> to work on ADAS Platform Software.
+   </li>
+   <li data-marker="*">
+      <strong>June 2023</strong>: Joined <a href="https://accoladeelectronics.com/">Accolade Electronics Pvt. Ltd</a> as an Embedded Software Engineer, working on automotive electronics and Software Defined Vehicles (SDVs).
    </li>
    <li data-marker="*">
       <strong>May 2023</strong>: Graduated with a B.Tech in Electrical and Electronics Engineering from <a href="https://vnit.ac.in/">Visvesvaraya National Institute of Technology (VNIT)</a> 

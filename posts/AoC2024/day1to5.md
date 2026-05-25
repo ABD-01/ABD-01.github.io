@@ -5,6 +5,7 @@ Given two lists of numbers.
 > Pair up the `smallest number in the left list` with the `smallest number in the right list`, then the `second-smallest left number` with the `second-smallest right number`, and so on.
 
 Sort both lists, take absolute difference of the values elementwise and sum it up.
+
 ```{code-block} cpp
 :lineno-start: 37
 
@@ -223,6 +224,7 @@ bool isReportSafe(const std::vector<int>& v)
 
 ### Part 2: Tolerate a Single Unsafe Report
 For a given list, remove one element and check is it safe or not
+
 ```{code-block} cpp
 :lineno-start: 64
 
@@ -299,6 +301,7 @@ static int countSafeReports(const std::vector<std::vector<int>>& reports)
 ## [Solution Overview][day3]
 ### Part 1: Multiplication in Trash
 Parse the given corrupted string and look for pattern `mul(X,Y)`, where `X` and `Y` are each 1-3 digit numbers. Add up all the results of the multiplications of `X` and `Y`.
+
 ```{code-block} cpp
 :lineno-start: 36
 
@@ -448,6 +451,7 @@ if (std::regex_match(input, pattern)) {
 ## [Solution Overview][day4]
 ### Part 1: Find XMAS
 Find the word `XMAS` in a given grid such that it can be horizontal, vertical, diagonal, written backwards, or even overlapping other words.
+
 ```{code-block} cpp
 :lineno-start: 70
 
@@ -668,6 +672,7 @@ A faster [solution (aoc2024/day05/solution.cpp at main · UnicycleBloke/aoc2024)
 * check if both finds follow the rule, based on position they appear in the sequence. Else order is not valid.
 
 More optimized solution would require a Hash Map:
+
 ```{code-block} cpp
 :lineno-start: 145
 

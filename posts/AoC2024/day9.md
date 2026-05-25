@@ -235,6 +235,7 @@ int main() {
 
 ### Extending a vector in C++
 In C++, the equivalent of Python’s `list1.extend(list2)` can be achieved using `std::vector<T>::insert`.
+
 {lineno-start=241}
 ```cpp
 tmp.insert(tmp.end(), dm.begin() + i, dm.end());
@@ -242,6 +243,7 @@ tmp.insert(tmp.end(), dm.begin() + i, dm.end());
 ```
 
 ### Calling Python from C++ and Compiling with CMake
+
 {lineno-start=8}
 ```cmake
 find_package(Python3 COMPONENTS Interpreter Development)
