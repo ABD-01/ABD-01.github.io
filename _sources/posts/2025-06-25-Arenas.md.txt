@@ -1,0 +1,169 @@
+---
+blogpost: true
+title: "Arenas"
+date: 25 June, 2025
+category: programming
+tags: memory management, arenas
+author: me
+language: English
+myst:
+    html_meta:
+        "property=og:title": "Arenas"
+        "language": "en"
+---
+
+{.hiddenh1}
+# Arenas
+
+Writing a memroy allocator for bare-metal systems.
+
+## Background
+
+Currently looking into arenas for manual memory management for [REDACTED] library.
+
+One interesting method to do manual memory management is Arenas.  
+[Ryan Fleury](https://www.rfleury.com/) has a blog on substack [Untangling Lifetimes: The Arena Allocator - by Ryan Fleury](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator). 
+
+## Notes
+### Memory Management and Arenas (Ryan Fleury)
+
+***Source: [Everyone is doing memory management wrong. feat. Ryan Fleury | S2 E02](https://www.youtube.com/watch?v=UeJPyuVxL-o)***
+
+#### Introduction
+
+You can conceptually think of Arenas as stacks. So when you call a function the variables are allocated on the stack and once the function call exits, all of those things are [[Words#28. jettisoned|jettisoned]] completely. That end of the function, marks the end of an overarching lifetime for each one of those variables.
+
+You can think of it like a proto version of a garbage collector.
+
+On the other side is the Heap Allocator ([malloc](https://en.cppreference.com/w/c/memory/malloc) and [free](https://en.cppreference.com/w/c/memory/free.html)), which lets you dynamically give a lifetime to a variable. 
+
+The stack style allocation is useful for functions, but often times the lifetime of the things we want to allocate conflict with the functions. Here is where Arenas come into play. Arenas not like tightly coupled to the function, but work in a similar way to automatically clean up memory.  
+So Arenas can either have a single large reservation of memory and the ability to grow, maybe by chaining. Contrary to stack, where you can run out of space ([stackoverflow](https://en.wikipedia.org/wiki/Stack_overflow)).
+
+**Example**: a json parser, with arenas, the caller passes a handle to the backing store to the parser (callee), saying here is where I want you to do the allocations of which I (the caller) controls the lifetime. The parser gets to decide how much to allocate and when to allocate, but it only pushes onto the buffer the user prepared for it.  
+When you begin the arena, you establish a lifetime. And the json parser is asked to push all the allocation in this arena. 
+
+#### Growth Strategies
+
+**Question**: Does the caller have to know how the callee will be using the memory?? Can function being called expand the arena if need be?? How much work does the function that is passing the arena have to do, in order to know if it passing the right amount of memory.  
+$\rightarrow$ Basically none. No extra work is to be done.  
+The caller just prepares the arena. It has opportunity to specify certain constraints.  
+Example:  
+(1) Disallow chain growth and allocate 8GB upfront, and everything has to fit in that else abort.  
+(2) start with say 64MB block, and chain new  blocks as needed.  
+(3) Reserve say 256GB of address space, that is not a physical commit of memory. Meaning reserving an address space saying nobody else can refer to these address legally, but there is no physical memory pages backing yet. And when you run of committed space in a region of arena, you call the OS to guarantee physical storage for a new range/block of address space.  
+
+#### Arena Allocator Interface 
+
+The interface of arena allocator is `push` and `push` at the base. Not `malloc` and `free`, so you cannot have arbitrary overlapping lifetime inside the arena.  
+You basically push new bytes at the end and pop them off the back.
+
+Many new languages have explicit allocator passing. (example: [std.array_list.ArrayListAligned.init - Zig Documentation](https://ziglang.org/documentation/0.14.1/std/#std.array_list.ArrayListAligned.init) or [std::vector<T,Allocator>::vector - cppreference.com](https://en.cppreference.com/w/cpp/container/vector/vector.html))
+
+```{code-block} zig
+:caption: ArrayList with allocator
+:linenos:
+
+// std definition
+pub fn init(allocator: Allocator) Self {
+    return Self{
+        .items = &[_]T{},
+        .capacity = 0,
+        .allocator = allocator,
+    };
+}
+
+// usage
+var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+var list = std.ArrayList(i32).init(gpa.allocator());
+
+// reference: https://pismice.github.io/HEIG_ZIG/docs/allocators/
+```
+
+```{code-block} cpp
+:caption: Vector with allocator
+:linenos:
+
+// std definition: GCC
+template <typename _Tp, typename _Alloc = std::allocator<_Tp>>
+class vector : protected _Vector_base<_Tp, _Alloc>
+{
+    explicit _GLIBCXX20_CONSTEXPR vector(const allocator_type &__a) _GLIBCXX_NOEXCEPT : _Base(__a) {}
+}
+
+// std definition: MSVC
+_EXPORT_STD template <class _Ty, class _Alloc = allocator<_Ty>>
+class vector
+{
+    _CONSTEXPR20 explicit vector(const _Alloc &_Al) noexcept
+        : _Mypair(_One_then_variadic_args_t{}, _Al)
+    {
+        _Mypair._Myval2._Alloc_proxy(_STD _Get_proxy_allocator(_Getal()));
+    }
+}
+
+std::allocator<int> my_alloc;
+std::vector<int, std::allocator<int>> vec(my_alloc);
+```
+
+In C++ [`std::pmr::monotonic_buffer_resource`](https://en.cppreference.com/w/cpp/memory/monotonic_buffer_resource.html) acts like an arena
+
+```{code-block} cpp
+:caption: Monotonic Buffer Resource
+:linenos:
+
+std::array<std::byte, total_nodes * 32> buffer; // enough to fit in all nodes
+std::pmr::monotonic_buffer_resource mbr{buffer.data(), buffer.size()};
+std::pmr::polymorphic_allocator<int> pa{&mbr};
+std::pmr::list<int> list{pa};
+```
+Example: 
+1. in a game, you might have a per frame arena. So every frame, you clear the arena, reset the allocation back to the minimum, and they you push all kind of dynamic stuff. And the at the beginning of the next frame 
+2. in web server or similar, you can have per request arena. Input to the request, results to respond with, etc all that could be pushed to arena and cleared after the data has been sent over the network.
+3. per thread scratch arenas, which are kind of like stack for that thread.
+
+Similar, to the dynamic push and pop style of the arenas, it is possible to have dynamic allocation onto the stack in C, using [`alloca`](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/alloca) .
+
+
+```{admonition} OS does the Allocations
+:class: important
+ 
+"The operating system is the one doing the allocations. **There is no true [[Words#26. dichotomy|dichotomy]] between stack and heap allocation.** The stack is just one dynamic allocation that the operating system has done for you"
+
+"The stack and heap they are terms that sort of exists at a semantic layer, but there is no difference between stack memory and heap memory"
+
+"Both are ultimately virtual address space reservation my the operating system. Both are going to have all the same caveats. It's just that **one is being micromanaged by the operating system**"
+
+-- Ryan Fleury
+
+```
+
+#### Pointer Stability
+An arena can be thought of a [slice](https://go.dev/ref/spec#Slice_types) (from the language [Go](https://go.dev/)) of memory. But with an important caveat: when a slice resizes in Go, it is not guaranteed that the pointer to an element in that slice remains valid. Similar with `std::vector` in C++. The pointer is not stable after the resize due to realloc.  
+	With an arena, you have chaining or initial large virtual address space reservation. So after you chain a new block or commit new physical memory to back virtual address space reservation, the pointers remain stable.
+
+See [STL/stl/inc/vector at main · microsoft/STL · GitHub](https://github.com/microsoft/STL/blob/main/stl/inc/vector#L875) how `std::vector` is resized when capacity is reached.
+
+#### When stop using Arena
+Mostly you do manual memory management as per the custom requirement. You build more complicated allocating structures on top of Arena Lifetime.  
+**Example: Free something in the middle of the region/arena.**  
+	The stack like behaviour is fast, but won't let you pop from arbitrary position. So you build a linked list that holds free blocks. So say in game development an entity is freed, the block goes into the free list. And when you allocate a new entity, instead of going to the end of the arena, you pop it off the free list and now that slot is reused.  
+	 
+The more you move towards solving generic problems, you kind of start writing your `malloc` and `free`. 
+
+## Implementation
+
+
+## Others
+### Malloc
+[newlib/libc/stdlib/\_mallocr.c at master · bminor/newlib](https://sourcegraph.com/github.com/bminor/newlib@master/-/blob/newlib/libc/stdlib/_mallocr.c?L2334) how actual malloc is implemented using `srbk` and `brk` syscalls.
+
+An excellent read on inner workings of malloc:
+- [Malloc\_tutorial.pdf - MarwanBurelle Laboratoire Système et Sécurité de l’EPITA (LSE)](https://wiki-prog.infoprepa.epita.fr/images/0/04/Malloc_tutorial.pdf)
+
+## References:
+- [Everyone is doing memory management wrong. feat. Ryan Fleury | S2 E02 - YouTube](https://www.youtube.com/watch?v=UeJPyuVxL-o&feature=youtu.be)
+- [Memory Allocation Strategies - Part 2 - gingerBill](https://www.gingerbill.org/article/2019/02/08/memory-allocation-strategies-002/)
+- [FreeRTOS-Kernel/portable/MemMang at main · FreeRTOS/FreeRTOS-Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/main/portable/MemMang)
+- [Game Engine Stream: Creating a Linear Memory Allocator](https://www.youtube.com/live/FqeanKu3NzI)
+- [Generating Aligned Memory - Embedded Artistry](https://embeddedartistry.com/blog/2017/02/22/generating-aligned-memory/)

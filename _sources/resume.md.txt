@@ -1,0 +1,100 @@
+---
+hide-toc: true
+---
+
+# Resume
+
+```{admonition} Resume
+:class: tip
+
+<iframe src="https://drive.google.com/file/d/1jKRISVTzQuRYLysdxEuylvjDU9vF9CBx/preview" width="640" height="1280" allow="autoplay"></iframe>
+
+```
+
+```{image} _static/images/under-construction.png
+:alt: under-construction.png
+:align: center
+:width: 20%
+```
+
+## Education
+
+`````{grid}
+````{grid-item}
+:columns: 3
+:class: sd-align-major-center
+
+```{image} _static/images/vnit-logo.png
+:alt: vnit logo
+:align: center
+:width: 100%
+```
+
+````
+
+````{grid-item}
+:columns: 9
+
+University: **Visvesvaraya National Institute of Technology**  
+Degree: *Bachelor of Technology*  
+Field of Study: **Electrical and Electronics Engineering**  
+  
+Coursework: Optimization techniques, Control System, Data Structures, Integral Transforms and Partial DEs,
+Computer Methods in Power System, Introduction to Entrepreneurship, Electronic Devices and Circuits,
+[Convolutional Neural Networks](https://coursera.org/verify/YHTUHBWA7L7S), [Python Specialization](https://coursera.org/verify/specialization/6VWNENLTVNTF), [ROS2 for Beginners](https://www.udemy.com/course/ros2-how-to/), [MIT 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/),
+[CS50x Introduction to Computer Science](https://certificates.cs50.io/3a1e1887-2383-40f3-b442-dd914bfe7f12.pdf)
+
+````
+`````
+
+## Skills
+
+### Programming Languages
+
+`````{tab-set}
+````{tab-item} Python
+
+In the realm of Python programming, I consider myself between an intermediate and advanced level.
+While some measure expertise by counting lines of code, I've never kept a record. My Python projects span diverse domains, from *web scraping*, *data analysis*, and *image processing* to *deep learning*. I've crafted production-grade **GUI tools** for vendors, developed **TCP servers**, created dynamic websites with **Flask**, implemented **function decorators**, explored perfplots, delved into meta-programming (Python scripts generating JS functions), and wrote **Sphinx** based documentation, among various other endeavors.
+
+My open-source contributions too were in Python. Checkout my [Python course certificate](https://github.com/ABD-01/Python-for-Everybody)
+
+
+````
+
+````{tab-item} C/C++
+
+While Python has dominated my programming landscape, C remains my first love and the cornerstone of my coding journey. 
+The bulk of my bread and butter stems from C programming. 
+My academic courses `CSL101` and `CSL210` were also focused on C language. In addition, I've also worked with associated tools, such as makefiles and CMakeLists. 
+
+````
+
+
+````{tab-item} Matlab
+I have a degree in Electrical Engineering. Do you think one can escape the sleepless night of assignments and simulations in MATLAB?
+````
+
+`````
+
+### Tools/Softwares
+
+\# TODO
+
+### Python Libraries
+
+\# TODO
+
+### Networking
+
+```{hlist}
+:columns: 4
+
+* TCP/IP
+* UART
+* CAN
+* UDS
+* Procol Buffers 
+* DoIP
+* Ethernet IEEE 802.3
+```

@@ -1,0 +1,1053 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Threads in PySide6, Python packaging and Executables" property="og:title" />
+<meta content="en" name="language" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>Threads in PySide6, Python packaging and Executables - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+            
+            <h1>Threads in PySide6, Python packaging and Executables</h1>
+            <p class="ablog-post-metainfo">
+     
+    <a class="reference internal" href="../2024/">
+        <i class="fas fa-calendar fa-sm"></i> January 15, 2024
+    </a>
+    
+    <!-- by [me <posts/author/me>] -->
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../tag/gui/"><i class="fas fa-hashtag fa-sm"></i>
+                GUI</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/python/"><i class="fas fa-hashtag fa-sm"></i>
+                Python</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/pyside6/"><i class="fas fa-hashtag fa-sm"></i>
+                PySide6</a> 
+            
+        
+    
+    
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../category/programming/"><i class="fas fa-tag fa-sm"></i>
+                programming</a> 
+            
+        
+    
+    
+</p>
+
+          
+
+          <section class="hiddenh1 tex2jax_ignore mathjax_ignore" id="threads-in-pyside6-python-packaging-and-executables">
+<h1>Threads in PySide6, Python packaging and Executables<a class="headerlink" href="#threads-in-pyside6-python-packaging-and-executables" title="Permalink to this heading">#</a></h1>
+<p>This post seves a guide as well as notes for developers working with PySide6. It covers topics such as managing output streams across scripts, running Python scripts in separate threads, and creating executable Python packages.</p>
+<section id="managing-output-streams">
+<h2>Managing Output Streams<a class="headerlink" href="#managing-output-streams" title="Permalink to this heading">#</a></h2>
+<p>The GUI tool I was developing was originally intended to have command line interface. However, the requirement changed there was a need to capture the output printed on the console to the GUI viewer. By default, <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> is used to print information to the console, but we can redirect it to other streams.</p>
+<section id="using-sys-to-send-signals-across-scripts">
+<h3>Using Sys to send signals across scripts<a class="headerlink" href="#using-sys-to-send-signals-across-scripts" title="Permalink to this heading">#</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EmittingStream</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">textWritten</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">textWritten</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> has an attribute <code class="docutils literal notranslate"><span class="pre">write</span></code> which can be overridden to send the output to the GUI.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">EmittingStream</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">stream</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">textWritten</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showOuput</span><span class="p">)</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setProgress</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="different-ways-to-create-worker-threads">
+<h2>Different ways to create worker threads<a class="headerlink" href="#different-ways-to-create-worker-threads" title="Permalink to this heading">#</a></h2>
+<section id="using-the-threading-module">
+<h3>1. Using the <a class="reference external" href="https://docs.python.org/3.10/library/threading.html">threading</a> Module<a class="headerlink" href="#using-the-threading-module" title="Permalink to this heading">#</a></h3>
+<p>The simplest approach is using Python’s built-in <a class="reference external" href="https://docs.python.org/3.10/library/threading.html"><code class="docutils literal notranslate"><span class="pre">threading</span></code></a> module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LogPyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_analysis</span><span class="p">)</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;logpy&quot;</span><span class="p">,</span> <span class="s2">&quot;-l&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">log_file</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">out_file</span><span class="p">]</span>
+        
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">EmittingStream</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">stream</span>
+        <span class="n">stream</span><span class="o">.</span><span class="n">textWritten</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showOuput</span><span class="p">)</span>
+        <span class="n">stream</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setProgress</span><span class="p">)</span>
+    
+        <span class="n">analysis_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+        <span class="c1"># Where main.py takes command line arguments</span>
+        <span class="n">analysis_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># To reset the sys.stdout back to default</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
+</pre></div>
+</div>
+</section>
+<section id="using-qrunnable-and-qthreadpool">
+<h3>2. Using <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QRunnable.html">QRunnable</a> and <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QThreadPool.html">QThreadPool</a><a class="headerlink" href="#using-qrunnable-and-qthreadpool" title="Permalink to this heading">#</a></h3>
+<p>For a more PySide6-friendly solution, use <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QRunnable.html"><code class="docutils literal notranslate"><span class="pre">QRunnable</span></code></a> with <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QThreadPool.html"><code class="docutils literal notranslate"><span class="pre">QThreadPool</span></code></a>. This integrates better with the PySide6 threading model.
+This method was used in the final version.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySide6.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">QRunnable</span><span class="p">,</span> <span class="n">QThreadPool</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WorkerSignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Worker</span><span class="p">(</span><span class="n">QRunnable</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Worker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span> <span class="o">=</span> <span class="n">WorkerSignals</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">AnalyzeLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">progress_callback</span><span class="p">):</span>
+        <span class="n">log_analyzer</span> <span class="o">=</span> <span class="n">LogAnalyzer</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">log_analyzer</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+
+    <span class="c1"># The actual logic of the thread</span>
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+           <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AnalyzeLogs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">exctype</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">exctype</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LogPyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadpool</span> <span class="o">=</span> <span class="n">QThreadPool</span><span class="p">()</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Finished&quot;</span><span class="p">,</span> <span class="s2">&quot;Log Analysis Finished&quot;</span><span class="p">)</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_args</span><span class="p">():</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showOuput</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setProgress</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadpool</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-qthread-and-qobject">
+<h3>3. Using <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QThread.html">QThread</a> and <a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QObject.html">QObject</a><a class="headerlink" href="#using-qthread-and-qobject" title="Permalink to this heading">#</a></h3>
+<p>For greater control over worker threads in a PyQt/PySide6 application, you can use QThread and move the worker to the thread.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySide6.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">QRunnable</span><span class="p">,</span> <span class="n">QThreadPool</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WorkerSignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Worker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span> <span class="o">=</span> <span class="n">WorkerSignals</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">AnalyzeLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">progress_callback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">log_analyzer</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+           <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AnalyzeLogs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">exctype</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">emit</span><span class="p">((</span><span class="n">exctype</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LogPyGUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_analysis</span><span class="p">)</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">finished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Finished&quot;</span><span class="p">,</span> <span class="s2">&quot;Log Analysis Finished&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LOG ANALYSIS COMPLETE&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_args</span><span class="p">():</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showOuput</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setProgress</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<section id="flexibility-with-multiple-workers-or-threads">
+<h4>Flexibility with Multiple Workers or Threads<a class="headerlink" href="#flexibility-with-multiple-workers-or-threads" title="Permalink to this heading">#</a></h4>
+<p>The approach allows you to dynamically reuse or replace threads and workers based on runtime conditions. For example, if you have a new task to start, you can stop the current worker, reset its state, and start a new one in the same thread, making it easy to manage multiple operations without creating additional threads:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">working</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">fsmState</span> <span class="o">=</span> <span class="s1">&#39;IDLE&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">working</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># Gracefully stop the current worker.</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">isRunning</span><span class="p">():</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">new_args</span><span class="p">)</span>  <span class="c1"># Instantiate a new worker.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_output</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_progress</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">work</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There is a lot of discussion arround which one of the 2nd and 3rd approach is better on the internet.
+You can see <a class="reference internal" href="#references"><span class="xref myst">References#right-way-to-use-qthread</span></a></p>
+</section>
+</section>
+</section>
+<section id="creating-python-package">
+<h2>Creating Python Package<a class="headerlink" href="#creating-python-package" title="Permalink to this heading">#</a></h2>
+<section id="old-way-using-setuptools">
+<h3>[Old Way] Using Setuptools<a class="headerlink" href="#old-way-using-setuptools" title="Permalink to this heading">#</a></h3>
+<p>The setup.py file is used to package your Python module so that it can be easily installed and distributed. It typically contains information about your package, such as its name, version, description, author, and the modules or packages it includes. Here’s a basic example of a setup.py file for a module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">setuptools</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;your_module&#39;</span><span class="p">,</span>          <span class="c1"># Replace &#39;your_module&#39; with your module name</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0&#39;</span><span class="p">,</span>             <span class="c1"># Replace &#39;1.0.0&#39; with your desired version number</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Description of your module&#39;</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Your Name&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;re&#39;</span><span class="p">,</span>                    <span class="c1"># List any dependencies required by your module here</span>
+        <span class="s1">&#39;easydict&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tabulate&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;argparse&#39;</span><span class="p">,</span>
+        <span class="c1"># Add more dependencies if needed</span>
+    <span class="p">],</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;your_script_name=your_module.main:main&#39;</span><span class="p">,</span>   <span class="c1"># Replace &#39;your_script_name&#39; with the name of your main script</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">version</span></code></strong>: The version number of your module. Use the <strong><a class="reference external" href="https://semver.org/">Semantic Versioning</a></strong> scheme (major.minor.patch).</p></li>
+</ul>
+<p>To create a distributable package</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code></p>
+<p>This will create a <strong><code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code></strong> file in the <strong><code class="docutils literal notranslate"><span class="pre">dist</span></code></strong> directory</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">/path/to/your_module-1.0.0.tar.gz</span></code></p>
+</section>
+<section id="building-package-using-pyproject-toml">
+<h3>Building package using pyproject.toml<a class="headerlink" href="#building-package-using-pyproject-toml" title="Permalink to this heading">#</a></h3>
+<div class="seealso admonition">
+<p class="admonition-title">Using setup.py</p>
+<p>Setuptools offers first class support for <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> files as a configuration mechanism.</p>
+<p>It is important to remember, however, that running this file as a script (e.g. <code class="docutils literal notranslate"><span class="pre">python setup.py sdist</span></code>) is strongly <strong>discouraged</strong>, and that the majority of the command line interfaces are (or will be) <strong>deprecated</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">python setup.py install</span></code>, <code class="docutils literal notranslate"><span class="pre">python setup.py bdist_wininst</span></code>, …).</p>
+<p>We also recommend users to expose as much as possible configuration in a more <em>declarative</em> way via the <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html">pyproject.toml</a> or <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/declarative_config.html">setup.cfg</a>, and keep the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> minimal with only the dynamic parts (or even omit it completely if applicable).</p>
+<p>See <a class="reference external" href="https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html">Why you shouldn’t invoke setup.py directly</a> for more background.</p>
+<p>— From: <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/quickstart.html#basic-use">Quickstart - setuptools 68.1.2.post20230818 documentation (pypa.io)</a></p>
+</div>
+<p>The Python packaging community is moving towards using declarative configuration files like <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></strong> instead of relying on the traditional <strong><code class="docutils literal notranslate"><span class="pre">setup.py</span></code></strong> script. This is part of the Python Packaging Authority (PyPA) initiative to improve the packaging ecosystem.</p>
+<p>To make use of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, you will need to have the <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> package version 46.4.0 or later installed, as it added support for this configuration file.</p>
+<p>Example:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&gt;=46.4.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+
+<span class="k">[tool.logpy]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+<span class="n">author_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your@email.com&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Your log analysis tool&quot;</span>
+<span class="c1"># Add other metadata options as needed</span>
+
+<span class="k">[tool.logpy.entry_points]</span>
+<span class="n">console_scripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;logpy=logpy.main:main&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> defined, you can then build and distribute your package using modern tools like <code class="docutils literal notranslate"><span class="pre">flit</span></code> or <code class="docutils literal notranslate"><span class="pre">poetry</span></code>, which leverage this configuration file for building, packaging, and distribution.</p>
+<section id="poetry">
+<h4>Poetry<a class="headerlink" href="#poetry" title="Permalink to this heading">#</a></h4>
+<p>Example:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+
+<span class="k">[tool.poetry]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Your Log Analysis Package&quot;</span>
+<span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Your Name &lt;your.email@example.com&gt;&quot;</span><span class="p">]</span>
+<span class="n">license</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span>
+<span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;analysis&quot;</span><span class="p">]</span>
+<span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;Development Status :: 3 - Alpha&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Intended Audience :: Developers&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;License :: OSI Approved :: MIT License&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.7&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Programming Language :: Python :: 3.9&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[tool.poetry.dependencies]</span>
+<span class="n">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^3.7&quot;</span>
+<span class="n">tabulate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^0.8&quot;</span>
+<span class="n">easydict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^1.9&quot;</span>
+<span class="n">argparse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^1.4&quot;</span>
+
+<span class="k">[tool.poetry.scripts]</span>
+<span class="n">logpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy.main:main&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[build-system]</span></code></strong>: This section is required for specifying the build system to use. In this case, we are using <strong><code class="docutils literal notranslate"><span class="pre">setuptools.build_meta</span></code></strong>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry]</span></code></strong>: This section is for defining metadata about your package like its name, version, description, authors, license, keywords, and classifiers. You can modify these values to match your project details.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code></strong>: This section lists the dependencies required by your package. It includes the modules you mentioned: <strong><code class="docutils literal notranslate"><span class="pre">tabulate</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">easydict</span></code></strong>, and <strong><code class="docutils literal notranslate"><span class="pre">argparse</span></code></strong>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry.scripts]</span></code></strong>: This section allows you to define command-line scripts that will be available after the package is installed. In this case, we define a script named <strong><code class="docutils literal notranslate"><span class="pre">logpy</span></code></strong>, and it is associated with the <strong><code class="docutils literal notranslate"><span class="pre">main:main</span></code></strong> function in your <strong><code class="docutils literal notranslate"><span class="pre">main.py</span></code></strong> script. When users run <strong><code class="docutils literal notranslate"><span class="pre">logpy</span></code></strong> in the terminal, it will execute the <strong><code class="docutils literal notranslate"><span class="pre">main()</span></code></strong> function from <strong><code class="docutils literal notranslate"><span class="pre">main.py</span></code></strong>.</p></li>
+</ol>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.logpy.entry_points]</span>
+<span class="n">console_scripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;logpy=logpy.main:main&quot;</span><span class="p">]</span>
+
+<span class="c1">## Turns into</span>
+
+<span class="k">[tool.poetry.scripts]</span>
+<span class="n">logpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy.main:main&quot;</span>
+</pre></div>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">ChatGPT</p>
+<p>In Python packaging, <strong><code class="docutils literal notranslate"><span class="pre">poetry</span></code></strong> is a tool for dependency management and packaging. It provides a more modern and user-friendly approach to managing project dependencies and creating distributable packages. The <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> file is used by Poetry to define the project’s metadata, dependencies, scripts, and other configuration options.</p>
+<p>On the other hand, <strong><code class="docutils literal notranslate"><span class="pre">setup.py</span></code></strong> is a traditional way of defining project metadata and packaging details. Historically, it has been used with <strong><code class="docutils literal notranslate"><span class="pre">setuptools</span></code></strong> for building and distributing Python packages. It’s still widely used and supported, but as mentioned in the setuptools documentation, it’s recommended to use a more declarative approach with <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></strong> and keep the <strong><code class="docutils literal notranslate"><span class="pre">setup.py</span></code></strong> minimal with only the dynamic parts.</p>
+<p>Here’s why <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> with <strong><code class="docutils literal notranslate"><span class="pre">poetry</span></code></strong> is preferred over <strong><code class="docutils literal notranslate"><span class="pre">setup.py</span></code></strong> for defining scripts and dependencies:</p>
+<ol class="arabic simple">
+<li><p><strong>More Declarative Configuration</strong>: <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> is more declarative, and it separates the project configuration from the build configuration. It allows you to define the project metadata, dependencies, and scripts more cleanly.</p></li>
+<li><p><strong>Locking Dependencies</strong>: Poetry provides a way to lock the dependencies by generating a <strong><code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code></strong> file. This file ensures that the project uses specific versions of the dependencies, ensuring a consistent environment across different installations.</p></li>
+<li><p><strong>Easier Dependency Management</strong>: Poetry simplifies dependency management by offering various commands to add, update, and remove packages easily.</p></li>
+</ol>
+<p>Regarding your second example, the <strong><code class="docutils literal notranslate"><span class="pre">[project]</span></code></strong> section with <strong><code class="docutils literal notranslate"><span class="pre">setup.py</span></code></strong> is used when defining metadata for traditional Python packaging using <strong><code class="docutils literal notranslate"><span class="pre">setuptools</span></code></strong>. It is still widely used and is a valid way to define scripts and dependencies.</p>
+<p>However, when using <strong><code class="docutils literal notranslate"><span class="pre">poetry</span></code></strong>, the scripts and dependencies are defined under the <strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry]</span></code></strong> section in the <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> file. It provides a more modern and unified way to define all aspects of the project, including scripts, dependencies, and package details.</p>
+<p>In summary, if you are using <strong><code class="docutils literal notranslate"><span class="pre">poetry</span></code></strong> for managing your project and dependencies, it’s best to define scripts and dependencies in the <strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> file under <strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry.scripts]</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code></strong> sections, respectively. This aligns with the more modern and declarative approach that <strong><code class="docutils literal notranslate"><span class="pre">poetry</span></code></strong> provides.</p>
+</div>
+<p><strong>Usage</strong>:</p>
+<p><img alt="poetry build" src="https://github.com/ABD-01/log-analysis/raw/master/media/image-4.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">build</span></code></p>
+<p>To install run: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.\dist\logpy-1.3.3-py3-none-any.whl</span></code></p>
+<p>Having multiple entry points:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.scripts]</span>
+<span class="n">logpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy.main:main&quot;</span>
+<span class="n">logpy-gui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy.gui:gui&quot;</span>
+<span class="n">logpy-gui2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;logpy.gui_devel:gui&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="creating-executable-python-package-for-pyside6">
+<h2>Creating Executable Python Package for PySide6<a class="headerlink" href="#creating-executable-python-package-for-pyside6" title="Permalink to this heading">#</a></h2>
+<p>To create .exe for GUI:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyinstaller</span> <span class="pre">.\logpy\gui_devel.py</span> <span class="pre">.\logpy\gui.py</span> <span class="pre">-n</span> <span class="pre">LogPy-Gui</span> <span class="pre">--noconsole</span></code></p>
+<p>Other example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pyinstaller<span class="w"> </span>--name<span class="w"> </span>uApplication_v<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>.exe<span class="w"> </span>--log-level<span class="w"> </span>WARN<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--onefile<span class="w"> </span>--noconsole<span class="w"> </span>--noconfirm<span class="w"> </span>--clean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--icon<span class="w"> </span>resources/icon.ico<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;resources/icon.ico;resources&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;resources/background.gif;resources&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;resources/fonts/fira-sans.regular.ttf;resources/fonts&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;resources/fonts/whitrabt.ttf;resources/fonts&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;resources/fonts/TitilliumWeb-Regular.ttf;resources/fonts&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--add-data<span class="o">=</span><span class="s2">&quot;config.toml;.&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--hidden-import<span class="w"> </span>platform<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>main.py
+</pre></div>
+</div>
+<section id="using-spec-file">
+<h3>Using .spec file<a class="headerlink" href="#using-spec-file" title="Permalink to this heading">#</a></h3>
+<p>Making .spec files:</p>
+<ul>
+<li><p>For <strong>logpy/main.py</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">pyi-makespec</span> <span class="p">.\</span><span class="n">logpy</span><span class="p">\</span><span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="n">-n</span> <span class="n">LogPy</span>
+</pre></div>
+</div>
+</li>
+<li><p>For <strong>logpy/gui.py</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">pyi-makespec</span> <span class="p">.\</span><span class="n">logpy</span><span class="p">\</span><span class="n">gui</span><span class="p">.</span><span class="n">py</span> <span class="p">`</span>
+		<span class="n">-n</span> <span class="n">LogPy-Gui</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-noconsole</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-icon</span><span class="p">=</span><span class="n">logpy</span><span class="p">/</span><span class="n">guiutils</span><span class="p">/</span><span class="n">results-icon</span><span class="p">.</span><span class="n">ico</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-add-data</span><span class="p">=</span><span class="s2">&quot;README.md;.&quot;</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-add-data</span><span class="p">=</span><span class="s2">&quot;logpy/guiutils/results-icon.ico;icons&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>For <strong>logpy/gui_devel.py</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">pyi-makespec</span> <span class="p">.\</span><span class="n">logpy</span><span class="p">\</span><span class="n">gui_devel</span><span class="p">.</span><span class="n">py</span> <span class="p">`</span>
+		<span class="n">-n</span> <span class="n">LogPy-Gui2</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-noconsole</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-icon</span><span class="p">=</span><span class="n">logpy</span><span class="p">/</span><span class="n">guiutils</span><span class="p">/</span><span class="n">results-icon</span><span class="p">.</span><span class="n">ico</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-add-data</span><span class="p">=</span><span class="s2">&quot;README.md;.&quot;</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-add-data</span><span class="p">=</span><span class="s2">&quot;logpy/guiutils/results-icon.ico;icons&quot;</span> <span class="p">`</span>
+		<span class="p">-</span><span class="n">-add-data</span><span class="p">=</span><span class="s2">&quot;logpy/guiutils/analysis-icon.ico;icons&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Combining all spec files in <em><strong>LogPy.spec</strong></em> file:</p>
+<div class="highlight-spec notranslate"><div class="highlight"><pre><span></span><span class="c"># -*- mode: python ; coding: utf-8 -*-</span>
+
+block_cipher<span class="w"> </span>=<span class="w"> </span>None
+
+logpy<span class="w"> </span>=<span class="w"> </span>Analysis([<span class="s1">&#39;logpy\\main.py&#39;</span>],<span class="w"> </span>...)
+logpy_pyz<span class="w"> </span>=<span class="w"> </span>PYZ(logpy.pure,<span class="w"> </span>...)
+logpy_exe<span class="w"> </span>=<span class="w"> </span>EXE(logpy_pyz,<span class="w"> </span>name=<span class="s1">&#39;LogPy&#39;</span>,<span class="w"> </span>...,)
+
+gui<span class="w"> </span>=<span class="w"> </span>Analysis([<span class="s1">&#39;logpy\\gui.py&#39;</span>],<span class="w"> </span>...)
+gui_pyz<span class="w"> </span>=<span class="w"> </span>PYZ(gui.pure,<span class="w"> </span>...)
+gui_exe<span class="w"> </span>=<span class="w"> </span>EXE(gui_pyz,<span class="w"> </span>name=<span class="s1">&#39;LogPy-Gui&#39;</span>,icon=[<span class="s1">&#39;logpy\\guiutils\\results-icon.ico&#39;</span>],<span class="w"> </span>...)
+
+gui2<span class="w"> </span>=<span class="w"> </span>Analysis([<span class="s1">&#39;logpy\\gui_devel.py&#39;</span>],<span class="w"> </span>datas=[(<span class="s1">&#39;README.md&#39;</span>,<span class="w"> </span><span class="s1">&#39;.&#39;</span>),<span class="w"> </span>(<span class="s1">&#39;logpy/guiutils/results-icon.ico&#39;</span>,<span class="w"> </span><span class="s1">&#39;icons&#39;</span>)],<span class="w"> </span>...)
+gui2_pyz<span class="w"> </span>=<span class="w"> </span>PYZ(gui2.pure,<span class="w"> </span>...)
+gui2_exe<span class="w"> </span>=<span class="w"> </span>EXE(gui2_pyz,<span class="w"> </span>icon=[<span class="s1">&#39;logpy\\guiutils\\results-icon.ico&#39;</span>],<span class="w"> </span>...)
+
+coll<span class="w"> </span>=<span class="w"> </span>COLLECT(
+<span class="w">    </span>logpy_exe,
+<span class="w">    </span>logpy.binaries,
+<span class="w">    </span>logpy.zipfiles,
+<span class="w">    </span>logpy.datas,
+
+<span class="w">    </span>gui_exe,
+<span class="w">    </span>gui.binaries,
+<span class="w">    </span>gui.zipfiles,
+<span class="w">    </span>gui.datas,
+
+<span class="w">    </span>gui2_exe,
+<span class="w">    </span>gui2.binaries,
+<span class="w">    </span>gui2.zipfiles,
+<span class="w">    </span>gui2.datas,
+
+<span class="w">    </span>strip=False,
+<span class="w">    </span>upx=True,
+<span class="w">    </span>upx_exclude=[],
+<span class="w">    </span>name=<span class="s1">&#39;LogPy&#39;</span>,
+)
+</pre></div>
+</div>
+<p>To build:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyinstaller</span> <span class="pre">.\LogPy.spec</span></code></p>
+</section>
+<section id="using-installforge">
+<h3>Using InstallForge<a class="headerlink" href="#using-installforge" title="Permalink to this heading">#</a></h3>
+<p>InstallForge can be used to create installers for your package, which is especially useful for packaging GUI applications for Windows.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/31420317/how-to-understand-sys-stdout-and-sys-stderr-in-python">How to understand sys.stdout and sys.stderr in Python - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://doc.qt.io/qtforpython-6/PySide6/QtCore/QThread.html">Reference: QThread - Qt for Python</a></p></li>
+<li><p>Right way to use QThread?</p>
+<ul>
+<li><p><a class="reference external" href="https://www.qt.io/blog/2010/06/17/youre-doing-it-wrong">You’re doing it wrong</a></p></li>
+<li><p><a class="reference external" href="https://woboq.com/blog/qthread-you-were-not-doing-so-wrong.html">QThread: You were not doing so wrong.</a></p></li>
+<li><p><a class="reference external" href="https://www.slideshare.net/slideshow/qthreads-are-you-using-them-wrong/51106351">QThreads: Are You Using Them Wrong?</a></p></li>
+<li><p><a class="reference external" href="https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/">How To Really, Truly Use QThreads; The Full Explanation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://python-poetry.org/docs/basic-usage/">Poetry - Python dependency management and packaging made easy (python-poetry.org)</a></p></li>
+<li><p><a class="reference external" href="https://www.pythonguis.com/tutorials/packaging-pyside2-applications-windows-pyinstaller/">Packaging PySide2 applications for Windows with PyInstaller &amp; InstallForge (pythonguis.com)</a></p></li>
+<li><p><a class="reference external" href="https://pyinstaller.org/en/stable/usage.html">Using PyInstaller — PyInstaller 5.13.0 documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.zacoding.com/en/post/pyinstaller-create-multiple-executables/">[PyInstaller] Create multiple exe’s in one folder | ZA-Coding (zacoding.com)</a></p></li>
+<li><p><a class="reference external" href="https://installforge.net/docs/getting-started/quick-start-guide/#building-the-setup-package">Quick Start Guide - InstallForge Documentation</a></p></li>
+</ul>
+<!-- Links -->
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+  </span>
+  <!-- <span class="ablog__spacer">&nbsp;</span> -->
+  <span class="ablog__next">
+    
+    
+    <a href="../2024-06-12-C-wrapper/">
+      <span>Writing C wrapper for C++ libraries</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+            
+            
+            
+           
+            <div class="section ablog__comments"> 
+              
+
+<h2>Comments</h2>
+<script src="https://giscus.app/client.js"
+  data-repo="ABD-01/ABD-01.github.io"
+  data-repo-id="R_kgDOJLoETw"
+  data-category="General"
+  data-category-id="DIC_kwDOJLoET84CiH6W"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<script>
+    function changeGiscusTheme() {
+        var theme = document.body.dataset.theme === "light" ? "light" : "dark_dimmed";
+        var frame = document.querySelector(".giscus-frame");
+        console.log("Changing theme to " + theme);
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+      );
+    }
+    function setupGiscusTheme() {
+      // Attach event handlers for toggling themes
+      const buttons = document.getElementsByClassName("theme-toggle");
+      Array.from(buttons).forEach((btn) => {
+        btn.addEventListener("click", () => { setTimeout(changeGiscusTheme, 500); });
+    });
+  }
+  
+  setupGiscusTheme();
+  setTimeout(changeGiscusTheme, 10000);
+</script>
+            </div>
+
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Threads in PySide6, Python packaging and Executables</a><ul>
+<li><a class="reference internal" href="#managing-output-streams">Managing Output Streams</a><ul>
+<li><a class="reference internal" href="#using-sys-to-send-signals-across-scripts">Using Sys to send signals across scripts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#different-ways-to-create-worker-threads">Different ways to create worker threads</a><ul>
+<li><a class="reference internal" href="#using-the-threading-module">1. Using the threading Module</a></li>
+<li><a class="reference internal" href="#using-qrunnable-and-qthreadpool">2. Using QRunnable and QThreadPool</a></li>
+<li><a class="reference internal" href="#using-qthread-and-qobject">3. Using QThread and QObject</a><ul>
+<li><a class="reference internal" href="#flexibility-with-multiple-workers-or-threads">Flexibility with Multiple Workers or Threads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-python-package">Creating Python Package</a><ul>
+<li><a class="reference internal" href="#old-way-using-setuptools">[Old Way] Using Setuptools</a></li>
+<li><a class="reference internal" href="#building-package-using-pyproject-toml">Building package using pyproject.toml</a><ul>
+<li><a class="reference internal" href="#poetry">Poetry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-executable-python-package-for-pyside6">Creating Executable Python Package for PySide6</a><ul>
+<li><a class="reference internal" href="#using-spec-file">Using .spec file</a></li>
+<li><a class="reference internal" href="#using-installforge">Using InstallForge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

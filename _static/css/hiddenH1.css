@@ -1,0 +1,18 @@
+/**
+<div class="hiddenh1">
+    <h1>This will be hidden</h1>
+    <h1>This will still be visible</h1>
+    <div>
+        <h1>This will be visible (not a direct child)</h1>
+    </div>
+</div>
+
+<h1>This will be visible (outside .hiddenh1)</h1>
+*/
+
+/* Shameful hack to shut up the myst generator */
+.hiddenh1 > h1:first-of-type {
+    display: none;
+}
+/* :first-of-type is a pseudo-class that matches the first element of its type
+ (in this case, h1) among a group of siblings. */

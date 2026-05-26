@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Arenas" property="og:title" />
+<meta content="en" name="language" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>Arenas - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/qemu.css">
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+            
+            <h1>Arenas</h1>
+            <p class="ablog-post-metainfo">
+     
+    <a class="reference internal" href="../2025/">
+        <i class="fas fa-calendar fa-sm"></i> June 25, 2025
+    </a>
+    
+    <!-- by [me <posts/author/me>] -->
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../tag/memory-management/"><i class="fas fa-hashtag fa-sm"></i>
+                memory management</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/arenas/"><i class="fas fa-hashtag fa-sm"></i>
+                arenas</a> 
+            
+        
+    
+    
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../category/programming/"><i class="fas fa-tag fa-sm"></i>
+                programming</a> 
+            
+        
+    
+    
+</p>
+
+          
+
+          <section class="hiddenh1 tex2jax_ignore mathjax_ignore" id="arenas">
+<h1>Arenas<a class="headerlink" href="#arenas" title="Permalink to this heading">#</a></h1>
+<p>Writing a memroy allocator for bare-metal systems.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>Currently looking into arenas for manual memory management for [REDACTED] library.</p>
+<p>One interesting method to do manual memory management is Arenas.<br />
+<a class="reference external" href="https://www.rfleury.com/">Ryan Fleury</a> has a blog on substack <a class="reference external" href="https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator">Untangling Lifetimes: The Arena Allocator - by Ryan Fleury</a>.</p>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+<section id="memory-management-and-arenas-ryan-fleury">
+<h3>Memory Management and Arenas (Ryan Fleury)<a class="headerlink" href="#memory-management-and-arenas-ryan-fleury" title="Permalink to this heading">#</a></h3>
+<p><em><strong>Source: <a class="reference external" href="https://www.youtube.com/watch?v=UeJPyuVxL-o">Everyone is doing memory management wrong. feat. Ryan Fleury | S2 E02</a></strong></em></p>
+<section id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h4>
+<p>You can conceptually think of Arenas as stacks. So when you call a function the variables are allocated on the stack and once the function call exits, all of those things are [[Words#28. jettisoned|jettisoned]] completely. That end of the function, marks the end of an overarching lifetime for each one of those variables.</p>
+<p>You can think of it like a proto version of a garbage collector.</p>
+<p>On the other side is the Heap Allocator (<a class="reference external" href="https://en.cppreference.com/w/c/memory/malloc">malloc</a> and <a class="reference external" href="https://en.cppreference.com/w/c/memory/free.html">free</a>), which lets you dynamically give a lifetime to a variable.</p>
+<p>The stack style allocation is useful for functions, but often times the lifetime of the things we want to allocate conflict with the functions. Here is where Arenas come into play. Arenas not like tightly coupled to the function, but work in a similar way to automatically clean up memory.<br />
+So Arenas can either have a single large reservation of memory and the ability to grow, maybe by chaining. Contrary to stack, where you can run out of space (<a class="reference external" href="https://en.wikipedia.org/wiki/Stack_overflow">stackoverflow</a>).</p>
+<p><strong>Example</strong>: a json parser, with arenas, the caller passes a handle to the backing store to the parser (callee), saying here is where I want you to do the allocations of which I (the caller) controls the lifetime. The parser gets to decide how much to allocate and when to allocate, but it only pushes onto the buffer the user prepared for it.<br />
+When you begin the arena, you establish a lifetime. And the json parser is asked to push all the allocation in this arena.</p>
+</section>
+<section id="growth-strategies">
+<h4>Growth Strategies<a class="headerlink" href="#growth-strategies" title="Permalink to this heading">#</a></h4>
+<p><strong>Question</strong>: Does the caller have to know how the callee will be using the memory?? Can function being called expand the arena if need be?? How much work does the function that is passing the arena have to do, in order to know if it passing the right amount of memory.<br />
+<span class="math notranslate nohighlight">\(\rightarrow\)</span> Basically none. No extra work is to be done.<br />
+The caller just prepares the arena. It has opportunity to specify certain constraints.<br />
+Example:<br />
+(1) Disallow chain growth and allocate 8GB upfront, and everything has to fit in that else abort.<br />
+(2) start with say 64MB block, and chain new  blocks as needed.<br />
+(3) Reserve say 256GB of address space, that is not a physical commit of memory. Meaning reserving an address space saying nobody else can refer to these address legally, but there is no physical memory pages backing yet. And when you run of committed space in a region of arena, you call the OS to guarantee physical storage for a new range/block of address space.</p>
+</section>
+<section id="arena-allocator-interface">
+<h4>Arena Allocator Interface<a class="headerlink" href="#arena-allocator-interface" title="Permalink to this heading">#</a></h4>
+<p>The interface of arena allocator is <code class="docutils literal notranslate"><span class="pre">push</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> at the base. Not <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code>, so you cannot have arbitrary overlapping lifetime inside the arena.<br />
+You basically push new bytes at the end and pop them off the back.</p>
+<p>Many new languages have explicit allocator passing. (example: <a class="reference external" href="https://ziglang.org/documentation/0.14.1/std/#std.array_list.ArrayListAligned.init">std.array_list.ArrayListAligned.init - Zig Documentation</a> or <a class="reference external" href="https://en.cppreference.com/w/cpp/container/vector/vector.html">std::vector&lt;T,Allocator&gt;::vector - cppreference.com</a>)</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">ArrayList with allocator</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-zig notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// std definition</span>
+<span class="linenos"> 2</span><span class="kr">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">init</span><span class="p">(</span><span class="n">allocator</span><span class="o">:</span><span class="w"> </span><span class="n">Allocator</span><span class="p">)</span><span class="w"> </span><span class="n">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Self</span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="p">.</span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="n">_</span><span class="p">]</span><span class="n">T</span><span class="p">{},</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="p">.</span><span class="n">capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="p">.</span><span class="n">allocator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allocator</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="p">};</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1">// usage</span>
+<span class="linenos">11</span><span class="kr">var</span><span class="w"> </span><span class="n">gpa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">heap</span><span class="p">.</span><span class="n">GeneralPurposeAllocator</span><span class="p">(.{}){};</span>
+<span class="linenos">12</span><span class="kr">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">ArrayList</span><span class="p">(</span><span class="kt">i32</span><span class="p">).</span><span class="n">init</span><span class="p">(</span><span class="n">gpa</span><span class="p">.</span><span class="n">allocator</span><span class="p">());</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1">// reference: https://pismice.github.io/HEIG_ZIG/docs/allocators/</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Vector with allocator</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// std definition: GCC</span>
+<span class="linenos"> 2</span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">_Tp</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">_Alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">_Tp</span><span class="o">&gt;&gt;</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">vector</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">protected</span><span class="w"> </span><span class="n">_Vector_base</span><span class="o">&lt;</span><span class="n">_Tp</span><span class="p">,</span><span class="w"> </span><span class="n">_Alloc</span><span class="o">&gt;</span>
+<span class="linenos"> 4</span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">_GLIBCXX20_CONSTEXPR</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">allocator_type</span><span class="w"> </span><span class="o">&amp;</span><span class="n">__a</span><span class="p">)</span><span class="w"> </span><span class="nl">_GLIBCXX_NOEXCEPT</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">_Base</span><span class="p">(</span><span class="n">__a</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="linenos"> 6</span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// std definition: MSVC</span>
+<span class="linenos"> 9</span><span class="n">_EXPORT_STD</span><span class="w"> </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">_Ty</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">_Alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">_Ty</span><span class="o">&gt;&gt;</span>
+<span class="linenos">10</span><span class="k">class</span><span class="w"> </span><span class="nc">vector</span>
+<span class="linenos">11</span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">_CONSTEXPR20</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">_Alloc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_Al</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="linenos">13</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">_Mypair</span><span class="p">(</span><span class="n">_One_then_variadic_args_t</span><span class="p">{},</span><span class="w"> </span><span class="n">_Al</span><span class="p">)</span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">_Mypair</span><span class="p">.</span><span class="n">_Myval2</span><span class="p">.</span><span class="n">_Alloc_proxy</span><span class="p">(</span><span class="n">_STD</span><span class="w"> </span><span class="n">_Get_proxy_allocator</span><span class="p">(</span><span class="n">_Getal</span><span class="p">()));</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_alloc</span><span class="p">;</span>
+<span class="linenos">20</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">vec</span><span class="p">(</span><span class="n">my_alloc</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>In C++ <a class="reference external" href="https://en.cppreference.com/w/cpp/memory/monotonic_buffer_resource.html"><code class="docutils literal notranslate"><span class="pre">std::pmr::monotonic_buffer_resource</span></code></a> acts like an arena</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Monotonic Buffer Resource</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">byte</span><span class="p">,</span><span class="w"> </span><span class="n">total_nodes</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">32</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"> </span><span class="c1">// enough to fit in all nodes</span>
+<span class="linenos">2</span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">monotonic_buffer_resource</span><span class="w"> </span><span class="n">mbr</span><span class="p">{</span><span class="n">buffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">size</span><span class="p">()};</span>
+<span class="linenos">3</span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">polymorphic_allocator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pa</span><span class="p">{</span><span class="o">&amp;</span><span class="n">mbr</span><span class="p">};</span>
+<span class="linenos">4</span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">{</span><span class="n">pa</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>Example:</p>
+<ol class="arabic simple">
+<li><p>in a game, you might have a per frame arena. So every frame, you clear the arena, reset the allocation back to the minimum, and they you push all kind of dynamic stuff. And the at the beginning of the next frame</p></li>
+<li><p>in web server or similar, you can have per request arena. Input to the request, results to respond with, etc all that could be pushed to arena and cleared after the data has been sent over the network.</p></li>
+<li><p>per thread scratch arenas, which are kind of like stack for that thread.</p></li>
+</ol>
+<p>Similar, to the dynamic push and pop style of the arenas, it is possible to have dynamic allocation onto the stack in C, using <a class="reference external" href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/alloca"><code class="docutils literal notranslate"><span class="pre">alloca</span></code></a> .</p>
+<div class="important admonition">
+<p class="admonition-title">OS does the Allocations</p>
+<p>“The operating system is the one doing the allocations. <strong>There is no true [[Words#26. dichotomy|dichotomy]] between stack and heap allocation.</strong> The stack is just one dynamic allocation that the operating system has done for you”</p>
+<p>“The stack and heap they are terms that sort of exists at a semantic layer, but there is no difference between stack memory and heap memory”</p>
+<p>“Both are ultimately virtual address space reservation my the operating system. Both are going to have all the same caveats. It’s just that <strong>one is being micromanaged by the operating system</strong>”</p>
+<p>– Ryan Fleury</p>
+</div>
+</section>
+<section id="pointer-stability">
+<h4>Pointer Stability<a class="headerlink" href="#pointer-stability" title="Permalink to this heading">#</a></h4>
+<p>An arena can be thought of a <a class="reference external" href="https://go.dev/ref/spec#Slice_types">slice</a> (from the language <a class="reference external" href="https://go.dev/">Go</a>) of memory. But with an important caveat: when a slice resizes in Go, it is not guaranteed that the pointer to an element in that slice remains valid. Similar with <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> in C++. The pointer is not stable after the resize due to realloc.<br />
+With an arena, you have chaining or initial large virtual address space reservation. So after you chain a new block or commit new physical memory to back virtual address space reservation, the pointers remain stable.</p>
+<p>See <a class="reference external" href="https://github.com/microsoft/STL/blob/main/stl/inc/vector#L875">STL/stl/inc/vector at main · microsoft/STL · GitHub</a> how <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> is resized when capacity is reached.</p>
+</section>
+<section id="when-stop-using-arena">
+<h4>When stop using Arena<a class="headerlink" href="#when-stop-using-arena" title="Permalink to this heading">#</a></h4>
+<p>Mostly you do manual memory management as per the custom requirement. You build more complicated allocating structures on top of Arena Lifetime.<br />
+<strong>Example: Free something in the middle of the region/arena.</strong><br />
+The stack like behaviour is fast, but won’t let you pop from arbitrary position. So you build a linked list that holds free blocks. So say in game development an entity is freed, the block goes into the free list. And when you allocate a new entity, instead of going to the end of the arena, you pop it off the free list and now that slot is reused.</p>
+<p>The more you move towards solving generic problems, you kind of start writing your <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<section id="malloc">
+<h3>Malloc<a class="headerlink" href="#malloc" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://sourcegraph.com/github.com/bminor/newlib&#64;master/-/blob/newlib/libc/stdlib/_mallocr.c?L2334">newlib/libc/stdlib/_mallocr.c at master · bminor/newlib</a> how actual malloc is implemented using <code class="docutils literal notranslate"><span class="pre">srbk</span></code> and <code class="docutils literal notranslate"><span class="pre">brk</span></code> syscalls.</p>
+<p>An excellent read on inner workings of malloc:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki-prog.infoprepa.epita.fr/images/0/04/Malloc_tutorial.pdf">Malloc_tutorial.pdf - MarwanBurelle Laboratoire Système et Sécurité de l’EPITA (LSE)</a></p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h2>References:<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=UeJPyuVxL-o&amp;amp;feature=youtu.be">Everyone is doing memory management wrong. feat. Ryan Fleury | S2 E02 - YouTube</a></p></li>
+<li><p><a class="reference external" href="https://www.gingerbill.org/article/2019/02/08/memory-allocation-strategies-002/">Memory Allocation Strategies - Part 2 - gingerBill</a></p></li>
+<li><p><a class="reference external" href="https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/main/portable/MemMang">FreeRTOS-Kernel/portable/MemMang at main · FreeRTOS/FreeRTOS-Kernel</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/live/FqeanKu3NzI">Game Engine Stream: Creating a Linear Memory Allocator</a></p></li>
+<li><p><a class="reference external" href="https://embeddedartistry.com/blog/2017/02/22/generating-aligned-memory/">Generating Aligned Memory - Embedded Artistry</a></p></li>
+</ul>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="../2025-05-11-Lambdas-in-CPP/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Getting to know lambdas in C++</span>
+    </a>
+    
+  </span>
+  <!-- <span class="ablog__spacer">&nbsp;</span> -->
+  <span class="ablog__next">
+    
+    
+    <a href="../2025-07-15-QEMU/">
+      <span>QEMU Essentials</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+            
+            
+            
+           
+            <div class="section ablog__comments"> 
+              
+
+<h2>Comments</h2>
+<script src="https://giscus.app/client.js"
+  data-repo="ABD-01/ABD-01.github.io"
+  data-repo-id="R_kgDOJLoETw"
+  data-category="General"
+  data-category-id="DIC_kwDOJLoET84CiH6W"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<script>
+    function changeGiscusTheme() {
+        var theme = document.body.dataset.theme === "light" ? "light" : "dark_dimmed";
+        var frame = document.querySelector(".giscus-frame");
+        console.log("Changing theme to " + theme);
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+      );
+    }
+    function setupGiscusTheme() {
+      // Attach event handlers for toggling themes
+      const buttons = document.getElementsByClassName("theme-toggle");
+      Array.from(buttons).forEach((btn) => {
+        btn.addEventListener("click", () => { setTimeout(changeGiscusTheme, 500); });
+    });
+  }
+  
+  setupGiscusTheme();
+  setTimeout(changeGiscusTheme, 10000);
+</script>
+            </div>
+
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Arenas</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#notes">Notes</a><ul>
+<li><a class="reference internal" href="#memory-management-and-arenas-ryan-fleury">Memory Management and Arenas (Ryan Fleury)</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#growth-strategies">Growth Strategies</a></li>
+<li><a class="reference internal" href="#arena-allocator-interface">Arena Allocator Interface</a></li>
+<li><a class="reference internal" href="#pointer-stability">Pointer Stability</a></li>
+<li><a class="reference internal" href="#when-stop-using-arena">When stop using Arena</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation">Implementation</a></li>
+<li><a class="reference internal" href="#others">Others</a><ul>
+<li><a class="reference internal" href="#malloc">Malloc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References:</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

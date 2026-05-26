@@ -1,0 +1,687 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>Chapter 1 | The Beauty of Graph Theory - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+
+          <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-the-beauty-of-graph-theory">
+<h1>Chapter 1 | The Beauty of Graph Theory<a class="headerlink" href="#chapter-1-the-beauty-of-graph-theory" title="Permalink to this heading">#</a></h1>
+<div class="sd-container-fluid sd-sphinx-override sd-p-0 sd-mt-2 sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-gx-2 sd-gy-1 docutils">
+<div class="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center docutils">
+<a class="reference external image-reference" href="https://github.com/ABD-01"><img alt="" class="sd-avatar-sm sd-outline-muted" src="https://avatars.githubusercontent.com/u/63636498?v=4" /></a>
+</div>
+<div class="sd-col sd-d-flex-row sd-align-minor-center docutils">
+<div class="sd-container-fluid sd-sphinx-override docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-gx-3 sd-gy-1 docutils">
+<div class="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center docutils">
+<p class="sd-p-0 sd-m-0">Muhammed Abdullah</p>
+</div>
+<div class="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center docutils">
+<p class="sd-p-0 sd-m-0"><span class="sd-pr-2"><svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-calendar" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0ZM2.5 7.5v6.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V7.5Zm10.75-4H2.75a.25.25 0 0 0-.25.25V6h11V3.75a.25.25 0 0 0-.25-.25Z"></path></svg></span>March 07, 2024</p>
+</div>
+<div class="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center docutils">
+<p class="sd-p-0 sd-m-0"><span class="sd-pr-2"><svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-clock" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"></path></svg></span>7 min read</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=187">03:07</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_7fef8761-55ed-47d2-9aed-5684f8272e0a.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=185">03:05</a>﻿</p>
+<p>but important the degree of a node doesn’t always represent the number of neighbors of a Noe this is only the case if there isn’t more than one Edge between two nodes</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=242">04:02</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_c5723cf6-e791-434c-85ac-9cc92bd40c11.jpeg" /></p>
+<p>Sum of degrees of all nodes is ALWAYS <strong>EVEN</strong></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=276">04:36</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_3d0c79a9-1527-4ab2-b8bc-2d96c0f9cb80.jpeg" /></p>
+<p>this graph is complete graph (every node is connected to all other nodes except itself.) has 57 nodes.</p>
+<p>Hence every node is connected to (57-1=)56 other nodes. Sum of all degrees is 57x56 = 3192.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=287">04:47</a>﻿</p>
+<p>the total number of edges in this graph is given by half this number because by summing up all degrees one counts every single edge twice this lets us to suspect that the sum of all degrees in the graph is always equal to twice the number of edges in the graph.</p>
+<p>The formula:</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=348">05:48</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_59655e34-86cb-439b-b3b6-4686989af6d2.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=357">05:57</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_e25e7ef9-505b-4992-9ec5-1a1dec74a20a.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=350">05:50</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_016b3edc-48f1-4afa-a5f0-6d0f22c7018e.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=373">06:13</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_aaa065fb-cbf1-4d96-914d-142728cf103e.jpeg" /></p>
+<p>Corollary:</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=383">06:23</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_0ceed61c-b511-407c-8563-f72bb2ebc5a5.jpeg" /></p>
+<section id="graph-traversal">
+<h2>Graph Traversal<a class="headerlink" href="#graph-traversal" title="Permalink to this heading">#</a></h2>
+<p><strong>BFS</strong> - starts at a node and visits all its it’s neighbors. Layer by layer exploration of graph.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=435">07:15</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_c69a56e1-ae5c-4522-96ab-5183f9b3de45.jpeg" /></p>
+<p>The subgraph generated by this algorithm is known as BFS tree:</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=452">07:32</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_461554e4-4170-4d64-b023-c2a45287bbfe.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=436">07:16</a>﻿</p>
+<p>the subgraph generated by this algorithm is known as a bfs tree which offers valuable information about the underlying graph:</p>
+<ol class="arabic simple">
+<li><p>for instance shortest paths from the starting nodes to all other nodes</p></li>
+<li><p>if the length of a path is characterized by the number of its edges.</p></li>
+</ol>
+<p><strong>DFS</strong> - the algorithm follows the approach to explore the graph in depth first. It selects in every iteration a neighbor node possibly a random neighbor as the next node and continues in this way until it gets stuck then the natural way out think about a maze is to backtrack to the last note with unvisited notes in its neighborhood.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=496">08:16</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_5cac49a6-2086-4b8e-8922-b6511c37f128.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=500">08:20</a>﻿</p>
+<p>The resulting subgraph the DFS Tree looks a bit familiar to a maze and indeed with the right modifications this simple algorithm can also be used to generate a maze.</p>
+<p><strong>Creating Maze using DFS</strong></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=557">09:17</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_281584a9-239f-4d40-bcba-d4968f6e8f76.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=584">09:44</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_b4ed4713-feb8-4011-8ebb-b0c944d44a2c.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=571">09:31</a>﻿</p>
+<p>Note that through the application of DFS this maze has a solution. Since DFS ﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=573">09:33</a>﻿calculates a path from the starting nodes to all notes in the graph. In other words there is a path from the starting notes to any other nodes here.</p>
+<p>Example: Electricity Wire distribution in city</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=625">10:25</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_653e2417-262a-44a7-aca6-6b3174a4e9f8.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=649">10:49</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_75f8e673-0063-4c29-9e14-f002331337ad.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=639">10:39</a>﻿</p>
+<p>the distribution of wires such that every town gets access to electricity therefore one would search for a minimum spending tree in the given graph which is a spanning tree with the least possible total cost.</p>
+</section>
+<section id="shortest-path-algorithms">
+<h2>Shortest Path Algorithms<a class="headerlink" href="#shortest-path-algorithms" title="Permalink to this heading">#</a></h2>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=643">10:43</a>﻿</p>
+<p>Very important in graph Theory especially in the era of navigation systems like Google Map maps are shortest path algorithms. Think about a map of country where each note represents a city and the edges are labeled with costs such as the kilometer distances between two nodes or the duration to travel between two adjacent nodes.</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_c1ee5939-e11a-4602-87b7-28be1cbfaebe.jpeg" /></p>
+</section>
+<section id="the-origin-of-graph-theory">
+<h2>The Origin of Graph Theory<a class="headerlink" href="#the-origin-of-graph-theory" title="Permalink to this heading">#</a></h2>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=762">12:42</a>﻿</p>
+<p>The citizens decided to create a game for themselves. Their goal being to devise a way which they could walk around the city crossing each of the Seven Bridges in Koenigsberg exactly once.</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_82cf59f7-a963-47f0-b9e6-6f07c0cbca62.jpeg" /></p>
+<section id="seven-bridges-in-koenigsberg">
+<h3>Seven Bridges in Koenigsberg<a class="headerlink" href="#seven-bridges-in-koenigsberg" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="walk">
+<h3>Walk<a class="headerlink" href="#walk" title="Permalink to this heading">#</a></h3>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_d2ced1bb-90b1-4ac5-9921-a5cdcc0758d4.jpeg" /></p>
+<p>Definitions</p>
+</section>
+<section id="path">
+<h3>Path<a class="headerlink" href="#path" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_61e3f02f-65fe-4707-b849-8df15ac59df9.jpeg" /></p>
+<p>A path is a walk in a graph such that all visited nodes in the walk are distinct. So in the general definition of a path, it is not allowed to use nodes more than once.</p>
+</section>
+<section id="cycle">
+<h3>Cycle<a class="headerlink" href="#cycle" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_b81bbefc-da6c-4ba7-8ebb-1cbe8cf18520.jpeg" /></p>
+<p>A cycle is a path that is closed meaning it starts and stops at the same at the same nodes. Furthermore, the length of a cycle is given by the number of used edges in cycle.</p>
+</section>
+<section id="trail">
+<h3>Trail<a class="headerlink" href="#trail" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_cb5ee935-e025-42d3-91bc-3db5e0a8eb31.jpeg" /></p>
+<p>A trail is a walk such that all used edges are distinct. Furthermore, it can visit notes more than once.</p>
+</section>
+<section id="circuit">
+<h3>Circuit<a class="headerlink" href="#circuit" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_b94026cd-cd00-4a2a-ae9f-b710a72d6968.jpeg" /></p>
+<p>A circuit (not to confuse with a cycle important) is a closed trail.</p>
+</section>
+<section id="euler-trail">
+<h3>Euler Trail<a class="headerlink" href="#euler-trail" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_14ecba91-874e-456e-8147-19fbdc997e6c.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1008">16:48</a>﻿</p>
+<p>An Euler Trail is a trail that visits each Edge in the corresponding graph exactly once. (While such a trail is often referred to as an Euler path it basically isn’t a path because it can visit nodes more than once.)</p>
+</section>
+<section id="euler-circuit">
+<h3>Euler Circuit<a class="headerlink" href="#euler-circuit" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_adbf5978-7c5a-4c14-a44c-a616ff825a4b.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1044">17:24</a>﻿</p>
+<p>An Euler Circuit is a circuit that visits each Edge in the graph exactly once.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1080">18:00</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_377b85b1-68a5-489e-84b7-341023892bf2.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1056">17:36</a>﻿</p>
+<p>One can observe immediately is that the graph in the bottom right corner here which contains an Euler circuit has only nodes with an even degree. And in fact, a graph that contains at least one note with an odd degree cannot have an Euler circuit.</p>
+<p>Explanation:</p>
+<p>Due to odd degree you wont be able to return to this node anymore (if started here) as required by Euler Circuit.</p>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_209f62e6-2d11-4caa-8746-d4c8c7305a60.jpeg" /></p>
+<p>Or even if started from even degree node, we will get stuck in odd degree node as we cannot leave it.</p>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_ad75ba88-211a-4d80-8c5a-679a1c13b4cc.jpeg" /></p>
+</section>
+</section>
+<section id="euler-s-theorems">
+<h2>Euler’s Theorems<a class="headerlink" href="#euler-s-theorems" title="Permalink to this heading">#</a></h2>
+<p>Assertions:</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1159">19:19</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_873813f6-88a7-48c5-8992-34b9edd34e88.jpeg" /></p>
+</section>
+<section id="graph-data-structures">
+<h2>Graph Data Structures<a class="headerlink" href="#graph-data-structures" title="Permalink to this heading">#</a></h2>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1242">20:42</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_ce28cd25-1c54-4b83-bb6d-5788b923af23.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1274">21:14</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_a5af6b1b-ad24-4988-a893-5b5c8dbef9c3.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1266">21:06</a>﻿</p>
+<p>A graph G is set to be K vertex connected if it contains at least K+1 vertices but does not contain a set of K-1 vertices whose removal disconnects the graph.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1333">22:13</a>﻿</p>
+<p><img alt="" src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_563aad7c-f2d0-46bd-903b-975082f844cc.jpeg" /></p>
+<p>Another important graph is for example the oiler graph which is a graph where every node has an even degree ensuring the existence of an Euler circuit.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1362">22:42</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_2010a74d-f7a2-41b6-968a-13e9565e9f32.jpeg" /></p>
+<p>Hamilton graph which is a graph that contains a Hamiltonian cycle a cycle that visits each note exactly once.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1359">22:39</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_8ee77f07-8c2a-4b6d-8b31-6c022cd711ac.jpeg" /></p>
+<p>A bipartite graph is defined as a graph whose notes can be divided into two disjoint sets in such a way that no two nodes within the same set are adjacent in this graph.</p>
+<p>Notes this is a bipartite graph without Cycles</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_7b699fa0-230d-496f-86d3-be5f495e2c61.jpeg" /></p>
+<p>A graph with Cycles can also be Bi-Partite.</p>
+<p>Furthermore, a graph is in general bipartite if and only if every cycle is even. This means that every cycle in the corresponding graph has to consist of an even number of edges.</p>
+<section id="forests">
+<h3>Forests<a class="headerlink" href="#forests" title="Permalink to this heading">#</a></h3>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_fc26af39-c520-4c56-a337-2cf9ebc260dc.jpeg" /></p>
+<p>A forest describes a collection of trees. Trees are graphs that have always the minimum number of edges necessary for connectivity. A tree will be typically Illustrated with a structure like this.</p>
+</section>
+<section id="binary-trees">
+<h3>Binary Trees<a class="headerlink" href="#binary-trees" title="Permalink to this heading">#</a></h3>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_a2885953-725d-48b3-948a-f576699b298c.jpeg" /></p>
+<p>Specifically, this here is a binary (Each node has at most 2 children).</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1534">25:34</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_18ba932b-76c7-4a17-9a18-72df391874ff.jpeg" /></p>
+<p>Binary trees are used in various applications for instance to visualize the execution of many recursive algorithms here for example of the execution of a recursive function that calculates the eight Fibonacci number.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1569">26:09</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_99757905-f9cd-4a7b-8252-491aeaa30f99.jpeg" /></p>
+<p>Quicksort</p>
+</section>
+<section id="types-of-binary-tree">
+<h3>Types of Binary Tree<a class="headerlink" href="#types-of-binary-tree" title="Permalink to this heading">#</a></h3>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_6c2db0b9-c136-49e2-bcdd-6756cc16b398.jpeg" /></p>
+<p><strong>The complete binary tree</strong> is characterized by the property that it must be completely filled on every layer of the graph except for the bottom layer and all nodes must be as far left as possible.</p>
+<p>In a <strong>full binary tree,</strong> every node has either zero or two children but never just one child. But if a binary tree has only one child per parent either a left or a right child and this through the entire tree then it is called a <strong>degenerated binary tree.</strong></p>
+<p><strong>The perfect binary tree</strong> is characterized by the property that every layer is completely filled with all leaf nodes on the same layer.</p>
+</section>
+</section>
+<section id="basic-data-structures">
+<h2>Basic Data Structures<a class="headerlink" href="#basic-data-structures" title="Permalink to this heading">#</a></h2>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1675">27:55</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_cf412349-0ff7-4c30-8c3f-9f138cdfcbc8.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1806">30:06</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_25f4a715-985e-49d9-9552-a8297d7e09b2.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1904">31:44</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_b48930f8-4b84-4c46-a832-d88b57aaaa53.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1850">30:50</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_3c004226-0c17-4697-8816-c95f468e5833.jpeg" /></p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=1961">32:41</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_d0243db8-afd4-40b1-afc8-ea796b842abf.jpeg" /></p>
+<p><strong>Binary search tree</strong> is a binary tree with the additional property that the key of a parent note is always larger than the key of its left child and smaller or equal to the key of its right child.</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_ce1a0498-68ec-4c86-9d12-8bccddacab7f.jpeg" /></p>
+<p><strong>The red black tree</strong> guarantees a height that is smaller or equal to <span class="math notranslate nohighlight">\(2.\log_2(n+1)\)</span> where n denotes the number of notes in the tree such a tree satisfies the properties in the image.</p>
+<p>﻿<a class="reference external" href="https://youtu.be/oXcCAAEDte0?t=2306">38:26</a>﻿</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_54b59ff7-74a6-4933-9ed0-6b71bab1312c.jpeg" /></p>
+<p><strong>AVL trees</strong> are binary search trees where the heights of the two child sub trees of any parent nodes differ by at most one. The small indices over the notes in an AVL tree represent the balance factor indicating the height difference between the left and right sub tree of each node. This balancing prevents the tree from a degeneration to maintain efficient search insert and delete operations.</p>
+<section id="heaps">
+<h3>Heaps<a class="headerlink" href="#heaps" title="Permalink to this heading">#</a></h3>
+<p>There are two kinds of heaps. Max heaps and mini heaps.</p>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_29a9848d-d89c-4dda-bd10-23a52aa4457c.jpeg" /></p>
+<p><strong>A Max Heap</strong> is a binary tree (but not a binary search tree important) with the property that each node key is greater than or equal to the key of its children.</p>
+<p><strong>A Min Heap</strong> is a binary tree where each node key is less than or equal to the keys of its children.</p>
+</section>
+</section>
+<section id="representation-of-graph">
+<h2>Representation of Graph<a class="headerlink" href="#representation-of-graph" title="Permalink to this heading">#</a></h2>
+<p><img alt="Please Reload/Refresh this tab." src="https://storage.googleapis.com/askify-screenshot/whBS9pru6UR6eh5u0VbScheduU03/extension_screenshots/screenshot_default_ceebfeea-89ea-48f1-89f0-3c15559af0e9.jpeg" /></p>
+<p>Adjacency List is more memory efficient.</p>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Chapter 1 | The Beauty of Graph Theory</a><ul>
+<li><a class="reference internal" href="#graph-traversal">Graph Traversal</a></li>
+<li><a class="reference internal" href="#shortest-path-algorithms">Shortest Path Algorithms</a></li>
+<li><a class="reference internal" href="#the-origin-of-graph-theory">The Origin of Graph Theory</a><ul>
+<li><a class="reference internal" href="#seven-bridges-in-koenigsberg">Seven Bridges in Koenigsberg</a></li>
+<li><a class="reference internal" href="#walk">Walk</a></li>
+<li><a class="reference internal" href="#path">Path</a></li>
+<li><a class="reference internal" href="#cycle">Cycle</a></li>
+<li><a class="reference internal" href="#trail">Trail</a></li>
+<li><a class="reference internal" href="#circuit">Circuit</a></li>
+<li><a class="reference internal" href="#euler-trail">Euler Trail</a></li>
+<li><a class="reference internal" href="#euler-circuit">Euler Circuit</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#euler-s-theorems">Euler’s Theorems</a></li>
+<li><a class="reference internal" href="#graph-data-structures">Graph Data Structures</a><ul>
+<li><a class="reference internal" href="#forests">Forests</a></li>
+<li><a class="reference internal" href="#binary-trees">Binary Trees</a></li>
+<li><a class="reference internal" href="#types-of-binary-tree">Types of Binary Tree</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-data-structures">Basic Data Structures</a><ul>
+<li><a class="reference internal" href="#heaps">Heaps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-of-graph">Representation of Graph</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

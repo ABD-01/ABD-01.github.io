@@ -1,0 +1,410 @@
+/* Gruvbox Material theme for Furo50
+   Palette: https://github.com/alljavi/material_gruvbox_obsidian
+   Sidebar/header keep existing #a51c30 from furo50 — do NOT add those vars here. */
+
+:root {
+  --dark0-hard-x:      29,32,33;
+  --dark0-hard:        rgb(var(--dark0-hard-x));  /* #1d2021 */
+  --dark0-x:           40,40,40;
+  --dark0:             rgb(var(--dark0-x));        /* #282828 */
+  --dark0-soft-x:      50,48,47;
+  --dark0-soft:        rgb(var(--dark0-soft-x));   /* #32302f */
+  --dark1-x:           60,56,54;
+  --dark1:             rgb(var(--dark1-x));        /* #3c3836 */
+  --dark2-x:           80,73,69;
+  --dark2:             rgb(var(--dark2-x));        /* #504945 */
+  --dark3-x:           102,92,84;
+  --dark3:             rgb(var(--dark3-x));        /* #665c54 */
+  --dark4-x:           124,111,100;
+  --dark4:             rgb(var(--dark4-x));        /* #7c6f64 */
+
+  --light0-hard-x:     249,245,215;
+  --light0-hard:       rgb(var(--light0-hard-x));  /* #f9f5d7 */
+  --light0-x:          251,241,199;
+  --light0:            rgb(var(--light0-x));       /* #fbf1c7 */
+  --light0-soft-x:     242,229,188;
+  --light0-soft:       rgb(var(--light0-soft-x));  /* #f2e5bc */
+  --light1-x:          235,219,178;
+  --light1:            rgb(var(--light1-x));       /* #ebdbb2 */
+  --light2-x:          213,196,161;
+  --light2:            rgb(var(--light2-x));       /* #d5c4a1 */
+  --light3-x:          189,174,147;
+  --light3:            rgb(var(--light3-x));       /* #bdae93 */
+  --light4-x:          168,153,132;
+  --light4:            rgb(var(--light4-x));       /* #a89984 */
+  --light-text-x:      212,190,152;
+  --light-text:        rgb(var(--light-text-x));   /* #d4be98 */
+
+  --dark-text-x:       101,71,53;
+  --dark-text:         rgb(var(--dark-text-x));    /* #654735 */
+  --dark-text-faint-x: 179,126,93;
+  --dark-text-faint:   rgb(var(--dark-text-faint-x));
+  --dark-text-muted-x: 115,81,69;
+  --dark-text-muted:   rgb(var(--dark-text-muted-x));
+
+  --neutral-red-x:     234,105,98;
+  --neutral-red:       rgb(var(--neutral-red-x));    /* #ea6962 */
+  --neutral-green-x:   169,182,101;
+  --neutral-green:     rgb(var(--neutral-green-x));  /* #a9b665 */
+  --neutral-yellow-x:  231,138,78;
+  --neutral-yellow:    rgb(var(--neutral-yellow-x)); /* #e78a4e */
+  --neutral-blue-x:    125,174,163;
+  --neutral-blue:      rgb(var(--neutral-blue-x));   /* #7daea3 */
+  --neutral-purple-x:  211,134,155;
+  --neutral-purple:    rgb(var(--neutral-purple-x)); /* #d3869b */
+  --neutral-aqua-x:    137,180,130;
+  --neutral-aqua:      rgb(var(--neutral-aqua-x));   /* #89b482 */
+
+  --faded-red-x:       193,74,74;
+  --faded-red:         rgb(var(--faded-red-x));      /* #c14a4a */
+  --faded-green-x:     108,120,46;
+  --faded-green:       rgb(var(--faded-green-x));    /* #6c782e */
+  --faded-yellow-x:    195,94,10;
+  --faded-yellow:      rgb(var(--faded-yellow-x));   /* #c35e0a */
+  --faded-blue-x:      69,112,122;
+  --faded-blue:        rgb(var(--faded-blue-x));     /* #45707a */
+  --faded-purple-x:    148,94,128;
+  --faded-purple:      rgb(var(--faded-purple-x));   /* #945e80 */
+  --faded-aqua-x:      76,122,93;
+  --faded-aqua:        rgb(var(--faded-aqua-x));     /* #4c7a5d */
+}
+
+/* ── Light mode (default) ─────────────────────────────────────── */
+
+body {
+  --color-background-primary:   var(--light0-hard);
+  --color-background-secondary: var(--light1);
+  --color-background-hover:     var(--light0-soft);
+  --color-background-border:    var(--light1);
+
+  --color-foreground-primary:   var(--dark-text);
+  --color-foreground-secondary: rgba(var(--dark-text-x), .75);
+  --color-foreground-muted:     rgba(var(--dark-text-x), .5);
+  --color-foreground-border:    var(--light2);
+
+  --color-brand-primary:        var(--faded-blue);
+  --color-brand-content:        var(--faded-blue);
+  --color-brand-visited:        var(--faded-blue);
+  --link-color:                 var(--faded-blue);
+
+  --color-code-background:      var(--light0-soft);
+  --color-code-foreground:      var(--faded-blue);
+
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ── Dark mode ────────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --color-background-primary:   var(--dark0);
+    --color-background-secondary: var(--dark0-soft);
+    --color-background-hover:     var(--dark1);
+    --color-background-border:    var(--dark1);
+
+    --color-foreground-primary:   var(--light-text);
+    --color-foreground-secondary: rgba(var(--light-text-x), .75);
+    --color-foreground-muted:     rgba(var(--light-text-x), .5);
+    --color-foreground-border:    var(--dark2);
+
+    --color-brand-primary:        var(--neutral-aqua);
+    --color-brand-content:        var(--neutral-aqua);
+    --color-brand-visited:        var(--neutral-aqua);
+    --link-color-dark:            var(--neutral-aqua);
+
+    --color-code-background:      var(--dark1);
+    --color-code-foreground:      var(--neutral-blue);
+
+    --color-admonition-background: var(--dark0-soft);
+    --color-highlight-on-target:   rgba(var(--neutral-red-x), 0.2);
+  }
+}
+
+/* explicit toggle (Furo sets body[data-theme="dark"] directly) */
+body[data-theme="dark"] {
+  --color-background-primary:   var(--dark0);
+  --color-background-secondary: var(--dark0-soft);
+  --color-background-hover:     var(--dark1);
+  --color-background-border:    var(--dark1);
+
+  --color-foreground-primary:   var(--light-text);
+  --color-foreground-secondary: rgba(var(--light-text-x), .75);
+  --color-foreground-muted:     rgba(var(--light-text-x), .5);
+  --color-foreground-border:    var(--dark2);
+
+  --color-brand-primary:        var(--neutral-aqua);
+  --color-brand-content:        var(--neutral-aqua);
+  --color-brand-visited:        var(--neutral-aqua);
+  --link-color-dark:            var(--neutral-aqua);
+
+  --color-code-background:      var(--dark1);
+  --color-code-foreground:      var(--neutral-blue);
+
+  --color-admonition-background: var(--dark0-soft);
+  --color-highlight-on-target:   rgba(var(--neutral-red-x), 0.2);
+}
+
+/* ── Heading colors ───────────────────────────────────────────── */
+
+h1 { color: var(--faded-red);    }
+h2 { color: var(--faded-yellow); }
+h3 { color: var(--faded-green);  }
+h4 { color: var(--faded-aqua);   }
+h5 { color: var(--faded-blue);   }
+h6 { color: var(--faded-purple); }
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) h1 { color: var(--neutral-red);    }
+  body:not([data-theme="light"]) h2 { color: var(--neutral-yellow); }
+  body:not([data-theme="light"]) h3 { color: var(--neutral-green);  }
+  body:not([data-theme="light"]) h4 { color: var(--neutral-aqua);   }
+  body:not([data-theme="light"]) h5 { color: var(--neutral-blue);   }
+  body:not([data-theme="light"]) h6 { color: var(--neutral-purple); }
+}
+
+body[data-theme="dark"] h1 { color: var(--neutral-red);    }
+body[data-theme="dark"] h2 { color: var(--neutral-yellow); }
+body[data-theme="dark"] h3 { color: var(--neutral-green);  }
+body[data-theme="dark"] h4 { color: var(--neutral-aqua);   }
+body[data-theme="dark"] h5 { color: var(--neutral-blue);   }
+body[data-theme="dark"] h6 { color: var(--neutral-purple); }
+
+/* ── Content links ────────────────────────────────────────────── */
+
+.content a {
+  color: var(--faded-blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) .content a { color: var(--neutral-aqua); }
+}
+
+body[data-theme="dark"] .content a { color: var(--neutral-aqua); }
+
+/* ── Admonitions ──────────────────────────────────────────────── */
+
+body {
+  --color-admonition-background:                    rgba(var(--light2-x), 0.15);
+
+  --color-admonition-title--note:                   var(--neutral-blue);
+  --color-admonition-title-background--note:        rgba(var(--neutral-blue-x), 0.15);
+
+  --color-admonition-title--tip:                    var(--neutral-green);
+  --color-admonition-title-background--tip:         rgba(var(--neutral-green-x), 0.15);
+
+  --color-admonition-title--hint:                   var(--neutral-green);
+  --color-admonition-title-background--hint:        rgba(var(--neutral-green-x), 0.15);
+
+  --color-admonition-title--important:              var(--neutral-aqua);
+  --color-admonition-title-background--important:   rgba(var(--neutral-aqua-x), 0.15);
+
+  --color-admonition-title--warning:                var(--neutral-yellow);
+  --color-admonition-title-background--warning:     rgba(var(--neutral-yellow-x), 0.15);
+
+  --color-admonition-title--caution:                var(--neutral-yellow);
+  --color-admonition-title-background--caution:     rgba(var(--neutral-yellow-x), 0.15);
+
+  --color-admonition-title--danger:                 var(--neutral-red);
+  --color-admonition-title-background--danger:      rgba(var(--neutral-red-x), 0.15);
+
+  --color-admonition-title--error:                  var(--neutral-red);
+  --color-admonition-title-background--error:       rgba(var(--neutral-red-x), 0.15);
+
+  --color-admonition-title--attention:              var(--neutral-red);
+  --color-admonition-title-background--attention:   rgba(var(--neutral-red-x), 0.15);
+
+  --color-admonition-title--seealso:                var(--faded-blue);
+  --color-admonition-title-background--seealso:     rgba(var(--faded-blue-x), 0.15);
+
+  --color-admonition-title--admonition-todo:        var(--dark4);
+  --color-admonition-title-background--admonition-todo: rgba(var(--dark4-x), 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --color-admonition-background:                    rgba(var(--dark2-x), 0.2);
+
+    --color-admonition-title--note:                   var(--neutral-blue);
+    --color-admonition-title-background--note:        rgba(var(--neutral-blue-x), 0.2);
+
+    --color-admonition-title--tip:                    var(--neutral-green);
+    --color-admonition-title-background--tip:         rgba(var(--neutral-green-x), 0.2);
+
+    --color-admonition-title--hint:                   var(--neutral-green);
+    --color-admonition-title-background--hint:        rgba(var(--neutral-green-x), 0.2);
+
+    --color-admonition-title--important:              var(--neutral-aqua);
+    --color-admonition-title-background--important:   rgba(var(--neutral-aqua-x), 0.2);
+
+    --color-admonition-title--warning:                var(--neutral-yellow);
+    --color-admonition-title-background--warning:     rgba(var(--neutral-yellow-x), 0.2);
+
+    --color-admonition-title--caution:                var(--neutral-yellow);
+    --color-admonition-title-background--caution:     rgba(var(--neutral-yellow-x), 0.2);
+
+    --color-admonition-title--danger:                 var(--neutral-red);
+    --color-admonition-title-background--danger:      rgba(var(--neutral-red-x), 0.2);
+
+    --color-admonition-title--error:                  var(--neutral-red);
+    --color-admonition-title-background--error:       rgba(var(--neutral-red-x), 0.2);
+
+    --color-admonition-title--attention:              var(--neutral-red);
+    --color-admonition-title-background--attention:   rgba(var(--neutral-red-x), 0.2);
+
+    --color-admonition-title--seealso:                var(--neutral-blue);
+    --color-admonition-title-background--seealso:     rgba(var(--neutral-blue-x), 0.2);
+
+    --color-admonition-title--admonition-todo:        var(--dark4);
+    --color-admonition-title-background--admonition-todo: rgba(var(--dark4-x), 0.2);
+  }
+}
+
+body[data-theme="dark"] {
+  --color-admonition-background:                    rgba(var(--dark2-x), 0.2);
+
+  --color-admonition-title--note:                   var(--neutral-blue);
+  --color-admonition-title-background--note:        rgba(var(--neutral-blue-x), 0.2);
+
+  --color-admonition-title--tip:                    var(--neutral-green);
+  --color-admonition-title-background--tip:         rgba(var(--neutral-green-x), 0.2);
+
+  --color-admonition-title--hint:                   var(--neutral-green);
+  --color-admonition-title-background--hint:        rgba(var(--neutral-green-x), 0.2);
+
+  --color-admonition-title--important:              var(--neutral-aqua);
+  --color-admonition-title-background--important:   rgba(var(--neutral-aqua-x), 0.2);
+
+  --color-admonition-title--warning:                var(--neutral-yellow);
+  --color-admonition-title-background--warning:     rgba(var(--neutral-yellow-x), 0.2);
+
+  --color-admonition-title--caution:                var(--neutral-yellow);
+  --color-admonition-title-background--caution:     rgba(var(--neutral-yellow-x), 0.2);
+
+  --color-admonition-title--danger:                 var(--neutral-red);
+  --color-admonition-title-background--danger:      rgba(var(--neutral-red-x), 0.2);
+
+  --color-admonition-title--error:                  var(--neutral-red);
+  --color-admonition-title-background--error:       rgba(var(--neutral-red-x), 0.2);
+
+  --color-admonition-title--attention:              var(--neutral-red);
+  --color-admonition-title-background--attention:   rgba(var(--neutral-red-x), 0.2);
+
+  --color-admonition-title--seealso:                var(--neutral-blue);
+  --color-admonition-title-background--seealso:     rgba(var(--neutral-blue-x), 0.2);
+
+  --color-admonition-title--admonition-todo:        var(--dark4);
+  --color-admonition-title-background--admonition-todo: rgba(var(--dark4-x), 0.2);
+}
+
+/* ── Code blocks — Gruvbox Pygments ──────────────────────────── */
+/* Source: https://github.com/daveyarwood/gruvbox-pygments       */
+
+.highlight      { background: #282828; color: #ebdbb2; }
+.highlight .hll { background-color: #ffffcc; }
+.highlight .c   { color: #928374; font-style: italic; } /* Comment */
+.highlight .err { color: #ebdbb2; }                     /* Error */
+.highlight .esc { color: #ebdbb2; }                     /* Escape */
+.highlight .g   { color: #ebdbb2; }                     /* Generic */
+.highlight .k   { color: #fe8019; }                     /* Keyword */
+.highlight .l   { color: #ebdbb2; }                     /* Literal */
+.highlight .n   { color: #ebdbb2; }                     /* Name */
+.highlight .o   { color: #fe8019; }                     /* Operator */
+.highlight .x   { color: #ebdbb2; }                     /* Other */
+.highlight .p   { color: #ebdbb2; }                     /* Punctuation */
+.highlight .ch  { color: #928374; font-style: italic; } /* Comment.Hashbang */
+.highlight .cm  { color: #928374; font-style: italic; } /* Comment.Multiline */
+.highlight .cp  { color: #8ec07c; }                     /* Comment.Preproc */
+.highlight .c1  { color: #928374; font-style: italic; } /* Comment.Single */
+.highlight .cs  { color: #928374; font-style: italic; } /* Comment.Special */
+.highlight .gd  { color: #282828; background-color: #fb4934; } /* Generic.Deleted */
+.highlight .ge  { color: #83a598; text-decoration: underline; } /* Generic.Emph */
+.highlight .gr  { color: #ebdbb2; font-weight: bold; background-color: #fb4934; } /* Generic.Error */
+.highlight .gh  { color: #b8bb26; font-weight: bold; } /* Generic.Heading */
+.highlight .gi  { color: #282828; background-color: #b8bb26; } /* Generic.Inserted */
+.highlight .go  { color: #504945; }                     /* Generic.Output */
+.highlight .gp  { color: #ebdbb2; }                     /* Generic.Prompt */
+.highlight .gs  { color: #ebdbb2; }                     /* Generic.Strong */
+.highlight .gu  { color: #b8bb26; font-weight: bold; } /* Generic.Subheading */
+.highlight .gt  { color: #ebdbb2; font-weight: bold; background-color: #fb4934; } /* Generic.Traceback */
+.highlight .kc  { color: #fe8019; }                     /* Keyword.Constant */
+.highlight .kd  { color: #fe8019; }                     /* Keyword.Declaration */
+.highlight .kn  { color: #fe8019; }                     /* Keyword.Namespace */
+.highlight .kp  { color: #fe8019; }                     /* Keyword.Pseudo */
+.highlight .kr  { color: #fe8019; }                     /* Keyword.Reserved */
+.highlight .kt  { color: #fabd2f; }                     /* Keyword.Type */
+.highlight .ld  { color: #ebdbb2; }                     /* Literal.Date */
+.highlight .m   { color: #d3869b; }                     /* Literal.Number */
+.highlight .s   { color: #b8bb26; }                     /* Literal.String */
+.highlight .na  { color: #b8bb26; font-weight: bold; } /* Name.Attribute */
+.highlight .nb  { color: #fabd2f; }                     /* Name.Builtin */
+.highlight .nc  { color: #ebdbb2; }                     /* Name.Class */
+.highlight .no  { color: #d3869b; }                     /* Name.Constant */
+.highlight .nd  { color: #ebdbb2; }                     /* Name.Decorator */
+.highlight .ni  { color: #fabd2f; }                     /* Name.Entity */
+.highlight .ne  { color: #fb4934; }                     /* Name.Exception */
+.highlight .nf  { color: #fabd2f; }                     /* Name.Function */
+.highlight .nl  { color: #fb4934; }                     /* Name.Label */
+.highlight .nn  { color: #ebdbb2; }                     /* Name.Namespace */
+.highlight .nx  { color: #ebdbb2; }                     /* Name.Other */
+.highlight .py  { color: #ebdbb2; }                     /* Name.Property */
+.highlight .nt  { color: #fb4934; }                     /* Name.Tag */
+.highlight .nv  { color: #ebdbb2; }                     /* Name.Variable */
+.highlight .ow  { color: #fe8019; }                     /* Operator.Word */
+.highlight .w   { color: #ebdbb2; }                     /* Text.Whitespace */
+.highlight .mb  { color: #d3869b; }                     /* Literal.Number.Bin */
+.highlight .mf  { color: #d3869b; }                     /* Literal.Number.Float */
+.highlight .mh  { color: #d3869b; }                     /* Literal.Number.Hex */
+.highlight .mi  { color: #d3869b; }                     /* Literal.Number.Integer */
+.highlight .mo  { color: #d3869b; }                     /* Literal.Number.Oct */
+.highlight .sb  { color: #b8bb26; }                     /* Literal.String.Backtick */
+.highlight .sc  { color: #b8bb26; }                     /* Literal.String.Char */
+.highlight .sd  { color: #b8bb26; }                     /* Literal.String.Doc */
+.highlight .s2  { color: #b8bb26; }                     /* Literal.String.Double */
+.highlight .se  { color: #b8bb26; }                     /* Literal.String.Escape */
+.highlight .sh  { color: #b8bb26; }                     /* Literal.String.Heredoc */
+.highlight .si  { color: #b8bb26; }                     /* Literal.String.Interpol */
+.highlight .sx  { color: #b8bb26; }                     /* Literal.String.Other */
+.highlight .sr  { color: #b8bb26; }                     /* Literal.String.Regex */
+.highlight .s1  { color: #b8bb26; }                     /* Literal.String.Single */
+.highlight .ss  { color: #83a598; }                     /* Literal.String.Symbol */
+.highlight .bp  { color: #fabd2f; }                     /* Name.Builtin.Pseudo */
+.highlight .vc  { color: #ebdbb2; }                     /* Name.Variable.Class */
+.highlight .vg  { color: #ebdbb2; }                     /* Name.Variable.Global */
+.highlight .vi  { color: #ebdbb2; }                     /* Name.Variable.Instance */
+.highlight .il  { color: #d3869b; }                     /* Literal.Number.Integer.Long */
+
+/* In light mode swap .highlight background to warm parchment; token colors stay */
+body:not([data-theme="dark"]) .highlight {
+  background: var(--light0-soft);
+  color: var(--dark-text);
+}
+
+@media (prefers-color-scheme: light) {
+  body:not([data-theme="dark"]) .highlight {
+    background: var(--light0-soft);
+    color: var(--dark-text);
+  }
+}
+
+/* Lineno column */
+.highlight span.linenos {
+  background-color: #32302f;
+  color: #7c6f64;
+}
+
+/* code-block caption bar */
+.code-block-caption {
+  background-color: #32302f;
+  border-color: #504945;
+  color: #d4be98;
+}
+
+/* ── Blockquotes ──────────────────────────────────────────────── */
+
+blockquote {
+  background-color: var(--color-background-primary);
+  border-left-color: var(--neutral-red);
+  border-left-width: 3px;
+  padding-top: 0;
+  padding-bottom: 0;
+}

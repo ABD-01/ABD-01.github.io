@@ -1,0 +1,1639 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="QEMU" property="og:title" />
+<meta content="en" name="language" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>QEMU Essentials: A Reference for System Emulation and Configuration - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+    <link rel="stylesheet" href="../../_static/css/qemu.css">
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+            
+            <h1>QEMU Essentials</h1>
+            <p class="ablog-post-metainfo">
+     
+    <a class="reference internal" href="../2025/">
+        <i class="fas fa-calendar fa-sm"></i> July 15, 2025
+    </a>
+    
+    <!-- by [me <posts/author/me>] -->
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../tag/qemu/"><i class="fas fa-hashtag fa-sm"></i>
+                qemu</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/virtualization/"><i class="fas fa-hashtag fa-sm"></i>
+                virtualization</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/arm-cortex/"><i class="fas fa-hashtag fa-sm"></i>
+                arm-cortex</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/linux/"><i class="fas fa-hashtag fa-sm"></i>
+                linux</a> 
+            
+        
+    
+    
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../category/tools/"><i class="fas fa-tag fa-sm"></i>
+                tools</a> 
+            
+        
+    
+    
+</p>
+
+          
+
+          <section class="hiddenh1 tex2jax_ignore mathjax_ignore" id="qemu-essentials-a-reference-for-system-emulation-and-configuration">
+<h1>QEMU Essentials: A Reference for System Emulation and Configuration<a class="headerlink" href="#qemu-essentials-a-reference-for-system-emulation-and-configuration" title="Permalink to this heading">#</a></h1>
+<p>QEMU is the Queen of all Emus</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>It is technically an emulation or virtualization software that can emulate machines across different architectures<a class="footnote-reference brackets" href="#qemu-a-proper-guide" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It offers arguably the <strong>best performance</strong> compared to other virtualization tools like VMware or VirtualBox. Personally, I’ve mostly used and preferred VMware to VirtualBox due to its smoother performance.</p>
+<p>QEMU is unlike anything I’ve ever seen. To put it in perspective: <strong>QEMU, emulating Debian with a full XFCE desktop, used <em>less</em> memory than Microsoft Edge with just 20 tabs.</strong> What is wrong with modern browser applications being so insanely memory-hungry?!</p>
+<p>I was first introduced to QEMU while exploring RISC-V<a class="footnote-reference brackets" href="#getting-familiar-with-riscv-and-wriitng-small-bootloader" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, but I didn’t work with it seriously until watching Tsoding’s recreational programming sessions<a class="footnote-reference brackets" href="#time-to-learn-arm" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Later, at Accolade Electronics, I began working on Embedded Linux—this time diving deeper into QEMU, adding Buildroot and Yocto to my toolbelt as well.</p>
+<p>I decided to write this blog (or more like a note to self) so I don’t waste time setting everything up again next time, and maybe help someone else in the same situation<a class="footnote-reference brackets" href="#emulating-aarch64-with-qemu-part1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">#</a></h2>
+<p>Here are some of the key QEMU command-line options I have used, along with quick reference. For the full detailed list checkout QEMU’s documentations<a class="footnote-reference brackets" href="#qemu-docs-invocation" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Gentoo Linux also has a useful reference page for QEMU options<a class="footnote-reference brackets" href="#gentoo-linux-qemu-options" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-machine</span></code></p>
+</div></blockquote>
+<p>To select the emulated machine
+<code class="docutils literal notranslate"><span class="pre">qemu-system-aarch64</span> <span class="pre">-machine</span> <span class="pre">help</span></code> will give the list of supported machines.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-cpu</span></code></p>
+</div></blockquote>
+<p>The CPU to emulate. <code class="docutils literal notranslate"><span class="pre">-cpu</span> <span class="pre">help</span></code> to see all options.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-accel</span></code></p>
+</div></blockquote>
+<p>For acceleration backend which can improve QEMU performance</p>
+<p>options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-accel</span> <span class="pre">tcg</span></code><br />
+Use <strong>Tiny Code Generator</strong>, QEMU’s default <strong>software emulation</strong> (slower, but works everywhere).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-accel</span> <span class="pre">kvm</span></code><br />
+Use <strong>KVM</strong> (Kernel-based Virtual Machine) on Linux → <strong>hardware-accelerated</strong> (fast, needs host CPU + privileges).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-accel</span> <span class="pre">hvf</span></code><br />
+Use <strong>HVF</strong> on macOS (Apple’s Hypervisor.framework).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-accel</span> <span class="pre">whpx</span></code><br />
+Use <strong>WHPX</strong> (Windows Hypervisor Platform) on Windows with AMD/Intel CPUs.</p></li>
+</ul>
+<p>If you are on Windows, you will need to use either <code class="docutils literal notranslate"><span class="pre">tcg</span></code> or <code class="docutils literal notranslate"><span class="pre">whpx</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">WHPX Setting</p>
+<ol class="arabic">
+<li><p>Enable <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Hypervisor</span> <span class="pre">Platform</span> <span class="pre">(WHPX)</span></code> or <code class="docutils literal notranslate"><span class="pre">Hyper-V</span> <span class="pre">Platform</span></code> from windows features.  <a class="footnote-reference brackets" href="#install-hyper-v" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p></li>
+<li><p>Run QEMU with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span>-accel<span class="w"> </span>whpx
+</pre></div>
+</div>
+</li>
+<li><p>If you encounter this error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WHPX</span><span class="p">:</span> <span class="n">setting</span> <span class="n">APIC</span> <span class="n">emulation</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">hypervisor</span>
+<span class="n">Windows</span> <span class="n">Hypervisor</span> <span class="n">Platform</span> <span class="n">accelerator</span> <span class="ow">is</span> <span class="n">operational</span> 
+<span class="n">whpx</span><span class="p">:</span> <span class="n">injection</span> <span class="n">failed</span><span class="p">,</span> <span class="n">MSI</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">delivery</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dest_mode</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">trigger</span> <span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lost</span> <span class="p">(</span><span class="n">c0350005</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Try<a class="footnote-reference brackets" href="#whpx-acceleration-gh-issue" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span>-accel<span class="w"> </span>whpx,kernel-irqchip<span class="o">=</span>off
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-smp</span></code></p>
+</div></blockquote>
+<p>To configure number of virtual cpus (vCPUs) for virtual machine.<br />
+I would suggest going through QEMU docs on <code class="docutils literal notranslate"><span class="pre">-smp</span></code><a class="footnote-reference brackets" href="#smp-invocation-qemu-documentation" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> before using this option.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Socket</p></td>
+<td><p>A physical CPU package (e.g., a chip on motherboard).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Core</p></td>
+<td><p>An independent processing unit inside a socket.</p></td>
+</tr>
+<tr class="row-even"><td><p>Thread</p></td>
+<td><p>A virtual execution unit inside a core (e.g., via Hyper-Threading).</p></td>
+</tr>
+<tr class="row-odd"><td><p>CPU</p></td>
+<td><p>In QEMU/KVM, a <strong>vCPU</strong> = 1 thread (what the guest sees as a processor).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-m</span></code></p>
+</div></blockquote>
+<p>Sets the guest memory size. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">m</span> <span class="mi">2048</span>  <span class="c1"># 2 GB RAM</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-bios</span></code></p>
+</div></blockquote>
+<p>QEMU uses <code class="docutils literal notranslate"><span class="pre">QEMU_EFI.fd</span></code> to boot UEFI-based guest OSes—especially for AArch64 (ARM 64-bit).</p>
+<ul class="simple">
+<li><p>Download from <a class="reference external" href="https://releases.linaro.org/components/kernel/uefi-linaro/16.02/release/qemu64/">Linaro Releases</a></p></li>
+<li><p>Bios files may also present in <code class="docutils literal notranslate"><span class="pre">&quot;$QEMU_PATH/share/firmware/&quot;</span></code></p></li>
+</ul>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/UEFI">UEFI</a> (Unified Extensible Firmware Interface) is the modern replacement for legacy BIOS.</p>
+<p><img alt="UEFI Booting" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/UEFI_boot_process.png/1920px-UEFI_boot_process.png" />
+<sup><sub><em>Image Reference<a class="footnote-reference brackets" href="#uefi-wikipedia" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a></em></sub></sup></p>
+<p><code class="docutils literal notranslate"><span class="pre">*.fd</span></code> = <strong>UEFI Firmware Image</strong></p>
+<ul class="simple">
+<li><p>Simulates real UEFI firmware (which lives in flash ROM on real hardware)</p></li>
+<li><p>Loads before the OS kernel</p></li>
+<li><p>It runs before Linux, initializes hardware, and boots the kernel via bootloaders or direct EFI stubs.</p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-drive</span></code></p>
+</div></blockquote>
+<p>For virtual disk and how QEMU should treat it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">alpine</span><span class="o">.</span><span class="n">qcow2</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="n">qcow2</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">virtio</span>
+</pre></div>
+</div>
+<p>Defines a virtual storage device<br />
+Booting a <strong>pre-installed system</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">file=alpine.qcow2</span></code> → your root filesystem</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format=qcow2</span></code> → tells QEMU how to interpret the image format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if=virtio</span></code> → attaches the disk using fast <code class="docutils literal notranslate"><span class="pre">virtio</span></code> interface (used by modern OSes)
+Equivalent to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">alpine</span><span class="o">.</span><span class="n">qcow2</span><span class="p">,</span><span class="k">if</span><span class="o">=</span><span class="n">none</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="n">qcow2</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">hd0</span> \
+<span class="o">-</span><span class="n">device</span> <span class="n">virtio</span><span class="o">-</span><span class="n">blk</span><span class="o">-</span><span class="n">device</span><span class="p">,</span><span class="n">drive</span><span class="o">=</span><span class="n">hd0</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>This shows up in the guest as <code class="docutils literal notranslate"><span class="pre">/dev/vda</span></code> (virtio disk A). The kernel mounts it as root (<code class="docutils literal notranslate"><span class="pre">/</span></code>).</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-hda</span></code></p>
+</div></blockquote>
+<p>Legacy shortcut for <code class="docutils literal notranslate"><span class="pre">-drive</span></code></p>
+<p>Instead of <code class="docutils literal notranslate"><span class="pre">-hda</span></code>, <code class="docutils literal notranslate"><span class="pre">-hdb</span></code>, <code class="docutils literal notranslate"><span class="pre">-hdc</span></code>, <code class="docutils literal notranslate"><span class="pre">-hdd</span></code>, you can use<a class="footnote-reference brackets" href="#qemu-docs-invocation" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">media</span><span class="o">=</span><span class="n">disk</span>
+<span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">media</span><span class="o">=</span><span class="n">disk</span>
+<span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">media</span><span class="o">=</span><span class="n">disk</span>
+<span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-</span><span class="n">drive</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">media</span><span class="o">=</span><span class="n">disk</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-kernel</span></code></p>
+</div></blockquote>
+<p>Specifies the Linux kernel binary to boot</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-initrd</span></code></p>
+</div></blockquote>
+<p>Provides an optional initramfs (compressed root filesystem in memory). Can be skipped if booting directly from disk.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">console=ttyAMA0</span></code></p>
+</div></blockquote>
+<p>Required for serial output when using the <code class="docutils literal notranslate"><span class="pre">virt</span></code> machine on AArch64.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-device</span></code></p>
+</div></blockquote>
+<p>Used for adding virtual hardware</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-device</span></code> explicitly tells QEMU <strong>what virtual hardware to plug in</strong>.</p></li>
+<li><p>need <code class="docutils literal notranslate"><span class="pre">-device</span></code> to <strong>actually connect the drive</strong> from <code class="docutils literal notranslate"><span class="pre">-drive</span></code> to the virtual hardware.</p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-cdrom</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Used to mount ISO file as virtual CD-ROM</p></li>
+<li><p>Used when you want to boot <strong>live OS</strong> or <strong>installer</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">alpine.iso</span></code>, <code class="docutils literal notranslate"><span class="pre">ubuntu.iso</span></code>).</p>
+<ul>
+<li><p>Must pair with <code class="docutils literal notranslate"><span class="pre">-boot</span> <span class="pre">d</span></code> if you want to boot from it.</p></li>
+</ul>
+</li>
+<li><p>not needed when booting kernel directly via <code class="docutils literal notranslate"><span class="pre">-kernel</span></code>, <code class="docutils literal notranslate"><span class="pre">initrd</span></code></p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">-cdrom</span></code> later to boot installed system</p></li>
+<li><p>Equivalent to <code class="docutils literal notranslate"><span class="pre">-drive</span> <span class="pre">file=&quot;$ISO_PATH&quot;,media=cdrom</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-boot</span></code></p>
+</div></blockquote>
+<p>Specifies the boot order for drives<br />
+like setting priority</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Use Case</p></th>
+<th class="head"><p>File Type</p></th>
+<th class="head"><p>Bootable?</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-cdrom</span></code></p></td>
+<td><p>Boot an <strong>ISO image</strong> (Live CD, installer)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.iso</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-cdrom</span> <span class="pre">alpine.iso</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-drive</span></code></p></td>
+<td><p>Use any <strong>disk image</strong> (e.g. HDD/SSD)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.img</span></code>, <code class="docutils literal notranslate"><span class="pre">.qcow2</span></code>, etc</p></td>
+<td><p>Yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-drive</span> <span class="pre">file=disk.img,if=virtio,format=raw</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Use Case</p></th>
+<th class="head"><p>Bootloader Required</p></th>
+<th class="head"><p>Root FS Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-bios</span></code> + <code class="docutils literal notranslate"><span class="pre">-drive</span></code></p></td>
+<td><p>Boot <strong>pre-installed OS</strong> (e.g., Alpine in <code class="docutils literal notranslate"><span class="pre">qcow2</span></code>)</p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">UEFI</span></code>, etc.)</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-kernel</span></code> + <code class="docutils literal notranslate"><span class="pre">-initrd</span></code></p></td>
+<td><p>Boot directly from <strong>Linux kernel + initramfs</strong></p></td>
+<td><p>No</p></td>
+<td><p>Optional (initrd can be self-contained)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-nic</span></code></p>
+</div></blockquote>
+<p>sets up networking for QEMU<br />
+<code class="docutils literal notranslate"><span class="pre">-nic</span> <span class="pre">user</span></code> gives the guest internet access via NAT<br />
+when you use <code class="docutils literal notranslate"><span class="pre">-nic</span></code>, you <strong>should not</strong> use <code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">virtio-net-device</span></code> separately (to avoid duplicate NICs).</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-netdev</span></code></p>
+</div></blockquote>
+<p>low lever network backend configuration
+<code class="docutils literal notranslate"><span class="pre">-netdev</span> <span class="pre">user,id=net0,hostfwd=tcp::2222-:22</span></code></p>
+<ul class="simple">
+<li><p>user mode networking</p></li>
+<li><p>id=net0: ID reference to this backend</p></li>
+<li><p>hostfwd: port forwarding (host:2222-&gt;guest:22)
+<code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">virtio-net-device,netdev=net0</span></code> to connect frontend
+So <code class="docutils literal notranslate"><span class="pre">-netdev</span></code> = <em>backend</em>, and <code class="docutils literal notranslate"><span class="pre">-device</span></code> = <em>frontend (NIC)</em>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-nic</span></code> is shortcut for simple setups. Combines <code class="docutils literal notranslate"><span class="pre">-netdev</span></code> + <code class="docutils literal notranslate"><span class="pre">-device</span></code> in one line.<br />
+<code class="docutils literal notranslate"><span class="pre">-nic</span> <span class="pre">user,model=virtio</span></code> is equivalent to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">netdev</span> <span class="n">user</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="n">n0</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">virtio</span><span class="o">-</span><span class="n">net</span><span class="p">,</span><span class="n">netdev</span><span class="o">=</span><span class="n">n0</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-rtc</span></code></p>
+</div></blockquote>
+<p>For real time clock inside the guest VM.<br />
+<code class="docutils literal notranslate"><span class="pre">base=utc</span></code>: Specify <code class="docutils literal notranslate"><span class="pre">base</span></code> as <code class="docutils literal notranslate"><span class="pre">utc</span></code> or <code class="docutils literal notranslate"><span class="pre">localtime</span></code> to let the RTC start at the current UTC or local time, respectively<br />
+<code class="docutils literal notranslate"><span class="pre">clock=host</span></code>: sync the guest’s RTC from the host system’s clock. By default, the RTC is driven by the host system time.</p>
+</section>
+<section id="image-setup">
+<h2>Image Setup<a class="headerlink" href="#image-setup" title="Permalink to this heading">#</a></h2>
+<section id="creating-disk-image">
+<h3>Creating Disk Image<a class="headerlink" href="#creating-disk-image" title="Permalink to this heading">#</a></h3>
+<p>QEMU supports many disk image formats, including growable disk images<a class="footnote-reference brackets" href="#disk-images-qemu-documentation" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>. It supports different formats such as raw (<code class="docutils literal notranslate"><span class="pre">.img</span></code>), QEMU Copy-On-Write (<code class="docutils literal notranslate"><span class="pre">.qcow2</span></code>), 	Microsoft Virtual Hard Disk (<code class="docutils literal notranslate"><span class="pre">.vhdx</span></code>), etc.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;format&gt;<span class="w"> </span>&lt;image_name&gt;<span class="w"> </span>&lt;size&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span>alpine.qcow2<span class="w"> </span>16G
+</pre></div>
+</div>
+</section>
+<section id="resizing-disk-image">
+<h3>Resizing Disk Image<a class="headerlink" href="#resizing-disk-image" title="Permalink to this heading">#</a></h3>
+<p>You can also resize the disk</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>resize<span class="w"> </span>-f<span class="w"> </span>raw<span class="w"> </span>debian.img<span class="w"> </span>+32G
+</pre></div>
+</div>
+</section>
+<section id="snapshots">
+<h3>Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this heading">#</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>snapshot<span class="w"> </span><span class="o">[</span><span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>-a<span class="w"> </span>snapshot<span class="w"> </span><span class="p">|</span><span class="w"> </span>-c<span class="w"> </span>snapshot<span class="w"> </span><span class="p">|</span><span class="w"> </span>-d<span class="w"> </span>snapshot<span class="w"> </span><span class="o">]</span><span class="w"> </span>filename
+</pre></div>
+</div>
+<p>The accepted arguments are as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-l</span></code> lists all snapshots associated with the specified disk image.</p></li>
+<li><p>The apply option, <code class="docutils literal notranslate"><span class="pre">-a</span></code>, reverts the disk image (<em>filename</em>) to the state of a previously saved <em>snapshot</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> creates a snapshot (<em>snapshot</em>) of an image (<em>filename</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> deletes the specified snapshot.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img.exe<span class="w"> </span>snapshot<span class="w"> </span>-c<span class="w"> </span>debian-freshinstall<span class="w"> </span>debian.qcow2
+
+<span class="gp">$ </span>qemu-img.exe<span class="w"> </span>snapshot<span class="w"> </span>-l<span class="w"> </span>debian.qcow2
+<span class="go">Snapshot list:</span>
+<span class="go">ID      TAG               VM_SIZE                DATE        VM_CLOCK     ICOUNT</span>
+<span class="go">1       debian-freshinstall      0 B 2025-07-16 14:35:52  0000:00:00.000          0</span>
+</pre></div>
+</div>
+<p>You can also create an overlay snapshot image from base image<a class="footnote-reference brackets" href="#create-snapshot-qemu" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a>.</p>
+<p>Create a base image:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span>base.qcow2<span class="w"> </span>10G
+</pre></div>
+</div>
+<p>Create a snapshot image (overlay):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span>-b<span class="w"> </span>base.qcow2<span class="w"> </span>overlay.qcow2
+</pre></div>
+</div>
+<p>Boot from snapshot:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-x86_64<span class="w"> </span>-drive<span class="w"> </span><span class="nv">file</span><span class="o">=</span>overlay.qcow2,format<span class="o">=</span>qcow2
+</pre></div>
+</div>
+<p>Changes go to overlay.qcow2, base stays clean. Making any changes to its backing file (<em>base.qcow2</em>) will corrupt this snapshot image.</p>
+</section>
+<section id="installing-os-into-disk-image">
+<h3>Installing OS into Disk Image<a class="headerlink" href="#installing-os-into-disk-image" title="Permalink to this heading">#</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-bios<span class="w"> </span>QEMU_EFI.fd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>virtio,file<span class="o">=</span>alpine.qcow2,format<span class="o">=</span>qcow2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-cdrom<span class="w"> </span>alpine.iso<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-boot<span class="w"> </span>d
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-hda<span class="w"> </span>debian.qcow2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-cdrom<span class="w"> </span>debian.iso<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-boot<span class="w"> </span>d
+</pre></div>
+</div>
+<p>See option <code class="docutils literal notranslate"><span class="pre">-cdrom</span></code>.<br />
+This boots from the provided ISO and installs OS to <code class="docutils literal notranslate"><span class="pre">disk_image.qcow2</span></code>.</p>
+<p>After installation</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-drive<span class="w"> </span><span class="nv">file</span><span class="o">=</span>mydisk.qcow2,format<span class="o">=</span>qcow2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-boot<span class="w"> </span>c<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-m<span class="w"> </span>2G
+</pre></div>
+</div>
+<p>this boots from the image like a virtual HDD. You’ll require <code class="docutils literal notranslate"><span class="pre">-bios</span></code> options for AArch64 emulation.</p>
+</section>
+</section>
+<section id="emulating-aarch64-alpine-on-qemu">
+<h2>Emulating AArch64 (Alpine) on QEMU<a class="headerlink" href="#emulating-aarch64-alpine-on-qemu" title="Permalink to this heading">#</a></h2>
+<p><img alt="neofetch" src="../../_images/alpine-windows10.gif" /></p>
+<section id="installing-alpine-on-qemu">
+<h3>Installing Alpine on QEMU<a class="headerlink" href="#installing-alpine-on-qemu" title="Permalink to this heading">#</a></h3>
+<p>get the <a class="reference external" href="https://alpinelinux.org/">alpine</a> ISO from <a class="reference external" href="https://alpinelinux.org/downloads/">downloads | Alpine Linux</a></p>
+<p>Setup virtual machine type, bios, drive to boot from and for filesystem, etc. <a class="footnote-reference brackets" href="#time-to-learn-arm" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#running-aarch64-image-in-qemu" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></a></p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">install.sh</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISO_PATH</span><span class="o">=</span><span class="s2">&quot;alpine-standard-3.22.0-aarch64.iso&quot;</span>
+<span class="n">QCOW2_IMAGE</span><span class="o">=</span><span class="s2">&quot;alpine.qcow2&quot;</span>
+
+<span class="n">qemu</span><span class="o">-</span><span class="n">img</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">qcow2</span> <span class="s2">&quot;$QCOW2_IMAGE&quot;</span> <span class="mi">16</span><span class="n">G</span>
+
+<span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">aarch64</span> \
+    <span class="o">-</span><span class="n">M</span> <span class="n">virt</span> <span class="o">-</span><span class="n">cpu</span> <span class="n">cortex</span><span class="o">-</span><span class="n">a53</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1</span><span class="n">G</span> \
+    <span class="o">-</span><span class="n">bios</span> <span class="s2">&quot;$QEMU_PATH/share/edk2-aarch64-code.fd&quot;</span> \
+    <span class="o">-</span><span class="n">drive</span> <span class="k">if</span><span class="o">=</span><span class="n">virtio</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;$QCOW2_IMAGE&quot;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="n">qcow2</span> \
+    <span class="o">-</span><span class="n">device</span> <span class="n">virtio</span><span class="o">-</span><span class="n">gpu</span> \
+    <span class="o">-</span><span class="n">cdrom</span> <span class="s2">&quot;$ISO_PATH&quot;</span> \
+    <span class="o">-</span><span class="n">boot</span> <span class="n">d</span> \
+    <span class="o">-</span><span class="n">nographic</span> \
+    <span class="o">-</span><span class="n">nic</span> <span class="n">user</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="n">virtio</span> \
+    <span class="o">-</span><span class="n">rtc</span> <span class="n">base</span><span class="o">=</span><span class="n">utc</span><span class="p">,</span><span class="n">clock</span><span class="o">=</span><span class="n">host</span>
+</pre></div>
+</div>
+</div>
+<p>Now, setup alpine:<a class="footnote-reference brackets" href="#alpine-linux-qemu" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>setup-alpine
+
+<span class="go">Hostname: pine</span>
+<span class="go">Interface: eth0</span>
+<span class="go">manual network configuration (y/n): n</span>
+<span class="go">Proxy: none</span>
+<span class="go">Network Time Protocol: busybox</span>
+<span class="go">APK Mirror: dl-cdn.alpinelinux.org</span>
+<span class="go">ssh server: openssh</span>
+<span class="go">Allow root ssh login? (&#39;?&#39; for help) [prohibit-password]: yes</span>
+
+<span class="go">Available disks are:</span>
+<span class="go">  vda   (17.2 GB 0x1af4 )</span>
+<span class="go">Which disk(s) would you like to use? (or &#39;?&#39; for help or &#39;none&#39;) [none] vda</span>
+
+<span class="go">The following disk is selected:</span>
+<span class="go">  vda   (17.2 GB 0x1af4 )</span>
+
+<span class="go">How would you like to use it? (&#39;sys&#39;, &#39;data&#39;, &#39;crypt&#39;, &#39;lvm&#39; or &#39;?&#39; for help) [?] sys</span>
+
+<span class="go">WARNING: The following disk(s) will be erased:</span>
+<span class="go">  vda   (17.2 GB 0x1af4 )</span>
+
+<span class="go">WARNING: Erase the above disk(s) and continue? (y/n) [n] y</span>
+</pre></div>
+</div>
+</section>
+<section id="running-alpine-headless">
+<h3>Running Alpine (Headless)<a class="headerlink" href="#running-alpine-headless" title="Permalink to this heading">#</a></h3>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">run.sh</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-M<span class="w"> </span>virt<span class="w"> </span>-cpu<span class="w"> </span>cortex-a53<span class="w"> </span>-smp<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-bios<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QEMU_PATH</span><span class="s2">/share/edk2-aarch64-code.fd&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>virtio,file<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$QCOW2_IMAGE</span><span class="s2">&quot;</span>,format<span class="o">=</span>qcow2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-nographic<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-gpu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-netdev<span class="w"> </span>user,id<span class="o">=</span>mynet0,hostfwd<span class="o">=</span>tcp::2222-:2222,hostfwd<span class="o">=</span>tcp::6969-:22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-net-device,netdev<span class="o">=</span>mynet0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-rtc<span class="w"> </span><span class="nv">base</span><span class="o">=</span>utc,clock<span class="o">=</span>host
+</pre></div>
+</div>
+</div>
+</section>
+<section id="running-alpine-gui-desktop">
+<h3>Running Alpine (GUI/Desktop)<a class="headerlink" href="#running-alpine-gui-desktop" title="Permalink to this heading">#</a></h3>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Alpine with XFCE Desktop Environment</span><a class="headerlink" href="#id28" title="Permalink to this code">#</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-M<span class="w"> </span>virt<span class="w"> </span>-cpu<span class="w"> </span>cortex-a53<span class="w"> </span>-smp<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-bios<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QEMU_PATH</span><span class="s2">/share/edk2-aarch64-code.fd&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>virtio,file<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$QCOW2_IMAGE</span><span class="s2">&quot;</span>,format<span class="o">=</span>qcow2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-display<span class="w"> </span>sdl,gl<span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-gpu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-keyboard-pci<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>qemu-xhci<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>usb-tablet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-netdev<span class="w"> </span>user,id<span class="o">=</span>mynet0,hostfwd<span class="o">=</span>tcp::2222-:2222,hostfwd<span class="o">=</span>tcp::6969-:22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-net-device,netdev<span class="o">=</span>mynet0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-nic<span class="w"> </span>user,model<span class="o">=</span>virtio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-rtc<span class="w"> </span><span class="nv">base</span><span class="o">=</span>utc,clock<span class="o">=</span>host
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="emulating-x86-64-debian-on-qemu">
+<h2>Emulating x86_64 (Debian) on QEMU<a class="headerlink" href="#emulating-x86-64-debian-on-qemu" title="Permalink to this heading">#</a></h2>
+<p><img alt="neofetch" src="../../_images/debian-windows10.gif" /></p>
+<section id="installing-debian-on-qemu">
+<h3>Installing Debian on QEMU<a class="headerlink" href="#installing-debian-on-qemu" title="Permalink to this heading">#</a></h3>
+<p>get the <a class="reference external" href="https://www.debian.org/">debian</a> ISO from <a class="reference external" href="https://www.debian.org/CD/http-ftp/#stable">Downloading Debian USB/CD/DVD images via HTTP/FTP</a></p>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">install.sh</span><a class="headerlink" href="#id29" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ISO_PATH</span><span class="o">=</span><span class="s2">&quot;debian-12.11.0-amd64-netinst.iso&quot;</span>
+<span class="nv">QCOW2_IMAGE</span><span class="o">=</span><span class="s2">&quot;debian.qcow2&quot;</span>
+
+qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QCOW2_IMAGE</span><span class="s2">&quot;</span><span class="w"> </span>40G
+
+qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-smp<span class="w"> </span><span class="m">8</span>,cores<span class="o">=</span><span class="m">4</span>,maxcpus<span class="o">=</span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-vga<span class="w"> </span>virtio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-display<span class="w"> </span>sdl,gl<span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-accel<span class="w"> </span>whpx,kernel-irqchip<span class="o">=</span>off<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-hda<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QCOW2_IMAGE</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-cdrom<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ISO_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-boot<span class="w"> </span><span class="nv">menu</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>qemu-xhci<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>usb-mouse<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>usb-kbd
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cpus</span></code> = <code class="docutils literal notranslate"><span class="pre">sockets</span></code> × <code class="docutils literal notranslate"><span class="pre">cores</span></code> × <code class="docutils literal notranslate"><span class="pre">threads</span></code>
+that means I have
+<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">sockets</span> <span class="pre">x</span> <span class="pre">4</span> <span class="pre">cores</span> <span class="pre">x</span> <span class="pre">1</span> <span class="pre">threads</span></code></p>
+<ul class="simple">
+<li><p>threads = 1</p></li>
+<li><p>sockets = 2</p></li>
+<li><p>cores = 4</p></li>
+</ul>
+</section>
+<section id="running-debian-gui-desktop">
+<h3>Running Debian (GUI/Desktop)<a class="headerlink" href="#running-debian-gui-desktop" title="Permalink to this heading">#</a></h3>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">run.sh</span><a class="headerlink" href="#id30" title="Permalink to this code">#</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-smp<span class="w"> </span><span class="m">8</span>,cores<span class="o">=</span><span class="m">4</span>,maxcpus<span class="o">=</span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-accel<span class="w"> </span>whpx,kernel-irqchip<span class="o">=</span>off<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>4G<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-vga<span class="w"> </span>virtio<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-display<span class="w"> </span>sdl,gl<span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-drive<span class="w"> </span><span class="nv">file</span><span class="o">=</span>debian.qcow2,format<span class="o">=</span>qcow2,media<span class="o">=</span>disk<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-netdev<span class="w"> </span>user,id<span class="o">=</span>mynet0,hostfwd<span class="o">=</span>tcp::2223-:2223,hostfwd<span class="o">=</span>tcp::6696-:22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>e1000,netdev<span class="o">=</span>mynet0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-rtc<span class="w"> </span><span class="nv">base</span><span class="o">=</span>utc,clock<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>intel-hda<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>hda-duplex<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>qemu-xhci<span class="w"> </span>-device<span class="w"> </span>usb-mouse<span class="w"> </span>-device<span class="w"> </span>usb-kbd
+</pre></div>
+</div>
+</div>
+<p>For Audio: <code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">intel-hda</span> <span class="pre">-device</span> <span class="pre">hda-duplex</span> </code></p>
+</section>
+<section id="running-debian-headless">
+<h3>Running Debian (Headless)<a class="headerlink" href="#running-debian-headless" title="Permalink to this heading">#</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">-nographic</span></code> will work most of the time.</p>
+<p>However, if you face errors such as being stuck in GRUB, it is likely due to GRUB expecting a graphical terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SeaBIOS (version rel-1.16.3-0-ga6ed6b701f0a-prebuilt.qemu.org)
+iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+BEFD0FF0+BEF30FF0 CA00
+iPXE (http://ipxe.org) 00:04.0 CB00 PCI2.10 PnP PMM+BEF1FFF0 BEF30FF0 CB00
+
+Booting from Hard Disk...
+GRUB loading.
+Welcome to GRUB!
+</pre></div>
+</div>
+<p>To fix this, update GRUB settings to use serial terminal<a class="footnote-reference brackets" href="#serial-console-howto" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></a>.</p>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code> file, and make sure the following lines are present or uncommented.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,115200n8&quot;</span>
+<span class="nv">GRUB_TERMINAL</span><span class="o">=</span>serial
+<span class="nv">GRUB_SERIAL_COMMAND</span><span class="o">=</span><span class="s2">&quot;serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1&quot;</span>
+</pre></div>
+</div>
+<p>And update the grub.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>update-grub
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-configurations">
+<h2>Common Configurations<a class="headerlink" href="#common-configurations" title="Permalink to this heading">#</a></h2>
+<section id="input-devices">
+<h3>Input Devices<a class="headerlink" href="#input-devices" title="Permalink to this heading">#</a></h3>
+<p><strong>Keyboard</strong>:</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">virtio-keyboard-pci</span></code></p></li>
+<li><p>If that doesn’t work with acceleration enabled, try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">-</span><span class="n">device</span> <span class="n">qemu</span><span class="o">-</span><span class="n">xhci</span> <span class="c1"># USB3.0 emulation</span>
+    <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">kbd</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Mouse</strong>:</p>
+<ol class="arabic" start="3">
+<li><p>virtio-mouse</p>
+<p><code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">virtio-mouse-pci</span></code> or <code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">virtio-mouse</span></code>
+But caused Mouse cursor to jitter all over the screen.
+tried the following<a class="footnote-reference brackets" href="#archlinux-qemu-troubleshooting" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a> setting, but it didn’t work in my setup.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">SDL_VIDEO_X11_DGAMOUSE</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>USB Mouse</p>
+<p><code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">usb-mouse</span></code> or <code class="docutils literal notranslate"><span class="pre">-device</span> <span class="pre">usb-tablet</span></code>,</p>
+<p>to solve: <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">'usb-bus'</span> <span class="pre">bus</span> <span class="pre">found</span> <span class="pre">for</span> <span class="pre">device</span> <span class="pre">'usb-tablet'</span></code> add xhci flag.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">device</span> <span class="n">qemu</span><span class="o">-</span><span class="n">xhci</span> <span class="c1"># USB3.0 emulation</span>
+<span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">mouse</span>
+</pre></div>
+</div>
+</li>
+<li><p>virtio-tablet</p>
+<p>Used paravirtualized tablet-like pointing device.
+Gave smooth mouse movement</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">-</span><span class="n">device</span>  <span class="n">virtio</span><span class="o">-</span><span class="n">tablet</span><span class="o">-</span><span class="n">pci</span>
+</pre></div>
+</div>
+</li>
+<li><p>USB Tablet</p>
+<p>Best performance</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">-</span><span class="n">device</span> <span class="n">qemu</span><span class="o">-</span><span class="n">xhci</span>
+    <span class="o">-</span><span class="n">device</span> <span class="n">usb</span><span class="o">-</span><span class="n">tablet</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="display">
+<h3>Display<a class="headerlink" href="#display" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">-display</span> <span class="pre">help</span></code>
+Gives a list of supported displays</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">none</span>
+<span class="n">gtk</span>
+<span class="n">sdl</span>
+<span class="n">egl</span><span class="o">-</span><span class="n">headless</span>
+<span class="n">curses</span>
+<span class="n">spice</span><span class="o">-</span><span class="n">app</span>
+<span class="n">dbus</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>Default is <code class="docutils literal notranslate"><span class="pre">-display</span> <span class="pre">gtk</span></code></p></li>
+<li><p>Segfaults when used <code class="docutils literal notranslate"><span class="pre">-display</span> <span class="pre">gtk,gl=on</span></code>, suggesting it is not supported by the host</p></li>
+<li><p>Smoother performance with <code class="docutils literal notranslate"><span class="pre">-display</span> <span class="pre">sdl,gl=on</span></code>(possibly because of Windows HOST or maybe not)</p></li>
+</ul>
+</section>
+<section id="virtual-gpus">
+<h3>Virtual GPUs<a class="headerlink" href="#virtual-gpus" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">virtio-gpu</span></code></strong></p></td>
+<td><p>Paravirtualized</p></td>
+<td><p>Fast GUI with acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ramfb</span></code></p></td>
+<td><p>Simple framebuffer</p></td>
+<td><p>Basic display (UEFI, boot screens)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">VGA</span></code>, <code class="docutils literal notranslate"><span class="pre">cirrus</span></code>, <code class="docutils literal notranslate"><span class="pre">vmware</span></code></p></td>
+<td><p>Emulated legacy GPUs</p></td>
+<td><p>Older OS support</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qxl</span></code></p></td>
+<td><p>Para GPU (SPICE)</p></td>
+<td><p>For SPICE-based setups</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="networking-ssh">
+<h2>Networking &amp; SSH<a class="headerlink" href="#networking-ssh" title="Permalink to this heading">#</a></h2>
+<section id="port-forwarding">
+<h3>Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hostfwd</span><span class="o">=</span><span class="n">tcp</span><span class="p">::</span><span class="mi">8080</span><span class="o">-</span><span class="p">:</span><span class="mi">80</span>  <span class="c1"># Forward HTTP</span>
+<span class="n">hostfwd</span><span class="o">=</span><span class="n">udp</span><span class="p">::</span><span class="mi">1234</span><span class="o">-</span><span class="p">:</span><span class="mi">1234</span>  <span class="c1"># Forward UDP</span>
+</pre></div>
+</div>
+<p>Works only with <code class="docutils literal notranslate"><span class="pre">-netdev</span> <span class="pre">user</span></code> (user-mode networking).</p>
+<p>Example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-m<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-hda<span class="w"> </span>disk.img<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-netdev<span class="w"> </span>user,id<span class="o">=</span>net0,hostfwd<span class="o">=</span>tcp::2222-:22<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0
+</pre></div>
+</div>
+<p>You can also  <a class="reference external" href="https://gist.github.com/chrisvgt/7dc3e07c597ffcc1f5333d734213ab2c">forward multiple ports</a></p>
+<section id="troubleshooting">
+<h4>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h4>
+<p>Inside the Guest check for ip using <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code>, you should see an interface like <code class="docutils literal notranslate"><span class="pre">eth0</span></code> or <code class="docutils literal notranslate"><span class="pre">ens3</span></code> or <code class="docutils literal notranslate"><span class="pre">enp0s2</span></code> with IP <code class="docutils literal notranslate"><span class="pre">10.0.2.x</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ip<span class="w"> </span>a
+<span class="go">2: enp0s2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000</span>
+<span class="go">    link/ether 52:54:00:12:34:56 brd ff:ff:ff:ff:ff:ff</span>
+<span class="go">    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s2</span>
+<span class="go">       valid_lft 86294sec preferred_lft 86294sec</span>
+<span class="go">    inet6 fec0::5054:ff:fe12:3456/64 scope site dynamic mngtmpaddr</span>
+<span class="go">       valid_lft 86295sec preferred_lft 14295sec</span>
+<span class="go">    inet6 fe80::5054:ff:fe12:3456/64 scope link</span>
+<span class="go">       valid_lft forever preferred_lft forever</span>
+</pre></div>
+</div>
+<p>If not you can try running DHCP manually</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dhclient
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ssh-setup">
+<h3>SSH Setup<a class="headerlink" href="#ssh-setup" title="Permalink to this heading">#</a></h3>
+<p>To check if ssh is working<a class="footnote-reference brackets" href="#setting-ssh-server-alpine" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
+<span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>rc<span class="w"> </span>status
+<span class="gp">root@pine:~$ </span>rc-service<span class="w"> </span>sshd<span class="w"> </span>start<span class="w"> </span>
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sshd
+</pre></div>
+</div>
+<p>Or just do <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">localhost</span></code></p>
+<p>The Guest machine is running ssh server which is listening on port 22 by default.
+This must be forwarded to one of the Host (Windows)’s port.
+To forward multiple ports:<a class="footnote-reference brackets" href="#how-to-ssh-from-host-to-guest-using-qemu" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>18<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#qemu-hostfwd-multiple-ports" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>19<span class="fn-bracket">]</span></a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>...<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-netdev<span class="w"> </span>user,id<span class="o">=</span>mynet0,hostfwd<span class="o">=</span>tcp::2222-:2222,hostfwd<span class="o">=</span>tcp::6969-:22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-device<span class="w"> </span>virtio-net-device,netdev<span class="o">=</span>mynet0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>...
+</pre></div>
+</div>
+<p>Also see <a class="reference external" href="https://superuser.com/questions/8077/how-do-i-set-up-ssh-so-i-dont-have-to-type-my-password">unix - How do I set up SSH so I don’t have to type my password?</a><a class="footnote-reference brackets" href="#setup-ssh-avoid-typing-password" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>20<span class="fn-bracket">]</span></a>, to avoid having to type password each time.</p>
+<p>To use vim to edit over ssh</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim<span class="w"> </span>scp://root@localhost:6969//root/hello/hello.S
+</pre></div>
+</div>
+<section id="id23">
+<h4>Troubleshooting<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h4>
+<p>If you get permission denied even after having correct credentials you can check is the file <code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code> have the following lines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermitRootLogin</span> <span class="n">yes</span>
+<span class="n">PasswordAuthentication</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p>And restart the ssh service.</p>
+</section>
+</section>
+<section id="x11-forwarding">
+<h3>X11 Forwarding<a class="headerlink" href="#x11-forwarding" title="Permalink to this heading">#</a></h3>
+<section id="vcxsrv">
+<h4>VcXsrv<a class="headerlink" href="#vcxsrv" title="Permalink to this heading">#</a></h4>
+<p>Run <a class="reference external" href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> with “Disable access control” option<br />
+or from command line</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>vcxsrv.exe<span class="w"> </span>:0<span class="w"> </span>-ac<span class="w"> </span>-multiwindow<span class="w"> </span>-clipboard<span class="w"> </span>-wgl<span class="w"> </span>-listen<span class="w"> </span>tcp
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>xeyes<span class="w"> </span>
+<span class="go">connect localhost port 6010: Connection refused</span>
+<span class="go">Error: Can&#39;t open display: localhost:10.0</span>
+</pre></div>
+</div>
+<p>By default, VcXsrv listens on 6000 + display-number port</p>
+<section id="why-6010-port">
+<h5>Why 6010 port?<a class="headerlink" href="#why-6010-port" title="Permalink to this heading">#</a></h5>
+<p>X11 forwarding over SSH maps <code class="docutils literal notranslate"><span class="pre">DISPLAY=localhost:10.0</span></code> → <strong>TCP port 6010</strong></p>
+<p>if display is set to <code class="docutils literal notranslate"><span class="pre">localhost:10.0</span></code> try setting it to <code class="docutils literal notranslate"><span class="pre">localhost:0.0</span></code></p>
+</section>
+</section>
+<section id="install-x11-apps">
+<h4>Install x11-apps<a class="headerlink" href="#install-x11-apps" title="Permalink to this heading">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>x11-apps
+</pre></div>
+</div>
+<p>Install xeyes and xauth</p>
+<section id="alpine-troubleshooting">
+<h5>Alpine Troubleshooting<a class="headerlink" href="#alpine-troubleshooting" title="Permalink to this heading">#</a></h5>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>apk<span class="w"> </span>add<span class="w"> </span>xeyes
+<span class="go">ERROR: unable to select packages:</span>
+<span class="go">  xeyes (no such package):</span>
+<span class="go">    required by: world[xeyes]</span>
+</pre></div>
+</div>
+<p>Alpine’s default installation is very minimal, and you might be missing the “community” repository, which contains desktop environment packages.</p>
+<p>edit <code class="docutils literal notranslate"><span class="pre">/etc/apk/repositories</span></code> to add http://dl-cdn.alpinelinux.org/alpine/v3.22/community</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>cat<span class="w"> </span>/etc/apk/repositories
+<span class="gp">#</span>/media/vdb/apks
+<span class="go">http://dl-cdn.alpinelinux.org/alpine/v3.22/main</span>
+<span class="go">http://dl-cdn.alpinelinux.org/alpine/v3.22/community</span>
+
+<span class="gp">root@pine:~$ </span>apk<span class="w"> </span>update
+</pre></div>
+</div>
+</section>
+</section>
+<section id="xauth">
+<h4>xauth<a class="headerlink" href="#xauth" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">xauth</span><span class="p">:</span> <span class="n">file</span> <span class="o">/</span><span class="n">root</span><span class="o">/.</span><span class="n">Xauthority</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+</pre></div>
+</div>
+<p>Generate <code class="docutils literal notranslate"><span class="pre">.Xauthority</span></code>:<br />
+Run this in the <strong>guest (Alpine)</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>xauth<span class="w"> </span>generate<span class="w"> </span>:0<span class="w"> </span>.<span class="w"> </span>trusted
+</pre></div>
+</div>
+<blockquote>
+<div><p>Or if you want to match SSH forwarding display:</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>xauth<span class="w"> </span>generate<span class="w"> </span>localhost:10<span class="w"> </span>.<span class="w"> </span><span class="k">$(</span>mcookie<span class="k">)</span>
+</pre></div>
+</div>
+<p>Verify with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>xauth<span class="w"> </span>list
+<span class="go">/unix:10  MIT-MAGIC-COOKIE-1  8b6797669a84fde1f6af7172589bcc6c</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-steps-for-x11-forwarding">
+<h4>Complete Steps for X11 Forwarding<a class="headerlink" href="#complete-steps-for-x11-forwarding" title="Permalink to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>(Host) Start <a class="reference external" href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> with display no <code class="docutils literal notranslate"><span class="pre">10</span></code> instead of <code class="docutils literal notranslate"><span class="pre">-1</span></code></p></li>
+<li><p>(Host) set display in environment <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">DISPLAY=localhost:10.0</span></code></p></li>
+<li><p>(Guest) Edit <code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code> and add this line, if not present</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X11Forwarding</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p>and restart ssh service</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>/etc/init.d/sshd<span class="w"> </span>restart
+<span class="go">or</span>
+<span class="gp">root@pine:~$ </span>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+</pre></div>
+</div>
+</li>
+<li><p>(Guest) Setup <a class="reference internal" href="#xauth"><span class="xref myst">xauth</span></a> configuration.</p></li>
+<li><p>(Host) connect with ssh<a class="footnote-reference brackets" href="#how-to-ssh-from-host-to-guest-using-qemu" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>18<span class="fn-bracket">]</span></a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>root@localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">6969</span><span class="w"> </span>-XY
+<span class="gp"># </span>-Y<span class="w"> </span><span class="o">(</span>trusted<span class="o">)</span><span class="w"> </span>-X<span class="w"> </span><span class="o">(</span>untrusted<span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="shared-folder">
+<h2>Shared Folder<a class="headerlink" href="#shared-folder" title="Permalink to this heading">#</a></h2>
+<section id="virtfs">
+<h3>Virtfs<a class="headerlink" href="#virtfs" title="Permalink to this heading">#</a></h3>
+<p>Did not work as QEMU for Windows was built without 9p (virtfs) support.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>...<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>-virtfs<span class="w"> </span>local,path<span class="o">=</span>/d/PROJECTS/QEMU_PROJECTS/alpine/shared,mount_tag<span class="o">=</span>host0,security_model<span class="o">=</span>mapped,id<span class="o">=</span>host0<span class="w"> </span><span class="se">\</span>
+<span class="w">	</span>...
+<span class="go">	</span>
+<span class="go">qemu-system-aarch64.exe: -virtfs local,path=D:/PROJECTS/QEMU_PROJECTS/alpine/shared,mount_tag=host0,security_model=mapped,id=host0: There is no option group &#39;virtfs&#39;</span>
+<span class="go">qemu-system-aarch64.exe: -virtfs local,path=D:/PROJECTS/QEMU_PROJECTS/alpine/shared,mount_tag=host0,security_model=mapped,id=host0: virtfs support is disabled</span>
+</pre></div>
+</div>
+</section>
+<section id="smb-cifs">
+<h3>SMB/CIFS<a class="headerlink" href="#smb-cifs" title="Permalink to this heading">#</a></h3>
+<p>Create a shared folder on Windows. Follow <a class="reference external" href="https://www.themakersphere.com/setup-smb-file-share-on-windows/">How to Setup SMB File Share on Windows Super Fast in 10 minutes</a> for complete steps.</p>
+<p>Setup CIFS in Guest. Follow <a class="reference external" href="https://gist.github.com/neelabhg/8c6bfcdb44c0aa3f86bed00fe1f6da49">Mount a Windows host’s folder on a QEMU Linux guest</a> for complete steps.</p>
+<p>On Host (Windows 10)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Shared</span> <span class="n">Folder</span> <span class="n">Path</span><span class="p">]:</span> <span class="n">D</span><span class="p">:</span>\<span class="n">PROJECTS</span>\<span class="n">QEMU_PROJECTS</span>\<span class="n">debian</span>\<span class="n">shared</span>
+    <span class="n">properties</span> <span class="o">-&gt;</span> <span class="n">Sharing</span> <span class="o">-&gt;</span> <span class="n">Share</span> <span class="o">-&gt;</span> <span class="n">Select</span> <span class="n">user</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Administrator</span><span class="p">)</span> <span class="n">Share</span>
+    <span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">folder</span> <span class="n">permissions</span> <span class="n">to</span> <span class="s2">&quot;Everyone: Read/Write&quot;</span>
+<span class="p">[</span><span class="n">Username</span><span class="p">]:</span> <span class="n">ABD</span>
+</pre></div>
+</div>
+<p>On Guest (Linux Debian 6.1.0-37-amd64)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>ip<span class="w"> </span>route
+<span class="go">default via 10.0.2.2 dev ens3</span>
+<span class="go">10.0.2.0/24 dev ens3 proto kernel scope link src 10.0.2.15</span>
+</pre></div>
+</div>
+<p>For Guest, the host’s IP is <code class="docutils literal notranslate"><span class="pre">10.0.2.2</span></code>, which also default hardcoded when <code class="docutils literal notranslate"><span class="pre">-net</span> <span class="pre">nic</span> <span class="pre">-net</span> <span class="pre">user</span></code> is used.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cifs-utils
+<span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">user</span><span class="o">=</span>ABD,uid<span class="o">=</span><span class="m">1000</span>,gid<span class="o">=</span><span class="m">1000</span><span class="w"> </span>//10.0.2.2/shared<span class="w"> </span>/mnt
+<span class="go">Password for ABD@//10.0.2.2/shared: </span>
+<span class="gp">root@debian:~$ </span>ls<span class="w"> </span>/mnt
+<span class="go">file_from_win.txt</span>
+</pre></div>
+</div>
+<blockquote>
+<div><h4 class="rubric" id="smb">SMB</h4>
+<ul class="simple">
+<li><p>Stands for: <strong>Server Message Block</strong></p></li>
+<li><p>What it is:<br />
+A network file sharing protocol developed by Microsoft.<br />
+Allows file/folder/printer sharing between Windows and other systems over a network.</p></li>
+<li><p>Used by: Windows, Samba (Linux), macOS</p></li>
+<li><p>Ports: TCP 445 (modern), TCP 139 (older)</p></li>
+</ul>
+<h4 class="rubric" id="cifs">CIFS</h4>
+<ul class="simple">
+<li><p>Stands for: <strong>Common Internet File System</strong></p></li>
+<li><p>What it is:<br />
+An early version or dialect of SMB — specifically, SMBv1.<br />
+Introduced by Microsoft in the 1990s.</p></li>
+<li><p>Now deprecated: SMBv1 (CIFS) is considered insecure and slow, replaced by:</p>
+<ul>
+<li><p>SMBv2</p></li>
+<li><p>SMBv3</p></li>
+</ul>
+</li>
+</ul>
+<p>In Linux, <code class="docutils literal notranslate"><span class="pre">mount.cifs</span></code> is the tool name, but it can connect to modern SMB (v2/v3) servers too.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="desktop-environment">
+<h2>Desktop Environment<a class="headerlink" href="#desktop-environment" title="Permalink to this heading">#</a></h2>
+<p>In Linux, the desktop environment encompasses everything you interact with during your desktop session: the graphical user interface (GUI), the file manager, and utilities that manage network connections, display settings, and more. It differs from the operating system core, which is the kernel and basic system utilities.</p>
+<p>Some of the known lightweight DEs are;</p>
+<ul class="simple">
+<li><p>XFCE</p></li>
+<li><p>LXDE</p></li>
+<li><p>MATE</p></li>
+<li><p>LXQt</p></li>
+<li><p>Enlightenment</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>xfce4
+<span class="gp">root@debian:~$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>set-default<span class="w"> </span>graphical.target<span class="w"> </span>
+</pre></div>
+</div>
+<p>The Alpine Linux offers a script for quickly setting up a desktop<a class="footnote-reference brackets" href="#alpine-setup-desktop" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>21<span class="fn-bracket">]</span></a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@pine:~$ </span>setup-desktop
+<span class="go">Setup a user? (enter a lower-case loginname, or &#39;no&#39;) [no]</span>
+<span class="go">Which desktop environment? (&#39;gnome&#39;, &#39;xfce&#39;, &#39;mate&#39;, &#39;sway&#39;, &#39;lxqt&#39; or &#39;none&#39;) [none] xfce</span>
+<span class="go">Updating repository indexes...</span>
+</pre></div>
+</div>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<section id="debugging-in-qemu">
+<h3>Debugging in QEMU<a class="headerlink" href="#debugging-in-qemu" title="Permalink to this heading">#</a></h3>
+<p>We can start QEMU in debug mode using the <code class="docutils literal notranslate"><span class="pre">-s</span></code> flag which opens a GDB server on TCP at port <code class="docutils literal notranslate"><span class="pre">1234</span></code><br />
+The <code class="docutils literal notranslate"><span class="pre">-S</span></code> is to prevent the CPU from starting immediately, so firmware/kernel is loaded but execution is halted at the reset vector.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-system-arm<span class="w"> </span>-machine<span class="w"> </span>stm32vldiscovery<span class="w"> </span>-nographic<span class="w"> </span>-kernel<span class="w"> </span>kernel.elf<span class="w"> </span>-s<span class="w"> </span>-S
+</pre></div>
+</div>
+<p>and then start GDB instance to connect to QEMU</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gdb-multiarch<span class="w"> </span>kernel.elf<span class="w"> </span>-ex<span class="w"> </span><span class="s1">&#39;target remote localhost:1234&#39;</span>
+</pre></div>
+</div>
+<p>For a different port use <code class="docutils literal notranslate"><span class="pre">-gdb</span> <span class="pre">tcp::5555</span></code> instead of <code class="docutils literal notranslate"><span class="pre">-s</span></code>.</p>
+</section>
+<section id="kill-qemu">
+<h3>Kill QEMU<a class="headerlink" href="#kill-qemu" title="Permalink to this heading">#</a></h3>
+<p>Incase of unresponsive behaviour use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ps<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>qemu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9ps
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="qemu-a-proper-guide" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=AAfFewePE7c">QEMU: A proper guide! - YouTube</a></p>
+</aside>
+<aside class="footnote brackets" id="getting-familiar-with-riscv-and-wriitng-small-bootloader" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=s_4tFz52jbc">Let’s Build an OS: Day 0 - Getting familiar with RISC-V and writing a small bootloader. - YouTube</a></p>
+</aside>
+<aside class="footnote brackets" id="time-to-learn-arm" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id14">2</a>)</span>
+<p><a class="reference external" href="https://youtu.be/ZLq-QvLWuoc">Intel is Over - Time to Learn ARM Assembly</a></p>
+</aside>
+<aside class="footnote brackets" id="emulating-aarch64-with-qemu-part1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://blog.jitendrapatro.me/emulating-aarch64arm64-with-qemu-part-1/">Emulating AARCH64(ARM64) with QEMU – Part 1 – Jitendra Patro</a></p>
+</aside>
+<aside class="footnote brackets" id="qemu-docs-invocation" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id11">2</a>)</span>
+<p><a class="reference external" href="https://www.qemu.org/docs/master/system/invocation.html">Invocation — QEMU documentation</a></p>
+</aside>
+<aside class="footnote brackets" id="gentoo-linux-qemu-options" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/QEMU/Options">QEMU/Options - Gentoo wiki</a></p>
+</aside>
+<aside class="footnote brackets" id="install-hyper-v" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-hyper-v?tabs=gui&amp;amp;pivots=windows">Install Hyper-V in Windows and Windows Server | Microsoft Learn</a></p>
+</aside>
+<aside class="footnote brackets" id="whpx-acceleration-gh-issue" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/Tech-FZ/EmuGUI/issues/72">WHPX acceleration · Issue #72 · Tech-FZ/EmuGUI</a></p>
+</aside>
+<aside class="footnote brackets" id="smp-invocation-qemu-documentation" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.qemu.org/docs/master/system/invocation.html#:~:text=fdset/NN.-,%2Dsmp,-%5B%5Bcpus%3D%5Dn%5D%5B%2Cmaxcpus">-smp Invocation — QEMU documentation</a></p>
+</aside>
+<aside class="footnote brackets" id="uefi-wikipedia" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">10</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/UEFI">UEFI - Wikipedia</a></p>
+</aside>
+<aside class="footnote brackets" id="disk-images-qemu-documentation" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">11</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.qemu.org/docs/master/system/images.html">Disk Images — QEMU documentation</a></p>
+</aside>
+<aside class="footnote brackets" id="create-snapshot-qemu" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">12</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.qemu.org/Documentation/CreateSnapshot">Documentation/CreateSnapshot - QEMU</a></p>
+</aside>
+<aside class="footnote brackets" id="running-aarch64-image-in-qemu" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">13</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://openqa-bites.github.io/posts/2022/2022-04-13-qemu-aarch64/">Running an aarch64 image in qemu -</a></p>
+</aside>
+<aside class="footnote brackets" id="alpine-linux-qemu" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">14</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.alpinelinux.org/wiki/QEMU">QEMU - Alpine Linux</a></p>
+</aside>
+<aside class="footnote brackets" id="serial-console-howto" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">15</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://help.ubuntu.com/community/SerialConsoleHowto">SerialConsoleHowto - Community Help Wiki</a></p>
+</aside>
+<aside class="footnote brackets" id="archlinux-qemu-troubleshooting" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">16</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.archlinux.org/title/QEMU/Troubleshooting">QEMU/Troubleshooting - ArchWiki</a></p>
+</aside>
+<aside class="footnote brackets" id="setting-ssh-server-alpine" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">17</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.alpinelinux.org/wiki/Setting_up_a_SSH_server">Setting up a SSH server - Alpine Linux</a></p>
+</aside>
+<aside class="footnote brackets" id="how-to-ssh-from-host-to-guest-using-qemu" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>18<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id20">1</a>,<a role="doc-backlink" href="#id24">2</a>)</span>
+<p><a class="reference external" href="https://unix.stackexchange.com/questions/124681/how-to-ssh-from-host-to-guest-using-qemu"><strong>networking - How to SSH from host to guest using QEMU? - Unix &amp; Linux Stack Exchange</strong></a></p>
+</aside>
+<aside class="footnote brackets" id="qemu-hostfwd-multiple-ports" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">19</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://gist.github.com/chrisvgt/7dc3e07c597ffcc1f5333d734213ab2c">qemu hostfwd multiple ports forwarding</a></p>
+</aside>
+<aside class="footnote brackets" id="setup-ssh-avoid-typing-password" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id22">20</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://superuser.com/questions/8077/how-do-i-set-up-ssh-so-i-dont-have-to-type-my-password">unix - How do I set up SSH so I don’t have to type my password?</a></p>
+</aside>
+<aside class="footnote brackets" id="alpine-setup-desktop" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id25">21</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-desktop">Alpine setup scripts - Alpine Linux</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="../2025-06-25-Arenas/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Arenas</span>
+    </a>
+    
+  </span>
+  <!-- <span class="ablog__spacer">&nbsp;</span> -->
+  <span class="ablog__next">
+    
+    
+    <a href="../2025-08-19-ARM-Cortex-M/">
+      <span>ARM Cortex M Hardfault Handling</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+            
+            
+            
+           
+            <div class="section ablog__comments"> 
+              
+
+<h2>Comments</h2>
+<script src="https://giscus.app/client.js"
+  data-repo="ABD-01/ABD-01.github.io"
+  data-repo-id="R_kgDOJLoETw"
+  data-category="General"
+  data-category-id="DIC_kwDOJLoET84CiH6W"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<script>
+    function changeGiscusTheme() {
+        var theme = document.body.dataset.theme === "light" ? "light" : "dark_dimmed";
+        var frame = document.querySelector(".giscus-frame");
+        console.log("Changing theme to " + theme);
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+      );
+    }
+    function setupGiscusTheme() {
+      // Attach event handlers for toggling themes
+      const buttons = document.getElementsByClassName("theme-toggle");
+      Array.from(buttons).forEach((btn) => {
+        btn.addEventListener("click", () => { setTimeout(changeGiscusTheme, 500); });
+    });
+  }
+  
+  setupGiscusTheme();
+  setTimeout(changeGiscusTheme, 10000);
+</script>
+            </div>
+
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">QEMU Essentials: A Reference for System Emulation and Configuration</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#image-setup">Image Setup</a><ul>
+<li><a class="reference internal" href="#creating-disk-image">Creating Disk Image</a></li>
+<li><a class="reference internal" href="#resizing-disk-image">Resizing Disk Image</a></li>
+<li><a class="reference internal" href="#snapshots">Snapshots</a></li>
+<li><a class="reference internal" href="#installing-os-into-disk-image">Installing OS into Disk Image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#emulating-aarch64-alpine-on-qemu">Emulating AArch64 (Alpine) on QEMU</a><ul>
+<li><a class="reference internal" href="#installing-alpine-on-qemu">Installing Alpine on QEMU</a></li>
+<li><a class="reference internal" href="#running-alpine-headless">Running Alpine (Headless)</a></li>
+<li><a class="reference internal" href="#running-alpine-gui-desktop">Running Alpine (GUI/Desktop)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#emulating-x86-64-debian-on-qemu">Emulating x86_64 (Debian) on QEMU</a><ul>
+<li><a class="reference internal" href="#installing-debian-on-qemu">Installing Debian on QEMU</a></li>
+<li><a class="reference internal" href="#running-debian-gui-desktop">Running Debian (GUI/Desktop)</a></li>
+<li><a class="reference internal" href="#running-debian-headless">Running Debian (Headless)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-configurations">Common Configurations</a><ul>
+<li><a class="reference internal" href="#input-devices">Input Devices</a></li>
+<li><a class="reference internal" href="#display">Display</a></li>
+<li><a class="reference internal" href="#virtual-gpus">Virtual GPUs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#networking-ssh">Networking &amp; SSH</a><ul>
+<li><a class="reference internal" href="#port-forwarding">Port Forwarding</a><ul>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssh-setup">SSH Setup</a><ul>
+<li><a class="reference internal" href="#id23">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#x11-forwarding">X11 Forwarding</a><ul>
+<li><a class="reference internal" href="#vcxsrv">VcXsrv</a><ul>
+<li><a class="reference internal" href="#why-6010-port">Why 6010 port?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-x11-apps">Install x11-apps</a><ul>
+<li><a class="reference internal" href="#alpine-troubleshooting">Alpine Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xauth">xauth</a></li>
+<li><a class="reference internal" href="#complete-steps-for-x11-forwarding">Complete Steps for X11 Forwarding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shared-folder">Shared Folder</a><ul>
+<li><a class="reference internal" href="#virtfs">Virtfs</a></li>
+<li><a class="reference internal" href="#smb-cifs">SMB/CIFS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#desktop-environment">Desktop Environment</a></li>
+<li><a class="reference internal" href="#others">Others</a><ul>
+<li><a class="reference internal" href="#debugging-in-qemu">Debugging in QEMU</a></li>
+<li><a class="reference internal" href="#kill-qemu">Kill QEMU</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

@@ -1,0 +1,709 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>ROS2 Challenge - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+
+          <section class="tex2jax_ignore mathjax_ignore" id="ros2-challenge">
+<h1>ROS2 Challenge<a class="headerlink" href="#ros2-challenge" title="Permalink to this heading">#</a></h1>
+<p>I have used Ubuntu:Focal docker image and source installed Ros2 Foxy for these tasks.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">focal</span>
+</pre></div>
+</div>
+<!--
+:::{toctree}
+---
+maxdepth: 2
+---
+
+Hello! ROS2 is fun <ros2/ros2_is_fun>
+Launch your robot <ros2/laser_scan>
+Navigate your turtlebot <ros2/navigation>
+::: 
+-->
+<section id="hello-ros2-is-fun">
+<h2>‘Hello! ROS2 is fun’<a class="headerlink" href="#hello-ros2-is-fun" title="Permalink to this heading">#</a></h2>
+<p>This is introduction to creating a simple publisher and subscriber in ROS2. Basically there is one node that listens on a topic on which the other node talks.</p>
+<a class="reference internal image-reference" href="https://abd-01.github.io/crispy-adventure/_static/gifs/talk-listen.gif"><img alt="talker-listener" class="align-center" src="https://abd-01.github.io/crispy-adventure/_static/gifs/talk-listen.gif" style="width: 70%;" /></a>
+<section id="creating-ros2-package">
+<h3>Creating ROS2 package:<a class="headerlink" href="#creating-ros2-package" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;path/to/ros2_ws&gt;/src
+ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>ros2_is_fun<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w"> </span>--dependencies<span class="w"> </span>std_msgs<span class="w"> </span>rclcpp
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal notranslate"><span class="pre">ros2_is_fun</span></code> package with following files and directory inside it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2_is_fun/
+<span class="w">    </span>CMakeLists.txt
+<span class="w">    </span>package.xml
+<span class="w">    </span>include/ros2_is_fun
+<span class="w">    </span>src/
+</pre></div>
+</div>
+<p>For more info on the function of these files see <em><a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#what-makes-up-a-ros-2-package">What makes up a ROS 2 package?</a></em></p>
+<p>The source code <code class="docutils literal notranslate"><span class="pre">publisher.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">subscriber.cpp</span></code> will be added in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.
+The <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> will be edited to add the executable to the package and install them.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">publisher</span><span class="w"> </span><span class="s">src/publisher.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">publisher</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">subscriber</span><span class="w"> </span><span class="s">src/subscriber.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">subscriber</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span><span class="w"> </span>
+<span class="w">  </span><span class="s">publisher</span>
+<span class="w">  </span><span class="s">subscriber</span>
+<span class="w">  </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="building-the-package">
+<h3>Building the package<a class="headerlink" href="#building-the-package" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>ros2_is_fun
+</pre></div>
+</div>
+</section>
+<section id="using-the-package">
+<h3>Using the package<a class="headerlink" href="#using-the-package" title="Permalink to this heading">#</a></h3>
+<p>To be able to run the executables, first source the setup files from <code class="docutils literal notranslate"><span class="pre">install</span></code> directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>install/local_setup.bash
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+</pre></div>
+</div>
+<p>Run the executables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>ros2_is_fun<span class="w"> </span>publisher
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>ros2_is_fun<span class="w"> </span>subscriber
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://abd-01.github.io/crispy-adventure/_static/pub-sub.webp"><img alt="Pub-Sub" class="align-center" src="https://abd-01.github.io/crispy-adventure/_static/pub-sub.webp" style="width: 100%;" /></a>
+</section>
+<section id="source-code">
+<h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this heading">#</a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Source Code</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Publisher</label><div class="sd-tab-content docutils">
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Subscriber</label><div class="sd-tab-content docutils">
+</div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="visualizing-laser-scan-data">
+<h2>Visualizing Laser Scan Data<a class="headerlink" href="#visualizing-laser-scan-data" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="https://abd-01.github.io/crispy-adventure/_static/gifs/Jack_Jack_Laser_Vision.webp"><img alt="Jack Jack Laser" class="align-center" src="https://abd-01.github.io/crispy-adventure/_static/gifs/Jack_Jack_Laser_Vision.webp" style="width: 70%;" /></a>
+<p>This part involves using laser sensors to scan the environment and visualize the data in rviz2.</p>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h3>
+<p>I have used <a class="reference external" href="https://github.com/ROBOTIS-GIT/turtlebot3/blob/foxy-devel/turtlebot3_description/urdf/turtlebot3_burger.urdf"><code class="docutils literal notranslate"><span class="pre">turtlebot3_burger</span></code></a> as the robot model, and <a class="reference external" href="https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world"><code class="docutils literal notranslate"><span class="pre">dynamic_world</span></code></a> as a model for the world.</p>
+<section id="environment-setup">
+<h4>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h4>
+<p>My <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> includes these lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/foxy/setup.bash
+<span class="nb">source</span><span class="w"> </span>/usr/share/colcon_cd/function/colcon_cd.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">_colcon_cd_root</span><span class="o">=</span>/opt/ros/foxy/
+<span class="nb">source</span><span class="w"> </span>/usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+<span class="nb">export</span><span class="w"> </span><span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>burger
+<span class="nb">export</span><span class="w"> </span><span class="nv">GAZEBO_MODEL_PATH</span><span class="o">=</span>/usr/share/gazebo-11/models:/opt/ros/foxy/share/turtlebot3_gazebo/models/:<span class="nv">$GAZEBO_MODEL_PATH</span>
+</pre></div>
+</div>
+<p>Also, the package models if any need to be added to the path as well.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">GAZEBO_MODEL_PATH</span><span class="o">=</span>/home/ros2_ws/src/jde_ros2_asgn/models:<span class="nv">$GAZEBO_MODEL_PATH</span>
+</pre></div>
+</div>
+</section>
+<section id="nodes">
+<h4>Nodes<a class="headerlink" href="#nodes" title="Permalink to this heading">#</a></h4>
+<p>To view the Laser Scans we need atleast 4 nodes:</p>
+<ol class="arabic simple">
+<li><p><strong>Gazebo</strong> - The simulation environment.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gazebo $(ros2 pkg prefix --share jde_ros2_asgn)/worlds/dynamic_world.world
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Robot State Publisher</strong> - To broadcast the state of the robot to the <a class="reference external" href="https://wiki.ros.org/tf2">tf2</a> transform library.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ros2 run robot_state_publisher robot_state_publisher $(ros2 pkg prefix --share turtlebot3_description)/urdf/turtlebot3_burger.urdf
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Teleop Twist Keyboard</strong> - The title is self-explanatory.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">teleop_twist_keyboard</span> <span class="n">teleop_twist_keyboard</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>RViz2</strong> - ROS vizualtion tool</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rviz2</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="launching-the-nodes">
+<h3>Launching the nodes<a class="headerlink" href="#launching-the-nodes" title="Permalink to this heading">#</a></h3>
+<p>I have created a launch file named <code class="docutils literal notranslate"><span class="pre">laser_scan.launch</span></code> in <code class="docutils literal notranslate"><span class="pre">launch</span></code> directory to launch all the nodes from one command.
+(Except for the keyboard node, you know why.)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>jde_ros2_asgn<span class="w"> </span>laser_scan.launch.py
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>teleop_twist_keyboard
+</pre></div>
+</div>
+<p class="centered">
+  <video width="100%" autoplay muted loop>
+    <source src="https://abd-01.github.io/crispy-adventure/_static/laser_scan.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p></section>
+<section id="id1">
+<h3>Source Code<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">laser_scan.launch.py</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="ros2-navigation2">
+<h2>ROS2 Navigation2<a class="headerlink" href="#ros2-navigation2" title="Permalink to this heading">#</a></h2>
+<p>In simple terms we want our robot to move from point A to point B. But first, we need to know where the robot is (i.e. localization) and where are points A and B (i.e. mapping).</p>
+<a class="reference internal image-reference" href="https://abd-01.github.io/crispy-adventure/_static/gifs/robot_city.gif"><img alt="You Go To Robot City" class="align-center" src="https://abd-01.github.io/crispy-adventure/_static/gifs/robot_city.gif" style="width: 70%;" /></a>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
+<p>For <em>mapping</em>, I have used <code class="docutils literal notranslate"><span class="pre">slam_toolbox</span></code> package, to help estimate the robot position and create the map of the world.</p>
+<p>Once a map is available we need to <em>localize</em>, which is done by creating a transform chain <code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">-&gt;</span> <span class="pre">odom</span> <span class="pre">-&gt;</span> <span class="pre">base_link</span></code> (Oh the errors here are painful!!!). We will use <a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html">tf2</a> transform library to do that.</p>
+<p>Now, what left is navigation.</p>
+</section>
+<section id="creating-the-map">
+<h3>Creating the Map<a class="headerlink" href="#creating-the-map" title="Permalink to this heading">#</a></h3>
+<p>We will launch the slam tool box, create a gazebo simulation world, visualize the map in rviz2 and teleop the robot.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>slam_toolbox<span class="w"> </span>online_async_launch.py
+ros2<span class="w"> </span>launch<span class="w"> </span>jde_ros2_asgn<span class="w"> </span>navingation_tb3.launch.py
+rviz2<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>--share<span class="w"> </span>jde_ros2_asgn<span class="k">)</span>/rviz/mapping.rviz
+ros2<span class="w"> </span>run<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>teleop_twist_keyboard
+</pre></div>
+</div>
+<p>Once, the mapping is done, we will save it using <code class="docutils literal notranslate"><span class="pre">nav2_map_server</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>src/jde_ros2_asgn/maps/my_cafe<span class="w"> </span>--ros-args<span class="w"> </span>-p<span class="w"> </span>save_map_timeout:<span class="o">=</span><span class="m">10000</span>
+</pre></div>
+</div>
+<p class="centered">
+  <video width="100%" autoplay muted loop>
+    <source src="https://abd-01.github.io/crispy-adventure/_static/mapping(my_cafe).mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</p></section>
+<section id="waypoint-navigation">
+<h3>Waypoint Navigation<a class="headerlink" href="#waypoint-navigation" title="Permalink to this heading">#</a></h3>
+<p>I have created a launch file to start all the required nodes, however I have been facing issue when <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> is lanuched using the same launch file. Hence, we will use additional terminal to launch it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>jde_ros2_asgn<span class="w"> </span>navigation_tb3.launch.py
+ros2<span class="w"> </span>launch<span class="w"> </span>nav2_bringup<span class="w"> </span>bringup_launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span>True<span class="w"> </span>autostart:<span class="o">=</span>True<span class="w"> </span>map:<span class="o">=</span>/home/ros2_ws/src/jde_ros2_asgn/maps/my_cafe.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>rviz2<span class="w"> </span>rviz2<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>nav2_bringup<span class="k">)</span>/share/nav2_bringup/rviz/nav2_default_view.rviz
+</pre></div>
+</div>
+<p>Rest is shown in the video.</p>
+</section>
+</section>
+<section id="if-i-only-had-more-time">
+<h2><a class="reference external" href="https://getyarn.io/yarn-clip/da763d8d-f2bb-4f9a-8ddc-6211e6f26d68">If I only had more time.</a><a class="headerlink" href="#if-i-only-had-more-time" title="Permalink to this heading">#</a></h2>
+<!-- 
+```{raw} html
+<div class="centered">
+  <iframe src="https://getyarn.io/yarn-clip/da763d8d-f2bb-4f9a-8ddc-6211e6f26d68/embed?autoplay=False&responsive=False">
+  </iframe>
+</div>
+``` 
+-->
+<p>I used up ~1.5 weeks of time for the following to work. Why? Because the challenge said “<em>(or any other robot if you wish to).</em>”</p>
+<p>The issues mentioned were not the limitation, but the time was. Hence I then decided to move forward with the TurtleBot3.</p>
+<a class="reference internal image-reference" href="https://abd-01.github.io/crispy-adventure/_static/racecar-tunnel.webp"><img alt="Racecar and Tunnel World" class="align-center" src="https://abd-01.github.io/crispy-adventure/_static/racecar-tunnel.webp" style="width: 100%;" /></a>
+<p>This is racecar model and tunnel world taken from <a class="reference external" href="https://github.com/mit-racecar">mit-racecar</a> which I guess is used for labs in <a class="reference external" href="https://github.com/mit-rss/intro_to_ros">Robotics: Science and Systems (MIT Course)</a>.</p>
+<p>The issues I faced:</p>
+<ul class="simple">
+<li><p>Spawning the robot URDF in Gazebo. (I beleive version issues or my skill isssues.)</p></li>
+<li><p>The package was written using ROS kinetic.</p></li>
+<li><p>The racecar is Ackermann-steering Robot, and this was my first time working with ackermann steering.</p></li>
+</ul>
+<p>The other candidate robot model I had in mind was <a class="reference external" href="https://www.ivlabs.in/sahayak---an-autonomous-covid-aid-bot2.html">Sahayak-v3</a> developed at <a class="reference external" href="https://www.ivlabs.in/">IvLabs</a>.</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/64685403/132857785-d6f70385-3a5a-43d3-9c87-5cd9a9a209a8.gif" width="40%">
+</p></section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>ROS &amp; Docker: <a class="reference external" href="https://github.com/noshluk2/ros1_wiki/blob/main/docker/commands.md">Docker Commands</a></p></li>
+<li><p>ROS2 Foxy Tutorials: <a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (C++)</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::bind</span></code> function in C++: <a class="reference external" href="https://www.geeksforgeeks.org/bind-function-placeholders-c/">Bind Function and Placeholders in C++</a></p></li>
+<li><p>Gazebo not showing my models: <a class="reference external" href="https://answers.gazebosim.org/question/24935/how-to-include-a-model-which-is-not-in-default-path/#:~:text=You%20can%20check%20the%20current%20value%20of%20GAZEBO_MODEL_PATH,them%20using%20%3A%20export%20GAZEBO_MODEL_PATH%3D%24GAZEBO_MODEL_PATH%3A%3Cpath%20to%20your%20model%3E">include a model which is not in default path</a></p></li>
+<li><p>Slow Colcon Build: <a class="reference external" href="https://github.com/colcon/colcon-core/issues/193"><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> on OSX is orders of magnitude slower than direct <code class="docutils literal notranslate"><span class="pre">make</span></code></a></p></li>
+<li><p>Dynamic World Model: <a class="reference external" href="https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps/tree/master/worlds/dynamic_world">Dataset-of-Gazebo-Worlds-Models-and-Maps</a></p></li>
+<li><p>View URDF in Gazebo: <a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/URDF-Main.html">foxy/Tutorials/Intermediate/URDF</a> &amp; <a class="reference external" href="https://classic.gazebosim.org/tutorials?tut=ros_urdf">URDF in Gazebo</a></p></li>
+<li><p>Saving Maps <a class="reference external" href="https://answers.ros.org/question/379565/timeout-error-while-saving-map/">answers.ros.org/timeout error while saving map</a></p></li>
+<li><p>ROS2 TurtleBot3: <a class="reference external" href="https://github.com/twming/ros2_turtlebot3">ros2_turtlebot3
+</a></p></li>
+<li><p>Racecar URDF: <a class="reference external" href="https://github.com/mit-racecar/racecar_gazebo/blob/master/racecar_description/urdf/racecar.xacro">mit-racecar/racecar_gazebo</a></p></li>
+<li><p>Sahayak-V3: <a class="reference external" href="https://github.com/IvLabs/Sahayak-v3">IvLabs/Sahayak-v3</a></p></li>
+<li><p>Notes from courses done: <a class="reference external" href="https://www.udemy.com/course/ros2-how-to">ROS2 (Foxy-Humble) For Beginners I</a> &amp; <a class="reference external" href="https://www.udemy.com/course/ros-essentials/">ros-essentials</a></p></li>
+</ul>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">ROS2 Challenge</a><ul>
+<li><a class="reference internal" href="#hello-ros2-is-fun">‘Hello! ROS2 is fun’</a><ul>
+<li><a class="reference internal" href="#creating-ros2-package">Creating ROS2 package:</a></li>
+<li><a class="reference internal" href="#building-the-package">Building the package</a></li>
+<li><a class="reference internal" href="#using-the-package">Using the package</a></li>
+<li><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualizing-laser-scan-data">Visualizing Laser Scan Data</a><ul>
+<li><a class="reference internal" href="#pre-requisites">Pre-requisites</a><ul>
+<li><a class="reference internal" href="#environment-setup">Environment Setup</a></li>
+<li><a class="reference internal" href="#nodes">Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#launching-the-nodes">Launching the nodes</a></li>
+<li><a class="reference internal" href="#id1">Source Code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ros2-navigation2">ROS2 Navigation2</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#creating-the-map">Creating the Map</a></li>
+<li><a class="reference internal" href="#waypoint-navigation">Waypoint Navigation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#if-i-only-had-more-time">If I only had more time.</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

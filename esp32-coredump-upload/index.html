@@ -1,0 +1,620 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../about/" /><link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>esp32-guru-upload - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+
+          <section class="tex2jax_ignore mathjax_ignore" id="esp32-guru-upload">
+<h1>esp32-guru-upload<a class="headerlink" href="#esp32-guru-upload" title="Permalink to this heading">#</a></h1>
+<p>Upload Guru Meditation crashdumps from an ESP32 to a Flask server endpoint.</p>
+<p>ESP32 firmware captures crashdumps from the dedicated coredump partition.</p>
+<p>Crashdumps are uploaded via HTTP POST to a <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/">Flask server</a></p>
+<section id="how-to">
+<h2>How To<a class="headerlink" href="#how-to" title="Permalink to this heading">#</a></h2>
+<section id="open-in-codespaces">
+<h3>1. Open in Codespaces<a class="headerlink" href="#open-in-codespaces" title="Permalink to this heading">#</a></h3>
+<p>This repository is preconfigured with a development container.</p>
+<p>Open it in GitHub Codespaces to get the ESP-IDF and Python environment ready.</p>
+</section>
+<section id="start-esp32-firmware-in-qemu">
+<h3>2. Start ESP32 Firmware in QEMU<a class="headerlink" href="#start-esp32-firmware-in-qemu" title="Permalink to this heading">#</a></h3>
+<p>Launch the emulated ESP32 firmware with port forwarding:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>esp32-guru-upload
+get_idf<span class="w">   </span><span class="c1"># setup ESP-IDF environment</span>
+idf.py<span class="w"> </span>qemu<span class="w"> </span>--qemu-extra-args<span class="w"> </span><span class="s2">&quot;-nic user,hostfwd=tcp::8081-:8080&quot;</span>
+</pre></div>
+</div>
+<p>For more insight on QEMU visit my <a class="reference external" href="https://abd-01.github.io/posts/2025-07-15-QEMU/">Blog</a>.</p>
+</section>
+<section id="start-the-flask-server">
+<h3>3. Start the Flask Server<a class="headerlink" href="#start-the-flask-server" title="Permalink to this heading">#</a></h3>
+<p>In another terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>esp32-guru-upload
+python<span class="w"> </span>endpoint_app.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Flask server will run at <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/"><code class="docutils literal notranslate"><span class="pre">http://localhost:8080/</span></code></a>.</p></li>
+</ul>
+<p><em><strong>Demo view of the server: <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/">abd-01.github.io/esp32-guru-upload</a></strong></em></p>
+</section>
+<section id="access-the-web-ui">
+<h3>4. Access the Web UI<a class="headerlink" href="#access-the-web-ui" title="Permalink to this heading">#</a></h3>
+<p>Visit:
+<a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/">http://localhost:8080/</a> or the GitHub Codespaces-provided URL.</p>
+</section>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<section id="esp32-firmware">
+<h3>ESP32 Firmware<a class="headerlink" href="#esp32-firmware" title="Permalink to this heading">#</a></h3>
+<p>Runs on real hardware or in QEMU. It intentionally triggers crashes, captures crashdumps from the dedicated coredump partition, and uploads them over HTTP.</p>
+</section>
+<section id="flask-server">
+<h3>Flask Server<a class="headerlink" href="#flask-server" title="Permalink to this heading">#</a></h3>
+<p>Receives crashdumps via POST <code class="docutils literal notranslate"><span class="pre">/upload</span></code>, stores them as <code class="docutils literal notranslate"><span class="pre">.elf</span></code> files, and provides a simple web interface to browse and analyze dumps using ESP-IDF tools.</p>
+</section>
+<section id="development-container">
+<h3>Development Container<a class="headerlink" href="#development-container" title="Permalink to this heading">#</a></h3>
+<p>Preconfigured for GitHub Codespaces or VS Code Dev Containers. Includes the ESP-IDF toolchain, QEMU emulator, and Python environment.</p>
+</section>
+<section id="project-structure">
+<h3>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>abd-01-esp32-guru-upload/
+├── .devcontainer/         # Devcontainer setup (ESP-IDF, QEMU, Flask)
+├── main/                  # ESP32 firmware sources
+│   ├── crash_app.c        # Crash simulation
+│   ├── dummy_app.c        # Random dummy tasks
+│   ├── guru-upload.c      # Main app, Wi-Fi &amp; tasks
+│   ├── upload_coredump_app.c # Upload task
+│   └── http_service/      # HTTP client helpers
+├── templates/             # Flask HTML templates
+├── endpoint_app.py        # Flask server entrypoint
+└── README.md
+</pre></div>
+</div>
+</section>
+</section>
+<section id="explanation">
+<h2>Explanation<a class="headerlink" href="#explanation" title="Permalink to this heading">#</a></h2>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
+<p>I was recently working on Hardfault Diagnostics for ARM Cortex-M, which could create crashlogs in the event of a Hardfault.</p>
+<p>My work is in progress and can be viewed <a class="reference external" href="https://github.com/ABD-01/hardfault-coredump-arm-cortex-m">here</a>.</p>
+<p>I would have eventually looked into ESP32, however, this gave me the chance to get into the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/fatal-errors.html">Guru Meditation</a> earlier.</p>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.qemu.org/docs/master/">QEMU</a> has been an integral part of my work for the last couple of months, as it allowed me to get into different machines without needing the actual hardware. (I also use QEMU as my go-to virtual machine emulator instead of VMware or other software.) You can check out my <a class="reference external" href="https://abd-01.github.io/posts/2025-07-15-QEMU/">blog</a> on QEMU if you like.</p>
+<p>The official <a class="reference external" href="https://www.qemu.org/docs/master/system/target-xtensa.html"><code class="docutils literal notranslate"><span class="pre">qemu-system-xtensa</span></code></a> does not support ESP32 targets. Thankfully, <a class="reference external" href="https://github.com/espressif/esp-toolchain-docs/blob/main/qemu/README.md">Espressif maintains a fork of QEMU</a> with patches that support these chips.</p>
+<p>Fork of QEMU with Espressif patches: <a class="reference external" href="https://github.com/espressif/qemu">github.com/espressif/qemu</a></p>
+<p>Build this version from source, and if everything works correctly, we have <code class="docutils literal notranslate"><span class="pre">esp32</span></code> in the supported machines list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qemu-system-xtensa -M help
+Supported machines are:
+esp32                Espressif ESP32 machine
+esp32s3              Espressif ESP32S3 machine
+kc705                kc705 EVB (dc232b)
+kc705-nommu          kc705 noMMU EVB (de212)
+lx200                lx200 EVB (dc232b)
+lx200-nommu          lx200 noMMU EVB (de212)
+lx60                 lx60 EVB (dc232b)
+lx60-nommu           lx60 noMMU EVB (de212)
+ml605                ml605 EVB (dc232b)
+ml605-nommu          ml605 noMMU EVB (de212)
+none                 empty machine
+sim                  sim machine (dc232b) (default)
+virt                 virt machine (dc232b)
+</pre></div>
+</div>
+<p>The next thing used is the <a class="reference external" href="https://github.com/espressif/esp-idf">ESP-IDF (Espressif IoT Development Framework)</a>. Just follow the manual for installation.</p>
+<p>I have set up all the installation into the devcontainer so you don’t have to worry about installing any prerequisite software.</p>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
+<p>For a Guru Meditation to be triggered, there has to be a piece of notorious code.</p>
+<p>I have written <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/main/crash_app.c">crash_app.c</a>, which just calls a few functions (to showcase stack depth) and writes to a prohibited location:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>==================== THREAD 1 (TCB: 0x3ffb94b0, name: &#39;CrashTask&#39;) =====================
+#0  0x400da38f in baz (val=99) at esp32-guru-upload/main/crash_app.c:49
+#1  bar (val=67) at esp32-guru-upload/main/crash_app.c:36
+#2  foo (val=67) at esp32-guru-upload/main/crash_app.c:28
+#3  CrashTask (pvParameters=&lt;optimized out&gt;) at esp32-guru-upload/main/crash_app.c:20
+#4  0x40085f54 in vPortTaskWrapper (pxCode=0x400da2f0 &lt;CrashTask&gt;, pvParameters=0x0) at esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+</pre></div>
+</div>
+<p><em><strong>Visit <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/device_log/">abd-01.github.io/esp32-guru-upload/device_log</a> for complete logs.</strong></em></p>
+<p><a class="reference external" href="https://github.com/espressif/esp-idf">ESP-IDF (Espressif IoT Development Framework)</a> through its <code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> provides an option for coredumps to be sent over UART or saved in Flash. See <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/sdkconfig">sdkconfig</a> or run <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core dump</span>
+
+<span class="n">CONFIG_ESP_COREDUMP_ENABLE_TO_FLASH</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_ENABLE_TO_UART</span><span class="o">=</span><span class="n">n</span>
+<span class="n">CONFIG_ESP_COREDUMP_ENABLE_TO_NONE</span><span class="o">=</span><span class="n">n</span>
+<span class="n">CONFIG_ESP_COREDUMP_DATA_FORMAT_BIN</span><span class="o">=</span><span class="n">n</span>
+<span class="n">CONFIG_ESP_COREDUMP_DATA_FORMAT_ELF</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_CHECKSUM_CRC32</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_CHECK_BOOT</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_ENABLE</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_LOGS</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_ESP_COREDUMP_MAX_TASKS_NUM</span><span class="o">=</span><span class="mi">64</span>
+</pre></div>
+</div>
+<p>Coredump-related public APIs can be used by including <a class="reference external" href="https://github.com/espressif/esp-idf/blob/master/components/espcoredump/include/esp_core_dump.h">esp_core_dump.h</a>.</p>
+<p><a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/main/guru-upload.c">guru_upload.c</a> is the main file of the project implementing <code class="docutils literal notranslate"><span class="pre">app_main</span></code>, and the first thing it does is check if a coredump exists in flash:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_core_dump_image_get</span><span class="p">(</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If a coredump is found, <code class="docutils literal notranslate"><span class="pre">UploadCoredumpTask</span></code> is invoked as a separate RTOS task (implementation in <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/main/upload_coredump_app.c">upload_coredump_app.c</a>).</p>
+<p>Other than that, <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/main/guru-upload.c">guru_upload.c</a> starts a dummy application (which just prints logs based on a pseudorandom number) and an HTTP webserver that responds with <em>“Hello from ESP32”</em>.</p>
+<p><em><strong>The project, instead of being created from scratch, was created using the <a class="reference external" href="https://github.com/espressif/esp-idf/tree/master/examples/protocols/http_request">HTTP Request Example</a> template.</strong></em></p>
+<p>The HTTP client operations are also inspired by the provided examples.
+See <a class="reference external" href="https://github.com/espressif/esp-idf/blob/f38b8fec92a0e389b733cb4fbf49be86e5144333/examples/protocols/esp_http_client/main/esp_http_client_example.c#L763-L792">esp_http_client_example.c#http_native_request</a>.</p>
+<p><a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/main/upload_coredump_app.c">upload_coredump_app.c</a> reads the coredump saved in flash and posts it chunk by chunk to the server:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">coredump</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_partition_find_first</span><span class="p">(</span><span class="n">ESP_PARTITION_TYPE_DATA</span><span class="p">,</span><span class="w"> </span><span class="n">ESP_PARTITION_SUBTYPE_DATA_COREDUMP</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">esp_err_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_partition_read</span><span class="p">(</span><span class="n">coredump</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer_size</span><span class="p">);</span>
+<span class="n">http_upload_send_chunk</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer_size</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="server">
+<h3>Server<a class="headerlink" href="#server" title="Permalink to this heading">#</a></h3>
+<p>I had a fair share of experience with Flask, and having worked with connected vehicle protocols and protobuf, I also put together a Flask-based server where I can upload the coredump data. See <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/endpoint_app.py">endpoint_app.py</a> for internal details.</p>
+<p><a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/">http://localhost:8080/</a> displays the list of coredumps received.
+<a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/coredump-1758023059.elf/">http://localhost:8080/coredump/coredump-&lt;timestamp&gt;.elf</a> will run <code class="docutils literal notranslate"><span class="pre">esp_coredump</span></code> on the file and display the results.</p>
+<p><em><strong>For demo visit: <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/coredump-1758023059.elf">abd-01.github.io/esp32-guru-upload/coredump/coredump-1758023059.elf</a></strong></em></p>
+<p><a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/coredump/">http://localhost:8080/upload</a> is the endpoint that receives the coredump via POST method.</p>
+<p>The ESP32 is also running an HTTP server which can be viewed at <a class="reference external" href="https://abd-01.github.io/esp32-guru-upload/esp_server/">http://localhost:8080/esp_server</a></p>
+</section>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h2>
+<p>GNU Affero General Public License v3.0 (AGPL-3.0). See <a class="reference external" href="https://github.com/ABD-01/esp32-guru-upload/blob/master/LICENSE">LICENSE</a> for details.</p>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">esp32-guru-upload</a><ul>
+<li><a class="reference internal" href="#how-to">How To</a><ul>
+<li><a class="reference internal" href="#open-in-codespaces">1. Open in Codespaces</a></li>
+<li><a class="reference internal" href="#start-esp32-firmware-in-qemu">2. Start ESP32 Firmware in QEMU</a></li>
+<li><a class="reference internal" href="#start-the-flask-server">3. Start the Flask Server</a></li>
+<li><a class="reference internal" href="#access-the-web-ui">4. Access the Web UI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#esp32-firmware">ESP32 Firmware</a></li>
+<li><a class="reference internal" href="#flask-server">Flask Server</a></li>
+<li><a class="reference internal" href="#development-container">Development Container</a></li>
+<li><a class="reference internal" href="#project-structure">Project Structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#explanation">Explanation</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#software">Software</a></li>
+<li><a class="reference internal" href="#implementation">Implementation</a></li>
+<li><a class="reference internal" href="#server">Server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../_static/marker.js?v=afb55134"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

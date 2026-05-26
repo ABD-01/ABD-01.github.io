@@ -1,0 +1,39 @@
+---
+myst:
+    html_meta:
+        "property=og:title": "Autonomous Turtle Chase"
+        "language": "en"
+---
+
+```{post} 23 March, 2026
+:tags: robotics, PID, python, turtlesim
+:category: robotics
+:author: me
+:language: English
+:nocomments:
+:image: 1
+:external_link: https://abd-01.github.io/reports/flytbase/
+```
+
+{.hiddenh1}
+# Autonomous Turtle Chase
+
+Autonomous interception agent in ROS Turtlesim — PID-controlled pursuit with trajectory prediction and circle-fitting to intercept a moving target from sparse, delayed positional data.
+
+```{image} https://abd-01.github.io/_images/PID-goal-to-goal.gif
+:alt: PID.gif
+:width: 70%
+```
+
+
+
+```{raw} html
+<script>window.location.replace("/reports/flytbase/");</script>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=/reports/flytbase/">
+</noscript>
+<div>
+  <p>If you are not redirected, <a href="/reports/flytbase/">click here</a>.</p>
+</div>
+```
+

@@ -1,0 +1,1191 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../../../about/" /><link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>Day 6: Guard Gallivant - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+
+          <section class="tex2jax_ignore mathjax_ignore" id="day-6-guard-gallivant">
+<h1><a class="reference external" href="https://adventofcode.com/2024/day/6">Day 6: Guard Gallivant</a><a class="headerlink" href="#day-6-guard-gallivant" title="Permalink to this heading">#</a></h1>
+<section id="solution-overview">
+<h2><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day06_Guard_Gallivant/main.cpp">Solution Overview</a><a class="headerlink" href="#solution-overview" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 8</span><span class="kt">void</span><span class="w"> </span><span class="nf">Guard::move</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">map</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">    </span><span class="n">map</span><span class="p">[</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">position</span><span class="o">+</span><span class="n">direction</span><span class="p">;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">())</span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">can_move</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Guard left the map&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="n">temp</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">temp</span><span class="p">.</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">)</span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">        </span><span class="c1">// Guard hit an obstacle, turn right</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">move</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">is_looping</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">))</span>
+<span class="linenos">29</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">        </span><span class="n">can_move</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">31</span><span class="w">        </span><span class="n">stuck_in_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">32</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Guard stuck in a Loop&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">33</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w">    </span><span class="n">visited</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">);</span>
+<span class="linenos">39</span><span class="p">}</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="kt">void</span><span class="w"> </span><span class="nf">Guard::turnRight</span><span class="p">()</span>
+<span class="linenos">42</span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">    </span><span class="c1">//-1,0  -&gt; 0,1</span>
+<span class="linenos">44</span><span class="w">    </span><span class="c1">// 0,1  -&gt; 1,0</span>
+<span class="linenos">45</span><span class="w">    </span><span class="c1">// 1,0  -&gt; 0,-1</span>
+<span class="linenos">46</span><span class="w">    </span><span class="c1">// 0,-1 -&gt; -1,0</span>
+<span class="linenos">47</span><span class="w">    </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="linenos">48</span><span class="p">}</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="kt">bool</span><span class="w"> </span><span class="nf">Guard::is_looping</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="linenos">51</span><span class="p">{</span>
+<span class="linenos">52</span><span class="w">    </span><span class="n">PointMap</span><span class="o">::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visited</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="linenos">53</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">visited</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+<span class="linenos">54</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">55</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">56</span><span class="p">}</span>
+</pre></div>
+</div>
+<section id="part-1-predict-the-guard-s-route">
+<h3>Part 1: Predict the Guard’s Route<a class="headerlink" href="#part-1-predict-the-guard-s-route" title="Permalink to this heading">#</a></h3>
+<p>The Guard moves in a 2D grid, turning <strong>right</strong> upon hitting an obstacle (<code class="docutils literal notranslate"><span class="pre">#</span></code> or <code class="docutils literal notranslate"><span class="pre">O</span></code>). The goal is to find <strong>the number of distinct positions visited</strong> before the Guard exits the map.
+<strong>Key Logic:</strong></p>
+<ul class="simple">
+<li><p>Create an <strong>unordered set</strong> (<span class="math notranslate nohighlight">\(O(1)\)</span> insert) for visited positions.</p></li>
+<li><p>If using a <strong>vector</strong>, check for duplicates before inserting (<span class="math notranslate nohighlight">\(O(n)\)</span>).</p></li>
+<li><p>Move the Guard until it exits the map.</p></li>
+<li><p>On obstacle collision → <strong>turn right</strong> → retry movement.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Return <code class="docutils literal notranslate"><span class="pre">visited.size()</span></code> for number of distinct positions.</p></li>
+</ul>
+</section>
+<section id="part-2-trap-the-guard-in-a-loop">
+<h3>Part 2: Trap the Guard in a Loop<a class="headerlink" href="#part-2-trap-the-guard-in-a-loop" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>You need to get the guard stuck in a loop by adding a single new obstruction. How many different positions could you choose for this obstruction?</p>
+</div></blockquote>
+<p>Brute force solution would be to iterate over all possible position on the map.
+A better solution would be to only place obstacles on path that the guard travels.</p>
+<ul class="simple">
+<li><p>Created an <code class="docutils literal notranslate"><span class="pre">unordered_map</span></code> to store each visited position with its corresponding direction. (<code class="docutils literal notranslate"><span class="pre">visited.emplace(position,</span> <span class="pre">direction)</span></code>)</p></li>
+<li><p>A loop occurs on visiting same position and have same direction as before</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">33</span><span class="k">using</span><span class="w"> </span><span class="n">PointMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">PointHash</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="linenos">34</span><span class="p">...</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">PointMap</span><span class="w"> </span><span class="n">guardVisitedPositions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">getVisited</span><span class="p">();</span><span class="w">  </span><span class="c1">// from part 1</span>
+<span class="linenos">37</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="o">:</span><span class="w"> </span><span class="n">guardVisitedPositions</span><span class="p">)</span>
+<span class="linenos">38</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">39</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="nf">i</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">first</span><span class="p">.</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">j</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">first</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">40</span><span class="w">        </span>
+<span class="linenos">41</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">gx</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">j</span><span class="o">==</span><span class="n">gy</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="linenos">42</span><span class="w">        </span>
+<span class="linenos">43</span><span class="w">        </span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guard</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="n">gy</span><span class="p">),</span><span class="w"> </span><span class="n">Guard</span><span class="o">::</span><span class="n">dirUp</span><span class="p">);</span>
+<span class="linenos">45</span><span class="w">        </span>
+<span class="linenos">46</span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">canMove</span><span class="p">())</span>
+<span class="linenos">47</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">48</span><span class="w">            </span><span class="n">g</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="linenos">49</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">50</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">stuckInLoop</span><span class="p">())</span>
+<span class="linenos">51</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">52</span><span class="w">            </span><span class="o">++</span><span class="n">numObstacles</span><span class="p">;</span>
+<span class="linenos">53</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">54</span><span class="w">        </span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">;</span>
+<span class="linenos">55</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="concepts-learned">
+<h2>Concepts Learned<a class="headerlink" href="#concepts-learned" title="Permalink to this heading">#</a></h2>
+<section id="operator-overload">
+<h3>Operator Overload<a class="headerlink" href="#operator-overload" title="Permalink to this heading">#</a></h3>
+<details>
+<summary>Example Operator Overloading for Point Class</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Point</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="const-correctness">
+<h3><code class="docutils literal notranslate"><span class="pre">const</span></code> Correctness<a class="headerlink" href="#const-correctness" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>We bind type modifiers and qualifiers to the left</strong></p>
+<p class="attribution">—Modern C, Jens Gustedt (Page 18)</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">X*</span> <span class="pre">p</span></code></strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="c1">// p points to a constant int (can&#39;t modify the value it points to)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// okay, p can point to another int</span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// error, can&#39;t modify the value of a through p</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">const*</span> <span class="pre">p</span></code></strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="c1">// Same as `const int* p`</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">X*</span> <span class="pre">const</span> <span class="pre">p</span></code></strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// p is a constant pointer, it always points to the same location</span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// okay, the value of the object p points to can be modified</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span><span class="w">  </span><span class="c1">// error, can&#39;t change p to point to another object</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">X*</span> <span class="pre">const</span> <span class="pre">p</span></code></strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// p is a constant pointer to a constant int</span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// error, can&#39;t modify the value of the object p points to</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span><span class="w">  </span><span class="c1">// error, can&#39;t change p to point to another object</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">const</span></code> at the end of member function does not modify the state of object.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Fred</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">inspect</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">   </span><span class="c1">// This member promises NOT to change *this</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">mutate</span><span class="p">();</span><span class="w">          </span><span class="c1">// This member function might change *this</span>
+<span class="p">};</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">userCode</span><span class="p">(</span><span class="n">Fred</span><span class="o">&amp;</span><span class="w"> </span><span class="n">changeable</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Fred</span><span class="o">&amp;</span><span class="w"> </span><span class="n">unchangeable</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">changeable</span><span class="p">.</span><span class="n">inspect</span><span class="p">();</span><span class="w">   </span><span class="c1">// Okay: doesn&#39;t change a changeable object</span>
+<span class="w">  </span><span class="n">changeable</span><span class="p">.</span><span class="n">mutate</span><span class="p">();</span><span class="w">    </span><span class="c1">// Okay: changes a changeable object</span>
+<span class="w">  </span><span class="n">unchangeable</span><span class="p">.</span><span class="n">inspect</span><span class="p">();</span><span class="w"> </span><span class="c1">// Okay: doesn&#39;t change an unchangeable object</span>
+<span class="w">  </span><span class="n">unchangeable</span><span class="p">.</span><span class="n">mutate</span><span class="p">();</span><span class="w">  </span><span class="c1">// ERROR: attempt to change unchangeable object</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">Point&amp;</span></code> Return type</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Guard</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Getter functions to access position and direction</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">getPosition</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">getDirection</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    By returning a constant reference (const Point&amp;), you provide read-only access to the position and direction. </span>
+<span class="cm">    This ensures that the caller cannot modify the values.</span>
+<span class="cm">    */</span>
+</pre></div>
+</div>
+</section>
+<section id="dangling-references">
+<h3>Dangling References<a class="headerlink" href="#dangling-references" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">getTemp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// Local variable</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">  </span><span class="c1">// Dangling reference (temp goes out of scope)</span>
+<span class="p">}</span>
+
+<span class="n">Point</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">getX</span><span class="p">();</span>
+<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="c1">// a now refers to a destroyed object!</span>
+</pre></div>
+</div>
+<p>In C++, there is no built-in way to directly check if a reference is dangling</p>
+</section>
+<section id="unordered-set">
+<h3>Unordered set<a class="headerlink" href="#unordered-set" title="Permalink to this heading">#</a></h3>
+<p>Used Hash Table to store elements
+Steps to use <code class="docutils literal notranslate"><span class="pre">unordered_set</span></code> with a custom class:</p>
+<ol class="arabic simple">
+<li><p><strong>Define a hash function</strong> for your <code class="docutils literal notranslate"><span class="pre">Point</span></code> class.</p></li>
+<li><p><strong>Override <code class="docutils literal notranslate"><span class="pre">==</span></code> operator</strong> to check for equality, as <code class="docutils literal notranslate"><span class="pre">unordered_set</span></code> uses it to compare elements.</p></li>
+<li><p><strong>Use the custom hash function</strong> in <code class="docutils literal notranslate"><span class="pre">unordered_set</span></code>.</p></li>
+</ol>
+<details>
+<summary>Example Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Point</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="n">Point</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">HashPoint</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">HashPoint</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">;</span>
+</pre></div>
+</div>
+</details>
+<p>For unordered_set of <code class="docutils literal notranslate"><span class="pre">std::pair&lt;Point,</span> <span class="pre">Point&gt;</span></code></p>
+<details>
+<summary>Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Define a custom hash for std::pair&lt;Point, Point&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PairHash</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">pair</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PointHash</span><span class="w"> </span><span class="n">pointHash</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Combine the hash values of the two points in the pair</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pointHash</span><span class="p">(</span><span class="n">pair</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">pointHash</span><span class="p">(</span><span class="n">pair</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Overload equality operator for std::pair&lt;Point, Point&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PairEqual</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="cm">/** This can also be omitted</span>
+<span class="cm">The == operator for std::pair is already defined (since std::pair is a standard library type).</span>
+<span class="cm">It compares both elements of the pair for equality.</span>
+<span class="cm">*/</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">PairHash</span><span class="p">,</span><span class="w"> </span><span class="n">PairEqual</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pointPairs</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">PairHash</span><span class="o">&gt;</span><span class="w"> </span><span class="n">point_pairs</span><span class="p">;</span>
+
+<span class="c1">// Aliases </span>
+<span class="k">using</span><span class="w"> </span><span class="n">PointSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">PointHash</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PointPairSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">PairHash</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="unordered-map">
+<h3>Unordered Map<a class="headerlink" href="#unordered-map" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="https://media.geeksforgeeks.org/wp-content/uploads/20220725162222/unorderedmapsyntax-660x190.png" /></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">PointHash</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">;</span>
+
+<span class="c1">// ### Check if value is in HashMap</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mymap</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visited</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">visited</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">current</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span>
+<span class="c1">// If current is not already in the map, accessing visited[current] will insert a new entry</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visited</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">visited</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="c1">// ### Looping through HashMap</span>
+<span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="o">:</span><span class="w"> </span><span class="n">visited</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="static-constant-members-in-c-classes">
+<h3>Static Constant Members in C++ Classes<a class="headerlink" href="#static-constant-members-in-c-classes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">const</span></code> is used for class-level constants, meaning these constants are shared across all instances of the class.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword ensures the constant is a class-wide (not instance-specific) member, while <code class="docutils literal notranslate"><span class="pre">const</span></code> ensures the values cannot be modified.</p></li>
+<li><p>Static members must be defined outside the class, even if they’re <code class="docutils literal notranslate"><span class="pre">const</span></code>.</p></li>
+<li><p>You cannot initialize static members within constructors. Integral types you can initialize inline at their declaration.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Guard</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="n">dirUp</span><span class="p">,</span><span class="w"> </span><span class="n">dirDown</span><span class="p">,</span><span class="w"> </span><span class="n">dirLeft</span><span class="p">,</span><span class="w"> </span><span class="n">dirRight</span><span class="p">;</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// works</span>
+<span class="p">};</span>
+<span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="nf">Guard::dirUp</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="nf">Guard::dirDown</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="nf">Guard::dirLeft</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span>
+<span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="nf">Guard::dirRight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references-and-resources">
+<h2>References and Resources<a class="headerlink" href="#references-and-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/751681/what-is-the-meaning-of-const-at-the-end-of-a-member-function-declaration">c++ - What is the meaning of ‘const’ at the end of a member function declaration? - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://isocpp.org/wiki/faq/const-correctness#const-member-fns">Const Correctness, C++ FAQ</a></p></li>
+<li><p><a class="reference external" href="http://duramecho.com/ComputerInformation/WhyHowCppConst.html">The C++ ‘const’ Declaration: Why &amp; How</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/how-to-create-an-unordered_set-of-user-defined-class-or-struct-in-c/">How to create an unordered_set of user defined class or struct in C++? - GeeksforGeeks</a> or <a class="reference external" href="https://stackoverflow.com/questions/38554083/how-can-i-use-a-c-unordered-set-for-a-custom-class">unordered set - How can I use a C++ unordered_set for a custom class? - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/17016175/c-unordered-map-using-a-custom-class-type-as-the-key">hash - C++ unordered_map using a custom class type as the key - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/26281979/how-do-you-loop-through-a-stdmap">c++ - How do you loop through a std::map? - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/3531060/how-to-initialize-a-static-const-data-member-in-c">How to initialize a “static const” data member in C++? - Stack Overflow</a></p></li>
+<li><p><a class="reference external" href="https://chatgpt.com/share/677d5d52-2aa0-8004-97f6-69f0ab1fd1ef">ChatGPT</a></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="day-7-bridge-repair">
+<h1><a class="reference external" href="https://adventofcode.com/2024/day/7">Day 7: Bridge Repair</a><a class="headerlink" href="#day-7-bridge-repair" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day07_Bridge_Repair/main.cpp">Solution Overview</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><strong>Part 1</strong>: Given a test value and a list of numbers, determine whether the numbers can be combined using the operators <code class="docutils literal notranslate"><span class="pre">+</span></code> (addition) and <code class="docutils literal notranslate"><span class="pre">*</span></code> (multiplication) to produce the test value</p>
+<blockquote>
+<div><p>Operators are <em>always evaluated left-to-right</em>, <em>not</em> according to precedence rules.</p>
+</div></blockquote>
+<p><strong>Part 2</strong>: Introduces a third operator: <a class="reference external" href="https://en.wikipedia.org/wiki/Concatenation">concatenation</a> (<code class="docutils literal notranslate"><span class="pre">||</span></code>), alongside <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+<p>Using a recursive call, with using one operator from left at each call.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 68</span><span class="k">using</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">;</span>
+<span class="linenos"> 69</span>
+<span class="linenos"> 70</span><span class="kt">bool</span><span class="w"> </span><span class="nf">check_target1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">current_value</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="linenos"> 71</span><span class="p">{</span>
+<span class="linenos"> 72</span><span class="w">    </span><span class="c1">// reached end and found thr test value</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">index</span><span class="o">==</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">operands</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="c1">// If current value is already greater than the target, no point in continuing</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="c1">// small improvement by short circuiting</span>
+<span class="linenos"> 77</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">current_value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="c1">// subtle Bug! You only want to check for equality when list is exhausted</span>
+<span class="linenos"> 80</span><span class="w">    </span><span class="c1">//if(current_value == target) return true;</span>
+<span class="linenos"> 81</span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">check_target1</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos"> 83</span><span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">check_target1</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<span class="linenos"> 84</span><span class="p">}</span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span><span class="kt">bool</span><span class="w"> </span><span class="nf">check_target2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">current_value</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="linenos"> 87</span><span class="p">{</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">index</span><span class="o">==</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">operands</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="linenos"> 89</span>
+<span class="linenos"> 90</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">current_value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">check_target2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos"> 93</span><span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">check_target2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">current_value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="linenos"> 94</span><span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">check_target2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">current_value</span><span class="p">,</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<span class="linenos"> 95</span><span class="p">}</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span><span class="kt">void</span><span class="w"> </span><span class="nf">part</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&gt;&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="linenos"> 98</span><span class="p">{</span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">100</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">d</span><span class="o">:</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="linenos">101</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">check_target</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">first</span><span class="p">))</span>
+<span class="linenos">102</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The time complexity is <span class="math notranslate nohighlight">\(O(n^2)\)</span> for Part 1and <span class="math notranslate nohighlight">\(O(n^3)\)</span> for Part 2.
+While this works, it can be optimized.</p>
+<section id="optimization">
+<h3>Optimization<a class="headerlink" href="#optimization" title="Permalink to this heading">#</a></h3>
+<p>With each recursive call the <code class="docutils literal notranslate"><span class="pre">current_value</span></code> increases. One way to optimize is to process the operations in reverse order, starting from the right, and try to undo the operations to see if the target value can be constructed. resulting in <code class="docutils literal notranslate"><span class="pre">current</span> <span class="pre">value</span></code> to be <code class="docutils literal notranslate"><span class="pre">0</span></code> at the end.</p>
+<p><strong>For example:</strong>
+Given <code class="docutils literal notranslate"><span class="pre">292:</span> <span class="pre">11</span> <span class="pre">6</span> <span class="pre">16</span> <span class="pre">20</span></code>, the goal is to check if <code class="docutils literal notranslate"><span class="pre">292</span></code> can be made from these numbers.
+The <strong>left-to-right approach</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[11+6,</span> <span class="pre">16,</span> <span class="pre">20]</span></code> → <code class="docutils literal notranslate"><span class="pre">[17*16,</span> <span class="pre">20]</span></code> → <code class="docutils literal notranslate"><span class="pre">[292]</span></code>
+The <strong>right-to-left approach</strong>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[11,</span> <span class="pre">6,</span> <span class="pre">16,</span> <span class="pre">292-20]</span></code> → <code class="docutils literal notranslate"><span class="pre">[11,</span> <span class="pre">6,</span> <span class="pre">272/16]</span></code> → <code class="docutils literal notranslate"><span class="pre">[11,</span> <span class="pre">17-6]</span></code> → <code class="docutils literal notranslate"><span class="pre">[11-11]</span></code> → <code class="docutils literal notranslate"><span class="pre">[0]</span></code>
+To undo concatenation (<code class="docutils literal notranslate"><span class="pre">||</span></code>), the <code class="docutils literal notranslate"><span class="pre">check_int_contains</span></code> function is used to check if an integer is present in another integer.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">134</span><span class="kt">bool</span><span class="w"> </span><span class="nf">check_target1_v2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="linenos">135</span><span class="p">{</span>
+<span class="linenos">136</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">137</span>
+<span class="linenos">138</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">139</span>
+<span class="linenos">140</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">141</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">142</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">check_target1_v2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">/</span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+<span class="linenos">143</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">144</span><span class="w">        </span><span class="c1">// Here too there can be a subtle Bug</span>
+<span class="linenos">145</span><span class="w">        </span><span class="c1">// if you return check_target1_v2(i-1, target/operands[i])</span>
+<span class="linenos">146</span><span class="w">        </span><span class="c1">// it fails to account for check_target1_v2(i-1, target-operands[i])</span>
+<span class="linenos">147</span><span class="w">        </span><span class="c1">// example: 103304: 269 4 96 8</span>
+<span class="linenos">148</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">149</span>
+<span class="linenos">150</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">check_target1_v2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">-</span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+<span class="linenos">151</span><span class="p">}</span>
+<span class="linenos">152</span><span class="kt">bool</span><span class="w"> </span><span class="nf">check_int_contains</span><span class="p">(</span><span class="n">ll</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">subint</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="o">&amp;</span><span class="w"> </span><span class="n">new_target</span><span class="p">)</span>
+<span class="linenos">153</span><span class="p">{</span>
+<span class="linenos">154</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lt</span><span class="p">,</span><span class="w"> </span><span class="n">ls</span><span class="p">;</span>
+<span class="linenos">155</span><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">subint</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">156</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">157</span><span class="w">       </span><span class="n">lt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">158</span><span class="w">       </span><span class="n">target</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">159</span><span class="w">       </span><span class="n">ls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subint</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">160</span><span class="w">       </span><span class="n">subint</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">161</span><span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="n">lt</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ls</span><span class="p">)</span>
+<span class="linenos">162</span><span class="w">       </span><span class="p">{</span>
+<span class="linenos">163</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">164</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">165</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">166</span><span class="w">    </span><span class="n">new_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="linenos">167</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">168</span><span class="p">}</span>
+<span class="linenos">169</span>
+<span class="linenos">170</span><span class="kt">bool</span><span class="w"> </span><span class="nf">check_target2_v2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="linenos">171</span><span class="p">{</span>
+<span class="linenos">172</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">173</span>
+<span class="linenos">174</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">175</span>
+<span class="linenos">176</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">177</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">178</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">check_target2_v2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">/</span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+<span class="linenos">179</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">180</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">181</span><span class="w">    </span>
+<span class="linenos">182</span><span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">new_target</span><span class="p">;</span>
+<span class="linenos">183</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">check_int_contains</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="w"> </span><span class="n">new_target</span><span class="p">))</span>
+<span class="linenos">184</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">185</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">check_target2_v2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">new_target</span><span class="p">))</span>
+<span class="linenos">186</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">187</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">188</span>
+<span class="linenos">189</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">check_target2_v2</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">-</span><span class="n">operands</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+<span class="linenos">190</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>While the time complexity still remains the same, there is significant improvement in the time taken.
+{emphasize-lines=”5,7,9,11”}</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[100%] Linking CXX executable day7.exe
+Copying input.txt to input7.txt
+[100%] Built target day7
+Part 1: 6392012777720
+Elapsed time: 2283 us
+Part 2: 61561126043536
+Elapsed time: 121022 us
+Part 1 (Version 2): 6392012777720
+Elapsed time: 1268 us
+Part 2 (Version 2): 61561126043536
+Elapsed time: 1498 us
+[100%] Built target run7
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h2>Concepts Learned<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="subsets-of-an-array-vector-using-bit-manipulation">
+<h3>Subsets of an array/vector using bit manipulation<a class="headerlink" href="#subsets-of-an-array-vector-using-bit-manipulation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For an array of size <span class="math notranslate nohighlight">\(n\)</span>, there are <span class="math notranslate nohighlight">\(2^n\)</span> possible subsets.</p></li>
+<li><p>Each subset corresponds to a binary number between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <span class="math notranslate nohighlight">\(2^n - 1\)</span>.</p></li>
+</ul>
+<details>
+<summary>Example</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ### Problem: Find All Subsets That Sum to a Target Value</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">findSubsetsThatSumToTarget</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">nums</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Iterate over all possible subsets</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="n">mask</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subset</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Generate the subset for the current bitmask</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mask</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// If the i-th bit is 1, include nums[i]</span>
+<span class="w">                </span><span class="n">subset</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Check if the subset sum equals the target</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">subset</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Print the result</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Subsets that sum to &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">subset</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[ &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">subset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">findSubsetsThatSumToTarget</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<section id="id3">
+<h2>References and Resources<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/backtracking-to-find-all-subsets/">Print all subsets of a given Set or Array - GeeksforGeeks</a></p></li>
+<li><p><a class="reference external" href="https://chatgpt.com/share/67a21dc8-5358-8001-9671-7055a5f2e3ad">Binary Tree Target Check - ChatGPT</a></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="day-8-resonant-collinearity">
+<h1><a class="reference external" href="https://adventofcode.com/2024/day/8">Day 8: Resonant Collinearity</a><a class="headerlink" href="#day-8-resonant-collinearity" title="Permalink to this heading">#</a></h1>
+<section id="id4">
+<h2><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day08_Resonant_Collinearity/main.cpp">Solution Overview</a><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>The grid is parsed into a dictionary (<code class="docutils literal notranslate"><span class="pre">unordered_map&lt;char,</span> <span class="pre">vector&lt;Vec2&lt;int&gt;&gt;&gt;</span></code>) with antenna labels as the key and a list of all the label’s positions as values.</p>
+<section id="part-1-find-the-antinodes">
+<h3>Part 1: Find the Antinodes<a class="headerlink" href="#part-1-find-the-antinodes" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>an antinode occurs at any point that is perfectly in line with two antennas of the same frequency - but only when one of the antennas is twice as far away as the other.</p>
+</div></blockquote>
+<p>The words are complicated, see the diagram below. Basically, an antinode is a point that lies on the line extending from a pair of antennas at an equal distance beyond one of them</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>..........
+...#......
+..........
+....a.....
+..........
+.....a....
+..........
+......#...
+..........
+..........
+</pre></div>
+</div>
+<p><strong>Logic</strong>:</p>
+<ul class="simple">
+<li><p>iterate over each pair of antennas with the same frequency.</p></li>
+<li><p>for each pair, compute the distance between the two antennas and calculate the potential antinode positions on either side of the pair.</p></li>
+<li><p>Check if the antinodes lie within the grid boundaries, and if they do, add them to an <code class="docutils literal notranslate"><span class="pre">unordered_set</span></code> to ensure uniqueness.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">128</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">antinodes</span><span class="p">;</span>
+<span class="linenos">129</span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">V2</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">antenas</span><span class="o">:</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="linenos">130</span><span class="p">{</span>
+<span class="linenos">131</span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">V2</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">antenas</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+<span class="linenos">132</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">133</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">134</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="linenos">135</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">136</span><span class="w">            </span><span class="c1">// Calculate distance and antinode positions</span>
+<span class="linenos">137</span><span class="w">            </span><span class="n">V2</span><span class="w"> </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="linenos">138</span><span class="w">            </span><span class="n">V2</span><span class="w"> </span><span class="nf">antinode1</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dist</span><span class="p">),</span><span class="w"> </span><span class="n">antinode2</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">dist</span><span class="p">);</span>
+<span class="linenos">139</span><span class="w">            </span>
+<span class="linenos">140</span><span class="w">            </span><span class="c1">// Check if antinode positions are within bounds</span>
+<span class="linenos">141</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxX</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">142</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">143</span><span class="w">                </span><span class="n">antinodes</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">144</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">145</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxX</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">146</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">147</span><span class="w">                </span><span class="n">antinodes</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">148</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">149</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">150</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">151</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To track the unique antinode positions, we need to map each <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinate to a unique integer value. This is done by using a simple mathematical formula: <code class="docutils literal notranslate"><span class="pre">antinode1.x*maxY</span> <span class="pre">+</span> <span class="pre">antinode1.y</span></code></p>
+</section>
+<section id="part-2-i-mean-harmonic-antinodes">
+<h3>Part 2: I mean Harmonic Antinodes<a class="headerlink" href="#part-2-i-mean-harmonic-antinodes" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>it turns out that an antinode occurs at <em>any grid position</em> exactly in line with at least two antennas of the same frequency, regardless of distance. This means that some of the new antinodes will occur at the position of each antenna (unless that antenna is the only one of its frequency).</p>
+</div></blockquote>
+<p>Again, the words doesn’t explain much, see the diagram.
+Similar to Part 1, but instead of stopping at the first antinode, continue along the line of collinearity to count all antinodes.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>T....#....
+...T......
+.T....#...
+.........#
+..#.......
+..........
+...#......
+..........
+....#.....
+..........
+</pre></div>
+</div>
+<p><strong>Logic</strong>:</p>
+<ul class="simple">
+<li><p>for each pair, compute the distance between the two antennas and calculate the potential antinode positions on either side of the pair.</p></li>
+<li><p>expand the antinode positions by moving along the calculated distance in both directions until we reach the boundary of the grid.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">176</span><span class="k">while</span><span class="p">(</span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxX</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">177</span><span class="p">{</span>
+<span class="linenos">178</span><span class="w">    </span><span class="n">antinodes</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">antinode1</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">antinode1</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">179</span><span class="w">    </span><span class="n">antinode1</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">dist</span><span class="p">;</span><span class="w">  </span><span class="c1">// Move along the distance</span>
+<span class="linenos">180</span><span class="p">}</span>
+<span class="linenos">181</span><span class="k">while</span><span class="p">(</span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxX</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">182</span><span class="p">{</span>
+<span class="linenos">183</span><span class="w">    </span><span class="n">antinodes</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">antinode2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">maxY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">antinode2</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">184</span><span class="w">    </span><span class="n">antinode2</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">dist</span><span class="p">;</span><span class="w">  </span><span class="c1">// Move along the distance</span>
+<span class="linenos">185</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>Concepts Learned<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="operator-overloading-for-custom-class">
+<h3>Operator Overloading for custom class<a class="headerlink" href="#operator-overloading-for-custom-class" title="Permalink to this heading">#</a></h3>
+<p>Operator overloading to work with the custom <code class="docutils literal notranslate"><span class="pre">Vec2</span></code> class representing a 2D vector. This allows to simplify the code when working with positions and distances, such as adding, subtracting, or comparing positions.</p>
+<details open>
+<summary>Example</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Vec2</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Vec2</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x_val</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">y_val</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x_val</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y_val</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">V2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">mapV2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">};</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vec2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="constexpr">
+<h3>Constexpr<a class="headerlink" href="#constexpr" title="Permalink to this heading">#</a></h3>
+<p>Enable compile-time evaluation of simple functions, improving performance.
+# TODO: write in detail</p>
+</section>
+<section id="this-pointer">
+<h3>this pointer<a class="headerlink" href="#this-pointer" title="Permalink to this heading">#</a></h3>
+<p># TODO</p>
+</section>
+<section id="unique-number-for-each-element-in-2d-grid">
+<h3>Unique Number for each element in 2D grid<a class="headerlink" href="#unique-number-for-each-element-in-2d-grid" title="Permalink to this heading">#</a></h3>
+<p>for <span class="math notranslate nohighlight">\(arr[i][j]\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(i\times Cols + j\)</span>, where <span class="math notranslate nohighlight">\(Cols\)</span> is number of columns.</p>
+<hr>
+<!-- Links -->
+</section>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Day 6: Guard Gallivant</a><ul>
+<li><a class="reference internal" href="#solution-overview">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-predict-the-guard-s-route">Part 1: Predict the Guard’s Route</a></li>
+<li><a class="reference internal" href="#part-2-trap-the-guard-in-a-loop">Part 2: Trap the Guard in a Loop</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concepts-learned">Concepts Learned</a><ul>
+<li><a class="reference internal" href="#operator-overload">Operator Overload</a></li>
+<li><a class="reference internal" href="#const-correctness"><code class="docutils literal notranslate"><span class="pre">const</span></code> Correctness</a></li>
+<li><a class="reference internal" href="#dangling-references">Dangling References</a></li>
+<li><a class="reference internal" href="#unordered-set">Unordered set</a></li>
+<li><a class="reference internal" href="#unordered-map">Unordered Map</a></li>
+<li><a class="reference internal" href="#static-constant-members-in-c-classes">Static Constant Members in C++ Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references-and-resources">References and Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day-7-bridge-repair">Day 7: Bridge Repair</a><ul>
+<li><a class="reference internal" href="#id1">Solution Overview</a><ul>
+<li><a class="reference internal" href="#optimization">Optimization</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Concepts Learned</a><ul>
+<li><a class="reference internal" href="#subsets-of-an-array-vector-using-bit-manipulation">Subsets of an array/vector using bit manipulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">References and Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day-8-resonant-collinearity">Day 8: Resonant Collinearity</a><ul>
+<li><a class="reference internal" href="#id4">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-find-the-antinodes">Part 1: Find the Antinodes</a></li>
+<li><a class="reference internal" href="#part-2-i-mean-harmonic-antinodes">Part 2: I mean Harmonic Antinodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">Concepts Learned</a><ul>
+<li><a class="reference internal" href="#operator-overloading-for-custom-class">Operator Overloading for custom class</a></li>
+<li><a class="reference internal" href="#constexpr">Constexpr</a></li>
+<li><a class="reference internal" href="#this-pointer">this pointer</a></li>
+<li><a class="reference internal" href="#unique-number-for-each-element-in-2d-grid">Unique Number for each element in 2D grid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../../_static/marker.js?v=afb55134"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/custom.js"></script>
+    <script src="../../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>

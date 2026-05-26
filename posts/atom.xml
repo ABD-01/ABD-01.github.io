@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>https://abd-01.github.io/</id>
+  <title>ABD Blog</title>
+  <updated>2026-05-26T22:01:32.449540+00:00</updated>
+  <link href="https://abd-01.github.io/"/>
+  <link href="https://abd-01.github.io/posts/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.io/" version="0.1.dev1+g4197eb65c">ABlog</generator>
+  <entry>
+    <id>https://abd-01.github.io/posts/2026-03-23-autonomous-turtle-chase/</id>
+    <title>Autonomous Turtle Chase</title>
+    <updated>2026-03-23T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Autonomous interception agent in ROS Turtlesim — PID-controlled pursuit with trajectory prediction and circle-fitting to intercept a moving target from sparse, delayed positional data.&lt;/p&gt;
+&lt;img alt="PID.gif" src="https://abd-01.github.io/_images/PID-goal-to-goal.gif" style="width: 70%;" /&gt;&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2026-03-23-autonomous-turtle-chase/"/>
+    <summary>Autonomous interception agent in ROS Turtlesim — PID-controlled pursuit with trajectory prediction and circle-fitting to intercept a moving target from sparse, delayed positional data.PID.gif</summary>
+    <category term="PID" label="PID"/>
+    <category term="python" label="python"/>
+    <category term="robotics" label="robotics"/>
+    <category term="turtlesim" label="turtlesim"/>
+    <published>2026-03-23T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2025-09-22-esp32-guru-upload/</id>
+    <title>ESP32 Guru Meditation: Remote Crash Diagnostics</title>
+    <updated>2025-09-22T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;I had been working on HardFault diagnostics for ARM Cortex-M — capturing crash logs on fault and storing them for later analysis. That naturally led me to look at how ESP32 handles the same problem, which is through its Guru Meditation mechanism. This post walks through a project that captures ESP32 coredumps to flash and uploads them over HTTP to a Flask server for remote analysis.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2025-09-22-esp32-guru-upload/"/>
+    <summary>I had been working on HardFault diagnostics for ARM Cortex-M — capturing crash logs on fault and storing them for later analysis. That naturally led me to look at how ESP32 handles the same problem, which is through its Guru Meditation mechanism. This post walks through a project that captures ESP32 coredumps to flash and uploads them over HTTP to a Flask server for remote analysis.</summary>
+    <category term="coredump" label="coredump"/>
+    <category term="embedded-systems" label="embedded-systems"/>
+    <category term="esp32" label="esp32"/>
+    <category term="flask" label="flask"/>
+    <category term="qemu" label="qemu"/>
+    <published>2025-09-22T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2025-08-19-ARM-Cortex-M/</id>
+    <title>ARM Cortex M Hardfault Handling</title>
+    <updated>2025-08-19T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;ARM Cortex-M HardFault handling with focus on exception and interrupt behavior, exception return flow, stack usage, and debugging scenarios. Includes references from The Definitive Guide to ARM Cortex-M3/M4 Processors and practical STM32 examples such as startup code, UART I/O, and fault diagnosis.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2025-08-19-ARM-Cortex-M/"/>
+    <summary>ARM Cortex-M HardFault handling with focus on exception and interrupt behavior, exception return flow, stack usage, and debugging scenarios. Includes references from The Definitive Guide to ARM Cortex-M3/M4 Processors and practical STM32 examples such as startup code, UART I/O, and fault diagnosis.</summary>
+    <category term="arm-cortex" label="arm-cortex"/>
+    <category term="embedded-systems" label="embedded-systems"/>
+    <category term="hardfault" label="hardfault"/>
+    <category term="panic-handler" label="panic-handler"/>
+    <published>2025-08-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2025-07-15-QEMU/</id>
+    <title>QEMU Essentials</title>
+    <updated>2025-07-15T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;QEMU is the Queen of all Emus&lt;/p&gt;
+&lt;img alt="neofetch" src="https://abd-01.github.io/_images/alpine-windows10.gif" /&gt;&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2025-07-15-QEMU/"/>
+    <summary>QEMU is the Queen of all Emusneofetch</summary>
+    <category term="arm-cortex" label="arm-cortex"/>
+    <category term="linux" label="linux"/>
+    <category term="qemu" label="qemu"/>
+    <category term="virtualization" label="virtualization"/>
+    <published>2025-07-15T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2025-06-25-Arenas/</id>
+    <title>Arenas</title>
+    <updated>2025-06-25T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Writing a memroy allocator for bare-metal systems.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2025-06-25-Arenas/"/>
+    <summary>Writing a memroy allocator for bare-metal systems.</summary>
+    <category term="arenas" label="arenas"/>
+    <category term="memorymanagement" label="memory management"/>
+    <published>2025-06-25T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2025-05-11-Lambdas-in-CPP/</id>
+    <title>Getting to know lambdas in C++</title>
+    <updated>2025-05-11T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;&lt;strong&gt;&lt;span class="math notranslate nohighlight"&gt;\(\lambda\)&lt;/span&gt;s in C++:&lt;/strong&gt; Nameless functions serving sweet syntactic sugar — just enough to give your codebase diabetes.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2025-05-11-Lambdas-in-CPP/"/>
+    <summary>\lambdas in C++: Nameless functions serving sweet syntactic sugar — just enough to give your codebase diabetes.</summary>
+    <category term="C" label="C"/>
+    <category term="C++" label="C++"/>
+    <category term="lambdafunctions" label="lambda functions"/>
+    <published>2025-05-11T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/Advent-of-Code-2024-Day-10-to-11/</id>
+    <title>Advent of Code 2024 [Days 10 and 11]</title>
+    <updated>2025-02-21T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;The plutonian pebbles are getting out of hand! And we also have to find a hiking trail.&lt;/p&gt;
+&lt;img alt="TopographicalMap.png" src="https://github.com/ABD-01/AoC2024/blob/master/Day10_Hoof_It/AoC2024-Day10-TopographicalMap.png?raw=true" /&gt;&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/Advent-of-Code-2024-Day-10-to-11/"/>
+    <summary>The plutonian pebbles are getting out of hand! And we also have to find a hiking trail.TopographicalMap.png</summary>
+    <category term="AoC" label="AoC"/>
+    <category term="C++" label="C++"/>
+    <published>2025-02-21T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/Advent-of-Code-2024-Day-9/</id>
+    <title>Learning CPP via Advent of Code 2024 [Day 9]</title>
+    <updated>2025-02-15T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;This isn’t how you’re supposed to defrag a disk… right?&lt;/p&gt;
+&lt;p&gt;&lt;img alt="defragging deez nuts" src="https://raw.githubusercontent.com/ABD-01/AoC2024/refs/heads/master/Day09_Disk_Fragmenter/solution_combined.gif" style="width: 400px;" /&gt;&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/Advent-of-Code-2024-Day-9/"/>
+    <summary>This isn’t how you’re supposed to defrag a disk… right?defragging deez nuts</summary>
+    <category term="AoC" label="AoC"/>
+    <category term="C++" label="C++"/>
+    <category term="Python" label="Python"/>
+    <published>2025-02-15T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/Advent-of-Code-2024-Day-6-to-8/</id>
+    <title>Advent of Code 2024 [Days 6 to 8]</title>
+    <updated>2025-01-18T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;This is my progress log for Advent of Code 2024, where I’m tackling the challenges using C++ to get good at the language. Contains work of Day 6 to Day 8.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/Advent-of-Code-2024-Day-6-to-8/"/>
+    <summary>This is my progress log for Advent of Code 2024, where I’m tackling the challenges using C++ to get good at the language. Contains work of Day 6 to Day 8.</summary>
+    <category term="AoC" label="AoC"/>
+    <category term="C++" label="C++"/>
+    <published>2025-01-18T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/Advent-of-Code-2024-Day-1-to-5/</id>
+    <title>Learning CPP via Advent of Code 2024 [Days 1 to 5]</title>
+    <updated>2025-02-21T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;This is my progress log for Advent of Code 2024, where I’m tackling the challenges using C++ to get good at the language.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/Advent-of-Code-2024-Day-1-to-5/"/>
+    <summary>This is my progress log for Advent of Code 2024, where I’m tackling the challenges using C++ to get good at the language.</summary>
+    <category term="AoC" label="AoC"/>
+    <category term="C++" label="C++"/>
+    <published>2025-01-04T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2024-08-12-hello-world/</id>
+    <title>Hello World</title>
+    <updated>2024-08-12T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Hi!! I have made a website and if you are seeing this, it is live&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2024-08-12-hello-world/"/>
+    <summary>Hi!! I have made a website and if you are seeing this, it is live</summary>
+    <published>2024-08-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2024-07-22-python-latebind/</id>
+    <title>Late Binding of Python Closures</title>
+    <updated>2024-07-22T00:00:00+00:00</updated>
+    <author>
+      <name>Muhammed Abdullah</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;A subtle source of bugs in loops and closures. When lambda functions capture loop variables, they may not behave as you expect.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2024-07-22-python-latebind/"/>
+    <summary>A subtle source of bugs in loops and closures. When lambda functions capture loop variables, they may not behave as you expect.</summary>
+    <category term="PyQT5" label="PyQT5"/>
+    <category term="PySide6" label="PySide6"/>
+    <category term="Python" label="Python"/>
+    <category term="lambdafunctions" label="lambda functions"/>
+    <published>2024-07-22T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2024-06-12-C-wrapper/</id>
+    <title>Writing C wrapper for C++ libraries</title>
+    <updated>2024-06-12T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;When working on projects that involve both C and C++ components, integrating functionality between the two can sometimes pose challenges due to the differences in their language constructs and compilation models. One common scenario is when you have a C++ library that you want to use within a C codebase.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2024-06-12-C-wrapper/"/>
+    <summary>When working on projects that involve both C and C++ components, integrating functionality between the two can sometimes pose challenges due to the differences in their language constructs and compilation models. One common scenario is when you have a C++ library that you want to use within a C codebase.</summary>
+    <category term="C" label="C"/>
+    <category term="C++" label="C++"/>
+    <published>2024-06-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abd-01.github.io/posts/2024-01-15-PySide6-Notes/</id>
+    <title>Threads in PySide6, Python packaging and Executables</title>
+    <updated>2024-01-15T00:00:00+00:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;This post seves a guide as well as notes for developers working with PySide6. It covers topics such as managing output streams across scripts, running Python scripts in separate threads, and creating executable Python packages.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://abd-01.github.io/posts/2024-01-15-PySide6-Notes/"/>
+    <summary>This post seves a guide as well as notes for developers working with PySide6. It covers topics such as managing output streams across scripts, running Python scripts in separate threads, and creating executable Python packages.</summary>
+    <category term="GUI" label="GUI"/>
+    <category term="PySide6" label="PySide6"/>
+    <category term="Python" label="Python"/>
+    <published>2024-01-15T00:00:00+00:00</published>
+  </entry>
+</feed>

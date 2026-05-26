@@ -1,0 +1,22 @@
+---
+hide-toc: true
+---
+
+
+# Archives
+
+Welcome to the archives!
+
+## View posts grouped by
+* #### [Category](/posts/category){.external}
+* #### [Year](/posts/archive){.external}
+* #### [Tag](/posts/tag){.external}
+
+## All Posts
+
+```{eval-rst}
+.. postlist::
+   :format: {title}
+   :excerpts:
+```
+

@@ -1,0 +1,43 @@
+---
+tocdepth: 4
+myst:
+    number_code_blocks: ["cpp"]
+    html_meta:
+        "property=og:title": "Learning CPP via Advent of Code 2024"
+        "language": "en"
+        "keywords": "Advent of Code, C++, CPP, Puzzles, unordered set, grid solve"
+---
+```{post} January 18, 2025
+---
+author: Muhammed Abdullah
+category: Advent of Code
+title: Advent of Code 2024 [Days 6 to 8]
+tags: AoC, C++
+exclude:
+---
+This is my progress log for Advent of Code 2024, where I'm tackling the challenges using C++ to get good at the language. Contains work of Day 6 to Day 8.
+```
+
+{.hiddenh1}
+# Advent of Code 2024 [Days 6 to 8]
+
+Welcome Back!. I've decided to use [Advent of Code 2024][AOC2024] as a platform to improve my C++ skills, and in the previous part I covered [Days 1 to 5][day1to5]. 
+
+This is my attempt to document my learning journey through Advent of Code 2024. Instead of cluttering with each post for each day's challenge, I'll be grouping my progress into consolidated posts. This page is the second part of my progress log covering [Days 6 to 8][day6to8].
+
+Full solutions are available on GitHub: [ABD-01/AoC2024][github].
+
+
+```{include} AoC2024/day6to8.md
+:heading-offset: 1
+```
+
+This marks the second part of my Advent of Code 2024 journey. More updates soon. If you're also learning C++ or participating in Advent of Code, I'd love to hear about your experiences! Share your thoughts, tips, or solutions in the comments below. Feel free to check out my solutions on [GitHub][github].
+
+<!-- Links -->
+[AOC2024]: https://adventofcode.com/2024/
+[github]: https://github.com/ABD-01/AoC2024
+[day1to5]: Advent-of-Code-2024-Day-1-to-5.md
+[day6to8]: Advent-of-Code-2024-Day-6-to-8.md
+[day9]: Advent-of-Code-2024-Day-9.md
+[day10to11]: Advent-of-Code-2024-Day-10-to-11.md

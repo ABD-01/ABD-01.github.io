@@ -1,0 +1,1508 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Learning CPP via Advent of Code 2024" property="og:title" />
+<meta content="en" name="language" />
+<meta content="Advent of Code, C++, CPP, Puzzles, regex, unordered set, references and pointers" name="keywords" />
+<link rel="author" title="About these documents" href="../../about/" /><link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /> 
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../posts/atom.xml"
+  title="ABD Blog"
+/>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.1.0 and Furo 2024.07.18 -->
+        <title>Learning CPP via Advent of Code 2024 [Days 1 to 5] - ABD</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=1873cb14" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/tagcloud.css?v=4271035a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ablog/styles_for_furo.css?v=e882fc94" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="../../_static/furo50.css?v=d2d87db0" />
+    <link ref="stylesheet" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans%7CPT+Sans:bold%7CPT+Sans:ital" />
+    <link crossorigin="anonymous" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2c951381" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/prev-next.css?v=ccca4570" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/hiddenH1.css?v=21e1d64e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/announcement.css?v=b90d14cc" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  --link-color: #a51c30;
+  --color-foreground-primary: #212529;
+  --color-foreground-secondary: rgba(33,37,41,.75);
+  --color-foreground-muted: rgba(33,37,41,.5);
+  --color-foreground-border: #dee2e6;
+  --color-background-primary: #fff;
+  --color-background-secondary: #e9ecef;
+  --color-background-hover: color-mix(in srgb, white 70%, #a51c30);
+  --color-background-border: #dee2e6;
+  --color-brand-primary: #a51c30;
+  --color-brand-content: #a51c30;
+  --color-brand-visited: #a51c30;
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  --link-color-dark: #ef9aa4;
+  --color-foreground-primary: #dee2e6;
+  --color-foreground-secondary: rgba(222,226,230,.75);
+  --color-foreground-muted: rgba(222,226,230,.5);
+  --color-foreground-border: #495057;
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-background-hover: color-mix(in srgb, black 70%, #ef9aa4);
+  --color-background-border: #495057;
+  --color-brand-primary: #ef9aa4;
+  --color-brand-content: #ef9aa4;
+  --color-brand-visited: #ef9aa4;
+  --color-card-marginals-background: var(--color-background-secondary);
+  --color-sidebar-background: #a51c30;
+  --color-sidebar-background-border: transparent;
+  --color-sidebar-brand-text: #fff;
+  --color-sidebar-caption-text: rgba(255, 255, 255, 0.5);
+  --color-sidebar-search-foreground: #e9ecef;
+  --color-sidebar-search-border: #dee2e6;
+  --color-sidebar-item-background--hover: var(--color-sidebar-item-background);
+  --color-header-background: #a51c30;
+  --color-header-text: #fff;
+  
+      }
+    }
+  }
+</style>
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This website is in development phase. You can view the last stable build <a href='/index_barron.html' target='_blank'>here</a>. 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">ABD</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+    
+    
+    <span class="sidebar-brand-text">
+        <img src="/_static/icon/apple-touch-icon.png" style="vertical-align:bottom; width: 17%;">
+        ABD
+    </span>
+    
+</a>
+<p class="sidebar-brand" style="display: block;">
+    <!-- <a href="mailto:muhammed.abd.shaikh@gmail.com">muhammed.abd.shaikh</a> -->
+    <br>
+    <a href="mailto:muhammed.abd.shaikh@gmail.com"><i aria-hidden="true" class="fa-xl far fa-envelope"></i><span class="sr-only">Email</span></a>
+    <a href="https://github.com/ABD-01"><i aria-hidden="true" class="fa-xl fab fa-github"></i><span class="sr-only">GitHub</span></a>
+    <a href="https://www.linkedin.com/in/muhammedabd/"><i aria-hidden="true" class="fa-xl fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+    <a href="https://twitter.com/_m_ABD"><i aria-hidden="true" class="fa-xl fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+</p><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../archive/">Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resume/">Resume</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+          
+          
+            
+            <h1>Learning CPP via Advent of Code 2024 [Days 1 to 5]</h1>
+            <p class="ablog-post-metainfo">
+     
+    <a class="reference internal" href="../2025/">
+        <i class="fas fa-calendar fa-sm"></i> January 04, 2025
+    </a>
+    
+    <!-- by [Muhammed Abdullah <posts/author/muhammed-abdullah>] -->
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../tag/aoc/"><i class="fas fa-hashtag fa-sm"></i>
+                AoC</a> 
+             &nbsp; 
+        
+    
+        
+            <a class="reference internal" href="../tag/c/"><i class="fas fa-hashtag fa-sm"></i>
+                C++</a> 
+            
+        
+    
+    
+
+    
+    &nbsp; &middot; &nbsp;
+    
+        
+            <a class="reference internal" href="../category/advent-of-code/"><i class="fas fa-tag fa-sm"></i>
+                Advent of Code</a> 
+            
+        
+    
+    
+</p>
+
+          
+
+          <section class="hiddenh1 tex2jax_ignore mathjax_ignore" id="learning-cpp-via-advent-of-code-2024-days-1-to-5">
+<h1>Learning CPP via Advent of Code 2024 [Days 1 to 5]<a class="headerlink" href="#learning-cpp-via-advent-of-code-2024-days-1-to-5" title="Permalink to this heading">#</a></h1>
+<p>I’ve decided to use <a class="reference external" href="https://adventofcode.com/2024/">Advent of Code 2024</a> as a platform to improve my C++ skills. With a background in C, having worked on Embedded Systems for the past two years, and over five years of experience in Python where I consider myself between intermediate and advanced, I felt it was time to dive into C++. While I’m familiar with core programming concepts like loops, functions, and Object-Oriented Programming (OOP) from my experience in C and Python, I wanted a more practical and engaging way to learn C++ without retreading the basics.</p>
+<p>Advent of Code, with its daily coding challenges, seemed like a good way to get hands-on with C++.</p>
+<p>This is my attempt to document my learning journey through Advent of Code 2024. Instead of cluttering with each post for each day’s challenge, I’ll be grouping my progress into consolidated posts. This page is the first part of my progress log covering <a class="reference internal" href="#"><span class="std std-doc">Days 1 to 5</span></a>.</p>
+<p>Full solutions are available on GitHub: <a class="reference external" href="https://github.com/ABD-01/AoC2024">ABD-01/AoC2024</a>.</p>
+<div class="note update admonition">
+<p class="admonition-title">Updated on 21 February 2025</p>
+<p>Added <a class="reference internal" href="../Advent-of-Code-2024-Day-10-to-11/"><span class="std std-doc">next part</span></a> for Days 10 and 11.</p>
+</div>
+<div class="note update admonition">
+<p class="admonition-title">Updated on 15 February 2025</p>
+<p>Added <a class="reference internal" href="../Advent-of-Code-2024-Day-9/"><span class="std std-doc">next part</span></a> for Day 9.</p>
+</div>
+<div class="note update admonition">
+<p class="admonition-title">Updated on 18 January 2025</p>
+<p>Added <a class="reference internal" href="../Advent-of-Code-2024-Day-6-to-8/"><span class="std std-doc">next part</span></a> for Days 6 to 8.</p>
+</div>
+<section id="day-1-historian-hysteria">
+<h2><a class="reference external" href="https://adventofcode.com/2024/day/1">Day 1: Historian Hysteria</a><a class="headerlink" href="#day-1-historian-hysteria" title="Permalink to this heading">#</a></h2>
+<section id="solution-overview">
+<h3><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day01_Historian_Hysteria/main.cpp">Solution Overview</a><a class="headerlink" href="#solution-overview" title="Permalink to this heading">#</a></h3>
+<section id="part-1-sorting-and-pairing-numbers">
+<h4>Part 1: Sorting and Pairing Numbers<a class="headerlink" href="#part-1-sorting-and-pairing-numbers" title="Permalink to this heading">#</a></h4>
+<p>Given two lists of numbers.</p>
+<blockquote>
+<div><p>Pair up the <code class="docutils literal notranslate"><span class="pre">smallest</span> <span class="pre">number</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">left</span> <span class="pre">list</span></code> with the <code class="docutils literal notranslate"><span class="pre">smallest</span> <span class="pre">number</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">right</span> <span class="pre">list</span></code>, then the <code class="docutils literal notranslate"><span class="pre">second-smallest</span> <span class="pre">left</span> <span class="pre">number</span></code> with the <code class="docutils literal notranslate"><span class="pre">second-smallest</span> <span class="pre">right</span> <span class="pre">number</span></code>, and so on.</p>
+</div></blockquote>
+<p>Sort both lists, take absolute difference of the values elementwise and sum it up.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">37</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">vec1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">vec1</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"> </span><span class="c1">// sorts in ascending order</span>
+<span class="linenos">38</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">vec2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">vec2</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="linenos">39</span><span class="w">    </span><span class="c1">//std::ranges::sort(vec2);</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">42</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vec1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="linenos">43</span><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">vec1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">vec2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="part-2-calculating-similarity-scores">
+<h4>Part 2: Calculating Similarity Scores<a class="headerlink" href="#part-2-calculating-similarity-scores" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>Calculate a total <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">score</span></code> by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.</p>
+</div></blockquote>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">48</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vec1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="linenos">49</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">50</span><span class="w">        </span><span class="cm">/**</span>
+<span class="linenos">51</span><span class="cm">        int count = 0;</span>
+<span class="linenos">52</span><span class="cm">        for (std::size_t j = 0; j &lt; vec1.size(); j++)</span>
+<span class="linenos">53</span><span class="cm">            if (vec1[i] == vec2[j])</span>
+<span class="linenos">54</span><span class="cm">                count++;</span>
+<span class="linenos">55</span><span class="cm">        */</span>
+<span class="linenos">56</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">vec2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">vec2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">vec1</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="linenos">57</span><span class="w">        </span><span class="c1">//int count = std::ranges::count(vec2, vec1[i]);</span>
+<span class="linenos">58</span><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vec1</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="linenos">59</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now here using <code class="docutils literal notranslate"><span class="pre">std::count</span></code> inside a loop results in a time complexity of <span class="math notranslate nohighlight">\(O(n^2)\)</span>. This could be optimized further using a hash map (<code class="docutils literal notranslate"><span class="pre">std::unordered_map</span></code>) to count occurrences in <span class="math notranslate nohighlight">\(O(n)\)</span> time.</p>
+</section>
+</section>
+<section id="concepts-learned">
+<h3>Concepts Learned<a class="headerlink" href="#concepts-learned" title="Permalink to this heading">#</a></h3>
+<section id="reading-from-a-file">
+<h4>Reading from a file<a class="headerlink" href="#reading-from-a-file" title="Permalink to this heading">#</a></h4>
+<p>Use <strong>file streams</strong> defined in header <code class="docutils literal notranslate"><span class="pre">&lt;fstream&gt;</span></code></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ifstream</span></code></strong>: Input file stream for reading files.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ofstream</span></code></strong>: Output file stream for writing files.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">fstream</span></code></strong>: Input-output file stream for both reading and writing.</p></li>
+</ul>
+<p><strong>String Streams (<code class="docutils literal notranslate"><span class="pre">&lt;sstream&gt;</span></code>)</strong>: Used to read from or write to strings.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">istringstream</span></code></strong>: For input operations from a string.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ostringstream</span></code></strong>: For output operations to a string.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">stringstream</span></code></strong>: For both input and output operations on a string.</p></li>
+</ul>
+<p><strong>standard input/output streams</strong> (<code class="docutils literal notranslate"><span class="pre">&lt;iostream&gt;</span></code>)</p>
+</section>
+<section id="vectors">
+<h4>Vectors<a class="headerlink" href="#vectors" title="Permalink to this heading">#</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// 1. Creates a vector &#39;a&#39; with &#39;count&#39; elements</span>
+<span class="linenos"> 2</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">count</span><span class="p">);</span><span class="w"> </span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// 2. Creates a vector &#39;v&#39; with &#39;count&#39; elements, all initialized to &#39;value&#39;</span>
+<span class="linenos"> 5</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"> </span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// 3. Looping over a vector and printing its elements</span>
+<span class="linenos"> 8</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1">// 4. Iterators</span>
+<span class="linenos">11</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="linenos">12</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1">// 5. Methods</span>
+<span class="linenos">15</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">()</span>
+<span class="linenos">16</span><span class="n">a</span><span class="p">.</span><span class="n">push_back</span><span class="w"> </span><span class="c1">// adds an element to the end</span>
+</pre></div>
+</div>
+<details>
+<summary>Example</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="linenos"> 3</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span>
+<span class="linenos"> 4</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error opening file!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="n">iss</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">iss</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">num2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">19</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error parsing line!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">a</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">b</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">num2</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">29</span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="ranges">
+<h4>Ranges<a class="headerlink" href="#ranges" title="Permalink to this heading">#</a></h4>
+<p>for ranges, use <code class="docutils literal notranslate"><span class="pre">-std=c++20</span></code> during compilation</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">std::ranges::count</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">count(v,</span> <span class="pre">target2);</span></code></p></li>
+<li><p>Same as <code class="docutils literal notranslate"><span class="pre">std::count(v.begin(),</span> <span class="pre">v.end(),</span> <span class="pre">target1);</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::ranges::sort</span></code>
+Same as <code class="docutils literal notranslate"><span class="pre">std::sort(vec2.begin(),</span> <span class="pre">vec2.end());</span></code></p></li>
+</ol>
+</section>
+<section id="initializer-list">
+<h4>Initializer List<a class="headerlink" href="#initializer-list" title="Permalink to this heading">#</a></h4>
+<p># TODO</p>
+</section>
+<section id="explicit-specifier">
+<h4><code class="docutils literal notranslate"><span class="pre">explicit</span></code> specifier<a class="headerlink" href="#explicit-specifier" title="Permalink to this heading">#</a></h4>
+<p>When a constructor is marked as [<code class="docutils literal notranslate"><span class="pre">explicit</span></code>](<a class="reference external" href="https://en.cppreference.com/w/cpp/language/explicit">explicit specifier - cppreference.com</a>), the compiler will <strong>not</strong> use that constructor for  <strong><a class="reference external" href="https://en.cppreference.com/w/cpp/language/implicit_conversion">implicit type conversions</a></strong> or <strong><a class="reference external" href="https://en.cppreference.com/w/cpp/language/copy_initialization">copy-initialization</a></strong>, meaning it will not automatically convert or create an object from a single argument when the compiler thinks it’s needed (for example, in assignments or function calls).</p>
+<details>
+<summary>Example</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="k">public</span><span class="o">:</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Constructor called with &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos"> 6</span><span class="p">};</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;In display function</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">    </span><span class="c1">// display(10);  // Error: no implicit conversion from int to MyClass</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">display</span><span class="p">(</span><span class="n">MyClass</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w">  </span><span class="c1">// Must explicitly create MyClass</span>
+<span class="linenos">15</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">16</span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="insertion-sort">
+<h4>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this heading">#</a></h4>
+<details>
+<summary>Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 95</span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="linenos"> 96</span><span class="kt">void</span><span class="w"> </span><span class="n">insertionSort</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span>
+<span class="linenos"> 97</span><span class="p">{</span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">::</span><span class="n">iterator</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">::</span><span class="n">iterator</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="linenos">100</span>
+<span class="linenos">101</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">last</span><span class="p">;</span><span class="w"> </span><span class="n">current</span><span class="o">++</span><span class="p">)</span>
+<span class="linenos">102</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">103</span><span class="w">       </span><span class="k">auto</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="p">;</span>
+<span class="linenos">104</span><span class="w">       </span><span class="c1">//auto position = current - 1;</span>
+<span class="linenos">105</span><span class="w">       </span><span class="k">auto</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">;</span>
+<span class="linenos">106</span><span class="w">       </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">position</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w"> </span><span class="n">position</span><span class="o">--</span><span class="p">)</span>
+<span class="linenos">107</span><span class="w">       </span><span class="p">{</span>
+<span class="linenos">108</span><span class="w">            </span><span class="c1">//*(position+1) = *position;</span>
+<span class="linenos">109</span><span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">position</span><span class="mi">-1</span><span class="p">);</span>
+<span class="linenos">110</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">111</span><span class="w">       </span><span class="c1">//*(position+1) = key;</span>
+<span class="linenos">112</span><span class="w">       </span><span class="o">*</span><span class="p">(</span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
+<span class="linenos">113</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">114</span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">115</span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<section id="references-and-resources">
+<h3>References and Resources<a class="headerlink" href="#references-and-resources" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cppscripts.com/file-handling-in-cpp">File Handling in CPP: A Quick and Easy Guide</a></p></li>
+<li><p><a class="reference external" href="https://www.fluentcpp.com/2017/01/12/ranges-stl-to-the-next-level/">Ranges: the STL to the Next Level - Fluent C++</a></p></li>
+<li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/language/explicit">explicit specifier - cppreference.com</a></p></li>
+<li><p><a class="reference external" href="https://visualgo.net/en/sorting?slide=1">Sorting (Bubble, Selection, Insertion, Merge, Quick, Counting, Radix) - VisuAlgo</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/krcSaMmSt2E">Classes Part 22 - Curly brace versus parenthesis and std::initializer_list| Modern cpp Series Ep. 59</a></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="day-2-red-nosed-reports">
+<h2><a class="reference external" href="https://adventofcode.com/2024/day/2">Day 2: Red-Nosed Reports</a><a class="headerlink" href="#day-2-red-nosed-reports" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day02_Red-Nosed_Reports/main.cpp">Solution Overview</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="part-1-count-safe-reports">
+<h4>Part 1: Count Safe Reports<a class="headerlink" href="#part-1-count-safe-reports" title="Permalink to this heading">#</a></h4>
+<p>For a given list of numbers check if</p>
+<ul class="simple">
+<li><p>it is <em>all increasing</em> or <em>all decreasing</em>.</p></li>
+<li><p>Any two adjacent values differ by <em>at least one</em> and <em>at most three</em>.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">17</span><span class="kt">bool</span><span class="w"> </span><span class="nf">isReportSafe</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="linenos">18</span><span class="p">{</span>
+<span class="linenos">19</span><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// A single-element or empty list is trivially safe.</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isSafe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="c1">// Must be all increasing or all decreasing.</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isSorted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="c1">// If first element is greater than second, assume it should be decreasing</span>
+<span class="linenos">24</span><span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{})</span>
+<span class="linenos">25</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"> </span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isSorted</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">30</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">31</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]);</span><span class="w"> </span>
+<span class="linenos">32</span><span class="w">       </span><span class="c1">// Any two adjacent values must differ by at least one and at most three.</span>
+<span class="linenos">33</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">diff</span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span>
+<span class="linenos">34</span><span class="w">       </span><span class="p">{</span>
+<span class="linenos">35</span><span class="w">            </span><span class="n">isSafe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">36</span><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">37</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">38</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">39</span><span class="w">    </span><span class="c1">// Could also use std::adjacent_find </span>
+<span class="linenos">40</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">isSafe</span><span class="p">;</span>
+<span class="linenos">41</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="part-2-tolerate-a-single-unsafe-report">
+<h4>Part 2: Tolerate a Single Unsafe Report<a class="headerlink" href="#part-2-tolerate-a-single-unsafe-report" title="Permalink to this heading">#</a></h4>
+<p>For a given list, remove one element and check is it safe or not</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span><span class="kt">bool</span><span class="w"> </span><span class="nf">part2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span>
+<span class="linenos">65</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">66</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">67</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">;</span>
+<span class="linenos">68</span><span class="w">        </span><span class="n">temp</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="linenos">69</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isReportSafe</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span><span class="w"> </span>
+<span class="linenos">70</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">71</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="key-takeaways">
+<h3>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permalink to this heading">#</a></h3>
+<section id="vector-of-vectors">
+<h4>Vector of Vectors<a class="headerlink" href="#vector-of-vectors" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="std-is-sorted-and-std-greater">
+<h4><code class="docutils literal notranslate"><span class="pre">std::is_sorted</span></code> and <code class="docutils literal notranslate"><span class="pre">std::greater</span></code><a class="headerlink" href="#std-is-sorted-and-std-greater" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="std-adjacent-find">
+<h4><code class="docutils literal notranslate"><span class="pre">std::adjacent_find</span></code><a class="headerlink" href="#std-adjacent-find" title="Permalink to this heading">#</a></h4>
+<p>Source: <a class="reference external" href="https://github.com/gcc-mirror/gcc/blob/master/libstdc%2B%2B-v3/include/bits/stl_algo.h#L823">gcc-mirror/gcc/libstdc++-v3/include/bits/stl_algo.h</a></p>
+<details>
+<summary>Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">bool</span><span class="w"> </span><span class="nf">funct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="w">    </span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="linenos"> 4</span><span class="w">	</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">adjacent_find</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="linenos"> 5</span><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+<span class="linenos"> 6</span><span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;First pair of repeated elements: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">		</span>
+<span class="linenos"> 8</span><span class="w">	</span><span class="c1">// Solution using adjacent_find</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">adjacent_find</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">        </span><span class="p">})</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="std-count-if">
+<h4><code class="docutils literal notranslate"><span class="pre">std::count_if</span></code><a class="headerlink" href="#std-count-if" title="Permalink to this heading">#</a></h4>
+<details>
+<summary>Example</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">bool</span><span class="w"> </span><span class="nf">funct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kt">bool</span><span class="w"> </span><span class="n">isSorted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span>
+<span class="linenos"> 5</span><span class="w">	</span><span class="o">?</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">greater</span><span class="o">&lt;&gt;</span><span class="p">{})</span>
+<span class="linenos"> 6</span><span class="w">	</span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">adjacent_find</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span>
+<span class="linenos"> 9</span><span class="w">	</span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">		</span><span class="kt">int</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MIN_DIFF</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAX_DIFF</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">	</span><span class="p">})</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">countSafeReports</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">reports</span><span class="p">)</span>
+<span class="linenos">15</span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">count_if</span><span class="p">(</span><span class="n">reports</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">reports</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">isReportSafe</span><span class="p">);</span>
+<span class="linenos">17</span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<section id="id2">
+<h3>References and Resources<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c/">How to split a string in C++ - Fluent C++</a></p></li>
+<li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/algorithm/is_sorted">std::is_sorted - cppreference.com</a></p></li>
+<li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/algorithm/adjacent_find">std::adjacent_find - cppreference.com</a></p></li>
+<li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/algorithm/count">std::count, std::count_if - cppreference.com</a></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="day-3-mull-it-over">
+<h2><a class="reference external" href="https://adventofcode.com/2024/day/3">Day 3: Mull It Over</a><a class="headerlink" href="#day-3-mull-it-over" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day03_Mull_It_Over/main.cpp">Solution Overview</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="part-1-multiplication-in-trash">
+<h4>Part 1: Multiplication in Trash<a class="headerlink" href="#part-1-multiplication-in-trash" title="Permalink to this heading">#</a></h4>
+<p>Parse the given corrupted string and look for pattern <code class="docutils literal notranslate"><span class="pre">mul(X,Y)</span></code>, where <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> are each 1-3 digit numbers. Add up all the results of the multiplications of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">36</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">it</span><span class="p">(</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="n">end</span><span class="p">;</span>
+<span class="linenos">37</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="p">;</span>
+<span class="linenos">38</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="p">;</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">mulVec</span><span class="p">;</span>
+<span class="linenos">41</span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">result</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="p">;</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">45</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos">46</span><span class="w">            </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;m&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="linenos">47</span><span class="w">            </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*++</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">48</span><span class="w">            </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*++</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">49</span><span class="w">            </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*++</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;(&#39;</span>
+<span class="linenos">50</span><span class="w">        </span><span class="p">)</span>
+<span class="linenos">51</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">52</span><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">secondNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">53</span><span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">num1</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">num2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">second</span><span class="o">=++</span><span class="n">first</span><span class="p">;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">second</span><span class="p">)</span><span class="w">    </span>
+<span class="linenos">56</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">57</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isdigit</span><span class="p">(</span><span class="o">*</span><span class="n">second</span><span class="p">))</span>
+<span class="linenos">58</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">59</span><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">secondNum</span><span class="p">)</span>
+<span class="linenos">60</span><span class="w">                        </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num2</span><span class="o">*</span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">second</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="linenos">61</span><span class="w">                    </span><span class="k">else</span>
+<span class="linenos">62</span><span class="w">                        </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="o">*</span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">second</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="linenos">63</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">64</span><span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;,&#39;</span><span class="p">)</span>
+<span class="linenos">65</span><span class="w">                    </span><span class="n">secondNum</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">66</span><span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;)&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">secondNum</span><span class="p">)</span>
+<span class="linenos">67</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">68</span><span class="w">                    </span><span class="n">mulVec</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span>
+<span class="linenos">69</span><span class="w">                    </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">num1</span><span class="o">*</span><span class="n">num2</span><span class="p">);</span>
+<span class="linenos">70</span><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">71</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">72</span><span class="w">                </span><span class="k">else</span>
+<span class="linenos">73</span><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">74</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">75</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="part-2-do-don-t-multiply">
+<h4>Part 2: Do/Don’t Multiply<a class="headerlink" href="#part-2-do-don-t-multiply" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>There are two new instructions you’ll need to handle:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">do()</span></code> instruction <em>enables</em> future <code class="docutils literal notranslate"><span class="pre">mul</span></code> instructions.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">don't()</span></code> instruction <em>disables</em> future <code class="docutils literal notranslate"><span class="pre">mul</span></code> instructions.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 96</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">regex</span><span class="w"> </span><span class="n">regex</span><span class="p">(</span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">(mul\(\d{1,3},\d{1,3}\))|(do\(\))|(don&#39;t\(\))</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="linenos"> 97</span><span class="w">    </span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="w"> </span><span class="n">start</span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="p">(</span><span class="n">contents</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">contents</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">regex</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="w"> </span><span class="n">end</span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">100</span>
+<span class="linenos">101</span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">result</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">102</span>
+<span class="linenos">103</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">mulEnabled</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">104</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">105</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">106</span><span class="w">        </span><span class="c1">//std::smatch match = *i;</span>
+<span class="linenos">107</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">).</span><span class="n">str</span><span class="p">();</span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">compare</span><span class="p">(</span><span class="s">&quot;don&#39;t()&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">110</span><span class="w">            </span><span class="n">mulEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">111</span>
+<span class="linenos">112</span><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">compare</span><span class="p">(</span><span class="s">&quot;do()&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos">113</span><span class="w">            </span><span class="n">mulEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span><span class="w">        </span><span class="k">else</span>
+<span class="linenos">116</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">117</span><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="nf">num1</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">num2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">118</span><span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="linenos">119</span><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;,&#39;</span><span class="p">)</span>
+<span class="linenos">120</span><span class="w">                </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="o">*</span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span><span class="w"> </span>
+<span class="linenos">121</span><span class="w">            </span><span class="o">++</span><span class="n">j</span><span class="p">;</span>
+<span class="linenos">122</span><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;)&#39;</span><span class="p">)</span>
+<span class="linenos">123</span><span class="w">                </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num2</span><span class="o">*</span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="linenos">124</span>
+<span class="linenos">125</span><span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">mulEnabled</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span><span class="w"> </span>
+<span class="linenos">126</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">127</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h3>Concepts Learned<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="stream-iterators">
+<h4>Stream Iterators<a class="headerlink" href="#stream-iterators" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">std::istream_iterator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::istreambuf_iterator</span></code></p></li>
+<li><p>Read entire file into a string:</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+<span class="linenos">2</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">contents</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">()};</span>
+<span class="linenos">3</span><span class="c1">// or into a vector of strings</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When reading characters, <code class="docutils literal notranslate"><span class="pre">std::istream_iterator</span></code> skips whitespace by default (unless disabled with <a class="reference external" href="https://en.cppreference.com/w/cpp/io/manip/skipws" title="cpp/io/manip/skipws">std::noskipws</a> or equivalent), while <a class="reference external" href="https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator" title="cpp/iterator/istreambuf iterator">std::istreambuf_iterator</a> does not. In addition, <a class="reference external" href="https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator" title="cpp/iterator/istreambuf iterator">std::istreambuf_iterator</a> is more efficient, since it avoids the overhead of constructing and destructing the sentry object once per character.</p>
+</div>
+</section>
+<section id="regex">
+<h4>Regex<a class="headerlink" href="#regex" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">std::cmatch</span></code> for <code class="docutils literal notranslate"><span class="pre">std::match_results&lt;const char*&gt;</span></code>: cannot be used with iterators.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::smatch</span></code> for <code class="docutils literal notranslate"><span class="pre">std::match_results&lt;std::string::const_iterator&gt;</span></code> to be used with iterators</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::regex_match</span></code> for entire sequence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::sregex_iterator</span></code> for iterators, which dereferences to <code class="docutils literal notranslate"><span class="pre">std::smatch</span></code></p></li>
+</ol>
+<details>
+<summary>Examples</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">std</span><span class="o">::</span><span class="n">regex</span><span class="w"> </span><span class="n">pattern</span><span class="p">(</span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">mul\(\d{1,3},\d{1,3}\)</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="linenos">2</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mul(123,456)&quot;</span><span class="p">;</span>
+<span class="linenos">3</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">regex_match</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">4</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Pattern matched!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">5</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">regex</span><span class="w"> </span><span class="n">regex</span><span class="p">(</span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span><span class="s">(mul\(\d{1,3},\d{1,3}\))|(do\(\))|(don&#39;t\(\))</span><span class="dl">)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="w">    </span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="w"> </span><span class="n">start</span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="p">(</span><span class="n">contents</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">contents</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">regex</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="w"> </span><span class="n">end</span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sregex_iterator</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">smatch</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">match</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="strings">
+<h4>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">std::string::compare</span></code>: returns 0 if equal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::stoi</span></code> - String to Int</p></li>
+</ol>
+</section>
+</section>
+<section id="id5">
+<h3>References and Resources<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/regex/regex_iterator">std::regex_iterator - cppreference.com</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/IOxKjqC1Ozo">C++ Weekly - Ep 62 - std::regex</a></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="day4-ceres-search">
+<h2><a class="reference external" href="https://adventofcode.com/2024/day/4">Day4: Ceres Search</a><a class="headerlink" href="#day4-ceres-search" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day04_Ceres_Search/main.cpp">Solution Overview</a><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="part-1-find-xmas">
+<h4>Part 1: Find XMAS<a class="headerlink" href="#part-1-find-xmas" title="Permalink to this heading">#</a></h4>
+<p>Find the word <code class="docutils literal notranslate"><span class="pre">XMAS</span></code> in a given grid such that it can be horizontal, vertical, diagonal, written backwards, or even overlapping other words.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">70</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">()};</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span><span class="kt">int</span><span class="w"> </span><span class="n">rows</span><span class="p">{(</span><span class="kt">int</span><span class="p">)</span><span class="n">contents</span><span class="p">.</span><span class="n">size</span><span class="p">()},</span><span class="w"> </span><span class="n">cols</span><span class="p">{(</span><span class="kt">int</span><span class="p">)</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">()};</span>
+<span class="linenos">73</span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">ss</span><span class="p">{};</span>
+<span class="linenos">74</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="linenos">75</span><span class="p">{</span>
+<span class="linenos">76</span><span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">77</span><span class="w">		</span><span class="n">ss</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">contents</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="linenos">78</span><span class="w">	</span><span class="n">ss</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">79</span><span class="p">}</span>
+<span class="linenos">80</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rotated_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ss</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">()};</span>
+<span class="linenos">81</span>
+<span class="linenos">82</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diag_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_diagonals</span><span class="p">(</span><span class="n">contents</span><span class="p">);</span>
+<span class="linenos">83</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">antidiag_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_diagonals</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="linenos">84</span>
+<span class="linenos">85</span><span class="kt">int</span><span class="w"> </span><span class="nf">result</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">86</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">xmas</span><span class="p">(</span><span class="s">&quot;XMAS&quot;</span><span class="p">);</span>
+<span class="linenos">87</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">samx</span><span class="p">(</span><span class="s">&quot;SAMX&quot;</span><span class="p">);</span>
+<span class="linenos">88</span>
+<span class="linenos">89</span><span class="c1">// repeat this for rotated_contents, diag_contents, antidiag_contents</span>
+<span class="linenos">90</span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">contents</span><span class="p">)</span>
+<span class="linenos">91</span><span class="p">{</span>
+<span class="linenos">92</span><span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xmas</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">93</span><span class="w">	</span><span class="p">{</span>
+<span class="linenos">94</span><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">xmas</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">xmas</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">samx</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">samx</span><span class="p">)</span>
+<span class="linenos">95</span><span class="w">			</span><span class="o">++</span><span class="n">result</span><span class="p">;</span>
+<span class="linenos">96</span><span class="w">	</span><span class="p">}</span>
+<span class="linenos">97</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="part-2-find-mas-in-x">
+<h4>Part 2: Find <code class="docutils literal notranslate"><span class="pre">MAS</span></code> in <code class="docutils literal notranslate"><span class="pre">X</span></code><a class="headerlink" href="#part-2-find-mas-in-x" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>find two <code class="docutils literal notranslate"><span class="pre">MAS</span></code> in the shape of an <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
+</div></blockquote>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>M.S
+.A.
+M.S
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">45</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">()};</span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rows</span><span class="p">{(</span><span class="kt">int</span><span class="p">)</span><span class="n">grid</span><span class="p">.</span><span class="n">size</span><span class="p">()},</span><span class="w"> </span><span class="n">cols</span><span class="p">{(</span><span class="kt">int</span><span class="p">)</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">()};</span>
+<span class="linenos">48</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">52</span><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cols</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="linenos">53</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">54</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="linenos">55</span><span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">checkMAS</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">checkMAS</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span>
+<span class="linenos">56</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">57</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">58</span>
+<span class="linenos">59</span><span class="kt">bool</span><span class="w"> </span><span class="n">checkMAS</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span>
+<span class="linenos">60</span><span class="p">{</span>
+<span class="linenos">61</span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="mi">-1</span><span class="p">][</span><span class="n">y</span><span class="o">-</span><span class="n">dir</span><span class="p">];</span>
+<span class="linenos">62</span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="n">dir</span><span class="p">];</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">c1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;M&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;S&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">65</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;M&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;S&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">66</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">67</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3>Key Takeaways<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="get-diagonals-and-antidiagonals-of-a-2d-grid">
+<h4>Get diagonals and AntiDiagonals of a 2d Grid<a class="headerlink" href="#get-diagonals-and-antidiagonals-of-a-2d-grid" title="Permalink to this heading">#</a></h4>
+<p>Number of diagonals in a Grid: <span class="math notranslate nohighlight">\(R+C−1\)</span></p>
+<details>
+<summary>Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Diagonals&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">row_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// begin a 0</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">col_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maxCol</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// begins at maxCol - 1 (the top-right corner).</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxCol</span><span class="o">+</span><span class="n">maxRow</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// Iterates over all diagonals</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">{</span><span class="w"> </span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">row_start</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">col_start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// clever mechanism to shift the starting row when column goes out of bounds using `(col_start &lt; 0)`</span>
+<span class="linenos">11</span><span class="w">        </span><span class="c1">// row_start increments by 1 when col_start goes out of bounds (negative), ensuring the starting row shifts downward.</span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos">13</span><span class="w">	        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">col_start</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_start</span><span class="p">;</span><span class="w">  </span><span class="c1">// `j` for columns and `k` for rows</span>
+<span class="linenos">14</span><span class="w">	        </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxCol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRow</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">	        </span><span class="o">++</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">++</span><span class="n">k</span>
+<span class="linenos">16</span><span class="w">	    </span><span class="p">)</span>
+<span class="linenos">17</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span><span class="w">        </span><span class="o">--</span><span class="n">col_start</span><span class="p">;</span><span class="w">  </span><span class="c1">// shifts the starting column leftward</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Anti Diagonals&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">    </span><span class="n">row_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="n">col_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//begins at 0 (the top-left corner)</span>
+<span class="linenos">27</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxCol</span><span class="o">+</span><span class="n">maxRow</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// Iterates over all diagonals</span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">{</span><span class="w"> </span>
+<span class="linenos">29</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">        </span><span class="n">row_start</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">col_start</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxCol</span><span class="mi">-1</span><span class="p">);</span><span class="w"> </span><span class="c1">// shift row when col goes out of bounds</span>
+<span class="linenos">31</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos">32</span><span class="w">	        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">maxCol</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">col_start</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_start</span><span class="p">;</span>
+<span class="linenos">33</span><span class="w">	        </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRow</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w">	        </span><span class="o">--</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">++</span><span class="n">k</span>
+<span class="linenos">35</span><span class="w">	    </span><span class="p">)</span>
+<span class="linenos">36</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">37</span><span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="linenos">38</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">39</span><span class="w">        </span><span class="o">++</span><span class="n">col_start</span><span class="p">;</span><span class="w"> </span><span class="c1">// shifts the starting column rightward</span>
+<span class="linenos">40</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">41</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="cm">/**</span>
+<span class="linenos">44</span><span class="cm">Output:</span>
+<span class="linenos">45</span><span class="cm">Diagonals</span>
+<span class="linenos">46</span><span class="cm">0: 0,2</span>
+<span class="linenos">47</span><span class="cm">1: 0,1 1,2     </span>
+<span class="linenos">48</span><span class="cm">2: 0,0 1,1 2,2 </span>
+<span class="linenos">49</span><span class="cm">3: 1,0 2,1 3,2 </span>
+<span class="linenos">50</span><span class="cm">4: 2,0 3,1     </span>
+<span class="linenos">51</span><span class="cm">5: 3,0</span>
+<span class="linenos">52</span><span class="cm">Anti Diagonals </span>
+<span class="linenos">53</span><span class="cm">0: 0,0</span>
+<span class="linenos">54</span><span class="cm">1: 0,1 1,0     </span>
+<span class="linenos">55</span><span class="cm">2: 0,2 1,1 2,0 </span>
+<span class="linenos">56</span><span class="cm">3: 1,2 2,1 3,0</span>
+<span class="linenos">57</span><span class="cm">4: 2,2 3,1</span>
+<span class="linenos">58</span><span class="cm">5: 3,2</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="cm">*/</span>
+</pre></div>
+</div>
+</details>
+<p>Another method suggested by Claude 3.5
+Instead of managing starting points (<code class="docutils literal notranslate"><span class="pre">row_start</span></code>, <code class="docutils literal notranslate"><span class="pre">col_start</span></code>) explicitly, we can use the property that:</p>
+<ul class="simple">
+<li><p><strong>Diagonal Index:</strong> <span class="math notranslate nohighlight">\(k=j−i\)</span></p></li>
+<li><p><strong>Anti-Diagonal Index:</strong> <span class="math notranslate nohighlight">\(k=i+j\)</span></p></li>
+<li><p>Diagonals will have <span class="math notranslate nohighlight">\(k\in[−(C−1),(R−1)]\)</span>.</p></li>
+<li><p>Anti-diagonals will have <span class="math notranslate nohighlight">\(k\in[0,R+C−2]\)</span>.</p></li>
+</ul>
+<details>
+<summary>Code</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">void</span><span class="w"> </span><span class="nf">printDiagonals</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">maxRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Diagonals</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="c1">// For main diagonals, points on same diagonal have same (row-col)</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="n">maxCol</span><span class="mi">-1</span><span class="p">);</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRow</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">maxCol</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">startRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">startCol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startRow</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">diff</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startRow</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRow</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">row</span><span class="o">-</span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxCol</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">row</span><span class="o">-</span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span><span class="w">    </span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Anti Diagonals</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">    </span><span class="c1">// For anti-diagonals, points on same diagonal have same (row+col)</span>
+<span class="linenos">16</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">maxCol</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">sum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">startRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">maxCol</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos">19</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">endRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">maxRow</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startRow</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">endRow</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">sum</span><span class="o">-</span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">25</span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<hr>
+</section>
+</section>
+</section>
+<section id="day-5-print-queue">
+<h2><a class="reference external" href="https://adventofcode.com/2024/day/5">Day 5: Print Queue</a><a class="headerlink" href="#day-5-print-queue" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h3><a class="reference external" href="https://github.com/ABD-01/AoC2024/blob/master/Day05_Print_Queue/main.cpp">Solution Overview</a><a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="part-1-check-page-order">
+<h4>Part 1: Check Page Order<a class="headerlink" href="#part-1-check-page-order" title="Permalink to this heading">#</a></h4>
+<p>The first part of the input contains a list of rules <code class="docutils literal notranslate"><span class="pre">X|Y</span></code> which states that page <code class="docutils literal notranslate"><span class="pre">X</span></code> must be printed at some point before page <code class="docutils literal notranslate"><span class="pre">Y</span></code>. Next part have list page sequences, identify which one of those are in right order.</p>
+<ul class="simple">
+<li><p>Iterates over all pairs <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> in the given page sequence where <code class="docutils literal notranslate"><span class="pre">i&lt;j</span></code>.</p></li>
+<li><p>For each pair, checking if it violates any of the rule.</p></li>
+<li><p>If no rule violated, the order is valid.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">126</span><span class="kt">bool</span><span class="w"> </span><span class="nf">isOrderValid</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">rule</span><span class="p">)</span>
+<span class="linenos">127</span><span class="p">{</span>
+<span class="linenos">128</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos">129</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">130</span><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos">131</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">132</span><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="o">:</span><span class="w"> </span><span class="n">rule</span><span class="p">)</span>
+<span class="linenos">133</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">134</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="c1">// incorrect order</span>
+<span class="linenos">135</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">136</span><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">137</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">138</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">139</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">140</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">141</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">142</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is simply brute force and horrible time complexity of <span class="math notranslate nohighlight">\(O(n^2\times m)\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is length of the page sequence (<code class="docutils literal notranslate"><span class="pre">o.size()</span></code>) and <span class="math notranslate nohighlight">\(m\)</span> is a number of rules(<code class="docutils literal notranslate"><span class="pre">rule.size()</span></code>).</p>
+<section id="optimization">
+<h5>Optimization<a class="headerlink" href="#optimization" title="Permalink to this heading">#</a></h5>
+<p>A faster <a class="reference external" href="https://github.com/UnicycleBloke/aoc2024/blob/main/day05/solution.cpp#L5-L18">solution (aoc2024/day05/solution.cpp at main · UnicycleBloke/aoc2024)</a> (<span class="math notranslate nohighlight">\(O(m\times n)\)</span>) I found on Reddit:</p>
+<ul class="simple">
+<li><p>Iterate over rules <span class="math notranslate nohighlight">\(O(m)\)</span></p></li>
+<li><p>For each rule find its first and second elements in the sequence (Linear search <span class="math notranslate nohighlight">\(O(2n)\)</span>, might short-circuit if first not found <span class="math notranslate nohighlight">\(O(n + n/2)\)</span>)</p></li>
+<li><p>check if both finds follow the rule, based on position they appear in the sequence. Else order is not valid.</p></li>
+</ul>
+<p>More optimized solution would require a Hash Map:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">145</span><span class="kt">bool</span><span class="w"> </span><span class="nf">isOrderValid</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">rule</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">146</span><span class="w">    </span><span class="c1">// Map elements in &#39;o&#39; to their indices for fast lookup</span>
+<span class="linenos">147</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">indexMap</span><span class="p">;</span>
+<span class="linenos">148</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">149</span><span class="w">        </span><span class="n">indexMap</span><span class="p">[</span><span class="n">o</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="linenos">150</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span><span class="w">    </span><span class="c1">// Check if any rule is violated</span>
+<span class="linenos">153</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rule</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">154</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indexMap</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">indexMap</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">indexMap</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">indexMap</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">155</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indexMap</span><span class="p">[</span><span class="n">r</span><span class="p">.</span><span class="n">first</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">indexMap</span><span class="p">[</span><span class="n">r</span><span class="p">.</span><span class="n">second</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">156</span><span class="w">                </span><span class="c1">// Order is invalid</span>
+<span class="linenos">157</span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">158</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">159</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">160</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">161</span><span class="w">    </span><span class="c1">// Order is valid</span>
+<span class="linenos">162</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">163</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Bringing time complexity to <span class="math notranslate nohighlight">\(O(m + n)\)</span> as <code class="docutils literal notranslate"><span class="pre">find</span></code> in Hash Map is <span class="math notranslate nohighlight">\(O(1)\)</span> operation.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>// Before
+[100%] Built target day5
+Part 1: 4790
+<span class="hll">Elapsed time: 7330 us
+</span>Part 2: 6319
+<span class="hll">Elapsed time: 9174 us
+</span>Elapsed time: 45189 us
+[100%] Built target run5
+
+// After Optimization
+[100%] Built target day5
+Part 1: 4790
+<span class="hll">Elapsed time: 2959 us
+</span>Part 2: 6319
+<span class="hll">Elapsed time: 3437 us
+</span>Elapsed time: 38453 us
+[100%] Built target run5
+</pre></div>
+</div>
+</section>
+</section>
+<section id="part-2-sort-pages-as-per-the-rules">
+<h4>Part 2: Sort pages as per the Rules<a class="headerlink" href="#part-2-sort-pages-as-per-the-rules" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>For each of the <em>incorrectly-ordered updates</em>, use the page ordering rules to put the page numbers in the right order.</p>
+</div></blockquote>
+<p>Implemented a bubble sort such that while not sorted keep swapping the elements in incorrect order.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 93</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">o</span><span class="o">:</span><span class="w"> </span><span class="n">incorrect_orders</span><span class="p">)</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 95</span><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="linenos"> 96</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos"> 97</span><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">order_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos"> 98</span>
+<span class="linenos"> 99</span><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="o">:</span><span class="w"> </span><span class="n">rule</span><span class="p">)</span>
+<span class="linenos">100</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">101</span><span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">102</span><span class="w">                </span><span class="k">for</span><span class="p">(;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">103</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">104</span><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">105</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">106</span><span class="w">                </span><span class="k">for</span><span class="p">(;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos">107</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">108</span><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">109</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">j</span><span class="o">==</span><span class="n">o</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="linenos">112</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">113</span><span class="w">                </span><span class="p">{</span>
+<span class="linenos">114</span><span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">o</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="linenos">115</span><span class="w">                    </span><span class="n">order_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="linenos">116</span><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">117</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">118</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">119</span>
+<span class="linenos">120</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order_valid</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">121</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">122</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Found a <a class="reference external" href="https://blog.jverkamp.com/2024/12/05/aoc-2024-day-5-not-transitivinator/#optimization-1-drop-the-hashmap">more optimized solution</a> on the internet, using <span class="math notranslate nohighlight">\(m\times m\)</span> matrix <code class="docutils literal notranslate"><span class="pre">data</span></code>, where <code class="docutils literal notranslate"><span class="pre">data[a][b]</span> <span class="pre">==</span> <span class="pre">true</span></code> means <code class="docutils literal notranslate"><span class="pre">a</span></code> must come before <code class="docutils literal notranslate"><span class="pre">b</span></code> in any valid sequence.</p>
+</section>
+</section>
+<section id="id9">
+<h3>Key Takeaways<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="std-move">
+<h4><code class="docutils literal notranslate"><span class="pre">std::move</span></code><a class="headerlink" href="#std-move" title="Permalink to this heading">#</a></h4>
+<details>
+<summary>Example std::move</summary>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">))</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="nf">iss</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pages</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">page</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">iss</span><span class="p">,</span><span class="w"> </span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;,&#39;</span><span class="p">))</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">            </span><span class="n">pages</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">page</span><span class="p">));</span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">pages</span><span class="p">));</span>
+<span class="linenos">12</span><span class="w">        </span><span class="cm">/**</span>
+<span class="linenos">13</span><span class="cm">        order.push_back(pages);           - Copies the content of pages into order</span>
+<span class="linenos">14</span><span class="cm">        order.push_back(std::move(pages)) - Moves the contents, no copying, ownership of interal is transferred</span>
+<span class="linenos">15</span><span class="cm">        When use std::move??</span>
+<span class="linenos">16</span><span class="cm">        -&gt; Don&#39;t need the original vector</span>
+<span class="linenos">17</span><span class="cm">        -&gt; performance optimization</span>
+<span class="linenos">18</span><span class="cm">		*/</span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="for-loop-with-pass-by-reference">
+<h4>for loop with pass by reference<a class="headerlink" href="#for-loop-with-pass-by-reference" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">for(auto</span> <span class="pre">o:</span> <span class="pre">orders)</span></code>: The copy constructor of <code class="docutils literal notranslate"><span class="pre">std::vector&lt;int&gt;</span></code> is called for each element of <code class="docutils literal notranslate"><span class="pre">orders</span></code>.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="o">:</span><span class="w"> </span><span class="n">incorrect_orders</span><span class="p">)</span>
+<span class="linenos">2</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">	    </span><span class="c1">// some condition</span>
+<span class="linenos">4</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">o</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="linenos">5</span><span class="w">	</span><span class="p">}</span>
+<span class="linenos">6</span><span class="w">	</span><span class="c1">// Does NOT change the original</span>
+<span class="linenos">7</span><span class="w">	</span><span class="c1">// Instead do</span>
+<span class="linenos">8</span><span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">o</span><span class="o">:</span><span class="w"> </span><span class="n">incorrect_orders</span><span class="p">)</span><span class="w"> </span>
+</pre></div>
+</div>
+<section id="fun">
+<h5>Fun<a class="headerlink" href="#fun" title="Permalink to this heading">#</a></h5>
+<p><img alt="" src="https://preview.redd.it/2024-day-5-part-2-non-transitivity-non-schmansitivity-v0-cah9pzcbd35e1.jpeg?auto=webp&amp;s=dcd7519a3dca70b9ba1f58c9ca5ae76f9699528e" /></p>
+<p>Ref: <a class="reference external" href="https://www.reddit.com/r/adventofcode/comments/1h7jbqu/2024_day_5_part_2_nontransitivity/">2024 Day 5 (part 2) Non-Transitivity, non-schmansitivity : r/adventofcode</a></p>
+</section>
+</section>
+</section>
+<section id="id10">
+<h3>References and Resources<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/jKS9dSHkAZY">C++ Weekly - Ep 278 - <code class="docutils literal notranslate"><span class="pre">emplace_back</span></code> vs <code class="docutils literal notranslate"><span class="pre">push_back</span></code></a></p></li>
+</ul>
+<hr>
+<!-- Links -->
+<p>This marks the first part of my Advent of Code 2024 journey. More updates soon. If you’re also learning C++ or participating in Advent of Code, I’d love to hear about your experiences! Share your thoughts, tips, or solutions in the comments below. Feel free to check out my solutions on <a class="reference external" href="https://github.com/ABD-01/AoC2024">GitHub</a>.”</p>
+<!-- Links -->
+</section>
+</section>
+</section>
+
+           
+          <div class="section ablog__blog_comments">
+            
+            
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    <a href="../2024-08-12-hello-world/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Hello World</span>
+    </a>
+    
+  </span>
+  <!-- <span class="ablog__spacer">&nbsp;</span> -->
+  <span class="ablog__next">
+    
+    
+    <a href="../Advent-of-Code-2024-Day-6-to-8/">
+      <span>Advent of Code 2024 [Days 6 to 8]</span>
+      
+      <i class="fa fa-arrow-circle-right" ></i>
+      
+    </a>
+    
+  </span>
+</div>
+
+            
+            
+            
+           
+            <div class="section ablog__comments"> 
+              
+
+<h2>Comments</h2>
+<script src="https://giscus.app/client.js"
+  data-repo="ABD-01/ABD-01.github.io"
+  data-repo-id="R_kgDOJLoETw"
+  data-category="General"
+  data-category-id="DIC_kwDOJLoET84CiH6W"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<script>
+    function changeGiscusTheme() {
+        var theme = document.body.dataset.theme === "light" ? "light" : "dark_dimmed";
+        var frame = document.querySelector(".giscus-frame");
+        console.log("Changing theme to " + theme);
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+      );
+    }
+    function setupGiscusTheme() {
+      // Attach event handlers for toggling themes
+      const buttons = document.getElementsByClassName("theme-toggle");
+      Array.from(buttons).forEach((btn) => {
+        btn.addEventListener("click", () => { setTimeout(changeGiscusTheme, 500); });
+    });
+  }
+  
+  setupGiscusTheme();
+  setTimeout(changeGiscusTheme, 10000);
+</script>
+            </div>
+
+            
+          </div>
+          
+          
+        </article>
+      </div>
+      <footer>
+        
+<div class="related-pages">
+  
+  
+</div>
+<div class="bottom-of-page">
+  <div class="left-details">
+    <div class="copyright">
+        Copyright &#169; 2024, Muhammed Abdullah
+    </div>
+    Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>, <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+    
+    <a href="https://github.com/pradyunsg/furo">Furo</a> and 
+    <a class="muted-link" href="https://abd-01.github.io/">@ABD-01</a>'s
+    
+    <a href="https://github.com/ABD-01/furo50">Furo50</a>
+  </div>
+  <div class="right-details">
+    
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Learning CPP via Advent of Code 2024 [Days 1 to 5]</a><ul>
+<li><a class="reference internal" href="#day-1-historian-hysteria">Day 1: Historian Hysteria</a><ul>
+<li><a class="reference internal" href="#solution-overview">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-sorting-and-pairing-numbers">Part 1: Sorting and Pairing Numbers</a></li>
+<li><a class="reference internal" href="#part-2-calculating-similarity-scores">Part 2: Calculating Similarity Scores</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concepts-learned">Concepts Learned</a><ul>
+<li><a class="reference internal" href="#reading-from-a-file">Reading from a file</a></li>
+<li><a class="reference internal" href="#vectors">Vectors</a></li>
+<li><a class="reference internal" href="#ranges">Ranges</a></li>
+<li><a class="reference internal" href="#initializer-list">Initializer List</a></li>
+<li><a class="reference internal" href="#explicit-specifier"><code class="docutils literal notranslate"><span class="pre">explicit</span></code> specifier</a></li>
+<li><a class="reference internal" href="#insertion-sort">Insertion Sort</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references-and-resources">References and Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day-2-red-nosed-reports">Day 2: Red-Nosed Reports</a><ul>
+<li><a class="reference internal" href="#id1">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-count-safe-reports">Part 1: Count Safe Reports</a></li>
+<li><a class="reference internal" href="#part-2-tolerate-a-single-unsafe-report">Part 2: Tolerate a Single Unsafe Report</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-takeaways">Key Takeaways</a><ul>
+<li><a class="reference internal" href="#vector-of-vectors">Vector of Vectors</a></li>
+<li><a class="reference internal" href="#std-is-sorted-and-std-greater"><code class="docutils literal notranslate"><span class="pre">std::is_sorted</span></code> and <code class="docutils literal notranslate"><span class="pre">std::greater</span></code></a></li>
+<li><a class="reference internal" href="#std-adjacent-find"><code class="docutils literal notranslate"><span class="pre">std::adjacent_find</span></code></a></li>
+<li><a class="reference internal" href="#std-count-if"><code class="docutils literal notranslate"><span class="pre">std::count_if</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">References and Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day-3-mull-it-over">Day 3: Mull It Over</a><ul>
+<li><a class="reference internal" href="#id3">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-multiplication-in-trash">Part 1: Multiplication in Trash</a></li>
+<li><a class="reference internal" href="#part-2-do-don-t-multiply">Part 2: Do/Don’t Multiply</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">Concepts Learned</a><ul>
+<li><a class="reference internal" href="#stream-iterators">Stream Iterators</a></li>
+<li><a class="reference internal" href="#regex">Regex</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">References and Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day4-ceres-search">Day4: Ceres Search</a><ul>
+<li><a class="reference internal" href="#id6">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-find-xmas">Part 1: Find XMAS</a></li>
+<li><a class="reference internal" href="#part-2-find-mas-in-x">Part 2: Find <code class="docutils literal notranslate"><span class="pre">MAS</span></code> in <code class="docutils literal notranslate"><span class="pre">X</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">Key Takeaways</a><ul>
+<li><a class="reference internal" href="#get-diagonals-and-antidiagonals-of-a-2d-grid">Get diagonals and AntiDiagonals of a 2d Grid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day-5-print-queue">Day 5: Print Queue</a><ul>
+<li><a class="reference internal" href="#id8">Solution Overview</a><ul>
+<li><a class="reference internal" href="#part-1-check-page-order">Part 1: Check Page Order</a></li>
+<li><a class="reference internal" href="#part-2-sort-pages-as-per-the-rules">Part 2: Sort pages as per the Rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">Key Takeaways</a><ul>
+<li><a class="reference internal" href="#std-move"><code class="docutils literal notranslate"><span class="pre">std::move</span></code></a></li>
+<li><a class="reference internal" href="#for-loop-with-pass-by-reference">for loop with pass by reference</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">References and Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../_static/marker.js?v=afb55134"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/announcement.js?v=5aa8c106"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>WebFont.load({google: {families: ['PT Sans', 'PT Sans:bold', 'PT Sans:ital']}});</script>
+    </body>
+</html>
