@@ -722,6 +722,7 @@ Elapsed time: 38453 us
 > For each of the _incorrectly-ordered updates_, use the page ordering rules to put the page numbers in the right order.
 
 Implemented a bubble sort such that while not sorted keep swapping the elements in incorrect order.
+
 ```{code-block} cpp
 :lineno-start: 93
 
@@ -803,7 +804,9 @@ Found a [more optimized solution](https://blog.jverkamp.com/2024/12/05/aoc-2024-
 
 #### Fun
 ![](https://preview.redd.it/2024-day-5-part-2-non-transitivity-non-schmansitivity-v0-cah9pzcbd35e1.jpeg?auto=webp&s=dcd7519a3dca70b9ba1f58c9ca5ae76f9699528e)
+
 Ref: [2024 Day 5 (part 2) Non-Transitivity, non-schmansitivity : r/adventofcode](https://www.reddit.com/r/adventofcode/comments/1h7jbqu/2024_day_5_part_2_nontransitivity/)
+
 ## References and Resources
 * [C++ Weekly - Ep 278 - `emplace_back` vs `push_back`](https://youtu.be/jKS9dSHkAZY)
 

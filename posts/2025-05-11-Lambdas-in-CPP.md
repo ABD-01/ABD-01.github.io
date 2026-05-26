@@ -5,7 +5,7 @@ date: 11 May, 2025
 category: programming
 tags: C, C++, lambda functions
 language: English
-author: me
+author: Muhammed Abdullah
 myst:
     number_code_blocks: ["cpp"]
     html_meta:

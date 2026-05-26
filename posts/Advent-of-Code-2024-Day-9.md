@@ -17,6 +17,9 @@ tags: AoC, C++, Python
 exclude:
 ---
 This isn’t how you’re supposed to defrag a disk… right?
+
+![defragging deez nuts](https://raw.githubusercontent.com/ABD-01/AoC2024/refs/heads/master/Day09_Disk_Fragmenter/solution_combined.gif){w=400px}
+
 ```
 
 {.hiddenh1}

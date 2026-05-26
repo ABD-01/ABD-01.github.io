@@ -13,15 +13,21 @@ For example, in the disk map `24531`
 - `3` represents three blocks of free space.
 - `1` represents a one-block file."
 And it will look like
+
 ```text
 00....11111...2
 ```
 The checksum for the disk map is sum of block's position multiplied by file Id it contains.
 Given a disk map, rearrange it to make the disk compact. 
+
 ### Part 1: 
+
+![part 1 solution](https://raw.githubusercontent.com/ABD-01/AoC2024/refs/heads/master/Day09_Disk_Fragmenter/input_part1.gif?raw=true){align=center}
+
 The arrangement to be done is by moving a single file block from the end of the disk to the available free space in the beginning of the disk.
 For instance disk map= `13212141`
 The movement would look like
+
 ```text
 0...11.22.3333.
 03..11.22.333..
@@ -85,7 +91,10 @@ void part1(std::vector<int> dm)
     cout << "Part 1: " << result << endl;
 }
 ```
+
 ### Part 2: 
+
+![part 2 solution](https://raw.githubusercontent.com/ABD-01/AoC2024/refs/heads/master/Day09_Disk_Fragmenter/input_part2.gif?raw=true){align=center}
 
 Rather than moving individual file blocks, move whole file instead to the first available free space.
 Using same example from Part 1, the movement would look like

@@ -14,6 +14,7 @@ category: Advent of Code
 language: English
 title: Advent of Code 2024 [Days 10 and 11]
 tags: AoC, C++
+image: 1
 exclude:
 ---
 The plutonian pebbles are getting out of hand! And we also have to find a hiking trail.

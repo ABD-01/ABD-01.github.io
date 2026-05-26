@@ -8,7 +8,7 @@
 
 Hi! <img src="/_static/images/Hi.gif" style="height: 1.5em;"> 
 
-My name is **Muhammed Abdullah**. I am an Embedded Software Engineer at [Qualcomm](https://www.qualcomm.com/) and I work on Software Defined Vehicles (SDVs) and ADAS Platform Firmware. Previously at [Accolade Electronics Pvt. Ltd.](https://accoladeelectronics.com) and I work on telematics systems, Qt Aplications, network module, etc. My role involves developing embedded software that's shaping the future of automotive technology. It's pretty cool how our cars have become yet another IoT device to think of.
+My name is **Muhammed Abdullah**. I am an Embedded Software Engineer at [Qualcomm](https://www.qualcomm.com/) and I work on Software Defined Vehicles (SDVs) and ADAS Platform Firmware. Previously at [Accolade Electronics Pvt. Ltd.](https://accoladeelectronics.com) I worked on telematics systems, Qt Aplications, network module, etc. My role involves developing embedded software that's shaping the future of automotive technology. It's pretty cool how our cars have become yet another IoT device to think of.
 
 <!-- My interests? Well, they're all over the map!  -->
 I've got a bunch of interests, maybe not too many. At the core I am interested in Robotics, deep learning, and embedded systems. But I'm also drawn to computer networks, electronics, machine vision, NLP, mathematics, hardware drivers and more. To be honest, I find it hard to narrow down my interests because there's just so much fascinating stuff out there in the world! I am always on the lookout for new tech to learn or interesting problems to solve.
